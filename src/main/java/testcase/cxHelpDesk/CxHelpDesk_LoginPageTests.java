@@ -1,4 +1,4 @@
-package testcase.payrollHelpDesk;
+package testcase.cxHelpDesk;
 
 import TestUtil.CaptureScreenshot;
 import TestUtil.Constants;
