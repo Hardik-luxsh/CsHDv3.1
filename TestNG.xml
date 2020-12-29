@@ -2,9 +2,31 @@
 
 <suite thread-count="1" verbose="1" name="Cx-HelpDesk" annotations="JDK" parallel="tests">
 
-    <test name="Login" enabled="true">
+<!--    <test name="Test_Login" enabled="true">-->
+<!--        <classes>-->
+<!--            <class name="testcase.cxHelpDesk.CxHelpDesk_LoginPageTests">-->
+<!--                <methods>-->
+<!--                    <include name="verifyAgentLogin"/>-->
+<!--                    <include name="verifyUserLogin"/>-->
+<!--                    &lt;!&ndash;<include name="verifyAdminLogin"/>&ndash;&gt;-->
+<!--                    <include name="validateLogin"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+<!--        </classes>-->
+<!--    </test>-->
+
+    <test name="Test_CreateTicket" enabled="true">
         <classes>
-            <class name="testcase.cxHelpDesk.CxHelpDesk_LoginPageTests"></class>
+            <class name="testcase.cxHelpDesk.CxHelpDesk_LoginPageTests">
+                <methods>
+                    <include name="validateLogin"/>
+                </methods>
+            </class>
+            <class name="testcase.cxHelpDesk.CxHelpDesk_CreateTicketPageTests">
+                <methods>
+                    <include name="createTicket"/>
+                </methods>
+            </class>
         </classes>
     </test>
 

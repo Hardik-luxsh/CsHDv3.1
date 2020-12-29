@@ -4,6 +4,7 @@ import TestUtil.Constants;
 import TestUtil.GenericUtil;
 import TestUtil.HighlightElement;
 import base.TestBase;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -83,7 +84,7 @@ public class Cx_HelpDesk_page_LoginLocator extends TestBase {
             genericUtil.clickWithPause(labelUsername,1000);
 
             HighlightElement.highlightElement(textUsername);
-            genericUtil.writeTextWithPause(textUsername,username,2000);
+            genericUtil.writeTextWithPause(textUsername,username,1000);
 
             HighlightElement.highlightElement(labelPassword);
             genericUtil.clickWithPause(labelPassword,1000);
@@ -97,8 +98,9 @@ public class Cx_HelpDesk_page_LoginLocator extends TestBase {
             HighlightElement.highlightElement(buttonSubmit);
             genericUtil.click(buttonSubmit);
 
+            genericUtil.pause(3000);
             HighlightElement.highlightElement(adminTitle);
-            wait.until(ExpectedConditions.visibilityOf(adminTitle));
+//            wait.until(ExpectedConditions.visibilityOf(adminTitle));
             Assert.assertEquals(driver.getCurrentUrl(), Constants.BASEURL + "dashboard");
             Reporter.log("SUCCESSFULLY ADMIN page is redirected.", true);
         } catch (Exception e) {
@@ -313,21 +315,26 @@ public class Cx_HelpDesk_page_LoginLocator extends TestBase {
             HighlightElement.highlightElement(logo_img);
             Assert.assertTrue(logo_img.isDisplayed());
 
+            HighlightElement.highlightElement(labelUsername);
+            genericUtil.clickWithPause(labelUsername,1000);
+
             HighlightElement.highlightElement(textUsername);
-            textUsername.clear();
-            textUsername.sendKeys(username);
-            Thread.sleep(2000);
+            genericUtil.writeTextWithPause(textUsername,username,2000);
+
+            HighlightElement.highlightElement(labelPassword);
+            genericUtil.clickWithPause(labelPassword,1000);
 
             HighlightElement.highlightElement(textPassword);
-            textPassword.clear();
-            textPassword.sendKeys(password);
-            Thread.sleep(2000);
+            genericUtil.writeTextWithPause(textPassword,password,2000);
+
+            HighlightElement.highlightElement(eyeButton);
+            genericUtil.click(eyeButton);
 
             HighlightElement.highlightElement(buttonSubmit);
             buttonSubmit.click();
 
-            HighlightElement.highlightElement(adminTitle);
             wait.until(ExpectedConditions.visibilityOf(adminTitle));
+            HighlightElement.highlightElement(adminTitle);
             Assert.assertEquals(driver.getCurrentUrl(), Constants.BASEURL + "dashboard");
             Reporter.log("SUCCESSFULLY ADMIN page is redirected.", true);
 
@@ -362,10 +369,12 @@ public class Cx_HelpDesk_page_LoginLocator extends TestBase {
             HighlightElement.highlightElement(buttonSubmit);
             buttonSubmit.click();
 
+            genericUtil.pause(3000);
             HighlightElement.highlightElement(adminTitle);
-            wait.until(ExpectedConditions.visibilityOf(adminTitle));
+//            wait.until(ExpectedConditions.visibilityOf(adminTitle));
+
             Assert.assertEquals(driver.getCurrentUrl(), Constants.BASEURL + "dashboard");
-            Reporter.log("SUCCESSFULLY ADMIN page is redirected.", true);
+            Reporter.log("SUCCESSFULLY Employee page is redirected.", true);
 
             wait.until(ExpectedConditions.visibilityOf(usernameTitle));
             logOut();
@@ -393,7 +402,7 @@ public class Cx_HelpDesk_page_LoginLocator extends TestBase {
                 Actions action = new Actions(driver);
                 action.doubleClick(buttonLogout).build().perform();
 //                ((JavascriptExecutor) driver).executeScript("arguments[0].click();", buttonLogout);
-//                genericUtil.pause(2000);
+                genericUtil.pause(2000);
 //                driver.close();
             }
         } catch (Exception ex) {

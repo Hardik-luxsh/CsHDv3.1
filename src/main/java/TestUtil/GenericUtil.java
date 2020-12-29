@@ -63,6 +63,7 @@ public class GenericUtil extends TestBase {
     //Write Text
     public void writeTextWithPause(WebElement elementToBeWritten, String text,Integer milliseconds) {
         try {
+            elementToBeWritten.clear();
             elementToBeWritten.sendKeys(text);
             pause(milliseconds);
         }
