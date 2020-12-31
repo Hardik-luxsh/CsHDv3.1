@@ -1,7 +1,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
 <suite thread-count="1" verbose="1" name="Cx-HelpDesk" annotations="JDK" parallel="tests">
-
 <!--    <test name="Test_Login" enabled="true">-->
 <!--        <classes>-->
 <!--            <class name="testcase.cxHelpDesk.CxHelpDesk_LoginPageTests">-->
@@ -14,7 +13,6 @@
 <!--            </class>-->
 <!--        </classes>-->
 <!--    </test>-->
-
     <test name="Test_CreateTicket" enabled="true">
         <classes>
             <class name="testcase.cxHelpDesk.CxHelpDesk_LoginPageTests">
