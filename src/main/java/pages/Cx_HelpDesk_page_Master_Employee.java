@@ -112,5 +112,7 @@ public class Cx_HelpDesk_page_Master_Employee extends TestBase {
         wait = new WebDriverWait(driver, 20);
     }
 
+    public void createEmployee(){
 
+    }
 }

@@ -15,6 +15,7 @@ public class CxHelpDesk_CreateTicketPageTests extends TestBase{
     @BeforeTest
     public void initialBrowserDriver() {
         driver = TestBase.testBase();
+
         objLoginPage = new Cx_HelpDesk_page_LoginLocator(driver);
         objLoginPage.validateLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
     }

@@ -130,5 +130,8 @@ public class Cx_HelpDesk_page_Master_Group extends TestBase{
         wait = new WebDriverWait(driver, 20);
     }
 
+    public void createGroup(){
+
+    }
 
 }

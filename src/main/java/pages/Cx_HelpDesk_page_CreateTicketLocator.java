@@ -63,6 +63,21 @@ public class Cx_HelpDesk_page_CreateTicketLocator extends TestBase {
     @FindBy(xpath = "(//input[@class='btn btn-success'])[1]")
     public WebElement buttonSubmit;
 
+    @FindBy(xpath = "//h4[contains(text(),'Confirm Ticket Creation!')]")
+    public WebElement confirmTicket;
+
+    @FindBy(xpath = "//input[@value='Yes']")
+    public WebElement optionConfirmYesTicket;
+
+    @FindBy(xpath = "//input[@value='No']")
+    public WebElement optionConfirmNoTicket;
+
+    @FindBy(xpath = "//input[@value='No']")
+    public WebElement optionConfirmCloseTicket;
+
+    @FindBy(xpath = "//h4[text()='Confirm Ticket Creation!']/../button")
+    public WebElement closeConfirmCreateTicket;
+
     /**
      * TESTCASE: Create Ticket
      */
@@ -120,11 +135,13 @@ public class Cx_HelpDesk_page_CreateTicketLocator extends TestBase {
             genericUtil.pause(1000);
 
             HighlightElement.highlightElement(buttonSubmit);
-            genericUtil.clickWithPause(buttonSubmit, 3000);
+            genericUtil.clickWithPause(buttonSubmit, 2000);
+
+            HighlightElement.highlightElement(optionConfirmYesTicket);
+            genericUtil.clickWithPause(optionConfirmYesTicket, 3000);
 
         } catch (Exception ex) {
             ex.getStackTrace();
         }
-
     }
 }

@@ -12,7 +12,7 @@ import pages.Cx_HelpDesk_page_LoginLocator;
 
 public class CxHelpDesk_LoginPageTests extends TestBase {
 
-	Cx_HelpDesk_page_LoginLocator objLoginPage;
+	public Cx_HelpDesk_page_LoginLocator objLoginPage;
 	
 	@BeforeTest
 	public void initialBrowserDriver() {
