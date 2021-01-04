@@ -23,7 +23,7 @@ public class Cx_HelpDesk_page_LoginLocator extends TestBase {
     public Cx_HelpDesk_page_LoginLocator(WebDriver driver) {
         TestBase.driver = driver;
         PageFactory.initElements(driver, this);
-        wait = new WebDriverWait(driver, 20);
+        wait = new WebDriverWait(driver, 40);
     }
 
     @FindBy(xpath = "//img[@class=\"logo-default\"]")
@@ -81,16 +81,16 @@ public class Cx_HelpDesk_page_LoginLocator extends TestBase {
             Assert.assertTrue(logo_img.isDisplayed());
 
             HighlightElement.highlightElement(labelUsername);
-            genericUtil.clickWithPause(labelUsername,1000);
+            genericUtil.clickWithPause(labelUsername,500);
 
             HighlightElement.highlightElement(textUsername);
-            genericUtil.writeTextWithPause(textUsername,username,1000);
+            genericUtil.writeTextWithPause(textUsername,username,500);
 
             HighlightElement.highlightElement(labelPassword);
-            genericUtil.clickWithPause(labelPassword,1000);
+            genericUtil.clickWithPause(labelPassword,500);
 
             HighlightElement.highlightElement(textPassword);
-            genericUtil.writeTextWithPause(textPassword,password,2000);
+            genericUtil.writeTextWithPause(textPassword,password,1000);
 
             HighlightElement.highlightElement(eyeButton);
             genericUtil.click(eyeButton);
@@ -98,9 +98,9 @@ public class Cx_HelpDesk_page_LoginLocator extends TestBase {
             HighlightElement.highlightElement(buttonSubmit);
             genericUtil.click(buttonSubmit);
 
-            genericUtil.pause(3000);
+//            genericUtil.pause(5000);
+            wait.until(ExpectedConditions.visibilityOf(adminTitle));
             HighlightElement.highlightElement(adminTitle);
-//            wait.until(ExpectedConditions.visibilityOf(adminTitle));
             Assert.assertEquals(driver.getCurrentUrl(), Constants.BASEURL + "dashboard");
             Reporter.log("SUCCESSFULLY ADMIN page is redirected.", true);
         } catch (Exception e) {

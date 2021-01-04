@@ -8,12 +8,12 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class Cx_HelpDesk_page_Master_Customer extends TestBase {
+public class Cx_HelpDesk_page_Master_CustomerLocator extends TestBase {
 
     public static WebDriverWait wait;
     public static GenericUtil genericUtil;
 
-    public Cx_HelpDesk_page_Master_Customer(WebDriver driver) {
+    public Cx_HelpDesk_page_Master_CustomerLocator(WebDriver driver) {
         TestBase.driver = driver;
         PageFactory.initElements(driver, this);
         wait = new WebDriverWait(driver, 20);
@@ -46,7 +46,6 @@ public class Cx_HelpDesk_page_Master_Customer extends TestBase {
     WebElement EditBtn;
 
     /*--------------Edit---------------*/
-
     @FindBy(xpath = "(//input[@class='form-control ng-pristine ng-valid ng-touched'])[1]")
     WebElement EditCustomerName;
 
@@ -93,7 +92,6 @@ public class Cx_HelpDesk_page_Master_Customer extends TestBase {
     WebElement ImportCustomer;
 
     /*--------------Add New loyee ---------------*/
-
     @FindBy(xpath = "(//input[@class='form-control ng-pristine ng-invalid ng-touched'])[1]")
     WebElement AddCustomerName;
 

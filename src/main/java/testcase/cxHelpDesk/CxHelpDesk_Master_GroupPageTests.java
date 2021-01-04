@@ -8,13 +8,12 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.Cx_HelpDesk_page_LoginLocator;
-import pages.Cx_HelpDesk_page_Master_CustomerLocator;
-import pages.Cx_HelpDesk_page_Master_EmployeeLocator;
+import pages.Cx_HelpDesk_page_Master_GroupLocator;
 
-public class CxHelpDesk_Master_CustomerPageTests extends TestBase {
+public class CxHelpDesk_Master_GroupPageTests extends TestBase {
 
     Cx_HelpDesk_page_LoginLocator objLoginPage;
-    Cx_HelpDesk_page_Master_CustomerLocator objMasterCustomerLocator;
+    Cx_HelpDesk_page_Master_GroupLocator objMasterGroupLocator;
 
     @BeforeTest
     public void initialBrowserDriver() {
@@ -25,10 +24,10 @@ public class CxHelpDesk_Master_CustomerPageTests extends TestBase {
     }
 
     @Test
-    public void createCustomer(){
+    public void createEmployee(){
         try {
-            objMasterCustomerLocator = new Cx_HelpDesk_page_Master_CustomerLocator(driver);
-            objMasterCustomerLocator.addCustomer();
+            objMasterGroupLocator = new Cx_HelpDesk_page_Master_GroupLocator(driver);
+            objMasterGroupLocator.createGroup();
         }
         catch (Exception ex){
             ex.printStackTrace();
@@ -40,4 +39,5 @@ public class CxHelpDesk_Master_CustomerPageTests extends TestBase {
         CaptureScreenshot.captureScreenshotForFailedTests(driver,result);
         CaptureScreenshot.captureScreenshotPassedTests(driver,result);
     }
+
 }
