@@ -9,7 +9,7 @@ public class HighlightElement extends TestBase {
     public static void highlightElement(WebElement element){
         JavascriptExecutor jse = (JavascriptExecutor) driver;
 //        jse.executeScript("arguments[0].setAttribute('style', 'background-color:hsla(9, 100%, 64%, 0.5);border: 5px DodgerBlue;');", element);
-        jse.executeScript("arguments[0].setAttribute('style', 'border:4px solid DodgerBlue;');", element);
+        jse.executeScript("arguments[0].setAttribute('style', 'border:4px solid DodgerBlue;');", element); //DodgerBlue
         try {
             Thread.sleep(500);
         }
