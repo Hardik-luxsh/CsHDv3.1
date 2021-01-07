@@ -70,10 +70,10 @@ public class Cx_HelpDesk_page_Master_GroupLocator extends TestBase{
 
     /*--------------Edit Group ---------------*/
 
-    @FindBy(xpath = "(//i[@title='Edit Group'])[1]")
+    @FindBy(xpath = "//i[@title=\"Edit Group\"]")
     public WebElement GroupEditBtn;
 
-    @FindBy(xpath = "((//i[@title='Delete Group'])[1]")
+    @FindBy(xpath = "//i[@title='Delete Group']")
     public WebElement GroupDeleteBtn;
 
     @FindBy(xpath = "//input[@class='form-control ng-pristine ng-valid ng-touched']")
@@ -209,6 +209,12 @@ public class Cx_HelpDesk_page_Master_GroupLocator extends TestBase{
 
             HighlightElement.highlightElement(GroupSearch);
             genericUtil.writeTextWithPause(GroupSearch,searchText,3000); //"Group Test"
+
+            HighlightElement.highlightElement(GroupBtnPlus);
+            genericUtil.clickWithPause(GroupBtnPlus,2000); //"Group Test"
+
+            HighlightElement.highlightElement(GroupBtnMinus);
+            genericUtil.clickWithPause(GroupBtnMinus,2000); //"Group Test"
         }
         catch (Exception ex){
             ex.getStackTrace();
@@ -218,9 +224,6 @@ public class Cx_HelpDesk_page_Master_GroupLocator extends TestBase{
     public void editGroup(String UpdatedGroupName,String searchText){
         try {
             genericUtil = new GenericUtil();
-
-            HighlightElement.highlightElement(GroupDataListFirstRow);
-            genericUtil.writeTextWithPause(GroupDataListFirstRow,"",3000); //"Group Test"
 
             HighlightElement.highlightElement(GroupEditBtn);
             genericUtil.clickWithPause(GroupEditBtn,3000);
@@ -232,7 +235,10 @@ public class Cx_HelpDesk_page_Master_GroupLocator extends TestBase{
             genericUtil.clickWithPause(GroupAddAttachedUser,1000);
 
             HighlightElement.highlightElement(DeSelectedAllAttachedUser);
-            genericUtil.clickWithPause(DeSelectedAllAttachedUser,1000);
+            genericUtil.clickWithPause(DeSelectedAllAttachedUser,2000);
+
+            HighlightElement.highlightElement(SelectedAllAttachedUser);
+            genericUtil.clickWithPause(SelectedAllAttachedUser,2000);
 
             HighlightElement.highlightElement(downArrowAttachedUser);
             genericUtil.clickWithPause(downArrowAttachedUser,1000);

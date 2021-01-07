@@ -1,6 +1,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite thread-count="1" verbose="1" name="Cx-HelpDesk" annotations="JDK" parallel="tests">
+<suite thread-count="1" verbose="1" name="Cx-HelpDesk" annotations="JDK" parallel="true">
 <!--    <test name="Test_Login" enabled="true">-->
 <!--        <classes>-->
 <!--            <class name="testcase.cxHelpDesk.CxHelpDesk_LoginPageTests">-->
@@ -13,18 +13,27 @@
 <!--            </class>-->
 <!--        </classes>-->
 <!--    </test>-->
-    <test name="Test_CreateTicket" enabled="true">
+    <test name="Test_Master_Employee" enabled="true">
         <classes>
-            <class name="testcase.cxHelpDesk.CxHelpDesk_LoginPageTests">
+            <class name="testcase.cxHelpDesk.CxHelpDesk_Master_EmployeePageTests">
                 <methods>
-                    <include name="validateLogin"/>
+                    <include name="createEmployee"/>
+                    <include name="editEmployee"/>
+                    <include name="deleteEmployee"/>
                 </methods>
             </class>
-            <class name="testcase.cxHelpDesk.CxHelpDesk_CreateTicketPageTests">
-                <methods>
-                    <include name="createTicket"/>
-                </methods>
-            </class>
+        </classes>
+    </test>
+
+    <test name="Test_Master_Group" enabled="true">
+        <classes>
+        <class name="testcase.cxHelpDesk.CxHelpDesk_Master_GroupPageTests">
+            <methods>
+                <include name="createGroup"/>
+                <include name="editGroup"/>
+                <include name="deleteGroup"/>
+            </methods>
+        </class>
         </classes>
     </test>
 
