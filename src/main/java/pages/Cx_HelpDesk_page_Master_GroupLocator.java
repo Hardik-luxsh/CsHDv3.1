@@ -26,7 +26,7 @@ public class Cx_HelpDesk_page_Master_GroupLocator extends TestBase{
     @FindBy(xpath = "(//span[@class='caption-subject font-dark bold uppercase'])[2]")
     public WebElement TitleGroup;
 
-    @FindBy(xpath = "//i[@class='fa fa-database']")
+    @FindBy(xpath = "//li[@id='master']") //i[@class='fa fa-database']
     public WebElement sidebar_textMaster;
 
     @FindBy(xpath = "(//a[@class='collapse btn btn-circle btn-icon-only btn-default'])[2]")
@@ -112,8 +112,6 @@ public class Cx_HelpDesk_page_Master_GroupLocator extends TestBase{
     @FindBy(xpath = "(//button[@class='btn btn-lg btn-success'])[2]")
     public WebElement YesOptionDeleteGroupMessage;
 
-
-    /*--------------Add New Group ---------------*/
     @FindBy(xpath = "//input[@id='Name']")
     public WebElement GroupAddName;
 

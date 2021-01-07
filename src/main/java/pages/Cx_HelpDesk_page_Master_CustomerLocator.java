@@ -147,4 +147,12 @@ public class Cx_HelpDesk_page_Master_CustomerLocator extends TestBase {
 
     }
 
+    public void editCustomer(){
+
+    }
+
+    public void deleteCustomer(){
+
+    }
+
 }

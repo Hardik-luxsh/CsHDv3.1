@@ -12,7 +12,7 @@ import pages.Cx_HelpDesk_page_Master_GroupLocator;
 
 public class CxHelpDesk_Master_GroupPageTests extends TestBase {
 
-    Cx_HelpDesk_page_LoginLocator objLoginPage;
+//    Cx_HelpDesk_page_LoginLocator objLoginPage;
     Cx_HelpDesk_page_Master_GroupLocator objMasterGroupLocator;
 
 //    @BeforeTest

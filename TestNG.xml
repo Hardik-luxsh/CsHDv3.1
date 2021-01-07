@@ -37,4 +37,15 @@
         </classes>
     </test>
 
+    <test name="Test_Master_Customer" enabled="true">
+        <classes>
+            <class name="testcase.cxHelpDesk.CxHelpDesk_Master_CustomerPageTests">
+                <methods>
+                    <include name="createCustomer"/>
+                    <include name="editCustomer"/>
+                    <include name="deleteCustomer"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
 </suite>
