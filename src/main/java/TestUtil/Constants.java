@@ -5,14 +5,17 @@ import java.util.Date;
 
 public class Constants {
 
-	public static final String BASEURL = "http://172.16.2.71:9194/#/";
+//	public static final String BASEURL = "http://213.133.139.190/BNS-SOP/";
+//	public static final String BASEURL = "http://172.16.2.71:9194/#/";
+	public static final String BASEURL = "http://10.0.0.44:9192/#/"; //version 2.0
 
 	public static final String USERNAME = "E123456";
 	public static final String PASSWORD = "112245998";
 
-	public static final String ADMINUSERNAME = "Emp188";
-	public static final String AGENTUSERNAME = "Emp190";
-	public static final String MANAGERUSERNAME = "Emp189";
+	public static final String ADMINUSERNAME = "Emp39"; //Emp188
+	public static final String AGENTUSERNAME = "Emp41"; //Emp190
+	public static final String MANAGERUSERNAME = "Emp40"; //Emp189
+	public static final String DEPARTMENTALUSERNAME = "Emp42";
 	public static final String VALIDPASSWORD = "123456";
 
 	public static final String INVALIDUSERNAME = "!@$~&";

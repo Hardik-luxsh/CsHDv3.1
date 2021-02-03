@@ -1,15 +1,18 @@
 package testcase.cxHelpDesk;
 
 import TestUtil.CaptureScreenshot;
+import TestUtil.Constants;
 import base.TestBase;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import pages.Cx_HelpDesk_page_LoginLocator;
 import pages.Cx_HelpDesk_page_Master_CustomerLocator;
 
 public class CxHelpDesk_Master_CustomerPageTests extends TestBase {
 
-//    Cx_HelpDesk_page_LoginLocator objLoginPage;
+    Cx_HelpDesk_page_LoginLocator objLoginPage;
     Cx_HelpDesk_page_Master_CustomerLocator objMasterCustomerLocator;
 
 //    @BeforeTest
@@ -24,7 +27,9 @@ public class CxHelpDesk_Master_CustomerPageTests extends TestBase {
     public void createCustomer(){
         try {
             objMasterCustomerLocator = new Cx_HelpDesk_page_Master_CustomerLocator(driver);
-            objMasterCustomerLocator.addCustomer();
+            objMasterCustomerLocator.addCustomer("TestCustomerName","TestAddress","TestCounty",
+                    "1234567890","VADODARA","395002","TestContactPersonName",
+                    "9638527410", "963852","hardik.prajapati@luxshtech.com");
         }
         catch (Exception ex){
             ex.printStackTrace();
@@ -35,7 +40,9 @@ public class CxHelpDesk_Master_CustomerPageTests extends TestBase {
     public void editCustomer(){
         try {
             objMasterCustomerLocator = new Cx_HelpDesk_page_Master_CustomerLocator(driver);
-            objMasterCustomerLocator.editCustomer();
+            objMasterCustomerLocator.editCustomer("UpdatedTestCustomerName","UpdatedTestAddress","UpdatedTestCounty",
+                    "149518520","BANGLURU","395002","UpdatedTestContactPersonName",
+                    "9852367410", "963654","hardik.prajapati@luxshtech.com");
         }
         catch (Exception ex){
             ex.printStackTrace();
@@ -46,7 +53,7 @@ public class CxHelpDesk_Master_CustomerPageTests extends TestBase {
     public void deleteCustomer(){
         try {
             objMasterCustomerLocator = new Cx_HelpDesk_page_Master_CustomerLocator(driver);
-            objMasterCustomerLocator.deleteCustomer();
+            objMasterCustomerLocator.deleteCustomer("UpdatedTestCustomerName");
         }
         catch (Exception ex){
             ex.printStackTrace();

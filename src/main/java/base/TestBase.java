@@ -39,6 +39,7 @@ public class TestBase {
 
         e_driver.manage().window().maximize();
         e_driver.get(Constants.BASEURL);
+
 //        ChromeOptions options = new ChromeOptions();
 ////		options.addArguments("-incognito");
 //        options.addArguments("start-maximized");

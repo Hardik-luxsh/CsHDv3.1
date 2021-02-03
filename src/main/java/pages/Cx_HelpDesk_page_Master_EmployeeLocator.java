@@ -19,69 +19,69 @@ public class Cx_HelpDesk_page_Master_EmployeeLocator extends TestBase {
     public static CheckBox objCheckBox;
 
     @FindBy(xpath = "//h1[@class='page-title']")
-    WebElement TitleMasters;
+    public WebElement TitleMasters;
 
     @FindBy(xpath = "//span[text()=' Employee User Master']")
-    WebElement TitleEmpUser;
+    public WebElement TitleEmpUser;
 
     @FindBy(xpath = "//li[@id='master']") //i[@class='fa fa-database']
     public WebElement sidebar_textMaster;
 
     @FindBy(xpath = "(//a[@class='collapse btn btn-circle btn-icon-only btn-default'])[1]")
-    WebElement EmpCollapse;
+    public WebElement EmpCollapse;
 
     @FindBy(xpath = "(//a[@class='btn btn-circle btn-icon-only btn-default fullscreen'])[1]")
-    WebElement EmpFullScreen;
+    public WebElement EmpFullScreen;
 
     @FindBy(xpath ="(//select[@class='fontColor'])[1]")
-    WebElement NumberOfRecordsPerPage;
+    public WebElement NumberOfRecordsPerPage;
 
     @FindBy(xpath = "(//input[@class='fontColor'])[1]")
-    WebElement EmpSearch;
+    public WebElement EmpSearch;
 
     @FindBy(xpath = "(//div/table/tbody/tr[1])[1]")
-    WebElement EmpFirstRowData;
+    public WebElement EmpFirstRowData;
 
     /*--------------Edit Employee ---------------*/
 
     @FindBy(xpath = "//h4[contains(text(),'Edit Employee User')]")
-    WebElement EmpEditHeader;
+    public WebElement EmpEditHeader;
 
     @FindBy(xpath = "(//i[@title='Edit Employee'])[1]")
-    WebElement EmpEditBtn;
+    public WebElement EmpEditBtn;
 
     @FindBy(xpath = "(//i[@title='Delete Employee'])[1]")
-    WebElement EmpDeleteBtn;
+    public WebElement EmpDeleteBtn;
 
     @FindBy(xpath = "//input[@id='fullName']")
-    WebElement EmpEditName;
+    public WebElement EmpEditName;
 
     @FindBy(xpath = "(//input[@formcontrolname='email'])[1]")
-    WebElement EmpEditEmail;
+    public WebElement EmpEditEmail;
 
     @FindBy(xpath = "(//input[@formcontrolname='emp_No'])[1]")
-    WebElement EmpEditNo;
+    public WebElement EmpEditNo;
 
     @FindBy(xpath = "//select[@id='user_Type']")
-    WebElement EmpEditRole;
+    public WebElement EmpEditRole;
 
     @FindBy(xpath ="(//label[@class='mt-checkbox mt-checkbox-single mt-checkbox-outline']/span)[1]")
-    WebElement EmpEditStatus;
+    public WebElement EmpEditStatus;
 
     @FindBy(xpath = "(//input[@class='btn btn-success'])[1]")
-    WebElement EmpEditSubmit;
+    public WebElement EmpEditSubmit;
 
     @FindBy(xpath = "(//input[@class='btn btn-success'])[2]")
-    WebElement EmpEditClear;
+    public WebElement EmpEditClear;
 
     @FindBy(xpath = "(//input[@class='btn btn-success'])[3]")
-    WebElement EmpEditCancel;
+    public WebElement EmpEditCancel;
 
     @FindBy(xpath = "(//a[@class='btn btn-success language_btn'])[1]")
-    WebElement AddNewEmployeeUser;
+    public WebElement AddNewEmployeeUser;
 
     @FindBy(xpath = "(//a[@class='btn btn-success language_btn'])[2]")
-    WebElement EmpImport;
+    public WebElement EmpImport;
 
     /*--------------Add New Employee ---------------*/
     @FindBy(xpath = "//h4[contains(text(),'Add New Employee User')]")
@@ -104,7 +104,9 @@ public class Cx_HelpDesk_page_Master_EmployeeLocator extends TestBase {
     @FindBy(xpath = "(//label[@class='mt-checkbox mt-checkbox-single mt-checkbox-outline']/span)[1]")
     WebElement EmpAddStatus;
 
-    @FindBy(xpath = "(//input[@class='btn btn-success'])[1]")
+//  @FindBy(xpath = "(//input[@class='btn btn-success'])[1]")
+    //Change xpath in version-2.0
+    @FindBy(xpath = "(//input[@value='Submit'])[1]")
     WebElement EmpAddSubmit;
 
     @FindBy(xpath = "(//input[@class='btn btn-success'])[2]")
@@ -167,6 +169,7 @@ public class Cx_HelpDesk_page_Master_EmployeeLocator extends TestBase {
             genericUtil.pause(1000);
 
             HighlightElement.highlightElement(TitleEmpAddName);
+            genericUtil.pause(500);
 
             HighlightElement.highlightElement(AddNewEmployeeUser);
             genericUtil.clickWithPause(AddNewEmployeeUser,3000);
@@ -189,10 +192,10 @@ public class Cx_HelpDesk_page_Master_EmployeeLocator extends TestBase {
                 objCheckBox = new CheckBox();
                 HighlightElement.highlightElement(EmpAddStatus);
                 objCheckBox.Select_The_Checkbox(EmpAddStatus);
-                genericUtil.pause(1000);
+                genericUtil.pause(1200);
                 HighlightElement.highlightElement(EmpAddStatus);
                 objCheckBox.DeSelect_The_Checkbox(EmpAddStatus);
-                genericUtil.pause(1000);
+                genericUtil.pause(1200);
                 HighlightElement.highlightElement(EmpAddStatus);
                 objCheckBox.Select_The_Checkbox(EmpAddStatus);
                 genericUtil.pause(1000);

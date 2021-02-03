@@ -48,4 +48,16 @@
             </class>
         </classes>
     </test>
+
+    <test name="Test_Master_CustomerUser" enabled="true">
+        <classes>
+            <class name="testcase.cxHelpDesk.CxHelpDesk_Master_CustomerUserPageTests">
+                <methods>
+                    <include name="createCustomerUser"/>
+                    <include name="editCustomerUser"/>
+                    <include name="deleteCustomerUser"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
 </suite>

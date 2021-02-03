@@ -27,7 +27,7 @@ public class CxHelpDesk_Master_EmployeePageTests extends TestBase {
     public void createEmployee(){
         try {
             objMasterEmployeeLocator = new Cx_HelpDesk_page_Master_EmployeeLocator(driver);
-            objMasterEmployeeLocator.createEmployee("Employee Test","EmpTest@test.com", "EmpTest", "Employee", "EmpTest");
+            objMasterEmployeeLocator.createEmployee("Employee Test","EmpTest@test.com", "EmpTest", "Agent", "EmpTest");
         }
         catch (Exception ex){
             ex.printStackTrace();
