@@ -191,14 +191,12 @@ public class Cx_HelpDesk_page_Master_CustomerUserLocator extends TestBase {
             genericUtil.click(AddCustomerName);
             genericUtil.pause(2000);
 
-//            HighlightElement.highlightElement(SearchCustomerName);
+            HighlightElement.highlightElement(SearchCustomerName);
 //            genericUtil.click(SearchCustomerName);
-
 //            Actions builder = new Actions(driver);
 //            Action seriesOfActions = builder.moveToElement(SearchCustomerName).click().build();
 //            seriesOfActions.perform();
-
-//            genericUtil.writeTextWithPause(SearchCustomerName,searchText,2000);
+            genericUtil.writeTextWithPause(SearchCustomerName,searchText,2000);
 
             HighlightElement.highlightElement(CustomerName);
             Select name = new Select(CustomerName);

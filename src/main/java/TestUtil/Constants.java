@@ -12,10 +12,10 @@ public class Constants {
 	public static final String USERNAME = "E123456";
 	public static final String PASSWORD = "112245998";
 
-	public static final String ADMINUSERNAME = "Emp39"; //Emp188
-	public static final String AGENTUSERNAME = "Emp41"; //Emp190
-	public static final String MANAGERUSERNAME = "Emp40"; //Emp189
-	public static final String DEPARTMENTALUSERNAME = "Emp42";
+	public static final String ADMINUSERNAME = "Emp47"; //"Emp39"; //Emp188
+	public static final String AGENTUSERNAME = "Emp49"; //"Emp41"; //Emp190
+	public static final String MANAGERUSERNAME = "Emp48"; //"Emp40"; //Emp189
+	public static final String DEPARTMENTALUSERNAME = "Emp50"; //"Emp42";
 	public static final String VALIDPASSWORD = "123456";
 
 	public static final String INVALIDUSERNAME = "!@$~&";

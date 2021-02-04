@@ -27,11 +27,21 @@ public class Cx_HelpDesk_page_CreateTicketLocator extends TestBase {
     @FindBy(xpath = "//img[@class=\"logo-default\"]")
     public WebElement logo_img;
 
-    @FindBy(xpath = "//span[contains(text(),'Customer')]")
+//    @FindBy(xpath = "//span[contains(text(),'Customer')]")
+    @FindBy(xpath = "//span[contains(text(),'Customer') and @class='title']") //Changes in v2.0 on 04-Feb-2021
     public WebElement sidebar_textCustomer;
 
     @FindBy(xpath = "//span[contains(text(),'Create a New Ticket')]")
     public WebElement sidebar_textCreateTicket;
+
+    @FindBy(xpath = "//a[contains(text(),'Outbound Call')]")
+    public WebElement channel_OutboundCall;
+
+    @FindBy(xpath = "//a[contains(text(),'Email')]")
+    public WebElement channel_Email;
+
+    @FindBy(xpath = "//a[contains(text(),'Received Call')]")
+    public WebElement channel_ReceivedCall;
 
     @FindBy(xpath = "//select[@id='selectBox']")
     public WebElement customer; //EmpCust
@@ -78,6 +88,56 @@ public class Cx_HelpDesk_page_CreateTicketLocator extends TestBase {
     @FindBy(xpath = "//h4[text()='Confirm Ticket Creation!']/../button")
     public WebElement closeConfirmCreateTicket;
 
+    /*-----------------Return Pop-Up window----------------*/
+    @FindBy(xpath = "(//div[@class=\"modal-content\"])[4]")
+    public WebElement popupReturn;
+
+    @FindBy(xpath = "//select[@id='returninvoiceno']")
+    public WebElement Invoice;
+
+    @FindBy(xpath = "//span[contains(text(),'Paracetamol SF 250/5ml Sus 1Lt')]")
+    public WebElement ProductName;
+
+    @FindBy(xpath = "//input[@id='returnqty0']")
+    public WebElement ReturnQty;
+
+    @FindBy(xpath = "//input[@id='returnBoxes0']")
+    public WebElement ReturnBoxesQty;
+
+    @FindBy(xpath = "(//input[@value=\"Submit\"])[2]")
+    public WebElement ReturnSubmitButton;
+
+    @FindBy(xpath = "//select[@id='returnProductReason']")
+    public WebElement ReturnSelectReason;
+
+    @FindBy(xpath = "//span[contains(text(),'PIP Code Error.')]")
+    public WebElement ReturnSelectPIPCodeError;
+
+    @FindBy(xpath = "(//input[@value='Submit'])[3]")
+    public WebElement ReturnReasonSubmitButton;
+
+    @FindBy(xpath = "//span[@xpath=\"1\"]")
+    public WebElement ReturnDeclarationCheckedButton;
+
+    @FindBy(xpath = "//input[@id='radio14']")
+    public WebElement ReturnNoteDeclarationRadio1Yes;
+
+    @FindBy(xpath = "//input[@id='radio16']")
+    public WebElement ReturnNoteDeclarationRadio2Yes;
+
+    @FindBy(xpath = "//input[@id='radio18']")
+    public WebElement ReturnNoteDeclarationRadio3Yes;
+
+    @FindBy(xpath = "(//input[@value=\"Submit\"])[4]")
+    public WebElement ReturnNoteDeclarationSubmitButton;
+
+    @FindBy(xpath = "//span[@xpath='1']")
+    public WebElement ReturnSelectPIPCodeErrorCheckedButton;
+
+
+    /*-----------------End of-Return Pop-Up window---------------*/
+
+
     /**
      * TESTCASE: Create Ticket
      */
@@ -97,10 +157,13 @@ public class Cx_HelpDesk_page_CreateTicketLocator extends TestBase {
             HighlightElement.highlightElement(titleCreateTicket);
             genericUtil.pause(1000);
 
+            HighlightElement.highlightElement(channel_Email);
+            genericUtil.clickWithPause(channel_Email,1000);
+
             HighlightElement.highlightElement(customer);
             genericUtil.click(customer);
             Select selectCustomer = new Select(customer);
-            selectCustomer.selectByVisibleText("EmpCust");
+            selectCustomer.selectByVisibleText("TEST CUSTOMER");
             genericUtil.pause(1000);
             genericUtil.click(customer);
             genericUtil.pause(1000);
@@ -112,6 +175,55 @@ public class Cx_HelpDesk_page_CreateTicketLocator extends TestBase {
             genericUtil.pause(1000);
             genericUtil.click(ticketType);
             genericUtil.pause(1000);
+
+        /*---BEGIN-------------Return popup-----------------*/
+            HighlightElement.highlightElement(popupReturn);
+            Select selectInvoice = new Select(Invoice);
+            selectInvoice.selectByVisibleText("983586540"); //983586540
+            genericUtil.pause(1000);
+
+            HighlightElement.highlightElement(ReturnQty);
+            genericUtil.writeTextWithPause(ReturnQty,"01",1000);
+
+            HighlightElement.highlightElement(ReturnBoxesQty);
+            genericUtil.writeTextWithPause(ReturnBoxesQty,"01",1000);
+
+            HighlightElement.highlightElement(ProductName);
+            genericUtil.clickWithPause(ProductName,1000);
+
+            HighlightElement.highlightElement(popupReturn);
+            Select selectReturnReason = new Select(ReturnSelectReason);
+            selectReturnReason.selectByVisibleText("Other");
+            genericUtil.pause(1000);
+
+            HighlightElement.highlightElement(ReturnSelectPIPCodeError);
+            genericUtil.clickWithPause(ReturnSelectPIPCodeError,1000);
+
+            HighlightElement.highlightElement(ReturnDeclarationCheckedButton);
+            genericUtil.clickWithPause(ReturnDeclarationCheckedButton,2000);
+
+            HighlightElement.highlightElement(ReturnSelectPIPCodeErrorCheckedButton);
+            genericUtil.clickWithPause(ReturnSelectPIPCodeErrorCheckedButton,2000);
+
+            HighlightElement.highlightElement(ReturnReasonSubmitButton);
+            genericUtil.clickWithPause(ReturnReasonSubmitButton,2000);
+
+            HighlightElement.highlightElement(ReturnSubmitButton);
+            genericUtil.clickWithPause(ReturnSubmitButton,1000);
+
+            HighlightElement.highlightElement(ReturnDeclarationCheckedButton);
+            genericUtil.clickWithPause(ReturnDeclarationCheckedButton,1000);
+
+            HighlightElement.highlightElement(ReturnNoteDeclarationRadio1Yes);
+            genericUtil.clickWithPause(ReturnNoteDeclarationRadio1Yes,1000);
+
+            HighlightElement.highlightElement(ReturnNoteDeclarationRadio3Yes);
+            genericUtil.clickWithPause(ReturnNoteDeclarationRadio3Yes,1000);
+
+            HighlightElement.highlightElement(ReturnNoteDeclarationSubmitButton);
+            genericUtil.clickWithPause(ReturnNoteDeclarationSubmitButton,1000);
+
+        /*---END-------------Return popup-----------------*/
 
             HighlightElement.highlightElement(description);
             genericUtil.writeTextWithPause(description, "Test Description", 1000);
