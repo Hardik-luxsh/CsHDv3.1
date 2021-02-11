@@ -29,6 +29,9 @@ public class Cx_HelpDesk_page_LoginLocator extends TestBase {
     @FindBy(xpath = "//img[@class=\"logo-default\"]")
     public WebElement logo_img;
 
+    @FindBy(xpath = "//a[contains(text(),'LOGIN')]")
+    public WebElement loginButton;
+
     @FindBy(xpath = "//label[contains(text(),'UserName')]")
     public WebElement labelUsername;
 
@@ -80,6 +83,9 @@ public class Cx_HelpDesk_page_LoginLocator extends TestBase {
             HighlightElement.highlightElement(logo_img);
             Assert.assertTrue(logo_img.isDisplayed());
 
+            HighlightElement.highlightElement(loginButton);
+            genericUtil.clickWithPause(loginButton,1000);
+
             HighlightElement.highlightElement(labelUsername);
             genericUtil.clickWithPause(labelUsername,500);
 
@@ -98,7 +104,6 @@ public class Cx_HelpDesk_page_LoginLocator extends TestBase {
             HighlightElement.highlightElement(buttonSubmit);
             genericUtil.click(buttonSubmit);
 
-//            genericUtil.pause(5000);
             wait.until(ExpectedConditions.visibilityOf(adminTitle));
             HighlightElement.highlightElement(adminTitle);
             Assert.assertEquals(driver.getCurrentUrl(), Constants.BASEURL + "dashboard");
@@ -123,6 +128,9 @@ public class Cx_HelpDesk_page_LoginLocator extends TestBase {
             wait.until(ExpectedConditions.visibilityOf(logo_img));
             HighlightElement.highlightElement(logo_img);
             Assert.assertTrue(logo_img.isDisplayed());
+
+            HighlightElement.highlightElement(loginButton);
+            genericUtil.clickWithPause(loginButton,500);
 
             HighlightElement.highlightElement(textUsername);
             textUsername.clear();
@@ -162,6 +170,9 @@ public class Cx_HelpDesk_page_LoginLocator extends TestBase {
             wait.until(ExpectedConditions.visibilityOf(logo_img));
             HighlightElement.highlightElement(logo_img);
             Assert.assertTrue(logo_img.isDisplayed());
+
+            HighlightElement.highlightElement(loginButton);
+            genericUtil.clickWithPause(loginButton,500);
 
             HighlightElement.highlightElement(textUsername);
             textUsername.clear();
@@ -278,6 +289,9 @@ public class Cx_HelpDesk_page_LoginLocator extends TestBase {
             HighlightElement.highlightElement(logo_img);
             Assert.assertTrue(logo_img.isDisplayed());
 
+            HighlightElement.highlightElement(loginButton);
+            genericUtil.clickWithPause(loginButton,500);
+
             HighlightElement.highlightElement(labelUsername);
             genericUtil.clickWithPause(labelUsername,1000);
 
@@ -314,6 +328,9 @@ public class Cx_HelpDesk_page_LoginLocator extends TestBase {
             wait.until(ExpectedConditions.visibilityOf(logo_img));
             HighlightElement.highlightElement(logo_img);
             Assert.assertTrue(logo_img.isDisplayed());
+
+            HighlightElement.highlightElement(loginButton);
+            genericUtil.clickWithPause(loginButton,500);
 
             HighlightElement.highlightElement(labelUsername);
             genericUtil.clickWithPause(labelUsername,1000);
@@ -355,6 +372,9 @@ public class Cx_HelpDesk_page_LoginLocator extends TestBase {
             genericUtil.pause(1000);
             HighlightElement.highlightElement(logo_img);
             Assert.assertTrue(logo_img.isDisplayed());
+
+            HighlightElement.highlightElement(loginButton);
+            genericUtil.clickWithPause(loginButton,500);
 
             HighlightElement.highlightElement(textUsername);
             textUsername.clear();

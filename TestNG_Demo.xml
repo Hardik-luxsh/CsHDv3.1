@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite thread-count="1" verbose="1" name="Cx-HelpDesk" annotations="JDK" parallel="true">
+        <test name="Test_Login" enabled="true">
+            <classes>
+                <class name="testcase.cxHelpDesk.CxHelpDesk_LoginPageTests">
+                    <methods>
+                        <include name="verifyAgentLogin"/>
+                        <include name="verifyUserLogin"/>
+                        <include name="verifyAdminLogin"/>
+<!--                        <include name="validateLogin"/>-->
+                    </methods>
+                </class>
+            </classes>
+        </test>
+</suite>

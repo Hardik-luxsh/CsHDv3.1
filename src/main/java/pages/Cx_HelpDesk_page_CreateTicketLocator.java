@@ -110,7 +110,8 @@ public class Cx_HelpDesk_page_CreateTicketLocator extends TestBase {
     @FindBy(xpath = "//select[@id='returnProductReason']")
     public WebElement ReturnSelectReason;
 
-    @FindBy(xpath = "//span[contains(text(),'PIP Code Error.')]")
+//    @FindBy(xpath = "//span[contains(text(),'PIP Code Error.')]")
+    @FindBy(xpath = "//span[@xpath=\"1\"]")
     public WebElement ReturnSelectPIPCodeError;
 
     @FindBy(xpath = "(//input[@value='Submit'])[3]")
@@ -245,6 +246,9 @@ public class Cx_HelpDesk_page_CreateTicketLocator extends TestBase {
             HighlightElement.highlightElement(tag);
             genericUtil.writeTextWithPause(tag, "#New#Created#Open#", 2000);
             genericUtil.pause(1000);
+
+            HighlightElement.highlightElement(file);
+            genericUtil.clickWithPause(file, 2000);
 
             HighlightElement.highlightElement(buttonSubmit);
             genericUtil.clickWithPause(buttonSubmit, 2000);
