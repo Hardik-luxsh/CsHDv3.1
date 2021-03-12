@@ -57,43 +57,43 @@ public class Cx_HelpDesk_page_Master_CustomerLocator extends TestBase {
     WebElement EditBtn;
 
     /*--------------Edit---------------*/
-    @FindBy(xpath = "(//input[@class='form-control ng-pristine ng-valid ng-touched'])[1]")
+    @FindBy(xpath = "//input[@id='name']")
     WebElement EditCustomerName;
 
-    @FindBy(xpath = "(//input[@class='form-control ng-pristine ng-valid ng-touched'])[2]")
+    @FindBy(xpath = "//input[@formcontrolname='address']")
     WebElement EditCustomerAddress;
 
-    @FindBy(xpath = "(//input[@class='form-control ng-pristine ng-valid ng-touched'])[3]")
+    @FindBy(xpath = "//input[@formcontrolname=\"county\"]")
     WebElement EditCustomerCountry;
 
-    @FindBy(xpath ="(//input[@class='form-control ng-pristine ng-valid ng-touched'])[4]")
+    @FindBy(xpath ="//input[@formcontrolname=\"account_No\"]")
     WebElement EditCustomerAccNo;
 
-    @FindBy(xpath ="(//input[@class='form-control ng-pristine ng-valid ng-touched'])[5]")
+    @FindBy(xpath ="//input[@formcontrolname=\"city\"]")
     WebElement EditCustomerCity;
 
-    @FindBy(xpath ="(//input[@class='form-control ng-pristine ng-valid ng-touched'])[6]")
+    @FindBy(xpath ="//input[@formcontrolname=\"postCode\"]")
     WebElement EditCustomerPostcode;
 
-    @FindBy(xpath ="(//input[@class='form-control ng-pristine ng-valid ng-touched'])[7]")
+    @FindBy(xpath ="//input[@formcontrolname=\"contact_Name\"]")
     WebElement EditCustomerContactName;
 
-    @FindBy(xpath ="(//input[@class='form-control ng-pristine ng-valid ng-touched'])[8]")
+    @FindBy(xpath ="//input[@formcontrolname=\"contact_No\"]")
     WebElement EditCustomerContactNo;
 
-    @FindBy(xpath ="(//input[@class='form-control ng-pristine ng-valid ng-touched'])[9]")
+    @FindBy(xpath ="//input[@formcontrolname=\"fax\"]")
     WebElement EditCustomerFaxNumber;
 
-    @FindBy(xpath = "(//input[@class='form-control ng-pristine ng-valid ng-touched'])[10]")
+    @FindBy(xpath = "(//input[@formcontrolname=\"email\"])[2]")
     WebElement EditCustomerEmail;
 
-    @FindBy(xpath = "(//input[@class='btn btn-success'])[9]")
+    @FindBy(xpath = "(//input[@class='btn btn-success'])[11]")
     WebElement EditSubmit;
 
-    @FindBy(xpath = "(//input[@class='btn btn-success'])[10]")
+    @FindBy(xpath = "(//input[@class='btn btn-success'])[12]")
     WebElement EditClear;
 
-    @FindBy(xpath = "(//input[@class='btn btn-success'])[11]")
+    @FindBy(xpath = "(//input[@class='btn btn-success'])[13]")
     WebElement EditCancel;
 
     @FindBy(xpath = "(//a[@class='btn btn-success language_btn'])[5]")
@@ -139,13 +139,13 @@ public class Cx_HelpDesk_page_Master_CustomerLocator extends TestBase {
     @FindBy(xpath ="(//label[@class='mt-checkbox mt-checkbox-single mt-checkbox-outline']/span)[3]")
     public WebElement AddCustomerStatus;
 
-    @FindBy(xpath = "(//input[@class='btn btn-success'])[9]")
+    @FindBy(xpath = "(//input[@class='btn btn-success'])[11]")
     WebElement AddSubmit;
 
-    @FindBy(xpath = "(//input[@class='btn btn-success'])[10]")
+    @FindBy(xpath = "(//input[@class='btn btn-success'])[12]")
     WebElement AddClear;
 
-    @FindBy(xpath = "(//input[@class='btn btn-success'])[11]")
+    @FindBy(xpath = "(//input[@class='btn btn-success'])[13]")
     WebElement AddCancel;
 
     @FindBy(xpath = "(//a[@class='ng-star-inserted'])[1]")
@@ -163,9 +163,14 @@ public class Cx_HelpDesk_page_Master_CustomerLocator extends TestBase {
     @FindBy(xpath = "(//button[@class='btn btn-lg btn-success'])[3]")
     public WebElement YesOptionDeleteCustomerMessage;
 
+    @FindBy(xpath = "//h4[contains(text(),'You have successfully deleted the selected Customer')]")
+    public WebElement CloseBtnSuccessMsgDelete;
+
+    @FindBy(xpath = "(//button[@class='btn white btn-outline'])[3]")
+    public WebElement CloseBtnSuccessDelete;
     /**
      * TESTCASE: Add Customer
-     * @param CustomerName = customerName
+     * @param CustomerName
      * @param CustomerAddress
      * @param County
      * @param CustomerAccountNumber
@@ -274,19 +279,20 @@ public class Cx_HelpDesk_page_Master_CustomerLocator extends TestBase {
                              String UpdatedPostCode,String UpdatedContactPersonName, String UpdatedContactPersonNumber,String UpdatedFaxNumber,String UpdatedEmail){
         try {
             genericUtil = new GenericUtil();
-
-            HighlightElement.highlightElement(TitleMasters);
-            genericUtil.pause(1000);
-
-            HighlightElement.highlightElement(TitleCustomerMaster);
-            genericUtil.pause(1000);
+//
+//            HighlightElement.highlightElement(TitleMasters);
+//            genericUtil.pause(1000);
+//
+//            HighlightElement.highlightElement(TitleCustomerMaster);
+//            genericUtil.pause(1000);
 
             HighlightElement.highlightElement(EditBtn);
-            genericUtil.clickWithPause(EditBtn, 2000);
+            genericUtil.clickWithPause(EditBtn, 1000);
 
             HighlightElement.highlightElement(EditTitleCustomerMaster);
             genericUtil.pause(1000);
 
+            Thread.sleep(2000);
             HighlightElement.highlightElement(EditCustomerName);
             genericUtil.writeTextWithPause(EditCustomerName, UpdatedCustomerName, 1000);
 
@@ -332,8 +338,8 @@ public class Cx_HelpDesk_page_Master_CustomerLocator extends TestBase {
                 e.printStackTrace();
             }
 
-            HighlightElement.highlightElement(AddSubmit);
-            genericUtil.clickWithPause(AddSubmit, 3000);
+            HighlightElement.highlightElement(EditSubmit);
+            genericUtil.clickWithPause(EditSubmit, 3000);
 
             HighlightElement.highlightElement(Search);
             genericUtil.writeTextWithPause(Search, UpdatedCustomerName, 3000);
@@ -352,6 +358,11 @@ public class Cx_HelpDesk_page_Master_CustomerLocator extends TestBase {
 
             HighlightElement.highlightElement(YesOptionDeleteCustomerMessage);
             genericUtil.clickWithPause(YesOptionDeleteCustomerMessage, 3000);
+            HighlightElement.highlightElement(CloseBtnSuccessMsgDelete);
+            genericUtil.clickWithPause(CloseBtnSuccessMsgDelete,3000);
+
+            HighlightElement.highlightElement(CloseBtnSuccessDelete);
+            genericUtil.clickWithPause(CloseBtnSuccessDelete,3000);
 
             HighlightElement.highlightElement(Search);
             Search.clear();

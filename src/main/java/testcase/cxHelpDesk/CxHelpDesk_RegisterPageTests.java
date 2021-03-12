@@ -8,6 +8,9 @@ import org.testng.annotations.Test;
 import pages.Cx_HelpDesk_page_LoginLocator;
 import pages.Cx_HelpDesk_page_RegisterLocator;
 
+import static TestUtil.Constants.Email;
+import static TestUtil.Constants.FaxNumber;
+
 public class CxHelpDesk_RegisterPageTests extends TestBase{
 
     public Cx_HelpDesk_page_RegisterLocator objRegisterPage;
@@ -22,7 +25,8 @@ public class CxHelpDesk_RegisterPageTests extends TestBase{
         try {
             objRegisterPage = new Cx_HelpDesk_page_RegisterLocator(driver);
             objRegisterPage.addCustomer("Test Customer","Test Address","India","963-TW_520","Vadodara"
-                    ,"963852","Test Person Name","9638527410",Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
+                    ,"963852","Test Person Name","9638527410" ,"564685" ,
+                    "parth183@gmail.com");
 
             Reporter.log("POSITIVE TESTCASE-1 :Register Page: Add User", true);
             Thread.sleep(3000);

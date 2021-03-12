@@ -148,5 +148,14 @@ public class GenericUtil extends TestBase {
         }
     }
 
+    public void refreshPage(Integer milliseconds){
+        try {
+            driver.navigate().refresh();
+            pause(milliseconds);
+        }catch (Exception ex){
+            ex.getStackTrace();
+        }
+
+    }
 }
 
