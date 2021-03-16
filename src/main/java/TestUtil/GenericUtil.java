@@ -61,7 +61,7 @@ public class GenericUtil extends TestBase {
     }
 
     //Write Text
-    public void writeTextWithPause(WebElement elementToBeWritten, String text,Integer milliseconds) {
+    public void writeTextWithPause(WebElement elementToBeWritten,String text,Integer milliseconds) {
         try {
             elementToBeWritten.clear();
             elementToBeWritten.sendKeys(text);
@@ -137,7 +137,7 @@ public class GenericUtil extends TestBase {
         }
     }
 
-    public void selectElementWithPause(WebElement elementToBeChoose,Select selectOption,String selectByVisibleText,Integer milliseconds){
+    public void selectElementFromGroupWithPause(WebElement elementToBeChoose,Select selectOption,String selectByVisibleText,Integer milliseconds){
         try {
             clickWithPause(elementToBeChoose,1000);
             Select selectGroup = new Select((WebElement) selectOption);
@@ -148,5 +148,25 @@ public class GenericUtil extends TestBase {
         }
     }
 
+    public void selectElementWithPause(WebElement elementToBeChoose,String selectByVisibleText,Integer milliseconds){
+        try {
+            clickWithPause(elementToBeChoose,1000);
+            Select selectElement = new Select(elementToBeChoose);
+            selectElement.selectByVisibleText(selectByVisibleText);
+        }
+        catch (Exception ex){
+            ex.getStackTrace();
+        }
+    }
+
+    public void refreshPage(Integer milliseconds){
+        try {
+            driver.navigate().refresh();
+            pause(milliseconds);
+        }catch (Exception ex){
+            ex.getStackTrace();
+        }
+
+    }
 }
 

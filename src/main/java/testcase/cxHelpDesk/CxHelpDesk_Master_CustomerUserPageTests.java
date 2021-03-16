@@ -9,6 +9,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.Cx_HelpDesk_page_LoginLocator;
 import pages.Cx_HelpDesk_page_Master_CustomerUserLocator;
+import pages.Cx_HelpDesk_page_Master_EmployeeLocator;
 
 public class CxHelpDesk_Master_CustomerUserPageTests extends TestBase {
 
@@ -27,9 +28,9 @@ public class CxHelpDesk_Master_CustomerUserPageTests extends TestBase {
     public void createCustomerUser(){
         try {
             objMasterCustomerUserLocator = new Cx_HelpDesk_page_Master_CustomerUserLocator(driver);
-            objMasterCustomerUserLocator.createCustomerUser("TestCustomerName","TestCustomer","TestCustomer",
-                    "12345678","12345678","Test Department","Test Designation",
-                    "TEST CUSTOMER");
+            objMasterCustomerUserLocator.createCustomerUser("TestCustomer",
+            "TestCust14", "12345678","12345678","Test Department",
+            "Test Designation","Admin","TestCust14");
         }
         catch (Exception ex){
             ex.printStackTrace();
@@ -40,11 +41,16 @@ public class CxHelpDesk_Master_CustomerUserPageTests extends TestBase {
     public void editCustomerUser(){
         try {
             objMasterCustomerUserLocator = new Cx_HelpDesk_page_Master_CustomerUserLocator(driver);
-
-        }catch (Exception ex){
+            objMasterCustomerUserLocator.editCustomerUser("UpdatedTestCustomer",
+                    "TestCust15", "87654321","87654321","UpdatedTest Department",
+                    "UpdatedTest Designation","User","TestCust14");
+        }
+        catch (Exception ex){
             ex.printStackTrace();
         }
     }
+
+
 
     @AfterMethod
     public void captureScreenShot(ITestResult result){

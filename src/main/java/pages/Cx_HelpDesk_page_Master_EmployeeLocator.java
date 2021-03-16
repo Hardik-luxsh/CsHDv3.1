@@ -43,7 +43,6 @@ public class Cx_HelpDesk_page_Master_EmployeeLocator extends TestBase {
     public WebElement EmpFirstRowData;
 
     /*--------------Edit Employee ---------------*/
-
     @FindBy(xpath = "//h4[contains(text(),'Edit Employee User')]")
     public WebElement EmpEditHeader;
 
@@ -68,13 +67,13 @@ public class Cx_HelpDesk_page_Master_EmployeeLocator extends TestBase {
     @FindBy(xpath ="(//label[@class='mt-checkbox mt-checkbox-single mt-checkbox-outline']/span)[1]")
     public WebElement EmpEditStatus;
 
-    @FindBy(xpath = "(//input[@class='btn btn-success'])[1]")
+    @FindBy(xpath = "(//input[@class='btn btn-success'])[3]")
     public WebElement EmpEditSubmit;
 
-    @FindBy(xpath = "(//input[@class='btn btn-success'])[2]")
+    @FindBy(xpath = "(//input[@class='btn btn-success'])[4]")
     public WebElement EmpEditClear;
 
-    @FindBy(xpath = "(//input[@class='btn btn-success'])[3]")
+    @FindBy(xpath = "(//input[@class='btn btn-success'])[5]")
     public WebElement EmpEditCancel;
 
     @FindBy(xpath = "(//a[@class='btn btn-success language_btn'])[1]")
@@ -127,10 +126,10 @@ public class Cx_HelpDesk_page_Master_EmployeeLocator extends TestBase {
     @FindBy(xpath = "//h3[contains(text(),'Are you sure! You want to Delete this Employee Use')]")
     WebElement TitleEmpDelete;
 
-    @FindBy(xpath = "//h4[contains(text(),'You have Successfully deleted selected Employee User')]")
+    @FindBy(xpath = "(//h4[@class='modal-title'])[6]")
     WebElement SuccessMsgEmpDelete;
 
-    @FindBy(xpath = "(//button[contains(text(),'Close')])[1]")
+    @FindBy(xpath = "(//button[@class='btn white btn-outline'])[1]")
     WebElement CloseBtnSuccessMsgEmpDelete;
 
     @FindBy(xpath = "(//button[@class='btn btn-lg btn-success'])[1]")
@@ -222,8 +221,10 @@ public class Cx_HelpDesk_page_Master_EmployeeLocator extends TestBase {
      * @param UpdatedEmpRole
      * @param UpdatedSearchText
      */
+
     public void editEmployee(String UpdatedEmpName,String UpdatedEmpEmail,String UpdatedEmpNo,String UpdatedEmpRole,String UpdatedSearchText){
         try {
+
             genericUtil = new GenericUtil();
             genericUtil.pause(3000);
 
@@ -296,11 +297,16 @@ public class Cx_HelpDesk_page_Master_EmployeeLocator extends TestBase {
             wait.until(ExpectedConditions.visibilityOf(SuccessMsgEmpDelete));
             HighlightElement.highlightElement(YesOptionEmpDelete);
 
+            Thread.sleep(2000);
             HighlightElement.highlightElement(SuccessMsgEmpDelete);
+            Thread.sleep(2000);
+            HighlightElement.highlightElement(CloseBtnSuccessMsgEmpDelete);
             genericUtil.clickWithPause(CloseBtnSuccessMsgEmpDelete,3000);
 
             HighlightElement.highlightElement(EmpEditNo);
             genericUtil.writeTextWithPause(EmpEditNo,SearchText,3000); //"UpdatedEmpTest"
+
+            Thread.sleep(2000);
 
             HighlightElement.highlightElement(CloseBtnSuccessMsgEmpDelete);
             genericUtil.clickWithPause(CloseBtnSuccessMsgEmpDelete,3000);
@@ -308,6 +314,7 @@ public class Cx_HelpDesk_page_Master_EmployeeLocator extends TestBase {
             HighlightElement.highlightElement(EmpSearch);
             EmpSearch.clear();
             genericUtil.writeTextWithPause(EmpSearch,SearchText,3000); //"UpdatedEmpTest"
+
         }
         catch (Exception ex){
             ex.getStackTrace();

@@ -41,10 +41,10 @@ public class Cx_HelpDesk_page_LoginLocator extends TestBase {
     @FindBy(xpath = "//label[text()='Password']")
     public WebElement labelPassword;
 
-    @FindBy(xpath = "(//input[@name='password'])[3]")
+    @FindBy(xpath = "//input[@id='password2']")
     public WebElement textPassword;
 
-    @FindBy(xpath = "(//input[@type='submit'])[3]")
+    @FindBy(xpath = "//*[@id=\"loginDiv\"]/form/div[2]/input")
     public WebElement buttonSubmit;
 
     @FindBy(xpath = "//div[contains(text(),'User Name is required')]")
@@ -59,10 +59,10 @@ public class Cx_HelpDesk_page_LoginLocator extends TestBase {
     @FindBy(xpath = "//h1[contains(text(),'Luxsh Customer Services Help Desk')]")
     public WebElement adminTitle;
 
-    @FindBy(xpath = "//a[@class='dropdown-toggle']")
+    @FindBy(xpath = "//span[@class='username username-hide-on-mobile']")
     public WebElement usernameTitle;
 
-    @FindBy(xpath = "(//span[@class=\"fa fa-eye fa-fw field-icon toggle-password\"])[3]")
+    @FindBy(xpath = "//span[@class='fa fa-eye fa-fw field-icon toggle-password']")
     public WebElement eyeButton;
 
     @FindBy(xpath = "//ul[@id='drpprofilemenu']/li[2]")
@@ -306,7 +306,7 @@ public class Cx_HelpDesk_page_LoginLocator extends TestBase {
 
             HighlightElement.highlightElement(buttonSubmit);
             genericUtil.click(buttonSubmit);
-
+            Thread.sleep(2000);
             HighlightElement.highlightElement(adminTitle);
             wait.until(ExpectedConditions.visibilityOf(adminTitle));
             Assert.assertEquals(driver.getCurrentUrl(), Constants.BASEURL + "dashboard");
@@ -350,6 +350,7 @@ public class Cx_HelpDesk_page_LoginLocator extends TestBase {
             HighlightElement.highlightElement(buttonSubmit);
             buttonSubmit.click();
 
+//            Thread.sleep(2000);
             wait.until(ExpectedConditions.visibilityOf(adminTitle));
             HighlightElement.highlightElement(adminTitle);
             Assert.assertEquals(driver.getCurrentUrl(), Constants.BASEURL + "dashboard");

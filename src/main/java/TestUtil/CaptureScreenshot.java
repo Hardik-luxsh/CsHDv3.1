@@ -23,7 +23,7 @@ public class CaptureScreenshot extends TestBase {
 				TakesScreenshot screenshot = (TakesScreenshot)driver;
 				File src = screenshot.getScreenshotAs(OutputType.FILE);
 				FileUtils.copyFile(src, new File("./Screenshots/Passed/" + result.getName() + " On " + Constants.strDate + "_" + Constants.date.getTime() + ".png"));
-				System.out.println("Successfully captured a screenshot");
+				System.out.println("PASS TEST:Successfully captured a screenshot");
 			}catch (Exception e){
 				System.out.println("Exception while taking screenshot "+e.getMessage());
 			}
@@ -41,7 +41,7 @@ public class CaptureScreenshot extends TestBase {
 				TakesScreenshot screenshot = (TakesScreenshot)driver;
 				File src = screenshot.getScreenshotAs(OutputType.FILE);
 				FileUtils.copyFile(src, new File("./Screenshots/Failed/"+ result.getName() + " On " + Constants.strDate + "_" + Constants.date.getTime() + ".png"));
-				System.out.println("Screenshot captured successfully.!");
+				System.out.println("FAILED TEST:Screenshot captured successfully.!");
 			}catch (Exception e){
 				System.out.println("Exception while taking screenshot "+e.getMessage());
 			} 
