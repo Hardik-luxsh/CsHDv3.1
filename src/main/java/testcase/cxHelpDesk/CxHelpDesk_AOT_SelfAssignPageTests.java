@@ -24,7 +24,7 @@ public class CxHelpDesk_AOT_SelfAssignPageTests extends TestBase {
     }
 
     @Test(priority = 1)
-    public void createEmployee(){
+    public void SelfAssign(){
         try {
             objSelfAssign = new Cx_HelpDesk_page_AOT_SelfAssignLocator(driver);
             objSelfAssign.AssignTicket("153");

@@ -42,11 +42,10 @@ public class Cx_HelpDesk_page_AOT_SelfAssignLocator extends TestBase {
 
 //    @FindBy(xpath = "//input[@class='ng-pristine ng-valid ng-touched']")
 //    @FindBy(xpath = "//input[@formcontrolname=\"Start\" and @style='color: black; width: 100%;']")
-    @FindBy(xpath = "//input[@type='date' and @formcontrolname=\"Start\"]")
-    public WebElement FromDate;
-
-    @FindBy(xpath = "//input[@class='ng-pristine ng-valid ng-touched']")
-    public WebElement ToDate;
+//    public WebElement FromDate;
+//
+//    @FindBy(xpath = "//input[@class='ng-pristine ng-valid ng-touched']")
+//    public WebElement ToDate;
 
     @FindBy(xpath = "(//input[@class='btn btn-success'])[3]")
     public WebElement SearchBtn;
@@ -141,7 +140,7 @@ public class Cx_HelpDesk_page_AOT_SelfAssignLocator extends TestBase {
 
             HighlightElement.highlightElement(UserId);
             genericUtil.clickWithPause(UserId,2000);
-//
+
 //            HighlightElement.highlightElement(FromDate);
 //            genericUtil.clickWithPause(FromDate,1000);
 //

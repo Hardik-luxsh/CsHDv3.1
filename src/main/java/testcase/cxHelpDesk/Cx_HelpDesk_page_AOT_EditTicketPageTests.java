@@ -11,6 +11,7 @@ import pages.Cx_HelpDesk_page_AOT_EditTicketLocator;
 import pages.Cx_HelpDesk_page_LoginLocator;
 
 public class Cx_HelpDesk_page_AOT_EditTicketPageTests extends TestBase {
+
     Cx_HelpDesk_page_LoginLocator objLoginPage;
     Cx_HelpDesk_page_AOT_EditTicketLocator objEditTicket;
 
@@ -26,7 +27,7 @@ public class Cx_HelpDesk_page_AOT_EditTicketPageTests extends TestBase {
     public void AssignTicket(){
         try {
             objEditTicket = new Cx_HelpDesk_page_AOT_EditTicketLocator(driver);
-            objEditTicket.EditTicket();
+            objEditTicket.EditTicket("159","Closed","Low","QA");
         }
         catch (Exception ex){
             ex.printStackTrace();
