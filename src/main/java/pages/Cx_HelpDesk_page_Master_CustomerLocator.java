@@ -168,7 +168,6 @@ public class Cx_HelpDesk_page_Master_CustomerLocator extends TestBase {
 
     @FindBy(xpath = "(//button[@class='btn white btn-outline'])[3]")
     public WebElement CloseBtnSuccessDelete;
-
     /**
      * TESTCASE: Add Customer
      * @param CustomerName
