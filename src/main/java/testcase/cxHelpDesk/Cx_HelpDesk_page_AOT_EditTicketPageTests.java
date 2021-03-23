@@ -27,7 +27,7 @@ public class Cx_HelpDesk_page_AOT_EditTicketPageTests extends TestBase {
     public void AssignTicket(){
         try {
             objEditTicket = new Cx_HelpDesk_page_AOT_EditTicketLocator(driver);
-            objEditTicket.EditTicket("159","Closed","Low","QA");
+            objEditTicket.EditTicket("159","Open","Low","QA");
         }
         catch (Exception ex){
             ex.printStackTrace();

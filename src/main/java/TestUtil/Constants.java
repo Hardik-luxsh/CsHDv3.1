@@ -24,21 +24,21 @@ public class Constants {
 	public static final String USERNAME = "E123456";
 	public static final String PASSWORD = "112245998";
 
-	public static final String ADMINUSERNAME = "Emp10"; //"Emp39"; //Emp188
-	public static final String AGENTUSERNAME = "Emp11"; //"Emp41"; //Emp190
-	public static final String MANAGERUSERNAME = "Emp13"; //"Emp40"; //Emp189
-	public static final String DEPARTMENTALUSERNAME = "Emp18"; //"Emp42";
-	public static final String VALIDPASSWORD = "123456";
+	public static final String ADMINUSERNAME = "Emp39"; //"Emp10";  //Emp188
+	public static final String AGENTUSERNAME =  "Emp41"; //"Emp13"; //Emp190
+	public static final String MANAGERUSERNAME =  "Emp40"; //"Emp11"; //Emp189
+	public static final String DEPARTMENTALUSERNAME =  "Emp42"; //"Emp18";
+	public static final String VALIDPASSWORD = "11112222";
 
-	public static final String INVALIDUSERNAME = "!@$~&";
-	public static final String INVALIDPASSWORD = "!@$~&";
+	public static final String INVALIDUSERNAME = "!@$123~&";
+	public static final String INVALIDPASSWORD = "!@$123~&";
 
 	public static final String EMPTYDATA = "";
 
-	public static final String PROJECTPATH = "D:\\A_Parth\\Automation Practice\\HPAT\\CxHelpDesk";
+	public static final String PROJECTPATH =  "D:\\HARDIK\\BnS\\Automation\\CSHD"; //"D:\\A_Parth\\Automation Practice\\HPAT\\CxHelpDesk";
 
 	public static final String FILEUPLOADPATH = PROJECTPATH + "\\src\\main\\java\\helper\\testingPurpose\\Test PNG-1.png";
-	public static final String UPDATEDFILEUPLOADPATH = PROJECTPATH + "\\src\\main\\java\\helper\\testingPurpose\\images.png";
+	public static final String UPDATEDFILEUPLOADPATH = PROJECTPATH + "\\src\\main\\java\\helper\\testingPurpose\\Pdf_test.html";
 	
 	public static final Date date = new Date();
 

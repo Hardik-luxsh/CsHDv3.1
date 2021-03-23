@@ -6,12 +6,17 @@ import TestUtil.HighlightElement;
 import base.TestBase;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+
+import java.awt.*;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 
 public class Cx_HelpDesk_page_CreateTicketLocator extends TestBase {
 
@@ -67,10 +72,12 @@ public class Cx_HelpDesk_page_CreateTicketLocator extends TestBase {
     @FindBy(xpath = "//input[@formcontrolname='Tags']")
     public WebElement tag;
 
-    @FindBy(xpath = "//span[contains(text(),'Select file')]") //div[@class='form-control uneditable-input input-fixed input-small fileUPload']
+//    @FindBy(xpath = "//input[@type=\"file\"]")
+    @FindBy(xpath = "//div[@class=\"input-group input-small\"]//div")
     public WebElement file;
 
-    @FindBy(xpath = "(//input[@class='btn btn-success'])[1]")
+//    @FindBy(xpath = "(//input[@class='btn btn-success'])[1]")
+    @FindBy(xpath = "(//input[@class='btn btn-success'])[3]")
     public WebElement buttonSubmit;
 
     @FindBy(xpath = "//h4[contains(text(),'Confirm Ticket Creation!')]")
@@ -89,11 +96,33 @@ public class Cx_HelpDesk_page_CreateTicketLocator extends TestBase {
     public WebElement closeConfirmCreateTicket;
 
     /*-----------------Return Pop-Up window----------------*/
+
     @FindBy(xpath = "(//div[@class=\"modal-content\"])[4]")
     public WebElement popupReturn;
 
     @FindBy(xpath = "//select[@id='returninvoiceno']")
     public WebElement Invoice;
+
+    @FindBy(xpath = "(//label[contains(text(),'Invoice No')])[3]/..//input")
+    public WebElement InvoiceNo;
+
+    @FindBy(xpath = "(//label[contains(text(),'Invoice Date')])[2]/..//input")
+    public WebElement InvoiceDate;
+
+    @FindBy(xpath ="(//label[contains(text(),'Order No')])[2]/..//input")
+    public WebElement OrderNo;
+
+    @FindBy(xpath = "(//label[contains(text(),'A/C (Account Number)')])[1]/..//input")
+    public WebElement AccountNo;
+
+    @FindBy(xpath = "(//label[contains(text(),'Net Amount')])[2]/..//input")
+    public WebElement NetAmount;
+
+    @FindBy(xpath = "(//input[@value='Full Invoice'])[1]")
+    public WebElement FullInvoicebtn;
+
+    @FindBy(xpath ="(//input[@value='Close'])[4]")
+    public WebElement InvoicePopClosebtn;
 
     @FindBy(xpath = "//span[contains(text(),'Paracetamol SF 250/5ml Sus 1Lt')]")
     public WebElement ProductName;
@@ -110,34 +139,31 @@ public class Cx_HelpDesk_page_CreateTicketLocator extends TestBase {
     @FindBy(xpath = "//select[@id='returnProductReason']")
     public WebElement ReturnSelectReason;
 
-//    @FindBy(xpath = "//span[contains(text(),'PIP Code Error.')]")
-    @FindBy(xpath = "//span[@xpath=\"1\"]")
-    public WebElement ReturnSelectPIPCodeError;
+    @FindBy(xpath = "(//label[@class='mt-checkbox mt-checkbox-single mt-checkbox-outline'])[4]/span")
+    public WebElement ReturnReceivedPICheckbox;
+
+    @FindBy(xpath = "(//input[@value='Submit'])[3]")
+    public WebElement ReturnPopSubmitbtn;
 
     @FindBy(xpath = "(//input[@value='Submit'])[3]")
     public WebElement ReturnReasonSubmitButton;
 
-    @FindBy(xpath = "//span[@xpath=\"1\"]")
+    @FindBy(xpath = "(//label[@class='mt-checkbox mt-checkbox-single mt-checkbox-outline'])[6]/span")
     public WebElement ReturnDeclarationCheckedButton;
 
-    @FindBy(xpath = "//input[@id='radio14']")
+    @FindBy(xpath = "//label[@for='radio14']/span[@class='box']")
     public WebElement ReturnNoteDeclarationRadio1Yes;
 
-    @FindBy(xpath = "//input[@id='radio16']")
-    public WebElement ReturnNoteDeclarationRadio2Yes;
-
-    @FindBy(xpath = "//input[@id='radio18']")
+    @FindBy(xpath = "//label[@for='radio18']/span[@class='box']")
     public WebElement ReturnNoteDeclarationRadio3Yes;
 
     @FindBy(xpath = "(//input[@value=\"Submit\"])[4]")
     public WebElement ReturnNoteDeclarationSubmitButton;
 
-    @FindBy(xpath = "//span[@xpath='1']")
-    public WebElement ReturnSelectPIPCodeErrorCheckedButton;
-
+    @FindBy(xpath = "(//label[@class='mt-checkbox mt-checkbox-single mt-checkbox-outline'])[2]")
+    public WebElement ReturnSelectReceivedPI;
 
     /*-----------------End of-Return Pop-Up window---------------*/
-
 
     /**
      * TESTCASE: Create Ticket
@@ -178,10 +204,32 @@ public class Cx_HelpDesk_page_CreateTicketLocator extends TestBase {
             genericUtil.pause(1000);
 
         /*---BEGIN-------------Return popup-----------------*/
+
             HighlightElement.highlightElement(popupReturn);
             Select selectInvoice = new Select(Invoice);
             selectInvoice.selectByVisibleText("983586540"); //983586540
             genericUtil.pause(1000);
+
+           HighlightElement.highlightElement(InvoiceNo);
+           genericUtil.clickWithPause(InvoiceNo,1000);
+
+           HighlightElement.highlightElement(InvoiceDate);
+           genericUtil.clickWithPause(InvoiceDate,1000);
+
+           HighlightElement.highlightElement(OrderNo);
+           genericUtil.clickWithPause(OrderNo,1000);
+
+           HighlightElement.highlightElement(AccountNo);
+           genericUtil.clickWithPause(AccountNo,1000);
+
+           HighlightElement.highlightElement(NetAmount);
+           genericUtil.clickWithPause(NetAmount,1000);
+
+           HighlightElement.highlightElement(FullInvoicebtn);
+           genericUtil.clickWithPause(FullInvoicebtn,1000);
+
+            HighlightElement.highlightElement(InvoicePopClosebtn);
+            genericUtil.clickWithPause(InvoicePopClosebtn,1000);
 
             HighlightElement.highlightElement(ReturnQty);
             genericUtil.writeTextWithPause(ReturnQty,"01",1000);
@@ -194,17 +242,23 @@ public class Cx_HelpDesk_page_CreateTicketLocator extends TestBase {
 
             HighlightElement.highlightElement(popupReturn);
             Select selectReturnReason = new Select(ReturnSelectReason);
-            selectReturnReason.selectByVisibleText("Other");
+            selectReturnReason.selectByVisibleText("Ordering Error");
             genericUtil.pause(1000);
 
-            HighlightElement.highlightElement(ReturnSelectPIPCodeError);
-            genericUtil.clickWithPause(ReturnSelectPIPCodeError,1000);
+            HighlightElement.highlightElement(ReturnReceivedPICheckbox);
+            genericUtil.clickWithPause(ReturnReceivedPICheckbox,1000);
+
+            HighlightElement.highlightElement(ReturnPopSubmitbtn);
+            genericUtil.clickWithPause(ReturnPopSubmitbtn,1000);
+
+            HighlightElement.highlightElement(ReturnSubmitButton);
+            genericUtil.clickWithPause(ReturnSubmitButton,1000);
 
             HighlightElement.highlightElement(ReturnDeclarationCheckedButton);
             genericUtil.clickWithPause(ReturnDeclarationCheckedButton,2000);
 
-            HighlightElement.highlightElement(ReturnSelectPIPCodeErrorCheckedButton);
-            genericUtil.clickWithPause(ReturnSelectPIPCodeErrorCheckedButton,2000);
+            HighlightElement.highlightElement(ReturnSelectReceivedPI);
+            genericUtil.clickWithPause(ReturnSelectReceivedPI,2000);
 
             HighlightElement.highlightElement(ReturnReasonSubmitButton);
             genericUtil.clickWithPause(ReturnReasonSubmitButton,2000);
@@ -249,6 +303,37 @@ public class Cx_HelpDesk_page_CreateTicketLocator extends TestBase {
 
             HighlightElement.highlightElement(file);
             genericUtil.clickWithPause(file, 2000);
+
+            /*------------------File Upload Logic------------------------------------*/
+            // Specify the file location with extension
+            StringSelection sel = new StringSelection(Constants.FILEUPLOADPATH);
+
+            // Copy to clipboard
+            Toolkit.getDefaultToolkit().getSystemClipboard().setContents(sel,null);
+            System.out.println("selection" +sel);
+            // Create object of Robot class
+            Robot robot = new Robot();
+            genericUtil.pause(1000);
+
+            // Press Enter
+            robot.keyPress(KeyEvent.VK_ENTER);
+
+            // Release Enter
+            robot.keyRelease(KeyEvent.VK_ENTER);
+
+            // Press CTRL+V
+            robot.keyPress(KeyEvent.VK_CONTROL);
+            robot.keyPress(KeyEvent.VK_V);
+
+            // Release CTRL+V
+            robot.keyRelease(KeyEvent.VK_CONTROL);
+            robot.keyRelease(KeyEvent.VK_V);
+            genericUtil.pause(1000);
+
+            //Press Enter
+            robot.keyPress(KeyEvent.VK_ENTER);
+            robot.keyRelease(KeyEvent.VK_ENTER);
+            genericUtil.pause(1000);
 
             HighlightElement.highlightElement(buttonSubmit);
             genericUtil.clickWithPause(buttonSubmit, 2000);

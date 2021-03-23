@@ -127,6 +127,17 @@ public class Cx_HelpDesk_page_AOT_EditTicketLocator extends TestBase {
     @FindBy(xpath = "//input[@value=\"No\"]")
     public WebElement ETDPopupNo;
 
+    @FindBy(xpath = "(//h4[contains(text(),'Alert!')])[2]")
+    public WebElement ETDSuccessMSG;
+
+    @FindBy(xpath = "(//span[contains(text(),'159 ')])[2]")
+    public WebElement ETDSucessTNo;
+    @FindBy(xpath = "(//input[@value='OK'])[1]")
+    public WebElement ETDSuccessMSGOk;
+
+//    @FindBy(xpath = "(//button[@class='close']/following::button[6])[1]")
+//    public WebElement ETDSuccessClose;
+
     public Cx_HelpDesk_page_AOT_EditTicketLocator(WebDriver driver) {
         TestBase.driver = driver;
         PageFactory.initElements(driver, this);
@@ -224,20 +235,22 @@ public class Cx_HelpDesk_page_AOT_EditTicketLocator extends TestBase {
             genericUtil.clickWithPause(ETDTitle,2000);
 
             HighlightElement.highlightElement(ETDState);
-            genericUtil.clickWithPause(ETDState,1000);
+ //           genericUtil.clickWithPause(ETDState,1000);
 //            genericUtil.writeTextWithPause(ETstate,strState,1000);
 //            Select selectState = new Select(ETstate);
 //            selectState.selectByVisibleText(strState);
 //            genericUtil.pause(1000);
             genericUtil.selectElementWithPause(ETDState,strState,2000);
+            HighlightElement.highlightElement(ETDState);
 
             HighlightElement.highlightElement(ETDPriority);
-//            genericUtil.writeTextWithPause(ETDPriority,strPriority,1000);
             genericUtil.selectElementWithPause(ETDPriority,strPriority,2000);
+            HighlightElement.highlightElement(ETDPriority);
 
             HighlightElement.highlightElement(ETDEDepartment);
 //            genericUtil.writeTextWithPause(ETDEDepartment,strDepartment,1000);
             genericUtil.selectElementWithPause(ETDEDepartment,strDepartment,2000);
+            HighlightElement.highlightElement(ETDEDepartment);
 
             HighlightElement.highlightElement(ETDSubmit);
             genericUtil.clickWithPause(ETDSubmit,1000);
@@ -247,8 +260,16 @@ public class Cx_HelpDesk_page_AOT_EditTicketLocator extends TestBase {
 //            HighlightElement.highlightElement(ETDPopupYes);
 //            genericUtil.clickWithPause(ETDPopupYes,1000);
 
-            HighlightElement.highlightElement(ETDPopupNo);
-            genericUtil.clickWithPause(ETDPopupNo,1000);
+//            HighlightElement.highlightElement(ETDPopupNo);
+//            genericUtil.clickWithPause(ETDPopupNo,1000);
+            HighlightElement.highlightElement(ETDPopupYes);
+            genericUtil.clickWithPause(ETDPopupYes,1000);
+
+            HighlightElement.highlightElement(ETDSucessTNo);
+            Thread.sleep(1000);
+
+            HighlightElement.highlightElement(ETDSuccessMSG);
+            genericUtil.clickWithPause(ETDSuccessMSGOk,1000);
         }
         catch (Exception ex){
             ex.getStackTrace();
