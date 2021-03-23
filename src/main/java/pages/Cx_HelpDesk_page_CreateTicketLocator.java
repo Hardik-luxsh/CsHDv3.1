@@ -76,15 +76,30 @@ public class Cx_HelpDesk_page_CreateTicketLocator extends TestBase {
     @FindBy(xpath = "//div[@class=\"input-group input-small\"]//div")
     public WebElement file;
 
+    @FindBy(xpath = "//input[@formcontrolname=\"Comment\"]")
+    public WebElement agentComment;
+
 //    @FindBy(xpath = "(//input[@class='btn btn-success'])[1]")
-    @FindBy(xpath = "(//input[@class='btn btn-success'])[3]")
+    @FindBy(xpath = "//span[contains(text(),' Create New Ticket ')]/../../..//input[@value=\"Submit\"]")
     public WebElement buttonSubmit;
 
     @FindBy(xpath = "//h4[contains(text(),'Confirm Ticket Creation!')]")
-    public WebElement confirmTicket;
+    public WebElement titleConfirmTicket;
+
+    @FindBy(xpath = "//h3[contains(text(),'Are You Sure To Create Ticket For')]")
+    public WebElement titleConfirmTicketContent;
 
     @FindBy(xpath = "//input[@value='Yes']")
     public WebElement optionConfirmYesTicket;
+
+    @FindBy(xpath = "//h4[contains(text(),'Ticket Created Successfully!')]")
+    public WebElement successTitleTicket;
+
+    @FindBy(xpath = "//h4[contains(text(),'Ticket Created Successfully!')]/../..//p[contains(text(),\" Ticket Created Successfully for\")]")
+    public WebElement successMsgTicket;
+
+    @FindBy(xpath = "//h4[contains(text(),'Ticket Created Successfully!')]/../..//input[@value=\"OK\"]")
+    public WebElement okMsgTicket;
 
     @FindBy(xpath = "//input[@value='No']")
     public WebElement optionConfirmNoTicket;
@@ -109,7 +124,7 @@ public class Cx_HelpDesk_page_CreateTicketLocator extends TestBase {
     @FindBy(xpath = "(//label[contains(text(),'Invoice Date')])[2]/..//input")
     public WebElement InvoiceDate;
 
-    @FindBy(xpath ="(//label[contains(text(),'Order No')])[2]/..//input")
+    @FindBy(xpath ="(//label[contains(text(),'Order No')])[1]/..//input")
     public WebElement OrderNo;
 
     @FindBy(xpath = "(//label[contains(text(),'A/C (Account Number)')])[1]/..//input")
@@ -120,6 +135,9 @@ public class Cx_HelpDesk_page_CreateTicketLocator extends TestBase {
 
     @FindBy(xpath = "(//input[@value='Full Invoice'])[1]")
     public WebElement FullInvoicebtn;
+
+    @FindBy(xpath = "//input[@value=\"Return Full Invoice\"]")
+    public WebElement buttonReturnFullInvoice;
 
     @FindBy(xpath ="(//input[@value='Close'])[4]")
     public WebElement InvoicePopClosebtn;
@@ -226,10 +244,13 @@ public class Cx_HelpDesk_page_CreateTicketLocator extends TestBase {
            genericUtil.clickWithPause(NetAmount,1000);
 
            HighlightElement.highlightElement(FullInvoicebtn);
-           genericUtil.clickWithPause(FullInvoicebtn,1000);
+           genericUtil.clickWithPause(FullInvoicebtn,2000);
 
             HighlightElement.highlightElement(InvoicePopClosebtn);
             genericUtil.clickWithPause(InvoicePopClosebtn,1000);
+
+            HighlightElement.highlightElement(buttonReturnFullInvoice);
+            genericUtil.clickWithPause(buttonReturnFullInvoice,1000);
 
             HighlightElement.highlightElement(ReturnQty);
             genericUtil.writeTextWithPause(ReturnQty,"01",1000);
@@ -299,7 +320,6 @@ public class Cx_HelpDesk_page_CreateTicketLocator extends TestBase {
 
             HighlightElement.highlightElement(tag);
             genericUtil.writeTextWithPause(tag, "#New#Created#Open#", 2000);
-            genericUtil.pause(1000);
 
             HighlightElement.highlightElement(file);
             genericUtil.clickWithPause(file, 2000);
@@ -333,13 +353,31 @@ public class Cx_HelpDesk_page_CreateTicketLocator extends TestBase {
             //Press Enter
             robot.keyPress(KeyEvent.VK_ENTER);
             robot.keyRelease(KeyEvent.VK_ENTER);
-            genericUtil.pause(1000);
+            genericUtil.pause(2000);
+
+            HighlightElement.highlightElement(agentComment);
+            genericUtil.writeTextWithPause(agentComment, "Agent comment added!", 1000);
 
             HighlightElement.highlightElement(buttonSubmit);
             genericUtil.clickWithPause(buttonSubmit, 2000);
 
+            HighlightElement.highlightElement(titleConfirmTicket);
+            genericUtil.pause(1000);
+
+            HighlightElement.highlightElement(titleConfirmTicketContent);
+            genericUtil.pause(1000);
+
             HighlightElement.highlightElement(optionConfirmYesTicket);
             genericUtil.clickWithPause(optionConfirmYesTicket, 3000);
+
+            HighlightElement.highlightElement(successTitleTicket);
+            genericUtil.pause(1000);
+
+            HighlightElement.highlightElement(successMsgTicket);
+            genericUtil.pause(1000);
+
+            HighlightElement.highlightElement(okMsgTicket);
+            genericUtil.clickWithPause(okMsgTicket, 2000);
 
         } catch (Exception ex) {
             ex.getStackTrace();

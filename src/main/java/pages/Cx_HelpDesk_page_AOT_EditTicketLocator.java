@@ -46,7 +46,6 @@ public class Cx_HelpDesk_page_AOT_EditTicketLocator extends TestBase {
     @FindBy(xpath = "//input[@formcontrolname='SelectStartdate']")
     public WebElement STStartDate;
 
-
     @FindBy(xpath = "//input[@formcontrolname='SelectEnddate']")
     public WebElement STEndDate;
 
@@ -132,6 +131,7 @@ public class Cx_HelpDesk_page_AOT_EditTicketLocator extends TestBase {
 
     @FindBy(xpath = "(//span[contains(text(),'159 ')])[2]")
     public WebElement ETDSucessTNo;
+
     @FindBy(xpath = "(//input[@value='OK'])[1]")
     public WebElement ETDSuccessMSGOk;
 
@@ -168,13 +168,13 @@ public class Cx_HelpDesk_page_AOT_EditTicketLocator extends TestBase {
             genericUtil.clickWithPause(SatTitle,1000);
 
             HighlightElement.highlightElement(STTicketType);
-            Thread.sleep(1000);
+            genericUtil.pause(1000);
 
             HighlightElement.highlightElement(STStateType);
-            Thread.sleep(1000);
+            genericUtil.pause(1000);
 
             HighlightElement.highlightElement(STSort);
-            Thread.sleep(1000);
+            genericUtil.pause(1000);
 
             HighlightElement.highlightElement(STTicketNo);
             genericUtil.writeTextWithPause(STTicketNo,SearchText,1000);
