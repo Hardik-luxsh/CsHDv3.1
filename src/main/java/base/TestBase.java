@@ -27,6 +27,7 @@ public class TestBase {
         ChromeOptions options = new ChromeOptions();
 //        options.addArguments("-incognito");
         options.addArguments("start-maximized");
+//        options.addArguments("--headless");
 
         System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\drivers\\chromedriver.exe");
         driver = new ChromeDriver(options);

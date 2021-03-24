@@ -96,13 +96,13 @@ public class Cx_HelpDesk_page_OverviewLocator extends TestBase {
     /**
      * TESTCASE METHOD: OVERVIEW TICKET
      */
-    public void overviewTicket(){
+    public void overviewTicket() {
         genericUtil = new GenericUtil();
 
         try {
             wait.until(ExpectedConditions.visibilityOf(sidebar_textOverview));
             HighlightElement.highlightElement(sidebar_textOverview);
-            genericUtil.clickWithPause(sidebar_textOverview,1000);
+            genericUtil.clickWithPause(sidebar_textOverview, 1000);
 
             HighlightElement.highlightElement(titleOverview);
             genericUtil.pause(1000);
@@ -111,46 +111,43 @@ public class Cx_HelpDesk_page_OverviewLocator extends TestBase {
             genericUtil.pause(1000);
 
             HighlightElement.highlightElement(buttonSearch);
-            genericUtil.clickWithPause(buttonSearch,2000);
+            genericUtil.clickWithPause(buttonSearch, 2000);
 
             HighlightElement.highlightElement(firstTicketFromTicketList);
-            genericUtil.clickWithPause(firstTicketFromTicketList,2000);
+            genericUtil.clickWithPause(firstTicketFromTicketList, 2000);
 
             HighlightElement.highlightElement(titleTicketDetails);
             genericUtil.pause(1000);
 
             HighlightElement.highlightElement(TDAccountNumber);
-            genericUtil.clickWithPause(TDAccountNumber,1000);
+            genericUtil.clickWithPause(TDAccountNumber, 1000);
 
             HighlightElement.highlightElement(TDTicketNumberAndDate);
-            genericUtil.clickWithPause(TDTicketNumberAndDate,1000);
+            genericUtil.clickWithPause(TDTicketNumberAndDate, 1000);
 
             HighlightElement.highlightElement(TDState);
-            genericUtil.clickWithPause(TDState,1000);
+            genericUtil.clickWithPause(TDState, 1000);
 
             HighlightElement.highlightElement(TDQueryMessage);
-            genericUtil.clickWithPause(TDQueryMessage,1000);
+            genericUtil.clickWithPause(TDQueryMessage, 1000);
 
             HighlightElement.highlightElement(TDMessageHistory);
-            genericUtil.clickWithPause(TDMessageHistory,1000);
+            genericUtil.clickWithPause(TDMessageHistory, 1000);
 
             HighlightElement.highlightElement(TDAgentComment);
-            genericUtil.clickWithPause(TDAgentComment,1000);
+            genericUtil.clickWithPause(TDAgentComment, 1000);
 
             HighlightElement.highlightElement(TDCustomerComment);
-            genericUtil.clickWithPause(TDCustomerComment,1000);
+            genericUtil.clickWithPause(TDCustomerComment, 1000);
 
             //File attachment
-            if (TDFileAttachment.isDisplayed()){
+            if (TDFileAttachment.isDisplayed()) {
                 HighlightElement.highlightElement(TDFileAttachment);
-                genericUtil.clickWithPause(TDFileAttachment,1000);
-            }
-            else{
+                genericUtil.clickWithPause(TDFileAttachment, 1000);
+            } else {
                 System.out.println("No attachment found!!");
             }
-
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
     }

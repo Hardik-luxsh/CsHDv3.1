@@ -23,7 +23,7 @@ public class CxHelpDesk_LoginPageTests extends TestBase {
 	public void validateLogin(){
 		try {
 			objLoginPage = new Cx_HelpDesk_page_LoginLocator(driver);
-			objLoginPage.validateLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
+			objLoginPage.validateLogin(Constants.MANAGERUSERNAME, Constants.VALIDPASSWORD);
 
 			Reporter.log("POSITIVE TESTCASE-1 :Login Page: verify Admin User type", true);
 			Thread.sleep(3000);

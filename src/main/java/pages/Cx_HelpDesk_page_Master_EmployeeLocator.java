@@ -221,10 +221,8 @@ public class Cx_HelpDesk_page_Master_EmployeeLocator extends TestBase {
      * @param UpdatedEmpRole
      * @param UpdatedSearchText
      */
-
     public void editEmployee(String UpdatedEmpName,String UpdatedEmpEmail,String UpdatedEmpNo,String UpdatedEmpRole,String UpdatedSearchText){
         try {
-
             genericUtil = new GenericUtil();
             genericUtil.pause(3000);
 
@@ -252,13 +250,13 @@ public class Cx_HelpDesk_page_Master_EmployeeLocator extends TestBase {
                 objCheckBox = new CheckBox();
                 HighlightElement.highlightElement(EmpEditStatus);
                 objCheckBox.Select_The_Checkbox(EmpEditStatus);
-                genericUtil.pause(1000);
+                genericUtil.pause(800);
                 HighlightElement.highlightElement(EmpEditStatus);
                 objCheckBox.DeSelect_The_Checkbox(EmpEditStatus);
-                genericUtil.pause(1000);
+                genericUtil.pause(800);
                 HighlightElement.highlightElement(EmpEditStatus);
                 objCheckBox.Select_The_Checkbox(EmpEditStatus);
-                genericUtil.pause(1000);
+                genericUtil.pause(800);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -296,25 +294,24 @@ public class Cx_HelpDesk_page_Master_EmployeeLocator extends TestBase {
 
             wait.until(ExpectedConditions.visibilityOf(SuccessMsgEmpDelete));
             HighlightElement.highlightElement(YesOptionEmpDelete);
+            genericUtil.pause(2000);
 
-            Thread.sleep(2000);
             HighlightElement.highlightElement(SuccessMsgEmpDelete);
-            Thread.sleep(2000);
+            genericUtil.pause(2000);
+
             HighlightElement.highlightElement(CloseBtnSuccessMsgEmpDelete);
             genericUtil.clickWithPause(CloseBtnSuccessMsgEmpDelete,3000);
 
             HighlightElement.highlightElement(EmpEditNo);
             genericUtil.writeTextWithPause(EmpEditNo,SearchText,3000); //"UpdatedEmpTest"
-
-            Thread.sleep(2000);
+            genericUtil.pause(2000);
 
             HighlightElement.highlightElement(CloseBtnSuccessMsgEmpDelete);
-            genericUtil.clickWithPause(CloseBtnSuccessMsgEmpDelete,3000);
+            genericUtil.clickWithPause(CloseBtnSuccessMsgEmpDelete,2000);
 
             HighlightElement.highlightElement(EmpSearch);
             EmpSearch.clear();
             genericUtil.writeTextWithPause(EmpSearch,SearchText,3000); //"UpdatedEmpTest"
-
         }
         catch (Exception ex){
             ex.getStackTrace();

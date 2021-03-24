@@ -15,6 +15,14 @@
 <!--    </test>-->
     <test name="Test_Master_Employee" enabled="true">
         <classes>
+            <class name="testcase.cxHelpDesk.CxHelpDesk_LoginPageTests">
+                <methods>
+<!--                    <include name="verifyAgentLogin"/>-->
+<!--                    <include name="verifyUserLogin"/>-->
+<!--                    <include name="verifyAdminLogin"/>-->
+                        <include name="validateLogin"/>
+                </methods>
+            </class>
             <class name="testcase.cxHelpDesk.CxHelpDesk_Master_EmployeePageTests">
                 <methods>
                     <include name="createEmployee"/>

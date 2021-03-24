@@ -15,7 +15,7 @@ public class Constants {
 	public static final String CustomerAccountNumber="Test_reg-2021";
 	public static final String City="Vadodara";
 	public static final String PostCode="388350";
-	public static final String ContactPersonName="Depika Parekh";
+	public static final String ContactPersonName="Test Name";
 	public static final String ContactPersonNumber="8989898989";
 	public static final String FaxNumber="363636";
 	public static final String Email="Tusharpatel@luxshtech.com";
