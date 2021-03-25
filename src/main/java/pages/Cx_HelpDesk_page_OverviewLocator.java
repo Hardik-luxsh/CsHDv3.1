@@ -3,6 +3,7 @@ package pages;
 import TestUtil.GenericUtil;
 import TestUtil.HighlightElement;
 import base.TestBase;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -97,7 +98,10 @@ public class Cx_HelpDesk_page_OverviewLocator extends TestBase {
      * TESTCASE METHOD: OVERVIEW TICKET
      */
     public void overviewTicket() {
+
         genericUtil = new GenericUtil();
+        JavascriptExecutor jsDown = (JavascriptExecutor) driver;
+        JavascriptExecutor jsUp = (JavascriptExecutor) driver;
 
         try {
             wait.until(ExpectedConditions.visibilityOf(sidebar_textOverview));
@@ -107,14 +111,21 @@ public class Cx_HelpDesk_page_OverviewLocator extends TestBase {
             HighlightElement.highlightElement(titleOverview);
             genericUtil.pause(1000);
 
-            HighlightElement.highlightElement(titleTicketList);
-            genericUtil.pause(1000);
-
             HighlightElement.highlightElement(buttonSearch);
             genericUtil.clickWithPause(buttonSearch, 2000);
 
+            Thread.sleep(1000);
+            jsDown.executeScript("window.scrollBy(0,1000)");
+            Thread.sleep(1000);
+
+            HighlightElement.highlightElement(titleTicketList);
+            genericUtil.pause(1000);
+
             HighlightElement.highlightElement(firstTicketFromTicketList);
-            genericUtil.clickWithPause(firstTicketFromTicketList, 2000);
+            genericUtil.clickWithPause(firstTicketFromTicketList, 1000);
+
+            jsUp.executeScript("window.scrollBy(0,-1000)");
+            Thread.sleep(1000);
 
             HighlightElement.highlightElement(titleTicketDetails);
             genericUtil.pause(1000);

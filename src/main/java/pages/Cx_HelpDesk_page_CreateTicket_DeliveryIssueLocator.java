@@ -168,8 +168,8 @@ public class Cx_HelpDesk_page_CreateTicket_DeliveryIssueLocator extends TestBase
             genericUtil.click(ticketType);
             genericUtil.pause(1000);
 
-            /*---BEGIN-------------Delivery Issue popup-----------------*/
 
+            /*---BEGIN-------------Delivery Issue popup-----------------*/
             HighlightElement.highlightElement(titleDeliveryIssue);
 
             Select selectInvoice = new Select(InvoiceNumber);
@@ -221,7 +221,6 @@ public class Cx_HelpDesk_page_CreateTicket_DeliveryIssueLocator extends TestBase
             HighlightElement.highlightElement(submitButton);
             genericUtil.clickWithPause(submitButton, 2000);
 
-
             /*---END-------------Delivery Issue popup-----------------*/
 
             HighlightElement.highlightElement(description);
@@ -247,7 +246,7 @@ public class Cx_HelpDesk_page_CreateTicket_DeliveryIssueLocator extends TestBase
             HighlightElement.highlightElement(file);
             genericUtil.clickWithPause(file, 2000);
 
-            /*------------------File Upload Logic------------------------------------*/
+            /*------------------File Upload Logic---------------------*/
             // Specify the file location with extension
             StringSelection sel = new StringSelection(Constants.FILEUPLOADPATH);
 
