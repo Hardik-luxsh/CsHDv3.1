@@ -4,10 +4,8 @@ import TestUtil.Constants;
 import TestUtil.GenericUtil;
 import TestUtil.HighlightElement;
 import base.TestBase;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -19,12 +17,12 @@ import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 
-public class Cx_HelpDesk_page_CreateTicketLocator extends TestBase {
+public class Cx_HelpDesk_page_CreateReturnTicketLocator extends TestBase {
 
     public static WebDriverWait wait;
     public static GenericUtil genericUtil;
 
-    public Cx_HelpDesk_page_CreateTicketLocator(WebDriver driver) {
+    public Cx_HelpDesk_page_CreateReturnTicketLocator(WebDriver driver) {
         TestBase.driver = driver;
         PageFactory.initElements(driver, this);
         wait = new WebDriverWait(driver, 20);
@@ -187,7 +185,7 @@ public class Cx_HelpDesk_page_CreateTicketLocator extends TestBase {
     /**
      * TESTCASE: Create Ticket
      */
-    public void createTicket() {
+    public void createReturnTicket() {
         genericUtil = new GenericUtil();
         try {
             wait.until(ExpectedConditions.visibilityOf(sidebar_textCustomer));
@@ -354,8 +352,9 @@ public class Cx_HelpDesk_page_CreateTicketLocator extends TestBase {
             //Press Enter
             robot.keyPress(KeyEvent.VK_ENTER);
             robot.keyRelease(KeyEvent.VK_ENTER);
-            genericUtil.pause(2000);
+
             /*------END------------File Upload Logic------------------------------------*/
+            genericUtil.pause(2000);
 
             HighlightElement.highlightElement(agentComment);
             genericUtil.writeTextWithPause(agentComment, "Agent comment added!", 1000);
