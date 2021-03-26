@@ -8,7 +8,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Cx_HelpDesk_page_AOT_EditTicketLocator extends TestBase {
@@ -66,7 +65,7 @@ public class Cx_HelpDesk_page_AOT_EditTicketLocator extends TestBase {
     public WebElement TDTicketNumber;
 
     @FindBy(xpath = "//label[contains(text(),'Ticket Date')]/..//input[@type='text']")
-    public WebElement  TDDate;
+    public WebElement TDDate;
 
     @FindBy(xpath = "//span[contains(text(),' Ticket Details ')]/../../..//label[contains(text(),'Ticket Title')]/..//input[@type='text']")
     public WebElement TDTicketTitle;
@@ -102,7 +101,7 @@ public class Cx_HelpDesk_page_AOT_EditTicketLocator extends TestBase {
     @FindBy(xpath = "//select[@formcontrolname='SelectEditStatusType'] /../..//option[@value='Closed']")
     public WebElement ETstate;
 
-    @FindBy(xpath ="//select[@formcontrolname='SelectPriority']")
+    @FindBy(xpath = "//select[@formcontrolname='SelectPriority']")
     public WebElement ETDPriority;
 
     @FindBy(xpath = "//select[@formcontrolname='selectdepartment']")
@@ -130,7 +129,7 @@ public class Cx_HelpDesk_page_AOT_EditTicketLocator extends TestBase {
     public WebElement ETDSuccessMSG;
 
     @FindBy(xpath = "(//span[contains(text(),'159 ')])[2]")
-    public WebElement ETDSucessTNo;
+    public WebElement ETDSuccessTNo;
 
     @FindBy(xpath = "(//input[@value='OK'])[1]")
     public WebElement ETDSuccessMSGOk;
@@ -144,14 +143,15 @@ public class Cx_HelpDesk_page_AOT_EditTicketLocator extends TestBase {
         wait = new WebDriverWait(driver, 20);
     }
 
-    /**TESTCASE METHOD: EDIT TICKET
+    /**
+     * TESTCASE METHOD: EDIT TICKET
      *
      * @param SearchText
      * @param strState
      * @param strPriority
      * @param strDepartment
      */
-    public void EditTicket(String SearchText,String strState,String strPriority,String strDepartment) {
+    public void EditTicket(String SearchText, String strState, String strPriority, String strDepartment) {
         try {
             genericUtil = new GenericUtil();
             genericUtil.pause(3000);
@@ -162,10 +162,10 @@ public class Cx_HelpDesk_page_AOT_EditTicketLocator extends TestBase {
             genericUtil.pause(1000);
 
             HighlightElement.highlightElement(TitleEditTicket);
-            genericUtil.clickWithPause(TitleEditTicket,1000);
+            genericUtil.clickWithPause(TitleEditTicket, 1000);
 
             HighlightElement.highlightElement(SatTitle);
-            genericUtil.clickWithPause(SatTitle,1000);
+            genericUtil.clickWithPause(SatTitle, 1000);
 
             HighlightElement.highlightElement(STTicketType);
             genericUtil.pause(1000);
@@ -177,7 +177,7 @@ public class Cx_HelpDesk_page_AOT_EditTicketLocator extends TestBase {
             genericUtil.pause(1000);
 
             HighlightElement.highlightElement(STTicketNo);
-            genericUtil.writeTextWithPause(STTicketNo,SearchText,1000);
+            genericUtil.writeTextWithPause(STTicketNo, SearchText, 1000);
 
 //            HighlightElement.highlightElement(STStartDate);
 //            Thread.sleep(1000);
@@ -186,13 +186,13 @@ public class Cx_HelpDesk_page_AOT_EditTicketLocator extends TestBase {
 //            Thread.sleep(1000);
 
             HighlightElement.highlightElement(STSearchbtn);
-            genericUtil.clickWithPause(STSearchbtn,1000);
+            genericUtil.clickWithPause(STSearchbtn, 1000);
 
             HighlightElement.highlightElement(Ticket);
-            genericUtil.clickWithPause(Ticket,1000);
+            genericUtil.clickWithPause(Ticket, 1000);
 
             HighlightElement.highlightElement(TDTicketDetailsTitle);
-            genericUtil.clickWithPause(TDTicketDetailsTitle,1000);
+            genericUtil.clickWithPause(TDTicketDetailsTitle, 1000);
 
             HighlightElement.highlightElement(TDTicketNumber);
             Thread.sleep(1000);
@@ -219,11 +219,10 @@ public class Cx_HelpDesk_page_AOT_EditTicketLocator extends TestBase {
             Thread.sleep(1000);
 
             //File attachment
-            if (TDFileAttachment.isDisplayed()){
+            if (TDFileAttachment.isDisplayed()) {
                 HighlightElement.highlightElement(TDFileAttachment);
-                genericUtil.clickWithPause(TDFileAttachment,1000);
-            }
-            else{
+                genericUtil.clickWithPause(TDFileAttachment, 1000);
+            } else {
                 System.out.println("No attachment found!!");
             }
 
@@ -232,28 +231,28 @@ public class Cx_HelpDesk_page_AOT_EditTicketLocator extends TestBase {
 //            genericUtil.clickWithPause(TDQAttachment,1000);
 
             HighlightElement.highlightElement(ETDTitle);
-            genericUtil.clickWithPause(ETDTitle,2000);
+            genericUtil.clickWithPause(ETDTitle, 2000);
 
             HighlightElement.highlightElement(ETDState);
- //           genericUtil.clickWithPause(ETDState,1000);
+            //           genericUtil.clickWithPause(ETDState,1000);
 //            genericUtil.writeTextWithPause(ETstate,strState,1000);
 //            Select selectState = new Select(ETstate);
 //            selectState.selectByVisibleText(strState);
 //            genericUtil.pause(1000);
-            genericUtil.selectElementWithPause(ETDState,strState,2000);
+            genericUtil.selectElementWithPause(ETDState, strState, 2000);
             HighlightElement.highlightElement(ETDState);
 
             HighlightElement.highlightElement(ETDPriority);
-            genericUtil.selectElementWithPause(ETDPriority,strPriority,2000);
+            genericUtil.selectElementWithPause(ETDPriority, strPriority, 2000);
             HighlightElement.highlightElement(ETDPriority);
 
             HighlightElement.highlightElement(ETDEDepartment);
 //            genericUtil.writeTextWithPause(ETDEDepartment,strDepartment,1000);
-            genericUtil.selectElementWithPause(ETDEDepartment,strDepartment,2000);
+            genericUtil.selectElementWithPause(ETDEDepartment, strDepartment, 2000);
             HighlightElement.highlightElement(ETDEDepartment);
 
             HighlightElement.highlightElement(ETDSubmit);
-            genericUtil.clickWithPause(ETDSubmit,1000);
+            genericUtil.clickWithPause(ETDSubmit, 1000);
 
             HighlightElement.highlightElement(ETDPopAlert);
 
@@ -263,15 +262,14 @@ public class Cx_HelpDesk_page_AOT_EditTicketLocator extends TestBase {
 //            HighlightElement.highlightElement(ETDPopupNo);
 //            genericUtil.clickWithPause(ETDPopupNo,1000);
             HighlightElement.highlightElement(ETDPopupYes);
-            genericUtil.clickWithPause(ETDPopupYes,1000);
+            genericUtil.clickWithPause(ETDPopupYes, 1000);
 
-            HighlightElement.highlightElement(ETDSucessTNo);
+            HighlightElement.highlightElement(ETDSuccessTNo);
             Thread.sleep(1000);
 
             HighlightElement.highlightElement(ETDSuccessMSG);
-            genericUtil.clickWithPause(ETDSuccessMSGOk,1000);
-        }
-        catch (Exception ex){
+            genericUtil.clickWithPause(ETDSuccessMSGOk, 1000);
+        } catch (Exception ex) {
             ex.getStackTrace();
         }
     }

@@ -7,15 +7,13 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import pages.Cx_HelpDesk_page_CreateTicket_OtherLocator;
 import pages.Cx_HelpDesk_page_LoginLocator;
-import pages.Cx_HelpDesk_page_OverviewLocator;
+import pages.Cx_HelpDesk_page_ReportingLocator;
 
-public class Cx_HelpDesk_CreateTicket_OtherPageTests extends TestBase {
+public class Cx_HelpDesk_ReportingPageTests extends TestBase {
 
     public static Cx_HelpDesk_page_LoginLocator objLoginPage;
-    public static Cx_HelpDesk_page_CreateTicket_OtherLocator objCreateTicketOtherType;
-    public static Cx_HelpDesk_page_OverviewLocator objOverview;
+    public static Cx_HelpDesk_page_ReportingLocator objReporting;
 
     @BeforeTest
     public void initialBrowserDriver() {
@@ -26,13 +24,10 @@ public class Cx_HelpDesk_CreateTicket_OtherPageTests extends TestBase {
     }
 
     @Test(priority = 1)
-    public void createTicketWithOtherType(){
+    public void createTicketWithDeliveryIssue(){
         try {
-            objCreateTicketOtherType = new Cx_HelpDesk_page_CreateTicket_OtherLocator(driver);
-            objCreateTicketOtherType.createTicketWithOtherType();
-
-            objOverview = new Cx_HelpDesk_page_OverviewLocator(driver);
-            objOverview.overviewTicket();
+            objReporting = new Cx_HelpDesk_page_ReportingLocator(driver);
+            objReporting.generateReport();
         }
         catch (Exception ex){
             ex.printStackTrace();

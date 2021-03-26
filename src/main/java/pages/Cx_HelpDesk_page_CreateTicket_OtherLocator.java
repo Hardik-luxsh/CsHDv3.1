@@ -44,7 +44,7 @@ public class Cx_HelpDesk_page_CreateTicket_OtherLocator extends TestBase {
     public WebElement channel_ReceivedCall;
 
     @FindBy(xpath = "//select[@id='selectBox']")
-    public WebElement customer; //EmpCust
+    public WebElement customer;
 
     @FindBy(xpath = "//span[contains(text(),'Create New Ticket')]")
     public WebElement titleCreateTicket;
