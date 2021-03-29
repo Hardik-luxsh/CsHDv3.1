@@ -20,11 +20,11 @@ public class Cx_HelpDesk_ReportingPageTests extends TestBase {
         driver = TestBase.testBase();
 
         objLoginPage = new Cx_HelpDesk_page_LoginLocator(driver);
-        objLoginPage.validateLogin(Constants.AGENTUSERNAME, Constants.VALIDPASSWORD);
+        objLoginPage.validateLogin(Constants.MANAGERUSERNAME, Constants.VALIDPASSWORD);
     }
 
     @Test(priority = 1)
-    public void createTicketWithDeliveryIssue(){
+    public void generateReport(){
         try {
             objReporting = new Cx_HelpDesk_page_ReportingLocator(driver);
             objReporting.generateReport();

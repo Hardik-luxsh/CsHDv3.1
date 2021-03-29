@@ -23,7 +23,7 @@ public class Cx_HelpDesk_page_ReportingLocator extends TestBase {
         wait = new WebDriverWait(driver, 20);
     }
 
-    @FindBy(xpath = "//h1[contains(text(),'Reporting ')]")
+    @FindBy(xpath = "//span[contains(text(),'Reporting')]")
     public WebElement sidebar_textReporting;
 
     @FindBy(xpath = "//button[contains(text(),'Search')]")
@@ -32,16 +32,16 @@ public class Cx_HelpDesk_page_ReportingLocator extends TestBase {
     @FindBy(xpath = "//button[contains(text(),'Clear Filters')]")
     public WebElement buttonClearFilters;
 
-    @FindBy(xpath = "//a[@id='tabyear']")
+    @FindBy(xpath = "//a[contains(text(),'Year')]")
     public WebElement tabYear;
 
-    @FindBy(xpath = "//a[@id='tabmonth']")
+    @FindBy(xpath = "//a[contains(text(),'Month')]")
     public WebElement tabMonth;
 
-    @FindBy(xpath = "//a[@id='tabweek']")
+    @FindBy(xpath = "//a[contains(text(),'Week')]")
     public WebElement tabWeek;
 
-    @FindBy(xpath = "//a[@id='tabday']")
+    @FindBy(xpath = "//a[contains(text(),'Day')]")
     public WebElement tabDay;
 
     @FindBy(xpath = "//a[@class=\"btn btn-download\"]")
@@ -63,8 +63,8 @@ public class Cx_HelpDesk_page_ReportingLocator extends TestBase {
             wait.until(ExpectedConditions.visibilityOf(sidebar_textReporting));
             HighlightElement.highlightElement(sidebar_textReporting);
             genericUtil.clickWithPause(sidebar_textReporting,2000);
-            Assert.assertEquals(driver.getCurrentUrl(), Constants.BASEURL + "reporting");
 
+            genericUtil.pause(1000);
             HighlightElement.highlightElement(buttonSearch);
             genericUtil.clickWithPause(buttonSearch,2000);
 
