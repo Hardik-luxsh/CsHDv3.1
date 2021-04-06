@@ -4,7 +4,6 @@ import TestUtil.Constants;
 import TestUtil.GenericUtil;
 import TestUtil.HighlightElement;
 import base.TestBase;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -63,7 +62,10 @@ public class Cx_HelpDesk_page_LoginLocator extends TestBase {
     public WebElement usernameTitle;
 
     @FindBy(xpath = "//span[@class='fa fa-eye fa-fw field-icon toggle-password']")
-    public WebElement eyeButton;
+    public WebElement eyeOpenButton;
+
+    @FindBy(xpath = "//span[@class=\"fa fa-eye fa-fw field-icon toggle-password fa-eye-slash\"]")
+    public WebElement eyeBClosedButton;
 
     @FindBy(xpath = "//ul[@id='drpprofilemenu']/li[2]")
     public WebElement buttonLogout;
@@ -98,8 +100,11 @@ public class Cx_HelpDesk_page_LoginLocator extends TestBase {
             HighlightElement.highlightElement(textPassword);
             genericUtil.writeTextWithPause(textPassword,password,1000);
 
-            HighlightElement.highlightElement(eyeButton);
-            genericUtil.click(eyeButton);
+            HighlightElement.highlightElement(eyeOpenButton);
+            genericUtil.clickWithPause(eyeOpenButton,500);
+
+            HighlightElement.highlightElement(eyeBClosedButton);
+            genericUtil.click(eyeBClosedButton);
 
             HighlightElement.highlightElement(buttonSubmit);
             genericUtil.click(buttonSubmit);
@@ -142,8 +147,8 @@ public class Cx_HelpDesk_page_LoginLocator extends TestBase {
             textPassword.sendKeys(password);
             Thread.sleep(2000);
 
-            HighlightElement.highlightElement(eyeButton);
-            genericUtil.click(eyeButton);
+            HighlightElement.highlightElement(eyeOpenButton);
+            genericUtil.click(eyeOpenButton);
 
             HighlightElement.highlightElement(buttonSubmit);
             genericUtil.click(buttonSubmit);
@@ -344,8 +349,8 @@ public class Cx_HelpDesk_page_LoginLocator extends TestBase {
             HighlightElement.highlightElement(textPassword);
             genericUtil.writeTextWithPause(textPassword,password,2000);
 
-            HighlightElement.highlightElement(eyeButton);
-            genericUtil.click(eyeButton);
+            HighlightElement.highlightElement(eyeOpenButton);
+            genericUtil.click(eyeOpenButton);
 
             HighlightElement.highlightElement(buttonSubmit);
             buttonSubmit.click();

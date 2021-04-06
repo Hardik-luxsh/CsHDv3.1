@@ -7,13 +7,15 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import pages.Cx_HelpDesk_page_FAQLocator;
+import pages.Cx_HelpDesk_page_FAQs_PRLocator;
+import pages.Cx_HelpDesk_page_FAQs_WebRelatedLocator;
 import pages.Cx_HelpDesk_page_LoginLocator;
 
 public class Cx_HelpDesk_FAQPageTests extends TestBase {
 
     public static Cx_HelpDesk_page_LoginLocator objLoginPage;
-    public static Cx_HelpDesk_page_FAQLocator objFaqPage;
+    public static Cx_HelpDesk_page_FAQs_PRLocator objFaqPRPage;
+    public static Cx_HelpDesk_page_FAQs_WebRelatedLocator objFaqWRPage;
 
     @BeforeTest
     public void initBrowser() {
@@ -24,15 +26,27 @@ public class Cx_HelpDesk_FAQPageTests extends TestBase {
     }
 
     @Test(priority = 1)
-    public void verifyFAQsDetails(){
+    public void verifyFAQsPRDetails(){
         try {
-            objFaqPage = new Cx_HelpDesk_page_FAQLocator(driver);
-            objFaqPage.verifyFAQsDetails();
+            objFaqPRPage = new Cx_HelpDesk_page_FAQs_PRLocator(driver);
+            objFaqPRPage.verifyFAQsPRDetails();
         }
         catch (Exception ex){
             ex.printStackTrace();
         }
     }
+
+    @Test(priority = 2)
+    public void verifyFAQsWRDetails(){
+        try {
+            objFaqWRPage = new Cx_HelpDesk_page_FAQs_WebRelatedLocator(driver);
+            objFaqWRPage.verifyFAQsWRDetails();
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }
+
 
     @AfterMethod
     public void captureScreenShot(ITestResult result){

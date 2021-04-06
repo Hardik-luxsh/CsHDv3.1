@@ -3,6 +3,7 @@ package pages;
 import TestUtil.GenericUtil;
 import TestUtil.HighlightElement;
 import base.TestBase;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,12 +16,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-public class Cx_HelpDesk_page_FAQLocator extends TestBase {
+public class Cx_HelpDesk_page_FAQs_PRLocator extends TestBase {
 
     public static WebDriverWait wait;
     public static GenericUtil genericUtil;
 
-    public Cx_HelpDesk_page_FAQLocator(WebDriver driver){
+    public Cx_HelpDesk_page_FAQs_PRLocator(WebDriver driver){
         TestBase.driver = driver;
         PageFactory.initElements(driver, this);
         wait = new WebDriverWait(driver, 20);
@@ -39,6 +40,9 @@ public class Cx_HelpDesk_page_FAQLocator extends TestBase {
 
     @FindBy(xpath = "//span[contains(text(),'Purchase Related') and @class='title']")
     public WebElement titlePurchaseRelated;
+
+    @FindBy(xpath = "//span[@class=\"caption-subject font-dark bold uppercase\"]")
+    public WebElement sectionHeadingPurchaseRelated;
 
     @FindBy(xpath = "//p[contains(text(),'How do I return an item?')]")
     public WebElement PRqueFAQ1;
@@ -109,11 +113,10 @@ public class Cx_HelpDesk_page_FAQLocator extends TestBase {
     @FindBy(xpath = "//p[contains(text(),'You can log in to the online portal to extract statements, credit notes and invoices.')]")
     public WebElement PRansFAQ11;
 
-
     /**
-     * TESTCASE METHOD: verifyFAQsDetails
+     * TESTCASE METHOD: verifyFAQsPRDetails
      */
-    public void verifyFAQsDetails(){
+    public void verifyFAQsPRDetails(){
         try {
             genericUtil = new GenericUtil();
             genericUtil.pause(3000);
@@ -132,6 +135,9 @@ public class Cx_HelpDesk_page_FAQLocator extends TestBase {
             HighlightElement.highlightElement(titlePurchaseRelated);
             genericUtil.clickWithPause(titlePurchaseRelated, 1000);
 
+            HighlightElement.highlightElement(sectionHeadingPurchaseRelated);
+            genericUtil.clickWithPause(sectionHeadingPurchaseRelated, 1000);
+
             HighlightElement.highlightElement(PRqueFAQ1);
             genericUtil.pause(1000);
 
@@ -143,14 +149,20 @@ public class Cx_HelpDesk_page_FAQLocator extends TestBase {
             genericUtil.clickWithPause(PRNavToWebsiteAnsFAQ1,1000);
 
             //------Close TAB key ------------
-            Robot r = new Robot();
-            r.keyPress(KeyEvent.VK_CONTROL);
-            r.keyPress(KeyEvent.VK_T);
-            r.keyRelease(KeyEvent.VK_CONTROL);
-            r.keyRelease(KeyEvent.VK_T);
-//            Actions actionObj = new Actions(driver);
-//            actionObj.keyDown(Keys.CONTROL).keyDown(Keys.SHIFT).sendKeys(Keys.TAB).build().perform();
+//            Robot r = new Robot();
+//            r.keyPress(KeyEvent.VK_CONTROL);
+//            r.keyPress(KeyEvent.VK_T);
+//            r.keyRelease(KeyEvent.VK_CONTROL);
+//            r.keyRelease(KeyEvent.VK_T);
+            genericUtil.pause(2000);
+            Actions actionObj = new Actions(driver);
+            actionObj.keyDown(Keys.LEFT_CONTROL).sendKeys(Keys.NUMPAD1).build().perform();
 //            driver.switchTo().defaultContent();
+
+//            genericUtil.pause(2000);
+//            genericUtil.switchToTab(titleFaq,driver,"1");
+//            titleFaq.sendKeys(Keys.LEFT_CONTROL + "1");
+//            genericUtil.pause(1000);
 
             HighlightElement.highlightElement(PRqueFAQ2);
             genericUtil.pause(1000);
