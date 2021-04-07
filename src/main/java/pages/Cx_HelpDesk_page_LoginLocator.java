@@ -112,170 +112,9 @@ public class Cx_HelpDesk_page_LoginLocator extends TestBase {
             wait.until(ExpectedConditions.visibilityOf(adminTitle));
             HighlightElement.highlightElement(adminTitle);
             Assert.assertEquals(driver.getCurrentUrl(), Constants.BASEURL + "dashboard");
-            Reporter.log("SUCCESSFULLY ADMIN page is redirected.", true);
+            Reporter.log("SUCCESSFULLY redirected to DASHBOARD page.", true);
         } catch (Exception e) {
             e.printStackTrace();
-        }
-    }
-
-    /**
-     * NEGATIVE TESTCASE METHOD
-     *
-     * @param username = username
-     * @param password = Password
-     */
-    public void invalidLogin(String username, String password) {
-        //Init GenericUtil object with driver instance
-        genericUtil = new GenericUtil();
-
-        try {
-            genericUtil.pause(3000);
-            wait.until(ExpectedConditions.visibilityOf(logo_img));
-            HighlightElement.highlightElement(logo_img);
-            Assert.assertTrue(logo_img.isDisplayed());
-
-            HighlightElement.highlightElement(loginButton);
-            genericUtil.clickWithPause(loginButton,500);
-
-            HighlightElement.highlightElement(textUsername);
-            textUsername.clear();
-            textUsername.sendKeys(username);
-            Thread.sleep(2000);
-
-            HighlightElement.highlightElement(textPassword);
-            textPassword.clear();
-            textPassword.sendKeys(password);
-            Thread.sleep(2000);
-
-            HighlightElement.highlightElement(eyeOpenButton);
-            genericUtil.click(eyeOpenButton);
-
-            HighlightElement.highlightElement(buttonSubmit);
-            genericUtil.click(buttonSubmit);
-            Thread.sleep(2000);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * NEGATIVE TESTCASE-1 :Login Page-Empty username & Password!
-     *
-     * @param username = Username
-     * @param password = password
-     */
-    public void verifyEmptyUsernameEmptyPassword(String username, String password) {
-        String expectedUrl = driver.getCurrentUrl();
-//        invalidLogin(username,password);
-
-        //Init GenericUtil object with driver instance
-        genericUtil = new GenericUtil();
-
-        try {
-            wait.until(ExpectedConditions.visibilityOf(logo_img));
-            HighlightElement.highlightElement(logo_img);
-            Assert.assertTrue(logo_img.isDisplayed());
-
-            HighlightElement.highlightElement(loginButton);
-            genericUtil.clickWithPause(loginButton,500);
-
-            HighlightElement.highlightElement(textUsername);
-            textUsername.clear();
-            textUsername.sendKeys(username);
-            genericUtil.pause(2000);
-
-            HighlightElement.highlightElement(textPassword);
-            textPassword.clear();
-            textPassword.sendKeys(password);
-            genericUtil.pause(2000);
-
-            HighlightElement.highlightElement(buttonSubmit);
-            buttonSubmit.click();
-
-            wait.until(ExpectedConditions.visibilityOf(textPassword_error));
-            wait.until(ExpectedConditions.visibilityOf(textUsername_error));
-
-            if ((textUsername_error.isDisplayed() && textUsername_error.getText().equals("User Name is required")) &&
-               (textPassword_error.isDisplayed() && (textPassword_error.getText().equals("Password not allow blank Space.")))) {
-                Assert.assertEquals(expectedUrl,Constants.BASEURL);
-            }
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * NEGATIVE TESTCASE-2	:Login Page: Empty Username & valid Password
-     *
-     * @param username = Username
-     * @param password = password
-     */
-    public void validateEmptyUsernameValidPassword(String username, String password) {
-        String expectedUrl = driver.getCurrentUrl();
-        invalidLogin(username, password);
-
-        if (textUsername_error.getText().equals("User Name is required")) {
-            Assert.assertEquals(expectedUrl, Constants.BASEURL + "login");
-        }
-    }
-
-    /**
-     * NEGATIVE TESTCASE-3	:Login Page: Valid Username & Empty Password
-     *
-     * @param username = Username
-     * @param password = password
-     */
-    public void verifyValidUsernameEmptyPassword(String username, String password) {
-        String expectedUrl = driver.getCurrentUrl();
-        invalidLogin(username, password);
-
-        if (textPassword_error.getText().equals("Password not allow blank Space.")) {
-            Assert.assertEquals(expectedUrl, Constants.BASEURL + "login");
-        }
-    }
-
-    /**
-     * NEGATIVE TESTCASE-4	:Login Page: Invalid Username & valid Password
-     *
-     * @param username = Username
-     * @param password = password
-     */
-    public void verifyInvalidUsernameValidPassword(String username, String password) {
-        String expectedUrl = driver.getCurrentUrl();
-        invalidLogin(username, password);
-
-        if (textUsername_error.getText().equals("Invalid User Name")) {
-            Assert.assertEquals(expectedUrl, Constants.BASEURL + "login");
-        }
-    }
-
-    /**
-     * NEGATIVE TESTCASE-5	:Login Page: Valid Username & invalid Password
-     *
-     * @param username = Username
-     * @param password = password
-     */
-    public void verifyValidUsernameInvalidPassword(String username, String password) {
-        String expectedUrl = driver.getCurrentUrl();
-        invalidLogin(username, password);
-
-        if (errorMsgValidUsernameInvalidPwd.getText().equals("Password Does Not Matched. Please Enter Valid Password.")) {
-            Assert.assertEquals(expectedUrl, Constants.BASEURL + "login");
-        }
-    }
-
-    /**
-     * NEGATIVE TESTCASE-6	:Login Page: Invalid Username & invalid Password
-     *
-     * @param username = Username
-     * @param password = password
-     */
-    public void verifyInvalidUsernameInvalidPassword(String username, String password) {
-        String expectedUrl = driver.getCurrentUrl();
-        invalidLogin(username, password);
-
-        if (textUsername_error.getText().equals("Invalid User Name")) {
-            Assert.assertEquals(expectedUrl, Constants.BASEURL + "login");
         }
     }
 
@@ -409,6 +248,172 @@ public class Cx_HelpDesk_page_LoginLocator extends TestBase {
             e.printStackTrace();
         }
     }
+
+    public void verifyCustomerUser(){
+
+    }
+
+    /**
+     * NEGATIVE TESTCASE METHOD
+     *
+     * @param username = username
+     * @param password = Password
+     */
+    public void invalidLogin(String username, String password) {
+        //Init GenericUtil object with driver instance
+        genericUtil = new GenericUtil();
+
+        try {
+            genericUtil.pause(3000);
+            wait.until(ExpectedConditions.visibilityOf(logo_img));
+            HighlightElement.highlightElement(logo_img);
+            Assert.assertTrue(logo_img.isDisplayed());
+
+            HighlightElement.highlightElement(loginButton);
+            genericUtil.clickWithPause(loginButton,500);
+
+            HighlightElement.highlightElement(textUsername);
+            textUsername.clear();
+            textUsername.sendKeys(username);
+            Thread.sleep(2000);
+
+            HighlightElement.highlightElement(textPassword);
+            textPassword.clear();
+            textPassword.sendKeys(password);
+            Thread.sleep(2000);
+
+            HighlightElement.highlightElement(eyeOpenButton);
+            genericUtil.click(eyeOpenButton);
+
+            HighlightElement.highlightElement(buttonSubmit);
+            genericUtil.click(buttonSubmit);
+            Thread.sleep(2000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * NEGATIVE TESTCASE-1 :Login Page-Empty username & Password!
+     *
+     * @param username = Username
+     * @param password = password
+     */
+    public void verifyEmptyUsernameEmptyPassword(String username, String password) {
+        String expectedUrl = driver.getCurrentUrl();
+//        invalidLogin(username,password);
+
+        //Init GenericUtil object with driver instance
+        genericUtil = new GenericUtil();
+
+        try {
+            wait.until(ExpectedConditions.visibilityOf(logo_img));
+            HighlightElement.highlightElement(logo_img);
+            Assert.assertTrue(logo_img.isDisplayed());
+
+            HighlightElement.highlightElement(loginButton);
+            genericUtil.clickWithPause(loginButton,500);
+
+            HighlightElement.highlightElement(textUsername);
+            textUsername.clear();
+            textUsername.sendKeys(username);
+            genericUtil.pause(2000);
+
+            HighlightElement.highlightElement(textPassword);
+            textPassword.clear();
+            textPassword.sendKeys(password);
+            genericUtil.pause(2000);
+
+            HighlightElement.highlightElement(buttonSubmit);
+            buttonSubmit.click();
+
+            wait.until(ExpectedConditions.visibilityOf(textPassword_error));
+            wait.until(ExpectedConditions.visibilityOf(textUsername_error));
+
+            if ((textUsername_error.isDisplayed() && textUsername_error.getText().equals("User Name is required")) &&
+                    (textPassword_error.isDisplayed() && (textPassword_error.getText().equals("Password not allow blank Space.")))) {
+                Assert.assertEquals(expectedUrl,Constants.BASEURL);
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * NEGATIVE TESTCASE-2	:Login Page: Empty Username & valid Password
+     *
+     * @param username = Username
+     * @param password = password
+     */
+    public void validateEmptyUsernameValidPassword(String username, String password) {
+        String expectedUrl = driver.getCurrentUrl();
+        invalidLogin(username, password);
+
+        if (textUsername_error.getText().equals("User Name is required")) {
+            Assert.assertEquals(expectedUrl, Constants.BASEURL + "login");
+        }
+    }
+
+    /**
+     * NEGATIVE TESTCASE-3	:Login Page: Valid Username & Empty Password
+     *
+     * @param username = Username
+     * @param password = password
+     */
+    public void verifyValidUsernameEmptyPassword(String username, String password) {
+        String expectedUrl = driver.getCurrentUrl();
+        invalidLogin(username, password);
+
+        if (textPassword_error.getText().equals("Password not allow blank Space.")) {
+            Assert.assertEquals(expectedUrl, Constants.BASEURL + "login");
+        }
+    }
+
+    /**
+     * NEGATIVE TESTCASE-4	:Login Page: Invalid Username & valid Password
+     *
+     * @param username = Username
+     * @param password = password
+     */
+    public void verifyInvalidUsernameValidPassword(String username, String password) {
+        String expectedUrl = driver.getCurrentUrl();
+        invalidLogin(username, password);
+
+        if (textUsername_error.getText().equals("Invalid User Name")) {
+            Assert.assertEquals(expectedUrl, Constants.BASEURL + "login");
+        }
+    }
+
+    /**
+     * NEGATIVE TESTCASE-5	:Login Page: Valid Username & invalid Password
+     *
+     * @param username = Username
+     * @param password = password
+     */
+    public void verifyValidUsernameInvalidPassword(String username, String password) {
+        String expectedUrl = driver.getCurrentUrl();
+        invalidLogin(username, password);
+
+        if (errorMsgValidUsernameInvalidPwd.getText().equals("Password Does Not Matched. Please Enter Valid Password.")) {
+            Assert.assertEquals(expectedUrl, Constants.BASEURL + "login");
+        }
+    }
+
+    /**
+     * NEGATIVE TESTCASE-6	:Login Page: Invalid Username & invalid Password
+     *
+     * @param username = Username
+     * @param password = password
+     */
+    public void verifyInvalidUsernameInvalidPassword(String username, String password) {
+        String expectedUrl = driver.getCurrentUrl();
+        invalidLogin(username, password);
+
+        if (textUsername_error.getText().equals("Invalid User Name")) {
+            Assert.assertEquals(expectedUrl, Constants.BASEURL + "login");
+        }
+    }
+
 
     /**
      * logOut method
