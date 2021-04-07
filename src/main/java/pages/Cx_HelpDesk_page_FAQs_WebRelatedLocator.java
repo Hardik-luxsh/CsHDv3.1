@@ -3,6 +3,7 @@ package pages;
 import TestUtil.GenericUtil;
 import TestUtil.HighlightElement;
 import base.TestBase;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -76,6 +77,9 @@ public class Cx_HelpDesk_page_FAQs_WebRelatedLocator extends TestBase {
     public void verifyFAQsWRDetails(){
         try {
             genericUtil = new GenericUtil();
+            JavascriptExecutor jsDown = (JavascriptExecutor) driver;
+            JavascriptExecutor jsUp = (JavascriptExecutor) driver;
+
             genericUtil.pause(3000);
 
             wait.until(ExpectedConditions.visibilityOf(sidebarFaqs));
@@ -113,6 +117,9 @@ public class Cx_HelpDesk_page_FAQs_WebRelatedLocator extends TestBase {
             HighlightElement.highlightElement(WRAnsFAQ3);
             genericUtil.pause(1000);
 
+            jsDown.executeScript("window.scrollBy(0,1000)");
+            Thread.sleep(1000);
+
             HighlightElement.highlightElement(WRQueFAQ4);
             genericUtil.pause(1000);
 
@@ -124,6 +131,9 @@ public class Cx_HelpDesk_page_FAQs_WebRelatedLocator extends TestBase {
 
             HighlightElement.highlightElement(WRAnsFAQ5);
             genericUtil.pause(1000);
+
+            jsUp.executeScript("window.scrollBy(0,-1000)");
+            Thread.sleep(1000);
         }
         catch (Exception ex){
             ex.printStackTrace();

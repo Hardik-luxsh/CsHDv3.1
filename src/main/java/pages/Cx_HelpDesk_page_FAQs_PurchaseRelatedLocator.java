@@ -16,12 +16,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-public class Cx_HelpDesk_page_FAQs_PRLocator extends TestBase {
+public class Cx_HelpDesk_page_FAQs_PurchaseRelatedLocator extends TestBase {
 
     public static WebDriverWait wait;
     public static GenericUtil genericUtil;
 
-    public Cx_HelpDesk_page_FAQs_PRLocator(WebDriver driver){
+    public Cx_HelpDesk_page_FAQs_PurchaseRelatedLocator(WebDriver driver){
         TestBase.driver = driver;
         PageFactory.initElements(driver, this);
         wait = new WebDriverWait(driver, 20);
@@ -119,7 +119,9 @@ public class Cx_HelpDesk_page_FAQs_PRLocator extends TestBase {
     public void verifyFAQsPRDetails(){
         try {
             genericUtil = new GenericUtil();
-            genericUtil.pause(3000);
+            JavascriptExecutor jsDown = (JavascriptExecutor) driver;
+            JavascriptExecutor jsUp = (JavascriptExecutor) driver;
+//            genericUtil.pause(3000);
 
             wait.until(ExpectedConditions.visibilityOf(sidebarFaqs));
             HighlightElement.highlightElement(sidebarFaqs);
@@ -154,15 +156,17 @@ public class Cx_HelpDesk_page_FAQs_PRLocator extends TestBase {
 //            r.keyPress(KeyEvent.VK_T);
 //            r.keyRelease(KeyEvent.VK_CONTROL);
 //            r.keyRelease(KeyEvent.VK_T);
-            genericUtil.pause(2000);
-            Actions actionObj = new Actions(driver);
-            actionObj.keyDown(Keys.LEFT_CONTROL).sendKeys(Keys.NUMPAD1).build().perform();
+//            genericUtil.pause(2000);
+//            Actions actionObj = new Actions(driver);
+//            actionObj.keyDown(Keys.LEFT_CONTROL).sendKeys(Keys.NUMPAD1).build().perform();
 //            driver.switchTo().defaultContent();
 
-//            genericUtil.pause(2000);
+            genericUtil.pause(2000);
+            driver.switchTo().window(driver.getWindowHandle());
+
 //            genericUtil.switchToTab(titleFaq,driver,"1");
 //            titleFaq.sendKeys(Keys.LEFT_CONTROL + "1");
-//            genericUtil.pause(1000);
+            genericUtil.pause(1000);
 
             HighlightElement.highlightElement(PRqueFAQ2);
             genericUtil.pause(1000);
@@ -190,6 +194,9 @@ public class Cx_HelpDesk_page_FAQs_PRLocator extends TestBase {
 
             HighlightElement.highlightElement(PRqueFAQ6);
             genericUtil.pause(1000);
+
+            jsDown.executeScript("window.scrollBy(0,1000)");
+            Thread.sleep(1000);
 
             HighlightElement.highlightElement(PRansFAQ6);
             genericUtil.pause(1000);
@@ -223,6 +230,9 @@ public class Cx_HelpDesk_page_FAQs_PRLocator extends TestBase {
 
             HighlightElement.highlightElement(PRansFAQ11);
             genericUtil.pause(1000);
+
+            jsUp.executeScript("window.scrollBy(0,-1000)");
+            Thread.sleep(1000);
         }
         catch (Exception ex){
             ex.printStackTrace();

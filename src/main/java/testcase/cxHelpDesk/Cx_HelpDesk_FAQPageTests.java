@@ -7,15 +7,17 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import pages.Cx_HelpDesk_page_FAQs_PRLocator;
+import pages.Cx_HelpDesk_page_FAQs_CreditControlRelatedLocator;
+import pages.Cx_HelpDesk_page_FAQs_PurchaseRelatedLocator;
 import pages.Cx_HelpDesk_page_FAQs_WebRelatedLocator;
 import pages.Cx_HelpDesk_page_LoginLocator;
 
 public class Cx_HelpDesk_FAQPageTests extends TestBase {
 
     public static Cx_HelpDesk_page_LoginLocator objLoginPage;
-    public static Cx_HelpDesk_page_FAQs_PRLocator objFaqPRPage;
+    public static Cx_HelpDesk_page_FAQs_PurchaseRelatedLocator objFaqPRPage;
     public static Cx_HelpDesk_page_FAQs_WebRelatedLocator objFaqWRPage;
+    public static Cx_HelpDesk_page_FAQs_CreditControlRelatedLocator objCreditControlPage;
 
     @BeforeTest
     public void initBrowser() {
@@ -28,7 +30,7 @@ public class Cx_HelpDesk_FAQPageTests extends TestBase {
     @Test(priority = 1)
     public void verifyFAQsPRDetails(){
         try {
-            objFaqPRPage = new Cx_HelpDesk_page_FAQs_PRLocator(driver);
+            objFaqPRPage = new Cx_HelpDesk_page_FAQs_PurchaseRelatedLocator(driver);
             objFaqPRPage.verifyFAQsPRDetails();
         }
         catch (Exception ex){
@@ -47,6 +49,16 @@ public class Cx_HelpDesk_FAQPageTests extends TestBase {
         }
     }
 
+    @Test(priority = 3)
+    public void verifyFAQsCreditControlRelatedDetails(){
+        try {
+            objCreditControlPage = new Cx_HelpDesk_page_FAQs_CreditControlRelatedLocator(driver);
+            objCreditControlPage.verifyFAQsCreditControlRelatedDetails();
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }
 
     @AfterMethod
     public void captureScreenShot(ITestResult result){
