@@ -1,4 +1,4 @@
-package testcase.cxHelpDesk;
+package testcase;
 
 import TestUtil.CaptureScreenshot;
 import TestUtil.Constants;
@@ -8,12 +8,12 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.Cx_HelpDesk_page_AOT_SelfAssignLocator;
+import pages.Cx_HelpDesk_page_AOT_ViewAssignLocator;
 import pages.Cx_HelpDesk_page_LoginLocator;
-import pages.Cx_HelpDesk_page_Master_EmployeeLocator;
 
-public class CxHelpDesk_AOT_SelfAssignPageTests extends TestBase {
+public class Cx_HelpDesk_page_AOT_ViewAssignPageTests extends TestBase{
     Cx_HelpDesk_page_LoginLocator objLoginPage;
-    Cx_HelpDesk_page_AOT_SelfAssignLocator objSelfAssign;
+    Cx_HelpDesk_page_AOT_ViewAssignLocator objViewAssign;
 
     @BeforeTest
     public void initialBrowserDriver() {
@@ -24,10 +24,10 @@ public class CxHelpDesk_AOT_SelfAssignPageTests extends TestBase {
     }
 
     @Test(priority = 1)
-    public void SelfAssign(){
+    public void AssignTicket(){
         try {
-            objSelfAssign = new Cx_HelpDesk_page_AOT_SelfAssignLocator(driver);
-            objSelfAssign.AssignTicket("153");
+            objViewAssign = new Cx_HelpDesk_page_AOT_ViewAssignLocator(driver);
+            objViewAssign.AssignTicket("156");
         }
         catch (Exception ex){
             ex.printStackTrace();
@@ -39,5 +39,4 @@ public class CxHelpDesk_AOT_SelfAssignPageTests extends TestBase {
         CaptureScreenshot.captureScreenshotForFailedTests(driver,result);
         CaptureScreenshot.captureScreenshotPassedTests(driver,result);
     }
-
 }

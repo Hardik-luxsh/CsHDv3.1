@@ -3,7 +3,7 @@
 <suite thread-count="1" verbose="1" name="Cx-HelpDesk" annotations="JDK" parallel="true">
 <!--    <test name="Test_Login" enabled="true">-->
 <!--        <classes>-->
-<!--            <class name="testcase.cxHelpDesk.CxHelpDesk_LoginPageTests">-->
+<!--            <class name="CxHelpDesk_LoginPageTests">-->
 <!--                <methods>-->
 <!--                    <include name="verifyAgentLogin"/>-->
 <!--                    <include name="verifyUserLogin"/>-->
@@ -15,7 +15,7 @@
 <!--    </test>-->
     <test name="Test_Master_Employee" enabled="true">
         <classes>
-            <class name="testcase.cxHelpDesk.CxHelpDesk_LoginPageTests">
+            <class name="testcase.CxHelpDesk_LoginPageTests">
                 <methods>
 <!--                    <include name="verifyAgentLogin"/>-->
 <!--                    <include name="verifyUserLogin"/>-->
@@ -23,7 +23,7 @@
                         <include name="validateLogin"/>
                 </methods>
             </class>
-            <class name="testcase.cxHelpDesk.CxHelpDesk_Master_EmployeePageTests">
+            <class name="testcase.CxHelpDesk_Master_EmployeePageTests">
                 <methods>
                     <include name="createEmployee"/>
                     <include name="editEmployee"/>
@@ -35,7 +35,7 @@
 
     <test name="Test_Master_Group" enabled="true">
         <classes>
-        <class name="testcase.cxHelpDesk.CxHelpDesk_Master_GroupPageTests">
+        <class name="testcase.CxHelpDesk_Master_GroupPageTests">
             <methods>
                 <include name="createGroup"/>
                 <include name="editGroup"/>
@@ -47,7 +47,7 @@
 
     <test name="Test_Master_Customer" enabled="true">
         <classes>
-            <class name="testcase.cxHelpDesk.CxHelpDesk_Master_CustomerPageTests">
+            <class name="testcase.CxHelpDesk_Master_CustomerPageTests">
                 <methods>
                     <include name="createCustomer"/>
                     <include name="editCustomer"/>
@@ -59,7 +59,7 @@
 
     <test name="Test_Master_CustomerUser" enabled="true">
         <classes>
-            <class name="testcase.cxHelpDesk.CxHelpDesk_Master_CustomerUserPageTests">
+            <class name="testcase.CxHelpDesk_Master_CustomerUserPageTests">
                 <methods>
                     <include name="createCustomerUser"/>
                     <include name="editCustomerUser"/>

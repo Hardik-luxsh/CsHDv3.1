@@ -1,4 +1,4 @@
-package testcase.cxHelpDesk;
+package testcase;
 
 import TestUtil.CaptureScreenshot;
 import TestUtil.Constants;
@@ -8,12 +8,13 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.Cx_HelpDesk_page_LoginLocator;
-import pages.Cx_HelpDesk_page_Master_GroupLocator;
+import pages.Cx_HelpDesk_page_Master_CustomerUserLocator;
+import pages.Cx_HelpDesk_page_Master_EmployeeLocator;
 
-public class CxHelpDesk_Master_GroupPageTests extends TestBase {
+public class CxHelpDesk_Master_CustomerUserPageTests extends TestBase {
 
     Cx_HelpDesk_page_LoginLocator objLoginPage;
-    Cx_HelpDesk_page_Master_GroupLocator objMasterGroupLocator;
+    Cx_HelpDesk_page_Master_CustomerUserLocator objMasterCustomerUserLocator;
 
 //    @BeforeTest
 //    public void initialBrowserDriver() {
@@ -24,10 +25,12 @@ public class CxHelpDesk_Master_GroupPageTests extends TestBase {
 //    }
 
     @Test(priority = 1)
-    public void createGroup(){
+    public void createCustomerUser(){
         try {
-            objMasterGroupLocator = new Cx_HelpDesk_page_Master_GroupLocator(driver);
-            objMasterGroupLocator.createGroup("Group Name","Group Name");
+            objMasterCustomerUserLocator = new Cx_HelpDesk_page_Master_CustomerUserLocator(driver);
+            objMasterCustomerUserLocator.createCustomerUser("TestCustomer",
+            "TestCust14", "12345678","12345678","Test Department",
+            "Test Designation","Admin","TestCust14");
         }
         catch (Exception ex){
             ex.printStackTrace();
@@ -35,31 +38,23 @@ public class CxHelpDesk_Master_GroupPageTests extends TestBase {
     }
 
     @Test(priority = 2)
-    public void editGroup(){
+    public void editCustomerUser(){
         try {
-            objMasterGroupLocator = new Cx_HelpDesk_page_Master_GroupLocator(driver);
-            objMasterGroupLocator.editGroup("Updated Group Name","Updated Group Name");
+            objMasterCustomerUserLocator = new Cx_HelpDesk_page_Master_CustomerUserLocator(driver);
+            objMasterCustomerUserLocator.editCustomerUser("UpdatedTestCustomer",
+                    "TestCust15", "87654321","87654321","UpdatedTest Department",
+                    "UpdatedTest Designation","User","TestCust14");
         }
         catch (Exception ex){
             ex.printStackTrace();
         }
     }
 
-    @Test(priority = 3)
-    public void deleteGroup(){
-        try {
-            objMasterGroupLocator = new Cx_HelpDesk_page_Master_GroupLocator(driver);
-            objMasterGroupLocator.deleteGroup("Updated Group Name","Updated Group Name");
-        }
-        catch (Exception ex){
-            ex.printStackTrace();
-        }
-    }
+
 
     @AfterMethod
     public void captureScreenShot(ITestResult result){
         CaptureScreenshot.captureScreenshotForFailedTests(driver,result);
         CaptureScreenshot.captureScreenshotPassedTests(driver,result);
     }
-
 }

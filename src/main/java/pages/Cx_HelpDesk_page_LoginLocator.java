@@ -4,7 +4,6 @@ import TestUtil.Constants;
 import TestUtil.GenericUtil;
 import TestUtil.HighlightElement;
 import base.TestBase;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -16,7 +15,6 @@ import org.testng.Assert;
 import org.testng.Reporter;
 
 public class Cx_HelpDesk_page_LoginLocator extends TestBase {
-
     public static WebDriverWait wait;
     public static GenericUtil genericUtil;
 
@@ -44,7 +42,7 @@ public class Cx_HelpDesk_page_LoginLocator extends TestBase {
     @FindBy(xpath = "//input[@id='password2']")
     public WebElement textPassword;
 
-    @FindBy(xpath = "//*[@id=\"loginDiv\"]/form/div[2]/input")
+    @FindBy(xpath = "//input[@value='Sign In']")
     public WebElement buttonSubmit;
 
     @FindBy(xpath = "//div[contains(text(),'User Name is required')]")
@@ -63,7 +61,10 @@ public class Cx_HelpDesk_page_LoginLocator extends TestBase {
     public WebElement usernameTitle;
 
     @FindBy(xpath = "//span[@class='fa fa-eye fa-fw field-icon toggle-password']")
-    public WebElement eyeButton;
+    public WebElement eyeOpenButton;
+
+    @FindBy(xpath = "//span[@class=\"fa fa-eye fa-fw field-icon toggle-password fa-eye-slash\"]")
+    public WebElement eyeBClosedButton;
 
     @FindBy(xpath = "//ul[@id='drpprofilemenu']/li[2]")
     public WebElement buttonLogout;
@@ -98,8 +99,11 @@ public class Cx_HelpDesk_page_LoginLocator extends TestBase {
             HighlightElement.highlightElement(textPassword);
             genericUtil.writeTextWithPause(textPassword,password,1000);
 
-            HighlightElement.highlightElement(eyeButton);
-            genericUtil.click(eyeButton);
+            HighlightElement.highlightElement(eyeOpenButton);
+            genericUtil.clickWithPause(eyeOpenButton,500);
+
+            HighlightElement.highlightElement(eyeBClosedButton);
+            genericUtil.click(eyeBClosedButton);
 
             HighlightElement.highlightElement(buttonSubmit);
             genericUtil.click(buttonSubmit);
@@ -107,10 +111,145 @@ public class Cx_HelpDesk_page_LoginLocator extends TestBase {
             wait.until(ExpectedConditions.visibilityOf(adminTitle));
             HighlightElement.highlightElement(adminTitle);
             Assert.assertEquals(driver.getCurrentUrl(), Constants.BASEURL + "dashboard");
-            Reporter.log("SUCCESSFULLY ADMIN page is redirected.", true);
+            Reporter.log("SUCCESSFULLY redirected to DASHBOARD page.", true);
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * POSITIVE TESTCASE METHOD
+     *
+     * @param username = Username
+     * @param password = password
+     */
+    public void verifyAdminLogin(String username,String password){
+        //Init GenericUtil object with driver instance
+        genericUtil = new GenericUtil();
+
+        try {
+            wait.until(ExpectedConditions.visibilityOf(logo_img));
+            HighlightElement.highlightElement(logo_img);
+            Assert.assertTrue(logo_img.isDisplayed());
+
+            HighlightElement.highlightElement(loginButton);
+            genericUtil.clickWithPause(loginButton,500);
+
+            HighlightElement.highlightElement(labelUsername);
+            genericUtil.clickWithPause(labelUsername,1000);
+
+            HighlightElement.highlightElement(textUsername);
+            genericUtil.writeTextWithPause(textUsername,username,2000);
+
+            HighlightElement.highlightElement(labelPassword);
+            genericUtil.clickWithPause(labelPassword,1000);
+
+            HighlightElement.highlightElement(textPassword);
+            genericUtil.writeTextWithPause(textPassword,password,2000);
+
+            HighlightElement.highlightElement(buttonSubmit);
+            genericUtil.click(buttonSubmit);
+            Thread.sleep(2000);
+            HighlightElement.highlightElement(adminTitle);
+            wait.until(ExpectedConditions.visibilityOf(adminTitle));
+            Assert.assertEquals(driver.getCurrentUrl(), Constants.BASEURL + "dashboard");
+            Reporter.log("SUCCESSFULLY ADMIN page is redirected.", true);
+
+            wait.until(ExpectedConditions.visibilityOf(usernameTitle));
+            logOut();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void verifyNormalUser(String username, String password) {
+        //Init GenericUtil object with driver instance
+        genericUtil = new GenericUtil();
+
+        try {
+            genericUtil.pause(3000);
+            wait.until(ExpectedConditions.visibilityOf(logo_img));
+            HighlightElement.highlightElement(logo_img);
+            Assert.assertTrue(logo_img.isDisplayed());
+
+            HighlightElement.highlightElement(loginButton);
+            genericUtil.clickWithPause(loginButton,500);
+
+            HighlightElement.highlightElement(labelUsername);
+            genericUtil.clickWithPause(labelUsername,1000);
+
+            HighlightElement.highlightElement(textUsername);
+            genericUtil.writeTextWithPause(textUsername,username,2000);
+
+            HighlightElement.highlightElement(labelPassword);
+            genericUtil.clickWithPause(labelPassword,1000);
+
+            HighlightElement.highlightElement(textPassword);
+            genericUtil.writeTextWithPause(textPassword,password,2000);
+
+            HighlightElement.highlightElement(eyeOpenButton);
+            genericUtil.click(eyeOpenButton);
+
+            HighlightElement.highlightElement(buttonSubmit);
+            buttonSubmit.click();
+
+//            Thread.sleep(2000);
+            wait.until(ExpectedConditions.visibilityOf(adminTitle));
+            HighlightElement.highlightElement(adminTitle);
+            Assert.assertEquals(driver.getCurrentUrl(), Constants.BASEURL + "dashboard");
+            Reporter.log("SUCCESSFULLY ADMIN page is redirected.", true);
+
+            wait.until(ExpectedConditions.visibilityOf(usernameTitle));
+            logOut();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void verifyEmployeeUser(String username, String password) {
+        //Init GenericUtil object with driver instance
+        genericUtil = new GenericUtil();
+
+        try {
+            genericUtil.pause(3000);
+            wait.until(ExpectedConditions.visibilityOf(logo_img));
+            genericUtil.pause(1000);
+            HighlightElement.highlightElement(logo_img);
+            Assert.assertTrue(logo_img.isDisplayed());
+
+            HighlightElement.highlightElement(loginButton);
+            genericUtil.clickWithPause(loginButton,500);
+
+            HighlightElement.highlightElement(textUsername);
+            textUsername.clear();
+            textUsername.sendKeys(username);
+            Thread.sleep(2000);
+
+            HighlightElement.highlightElement(textPassword);
+            textPassword.clear();
+            textPassword.sendKeys(password);
+            Thread.sleep(2000);
+
+            HighlightElement.highlightElement(buttonSubmit);
+            buttonSubmit.click();
+
+            genericUtil.pause(3000);
+            HighlightElement.highlightElement(adminTitle);
+//            wait.until(ExpectedConditions.visibilityOf(adminTitle));
+
+            Assert.assertEquals(driver.getCurrentUrl(), Constants.BASEURL + "dashboard");
+            Reporter.log("SUCCESSFULLY Employee page is redirected.", true);
+
+            wait.until(ExpectedConditions.visibilityOf(usernameTitle));
+            logOut();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void verifyCustomerUser(){
+
     }
 
     /**
@@ -142,8 +281,8 @@ public class Cx_HelpDesk_page_LoginLocator extends TestBase {
             textPassword.sendKeys(password);
             Thread.sleep(2000);
 
-            HighlightElement.highlightElement(eyeButton);
-            genericUtil.click(eyeButton);
+            HighlightElement.highlightElement(eyeOpenButton);
+            genericUtil.click(eyeOpenButton);
 
             HighlightElement.highlightElement(buttonSubmit);
             genericUtil.click(buttonSubmit);
@@ -191,7 +330,7 @@ public class Cx_HelpDesk_page_LoginLocator extends TestBase {
             wait.until(ExpectedConditions.visibilityOf(textUsername_error));
 
             if ((textUsername_error.isDisplayed() && textUsername_error.getText().equals("User Name is required")) &&
-               (textPassword_error.isDisplayed() && (textPassword_error.getText().equals("Password not allow blank Space.")))) {
+                    (textPassword_error.isDisplayed() && (textPassword_error.getText().equals("Password not allow blank Space.")))) {
                 Assert.assertEquals(expectedUrl,Constants.BASEURL);
             }
         }catch (Exception e) {
@@ -274,136 +413,6 @@ public class Cx_HelpDesk_page_LoginLocator extends TestBase {
         }
     }
 
-    /**
-     * POSITIVE TESTCASE METHOD
-     *
-     * @param username = Username
-     * @param password = password
-     */
-    public void verifyAdminLogin(String username,String password){
-        //Init GenericUtil object with driver instance
-        genericUtil = new GenericUtil();
-
-        try {
-            wait.until(ExpectedConditions.visibilityOf(logo_img));
-            HighlightElement.highlightElement(logo_img);
-            Assert.assertTrue(logo_img.isDisplayed());
-
-            HighlightElement.highlightElement(loginButton);
-            genericUtil.clickWithPause(loginButton,500);
-
-            HighlightElement.highlightElement(labelUsername);
-            genericUtil.clickWithPause(labelUsername,1000);
-
-            HighlightElement.highlightElement(textUsername);
-            genericUtil.writeTextWithPause(textUsername,username,2000);
-
-            HighlightElement.highlightElement(labelPassword);
-            genericUtil.clickWithPause(labelPassword,1000);
-
-            HighlightElement.highlightElement(textPassword);
-            genericUtil.writeTextWithPause(textPassword,password,2000);
-
-            HighlightElement.highlightElement(buttonSubmit);
-            genericUtil.click(buttonSubmit);
-            Thread.sleep(2000);
-            HighlightElement.highlightElement(adminTitle);
-            wait.until(ExpectedConditions.visibilityOf(adminTitle));
-            Assert.assertEquals(driver.getCurrentUrl(), Constants.BASEURL + "dashboard");
-            Reporter.log("SUCCESSFULLY ADMIN page is redirected.", true);
-
-            wait.until(ExpectedConditions.visibilityOf(usernameTitle));
-            logOut();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void verifyNormalUser(String username, String password) {
-        //Init GenericUtil object with driver instance
-        genericUtil = new GenericUtil();
-
-        try {
-            genericUtil.pause(3000);
-            wait.until(ExpectedConditions.visibilityOf(logo_img));
-            HighlightElement.highlightElement(logo_img);
-            Assert.assertTrue(logo_img.isDisplayed());
-
-            HighlightElement.highlightElement(loginButton);
-            genericUtil.clickWithPause(loginButton,500);
-
-            HighlightElement.highlightElement(labelUsername);
-            genericUtil.clickWithPause(labelUsername,1000);
-
-            HighlightElement.highlightElement(textUsername);
-            genericUtil.writeTextWithPause(textUsername,username,2000);
-
-            HighlightElement.highlightElement(labelPassword);
-            genericUtil.clickWithPause(labelPassword,1000);
-
-            HighlightElement.highlightElement(textPassword);
-            genericUtil.writeTextWithPause(textPassword,password,2000);
-
-            HighlightElement.highlightElement(eyeButton);
-            genericUtil.click(eyeButton);
-
-            HighlightElement.highlightElement(buttonSubmit);
-            buttonSubmit.click();
-
-//            Thread.sleep(2000);
-            wait.until(ExpectedConditions.visibilityOf(adminTitle));
-            HighlightElement.highlightElement(adminTitle);
-            Assert.assertEquals(driver.getCurrentUrl(), Constants.BASEURL + "dashboard");
-            Reporter.log("SUCCESSFULLY ADMIN page is redirected.", true);
-
-            wait.until(ExpectedConditions.visibilityOf(usernameTitle));
-            logOut();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void verifyEmployeeUser(String username, String password) {
-        //Init GenericUtil object with driver instance
-        genericUtil = new GenericUtil();
-
-        try {
-            genericUtil.pause(3000);
-            wait.until(ExpectedConditions.visibilityOf(logo_img));
-            genericUtil.pause(1000);
-            HighlightElement.highlightElement(logo_img);
-            Assert.assertTrue(logo_img.isDisplayed());
-
-            HighlightElement.highlightElement(loginButton);
-            genericUtil.clickWithPause(loginButton,500);
-
-            HighlightElement.highlightElement(textUsername);
-            textUsername.clear();
-            textUsername.sendKeys(username);
-            Thread.sleep(2000);
-
-            HighlightElement.highlightElement(textPassword);
-            textPassword.clear();
-            textPassword.sendKeys(password);
-            Thread.sleep(2000);
-
-            HighlightElement.highlightElement(buttonSubmit);
-            buttonSubmit.click();
-
-            genericUtil.pause(3000);
-            HighlightElement.highlightElement(adminTitle);
-//            wait.until(ExpectedConditions.visibilityOf(adminTitle));
-
-            Assert.assertEquals(driver.getCurrentUrl(), Constants.BASEURL + "dashboard");
-            Reporter.log("SUCCESSFULLY Employee page is redirected.", true);
-
-            wait.until(ExpectedConditions.visibilityOf(usernameTitle));
-            logOut();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
     /**
      * logOut method

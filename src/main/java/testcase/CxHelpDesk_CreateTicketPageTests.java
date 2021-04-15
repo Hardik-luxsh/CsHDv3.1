@@ -1,4 +1,4 @@
-package testcase.cxHelpDesk;
+package testcase;
 
 import TestUtil.Constants;
 import base.TestBase;

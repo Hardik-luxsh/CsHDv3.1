@@ -1,4 +1,4 @@
-package testcase.cxHelpDesk;
+package testcase;
 
 import TestUtil.CaptureScreenshot;
 import TestUtil.Constants;
@@ -8,12 +8,12 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.Cx_HelpDesk_page_LoginLocator;
-import pages.Cx_HelpDesk_page_Master_CustomerLocator;
+import pages.Cx_HelpDesk_page_Master_GroupLocator;
 
-public class CxHelpDesk_Master_CustomerPageTests extends TestBase {
+public class CxHelpDesk_Master_GroupPageTests extends TestBase {
 
     Cx_HelpDesk_page_LoginLocator objLoginPage;
-    Cx_HelpDesk_page_Master_CustomerLocator objMasterCustomerLocator;
+    Cx_HelpDesk_page_Master_GroupLocator objMasterGroupLocator;
 
 //    @BeforeTest
 //    public void initialBrowserDriver() {
@@ -24,12 +24,10 @@ public class CxHelpDesk_Master_CustomerPageTests extends TestBase {
 //    }
 
     @Test(priority = 1)
-    public void createCustomer(){
+    public void createGroup(){
         try {
-            objMasterCustomerLocator = new Cx_HelpDesk_page_Master_CustomerLocator(driver);
-            objMasterCustomerLocator.addCustomer("TestCustomerName","TestAddress","TestCounty",
-                    "1234567890","VADODARA","395002","TestContactPersonName",
-                    "9638527410", "963852","hardik.prajapati@luxshtech.com");
+            objMasterGroupLocator = new Cx_HelpDesk_page_Master_GroupLocator(driver);
+            objMasterGroupLocator.createGroup("Group Name","Group Name");
         }
         catch (Exception ex){
             ex.printStackTrace();
@@ -37,12 +35,10 @@ public class CxHelpDesk_Master_CustomerPageTests extends TestBase {
     }
 
     @Test(priority = 2)
-    public void editCustomer(){
+    public void editGroup(){
         try {
-            objMasterCustomerLocator = new Cx_HelpDesk_page_Master_CustomerLocator(driver);
-            objMasterCustomerLocator.editCustomer("UpdatedTestCustomerName","UpdatedTestAddress","UpdatedTestCounty",
-                    "149518520","BANGLURU","395002","UpdatedTestContactPersonName",
-                    "9852367410", "963654","hardik.prajapati@luxshtech.com");
+            objMasterGroupLocator = new Cx_HelpDesk_page_Master_GroupLocator(driver);
+            objMasterGroupLocator.editGroup("Updated Group Name","Updated Group Name");
         }
         catch (Exception ex){
             ex.printStackTrace();
@@ -50,10 +46,10 @@ public class CxHelpDesk_Master_CustomerPageTests extends TestBase {
     }
 
     @Test(priority = 3)
-    public void deleteCustomer(){
+    public void deleteGroup(){
         try {
-            objMasterCustomerLocator = new Cx_HelpDesk_page_Master_CustomerLocator(driver);
-            objMasterCustomerLocator.deleteCustomer("UpdatedTestCustomerName");
+            objMasterGroupLocator = new Cx_HelpDesk_page_Master_GroupLocator(driver);
+            objMasterGroupLocator.deleteGroup("Updated Group Name","Updated Group Name");
         }
         catch (Exception ex){
             ex.printStackTrace();
@@ -65,4 +61,5 @@ public class CxHelpDesk_Master_CustomerPageTests extends TestBase {
         CaptureScreenshot.captureScreenshotForFailedTests(driver,result);
         CaptureScreenshot.captureScreenshotPassedTests(driver,result);
     }
+
 }

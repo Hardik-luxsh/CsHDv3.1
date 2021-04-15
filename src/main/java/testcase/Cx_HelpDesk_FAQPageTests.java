@@ -1,4 +1,4 @@
-package testcase.cxHelpDesk;
+package testcase;
 
 import TestUtil.CaptureScreenshot;
 import TestUtil.Constants;
@@ -7,27 +7,27 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import pages.Cx_HelpDesk_page_AOT_EditTicketLocator;
+import pages.Cx_HelpDesk_page_FAQLocator;
 import pages.Cx_HelpDesk_page_LoginLocator;
 
-public class Cx_HelpDesk_page_AOT_EditTicketPageTests extends TestBase {
+public class Cx_HelpDesk_FAQPageTests extends TestBase {
 
-    Cx_HelpDesk_page_LoginLocator objLoginPage;
-    Cx_HelpDesk_page_AOT_EditTicketLocator objEditTicket;
+    public static Cx_HelpDesk_page_LoginLocator objLoginPage;
+    public static Cx_HelpDesk_page_FAQLocator objFaqPage;
 
     @BeforeTest
-    public void initialBrowserDriver() {
+    public void initBrowser() {
         driver = TestBase.testBase();
 
         objLoginPage = new Cx_HelpDesk_page_LoginLocator(driver);
-        objLoginPage.validateLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
+        objLoginPage.validateLogin(Constants.MANAGERUSERNAME, Constants.VALIDPASSWORD);
     }
 
     @Test(priority = 1)
-    public void AssignTicket(){
+    public void verifyFAQsDetails(){
         try {
-            objEditTicket = new Cx_HelpDesk_page_AOT_EditTicketLocator(driver);
-            objEditTicket.EditTicket("159","Open","Low","QA");
+            objFaqPage = new Cx_HelpDesk_page_FAQLocator(driver);
+            objFaqPage.verifyFAQsDetails();
         }
         catch (Exception ex){
             ex.printStackTrace();

@@ -3,7 +3,7 @@
 <suite thread-count="1" verbose="1" name="Cx-HelpDesk" annotations="JDK" parallel="true">
         <test name="Test_Login" enabled="true">
             <classes>
-                <class name="testcase.cxHelpDesk.CxHelpDesk_LoginPageTests">
+                <class name="testcase.CxHelpDesk_LoginPageTests">
                     <methods>
                         <include name="verifyAgentLogin"/>
                         <include name="verifyUserLogin"/>

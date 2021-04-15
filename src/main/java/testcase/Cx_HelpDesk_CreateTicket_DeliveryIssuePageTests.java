@@ -1,4 +1,4 @@
-package testcase.cxHelpDesk;
+package testcase;
 
 import TestUtil.CaptureScreenshot;
 import TestUtil.Constants;
@@ -7,27 +7,27 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import pages.Cx_HelpDesk_page_CreateTicket_DeliveryIssueLocator;
 import pages.Cx_HelpDesk_page_LoginLocator;
-import pages.Cx_HelpDesk_page_ReportingLocator;
 
-public class Cx_HelpDesk_ReportingPageTests extends TestBase {
+public class Cx_HelpDesk_CreateTicket_DeliveryIssuePageTests extends TestBase {
 
     public static Cx_HelpDesk_page_LoginLocator objLoginPage;
-    public static Cx_HelpDesk_page_ReportingLocator objReporting;
+    public static Cx_HelpDesk_page_CreateTicket_DeliveryIssueLocator objCreateTicket;
 
     @BeforeTest
     public void initialBrowserDriver() {
         driver = TestBase.testBase();
 
         objLoginPage = new Cx_HelpDesk_page_LoginLocator(driver);
-        objLoginPage.validateLogin(Constants.MANAGERUSERNAME, Constants.VALIDPASSWORD);
+        objLoginPage.validateLogin(Constants.AGENTUSERNAME, Constants.VALIDPASSWORD);
     }
 
     @Test(priority = 1)
-    public void generateReport(){
+    public void createTicketWithDeliveryIssue(){
         try {
-            objReporting = new Cx_HelpDesk_page_ReportingLocator(driver);
-            objReporting.generateReport();
+            objCreateTicket = new Cx_HelpDesk_page_CreateTicket_DeliveryIssueLocator(driver);
+            objCreateTicket.createTicketWithDeliveryIssue();
         }
         catch (Exception ex){
             ex.printStackTrace();

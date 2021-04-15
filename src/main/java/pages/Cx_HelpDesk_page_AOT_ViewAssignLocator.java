@@ -19,7 +19,7 @@ public class Cx_HelpDesk_page_AOT_ViewAssignLocator extends TestBase {
     public WebElement TitleViewAssign;
 
     @FindBy(xpath = "//li[@id='actiononticket']")
-    public WebElement sidebar_textActiononTicket;
+    public WebElement sidebar_textActionOnTicket;
 
     @FindBy(xpath = "(//a[@class='collapse btn btn-circle btn-icon-only btn-default'])[1]")
     public WebElement SatCollapse;
@@ -74,7 +74,7 @@ public class Cx_HelpDesk_page_AOT_ViewAssignLocator extends TestBase {
     public WebElement SelectedRowTN;
 
     @FindBy(xpath = "//input[@value='Cancel']")
-    public WebElement Cancelbtn;
+    public WebElement buttonCancel;
 
     @FindBy(xpath = "(//span[@class='ng-star-inserted'])[1]")
     WebElement EmpPaginationPrevious;
@@ -100,9 +100,9 @@ public class Cx_HelpDesk_page_AOT_ViewAssignLocator extends TestBase {
             genericUtil = new GenericUtil();
             genericUtil.pause(3000);
 
-            wait.until(ExpectedConditions.visibilityOf(sidebar_textActiononTicket));
-            HighlightElement.highlightElement(sidebar_textActiononTicket);
-            sidebar_textActiononTicket.click();
+            wait.until(ExpectedConditions.visibilityOf(sidebar_textActionOnTicket));
+            HighlightElement.highlightElement(sidebar_textActionOnTicket);
+            sidebar_textActionOnTicket.click();
             genericUtil.pause(1000);
 
             HighlightElement.highlightElement(TitleViewAssign);
@@ -146,8 +146,8 @@ public class Cx_HelpDesk_page_AOT_ViewAssignLocator extends TestBase {
             HighlightElement.highlightElement(SelectedRowTN);
             Thread.sleep(2000);
 
-            HighlightElement.highlightElement(Cancelbtn);
-            genericUtil.clickWithPause(Cancelbtn,2000);
+            HighlightElement.highlightElement(buttonCancel);
+            genericUtil.clickWithPause(buttonCancel,2000);
 
         }
         catch (Exception ex){
