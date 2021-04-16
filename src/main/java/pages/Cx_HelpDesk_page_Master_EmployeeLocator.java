@@ -52,6 +52,9 @@ public class Cx_HelpDesk_page_Master_EmployeeLocator extends TestBase {
     @FindBy(xpath = "(//i[@title='Delete Employee'])[1]")
     public WebElement EmpDeleteBtn;
 
+    @FindBy(xpath = "//label[text()='Login Id']/..//input[@formcontrolname='login_Id']")
+    public WebElement EMPUserId; //V3.0
+
     @FindBy(xpath = "//input[@id='fullName']")
     public WebElement EmpEditName;
 
@@ -61,26 +64,32 @@ public class Cx_HelpDesk_page_Master_EmployeeLocator extends TestBase {
     @FindBy(xpath = "(//input[@formcontrolname='emp_No'])[1]")
     public WebElement EmpEditNo;
 
-    @FindBy(xpath = "//select[@id='user_Type']")
+    @FindBy(xpath = "//h4[contains(text(),'Edit Employee User')]//..//..//select[@id='user_Type']") //Added
     public WebElement EmpEditRole;
+
+    @FindBy(xpath = "//input[@formcontrolname='groupName']")
+    public WebElement EmpAttachedTo;
+
+    @FindBy(xpath = "//input[@formcontrolname='groupStatus']")
+    public WebElement EmpGroupStatus;
 
     @FindBy(xpath ="(//label[@class='mt-checkbox mt-checkbox-single mt-checkbox-outline']/span)[1]")
     public WebElement EmpEditStatus;
 
-    @FindBy(xpath = "(//input[@class='btn btn-success'])[3]")
-    public WebElement EmpEditSubmit;
+    @FindBy(xpath = "(//input[@value='Save'])[1]")
+    public WebElement EmpEditSave;//V3.0
 
-    @FindBy(xpath = "(//input[@class='btn btn-success'])[4]")
-    public WebElement EmpEditClear;
+    @FindBy(xpath = "(//input[@value='Clear'])[1]")
+    public WebElement EmpEditClear;//V3.0
 
-    @FindBy(xpath = "(//input[@class='btn btn-success'])[5]")
-    public WebElement EmpEditCancel;
+    @FindBy(xpath = "(//input[@value='Cancel'])[1]")
+    public WebElement EmpEditCancel;//V3.0
 
-    @FindBy(xpath = "(//a[@class='btn btn-success language_btn'])[1]")
-    public WebElement AddNewEmployeeUser;
+    @FindBy(xpath = "//a[contains(text(),'Add New Employee User')]")
+    public WebElement AddNewEmployeeUser;//V3.0
 
-    @FindBy(xpath = "(//a[@class='btn btn-success language_btn'])[2]")
-    public WebElement EmpImport;
+    @FindBy(xpath = "//a[contains(text(),'Import Employee User')]")
+    public WebElement EmpImport;//V3.0
 
     /*--------------Add New Employee ---------------*/
     @FindBy(xpath = "//h4[contains(text(),'Add New Employee User')]")
@@ -89,11 +98,11 @@ public class Cx_HelpDesk_page_Master_EmployeeLocator extends TestBase {
     @FindBy(xpath = "(//input[@class='form-control ng-untouched ng-pristine ng-invalid'])[1]")
     WebElement EmpAddName;
 
-//    @FindBy(xpath = "//input[@class='form-control ng-pristine ng-invalid ng-touched']")
+    //    @FindBy(xpath = "//input[@class='form-control ng-pristine ng-invalid ng-touched']")
     @FindBy(xpath = "(//input[@formcontrolname='email'])[1]")
     WebElement EmpAddEmail;
 
-//    @FindBy(xpath = "//input[@class='form-control ng-dirty ng-invalid ng-touched']")
+    //    @FindBy(xpath = "//input[@class='form-control ng-dirty ng-invalid ng-touched']")
     @FindBy(xpath = "(//input[@formcontrolname='emp_No'])[1]")
     WebElement EmpAddEmpNo;
 
@@ -103,16 +112,16 @@ public class Cx_HelpDesk_page_Master_EmployeeLocator extends TestBase {
     @FindBy(xpath = "(//label[@class='mt-checkbox mt-checkbox-single mt-checkbox-outline']/span)[1]")
     WebElement EmpAddStatus;
 
-//  @FindBy(xpath = "(//input[@class='btn btn-success'])[1]")
+    //  @FindBy(xpath = "(//input[@class='btn btn-success'])[1]")
     //Change xpath in version-2.0
-    @FindBy(xpath = "(//input[@value='Submit'])[1]")
-    WebElement EmpAddSubmit;
+    @FindBy(xpath = "(//input[@value='Save'])[1]")
+    public WebElement EmpAddSave; //V3.0
 
-    @FindBy(xpath = "(//input[@class='btn btn-success'])[2]")
-    WebElement EmpAddClear;
+    @FindBy(xpath = "(//input[@value='Clear'])[1]")
+    public WebElement EmpAddClear;//V3.0
 
-    @FindBy(xpath = "(//input[@class='btn btn-success'])[3]")
-    WebElement EmpAddCancel;
+    @FindBy(xpath = "(//input[@value='Cancel'])[1]")
+    public WebElement EmpAddCancel;//V3.0
 
     @FindBy(xpath = "(//a[@class='ng-star-inserted'])[1]")
     WebElement EmpPaginationPrevious;
@@ -202,8 +211,8 @@ public class Cx_HelpDesk_page_Master_EmployeeLocator extends TestBase {
                 e.printStackTrace();
             }
 
-            HighlightElement.highlightElement(EmpAddSubmit);
-            genericUtil.clickWithPause(EmpAddSubmit,3000);
+            HighlightElement.highlightElement(EmpAddSave);
+            genericUtil.clickWithPause(EmpAddSave,3000); //v3.0
 
             HighlightElement.highlightElement(EmpSearch);
             genericUtil.writeTextWithPause(EmpSearch,searchText,3000); //"EmpTest"
@@ -232,6 +241,9 @@ public class Cx_HelpDesk_page_Master_EmployeeLocator extends TestBase {
             HighlightElement.highlightElement(EmpEditHeader);
             genericUtil.clickWithPause(EmpEditHeader,1000);
 
+            HighlightElement.highlightElement(EMPUserId);
+            genericUtil.clickWithPause(EMPUserId,1000);//V3.0
+
             HighlightElement.highlightElement(EmpEditName);
             genericUtil.writeTextWithPause(EmpEditName,UpdatedEmpName,1000); //"Updated EmpTest"
 
@@ -242,9 +254,16 @@ public class Cx_HelpDesk_page_Master_EmployeeLocator extends TestBase {
             genericUtil.writeTextWithPause(EmpEditNo,UpdatedEmpNo,2000); //"UpdatedEmpTest"
 
             HighlightElement.highlightElement(EmpEditRole);
+            genericUtil.clickWithPause(EmpEditRole,1000);
             Select roleEdit = new Select(EmpEditRole);
             roleEdit.selectByVisibleText(UpdatedEmpRole); //"Admin"
             genericUtil.pause(1000);
+
+            HighlightElement.highlightElement(EmpAttachedTo);
+            genericUtil.clickWithPause(EmpAttachedTo,1000);//V3.0
+
+            HighlightElement.highlightElement(EmpGroupStatus);
+            genericUtil.clickWithPause(EmpGroupStatus,1000);//V3.0
 
             try {
                 objCheckBox = new CheckBox();
@@ -261,8 +280,8 @@ public class Cx_HelpDesk_page_Master_EmployeeLocator extends TestBase {
                 e.printStackTrace();
             }
 
-            HighlightElement.highlightElement(EmpEditSubmit);
-            genericUtil.clickWithPause(EmpEditSubmit,3000);
+            HighlightElement.highlightElement(EmpEditSave);
+            genericUtil.clickWithPause(EmpEditSave,3000); //3.0
 
             HighlightElement.highlightElement(EmpSearch);
             genericUtil.writeTextWithPause(EmpSearch,UpdatedSearchText,3000); //"UpdatedEmpTest"

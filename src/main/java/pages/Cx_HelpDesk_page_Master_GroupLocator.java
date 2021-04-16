@@ -79,31 +79,29 @@ public class Cx_HelpDesk_page_Master_GroupLocator extends TestBase{
     @FindBy(xpath = "//input[@class='form-control ng-pristine ng-valid ng-touched']")
     public WebElement GroupEditName;
 
-
-
     @FindBy(xpath ="(//label[@class='mt-checkbox mt-checkbox-single mt-checkbox-outline']/span)[2]")
     public WebElement GroupEditStatus;
 
-    @FindBy(xpath = "(//input[@class='btn btn-success'])[5]")
-    public WebElement GroupEditSubmit;
+    @FindBy(xpath = "(//input[@value='Save'])[2]")
+    public WebElement GroupEditSave; //v3.0
 
-    @FindBy(xpath = "(//input[@class='btn btn-success'])[6]")
-    public WebElement GroupEditClear;
+    @FindBy(xpath = "(//input[@value='Clear'])[2]")
+    public WebElement GroupEditClear;//v3.0
 
-    @FindBy(xpath = "(//input[@class='btn btn-success'])[7]")
-    public WebElement GroupEditCancel;
+    @FindBy(xpath = "(//input[@value='Cancel'])[2]")
+    public WebElement GroupEditCancel;//v3.0
 
-    @FindBy(xpath = "(//a[@class='btn btn-success language_btn'])[3]")
-    public WebElement GroupAdd;
+    @FindBy(xpath = "//a[contains(text(),'Add New Group')]")
+    public WebElement GroupAdd;//v3.0
 
-    @FindBy(xpath = "(//a[@class='btn btn-success language_btn'])[4]")
-    public WebElement GroupImport;
+    @FindBy(xpath = "//a[contains(text(),'Import Groups')]")
+    public WebElement GroupImport;//v3.0
 
     @FindBy(xpath = "//h3[contains(text(),'Are you sure! You want to Delete this Group?')]")
     public WebElement DeleteGroupMessage;
 
-    @FindBy(xpath = "(//button[@class='btn btn-lg btn-success'])[2]")
-    public WebElement YesOptionDeleteGroupMessage;
+    @FindBy(xpath = "(//button[@class='btn btn-lg btn-success'])[4]")
+    public WebElement YesOptionDeleteGroupMessage;//V3.0
 
     @FindBy(xpath = "//input[@id='Name']")
     public WebElement GroupAddName;
@@ -123,14 +121,14 @@ public class Cx_HelpDesk_page_Master_GroupLocator extends TestBase{
     @FindBy(xpath = "(//label[@class='mt-checkbox mt-checkbox-single mt-checkbox-outline']/span)[2]")
     public WebElement GroupAddStatus;
 
-    @FindBy(xpath = "(//input[@class='btn btn-success'])[7]")
-    public WebElement GroupAddSubmit;
+    @FindBy(xpath = "(//input[@value='Save'])[2]")
+    public WebElement GroupAddSave; //v3.0
 
-    @FindBy(xpath = "(//input[@class='btn btn-success'])[8]")
-    public WebElement GroupAddClear;
+    @FindBy(xpath = "(//input[@value='Clear'])[2]")
+    public WebElement GroupAddClear;//v3.0
 
-    @FindBy(xpath = "(//input[@class='btn btn-success'])[9]")
-    public WebElement GroupAddCancel;
+    @FindBy(xpath = "(//input[@value='Cancel'])[2]")
+    public WebElement GroupAddCancel;//v3.0
 
     @FindBy(xpath = "(//a[@class='ng-star-inserted'])[8]")
     public WebElement GroupPaginationPrevious;
@@ -141,14 +139,11 @@ public class Cx_HelpDesk_page_Master_GroupLocator extends TestBase{
     @FindBy(xpath = "(//a[@class='ng-star-inserted'])[10]")
     public WebElement GroupPaginationNo ;
 
-
-    @FindBy(xpath = "(//h4[@class='modal-title'])[9]")
+    @FindBy(xpath = "//h4[contains(text(),'You have successfully deleted the selected Group')]")
     WebElement SuccessMsgGroupDelete;
 
     @FindBy(xpath = "(//button[@class='btn white btn-outline'])[2]")
     WebElement CloseBtnSuccessGroupDelete;
-
-
 
 
     public Cx_HelpDesk_page_Master_GroupLocator(WebDriver driver) {
@@ -176,7 +171,7 @@ public class Cx_HelpDesk_page_Master_GroupLocator extends TestBase{
             genericUtil.pause(1000);
 
             HighlightElement.highlightElement(GroupAdd);
-            genericUtil.clickWithPause(GroupAdd,3000);
+            genericUtil.clickWithPause(GroupAdd,3000);//v3.0
 
             HighlightElement.highlightElement(GroupAddName);
             genericUtil.writeTextWithPause(GroupAddName,GroupName,2000); //"Group Test"
@@ -205,8 +200,8 @@ public class Cx_HelpDesk_page_Master_GroupLocator extends TestBase{
                 e.printStackTrace();
             }
 
-            HighlightElement.highlightElement(GroupAddSubmit);
-            genericUtil.clickWithPause(GroupAddSubmit,3000);
+            HighlightElement.highlightElement(GroupAddSave);
+            genericUtil.clickWithPause(GroupAddSave,3000);//v3.0
 
             HighlightElement.highlightElement(GroupSearch);
             genericUtil.writeTextWithPause(GroupSearch,searchText,3000); //"Group Test"
@@ -244,8 +239,8 @@ public class Cx_HelpDesk_page_Master_GroupLocator extends TestBase{
             HighlightElement.highlightElement(downArrowAttachedUser);
             genericUtil.clickWithPause(downArrowAttachedUser,1000);
 
-            HighlightElement.highlightElement(GroupAddSubmit);
-            genericUtil.clickWithPause(GroupAddSubmit,3000);
+            HighlightElement.highlightElement(GroupEditSave);
+            genericUtil.clickWithPause(GroupEditSave,3000);//v3.0
 
             HighlightElement.highlightElement(GroupSearch);
             GroupSearch.clear();
@@ -273,8 +268,8 @@ public class Cx_HelpDesk_page_Master_GroupLocator extends TestBase{
             HighlightElement.highlightElement(DeSelectedAllAttachedUser);
             genericUtil.clickWithPause(DeSelectedAllAttachedUser,2000);
 
-            HighlightElement.highlightElement(GroupAddSubmit);
-            genericUtil.clickWithPause(GroupAddSubmit,3000);
+            HighlightElement.highlightElement(GroupEditSave);
+            genericUtil.clickWithPause(GroupEditSave,3000); //v3.0
 
             HighlightElement.highlightElement(GroupSearch);
             GroupSearch.clear();
