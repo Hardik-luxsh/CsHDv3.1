@@ -15,13 +15,13 @@ public class CxHelpDesk_Master_CustomerPageTests extends TestBase {
     Cx_HelpDesk_page_LoginLocator objLoginPage;
     Cx_HelpDesk_page_Master_CustomerLocator objMasterCustomerLocator;
 
-//    @BeforeTest
-//    public void initialBrowserDriver() {
-//        driver = TestBase.testBase();
-//
-//        objLoginPage = new Cx_HelpDesk_page_LoginLocator(driver);
-//        objLoginPage.validateLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
-//    }
+    @BeforeTest
+    public void initialBrowserDriver() {
+        driver = TestBase.testBase();
+
+        objLoginPage = new Cx_HelpDesk_page_LoginLocator(driver);
+        objLoginPage.validateLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
+    }
 
     @Test(priority = 1)
     public void createCustomer(){

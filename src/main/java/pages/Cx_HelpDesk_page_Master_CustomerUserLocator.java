@@ -39,20 +39,20 @@ public class Cx_HelpDesk_page_Master_CustomerUserLocator extends TestBase {
     @FindBy(xpath = "//span[text()=' Customer User Master ']")
     WebElement TitleCustomerUser;
 
-    @FindBy(xpath = "(//a[@class='collapse btn btn-circle btn-icon-only btn-default'])[4]")
-    WebElement CustomerUserCollapse;
+    @FindBy(xpath = "(//a[@class='collapse btn btn-circle btn-icon-only btn-default'])[5]")
+    WebElement CustomerUserCollapse; //V 3.0
 
-    @FindBy(xpath = "(//a[@class='btn btn-circle btn-icon-only btn-default fullscreen'])[4]")
-    WebElement FullScreen;
+    @FindBy(xpath = "(//a[@class='btn btn-circle btn-icon-only btn-default fullscreen'])[5]")
+    WebElement FullScreen; //V 3.0
 
-    @FindBy(xpath ="(//select[@class='fontColor'])[4]")
-    WebElement List;
+    @FindBy(xpath ="(//select[@class='fontColor'])[5]")
+    WebElement List; //V 3.0
 
-    @FindBy(xpath = "(//input[@class='fontColor'])[4]")
-    WebElement Search;
+    @FindBy(xpath = "(//input[@class='fontColor'])[5]")
+    WebElement Search; //V 3.0
 
-    @FindBy(xpath = "(//div/table/tbody/tr[1])[31]")
-    WebElement Data;
+    @FindBy(xpath = "(//div/table[@id='tblCustomer']/tbody/tr[1])[11]")
+    WebElement Data; //V 3.0
 
     /*--------------Edit---------------*/
     @FindBy(xpath = "//h4[contains(text(),'Edit Customer User')]")
@@ -66,7 +66,6 @@ public class Cx_HelpDesk_page_Master_CustomerUserLocator extends TestBase {
 
     @FindBy(xpath = "(//li[@class='pure-checkbox ng-star-inserted'])[2]")
     WebElement EditCustomerName;
-
 
     @FindBy(xpath = "(//span[@class='c-angle-down ng-star-inserted'])[2]")
     WebElement EditCustomerNameDD;
@@ -89,26 +88,27 @@ public class Cx_HelpDesk_page_Master_CustomerUserLocator extends TestBase {
     @FindBy(xpath ="//input[@formcontrolname='designation']")
     WebElement EditDesignation;
 
-    @FindBy(xpath = "(//select[@formcontrolname=\"user_Type\" and @class=\"form-control ng-pristine ng-valid ng-touched\"])")
+    @FindBy(xpath = "//h4[contains(text(),'Edit Customer User')]/../..//select[@formcontrolname='user_Type']")
     WebElement EditRole;
 
     @FindBy(xpath = "(//label[@class='mt-checkbox mt-checkbox-single mt-checkbox-outline']/span)[4]")
     WebElement EditStatus;
 
-    @FindBy(xpath = "(//input[@class='btn btn-success'])[15]")
-    WebElement EditSubmit;
+//    @FindBy(xpath = "//h4[contains(text(),'Edit Customer User')]/../..//input[@value='Save']")
+    @FindBy(xpath = "//h4[contains(text(),'Edit Customer User')]/../..//div[@class='form-group text-center']/..//input[@type='button' and @value='Save']")
+    WebElement EditSave; //V 3.0
 
-    @FindBy(xpath = "(//input[@class='btn btn-success'])[16]")
-    WebElement EditClear;
+    @FindBy(xpath = "//h4[contains(text(),'Edit Customer User')]/../..//input[@value='Clear']")
+    WebElement EditClear; //V 3.0
 
-    @FindBy(xpath = "(//input[@class='btn btn-success'])[17]")
-    WebElement EditCancel;
+    @FindBy(xpath = "//h4[contains(text(),'Edit Customer User')]/../..//input[@value='Cancel']")
+    WebElement EditCancel; //V 3.0
 
-    @FindBy(xpath = "(//a[@class='btn btn-success language_btn'])[7]")
-    WebElement AddNewCustomerUser;
+    @FindBy(xpath = "//a[contains(text(),'Add New Customer User')]")
+    WebElement AddNewCustomerUser; // V 3.0
 
-    @FindBy(xpath = "(//a[@class='btn btn-success language_btn'])[8]")
-    WebElement ImportCustomer;
+    @FindBy(xpath = "//a[contains(text(),'Import Customer User')]")
+    WebElement ImportCustomer; //V 3.0
 
     /*--------------Add New CustomerUser ---------------*/
     @FindBy(xpath = "(//div[@class='selected-list'])[2]")
@@ -117,21 +117,21 @@ public class Cx_HelpDesk_page_Master_CustomerUserLocator extends TestBase {
     @FindBy(xpath = "(//li[@class='pure-checkbox ng-star-inserted'])[3]")
     WebElement CustomerName;
 
- //   @FindBy(xpath = "//input[@class=\"c-input ng-pristine ng-valid ng-star-inserted ng-touched\"]")
+    //   @FindBy(xpath = "//input[@class=\"c-input ng-pristine ng-valid ng-star-inserted ng-touched\"]")
     //  WebElement SearchCustomerName;
 
     @FindBy(xpath = "(//input[@id='login_Id'])")
     WebElement AddUserName;
 
- //  @FindBy(xpath = "//input[@class='form-control ng-pristine ng-invalid ng-touched']")
+    //  @FindBy(xpath = "//input[@class='form-control ng-pristine ng-invalid ng-touched']")
     @FindBy(xpath = "(//input[@formcontrolname=\"emp_No\"])[2]")
     WebElement AddUserID;
 
-//    @FindBy(xpath ="(//input[@class='form-control ng-pristine ng-valid ng-touched'])[1]")
+    //    @FindBy(xpath ="(//input[@class='form-control ng-pristine ng-valid ng-touched'])[1]")
     @FindBy(xpath = "//input[@formcontrolname=\"department\" and @class=\"form-control ng-untouched ng-pristine ng-valid\"]")
     WebElement AddDepartment;
 
-//    @FindBy(xpath ="(//input[@class='form-control ng-pristine ng-valid ng-touched'])[2]")
+    //    @FindBy(xpath ="(//input[@class='form-control ng-pristine ng-valid ng-touched'])[2]")
     @FindBy(xpath = "//input[@formcontrolname=\"designation\" and @class=\"form-control ng-untouched ng-pristine ng-valid\"]")
     WebElement AddDesignation;
 
@@ -143,22 +143,22 @@ public class Cx_HelpDesk_page_Master_CustomerUserLocator extends TestBase {
     @FindBy(xpath ="(//input[@type=\"password\"])[2]")
     WebElement ConfirmPassword;
 
-//    @FindBy(xpath ="(//select[@class='form-control ng-dirty ng-valid ng-touched'])[3]")
+    //    @FindBy(xpath ="(//select[@class='form-control ng-dirty ng-valid ng-touched'])[3]")
     @FindBy(xpath ="(//select[@formcontrolname=\"user_Type\" and @class=\"form-control ng-untouched ng-pristine ng-invalid\"])[2]")
     WebElement AddRole;
 
     @FindBy(xpath = "(//label[@class='mt-checkbox mt-checkbox-single mt-checkbox-outline']/span)[4]")
     WebElement CustomerUserStatus;
 
-//    @FindBy(xpath = "(//input[@class='btn btn-success'])[13]")
-    @FindBy(xpath = "//input[@class='btn btn-success' and @type='button' and @tabindex ='109']")
-    WebElement AddSubmit;
+    //    @FindBy(xpath = "(//input[@class='btn btn-success'])[13]")
+    @FindBy(xpath = "//h4[contains(text(),'Add New Customer User')]/../..//input[@value='Save']")
+    WebElement AddSave; //V 3.0
 
-    @FindBy(xpath = "(//input[@class='btn btn-success'])[14]")
-    WebElement AddClear;
+    @FindBy(xpath = "//h4[contains(text(),'Add New Customer User')]/../..//input[@value='Clear']")
+    WebElement AddClear; //V 3.0
 
-    @FindBy(xpath = "(//input[@class='btn btn-success'])[15]")
-    WebElement AddCancel;
+    @FindBy(xpath = "//h4[contains(text(),'Add New Customer User')]/../..//input[@value='Cancel']")
+    WebElement AddCancel; //V 3.0
 
     @FindBy(xpath = "(//a[@class='ng-star-inserted'])[15]")
     WebElement CustomerUserPaginationPrevious;
@@ -169,8 +169,20 @@ public class Cx_HelpDesk_page_Master_CustomerUserLocator extends TestBase {
     @FindBy(xpath = "(//a[@class='ng-star-inserted'])[16]")
     WebElement CustomerUserPaginationNo ;
 
-    @FindBy(xpath = "(//input[@class='fontColor'])[4]")
-    public WebElement search;
+    @FindBy(xpath = "(//input[@class='fontColor'])[5]")
+    public WebElement search; //V 3.0
+
+    @FindBy(xpath = "//h3[contains(text(),'Are you sure! You want to delete this Customer User?')]")
+    public WebElement DeleteCustomerUserMessage; //V 3.0
+
+    @FindBy(xpath = "(//button[@class='btn btn-lg btn-success'])[16]")
+    public WebElement YesOptionDeleteCustomerUserMessage;//V 3.0
+
+    @FindBy(xpath = "//h4[contains(text(),'You have successfully deleted the selected Customer User.')]")
+    public WebElement CloseBtnSuccessMsgDelete; //V 3.0
+
+    @FindBy(xpath = "(//button[@class='btn white btn-outline'])[4]")
+    public WebElement CloseBtnSuccessDelete; //V 3.0
 
     /** TESTCASE METHOD: CREATE CUSTOMER USER
      * @param Username
@@ -181,8 +193,8 @@ public class Cx_HelpDesk_page_Master_CustomerUserLocator extends TestBase {
      * @param Designation
      * @param Role
      */
-    public void createCustomerUser(String Username, String UserID, String strPassword, String strConfirmPassword,
-                                   String Department, String Designation ,String Role, String searchText){
+    public void createCustomerUser(String Username, String UserID,String Department, String Designation ,String Role, String strPassword, String strConfirmPassword,
+                                   String searchText){ // V 3.0
         try {
             genericUtil = new GenericUtil();
 
@@ -204,18 +216,20 @@ public class Cx_HelpDesk_page_Master_CustomerUserLocator extends TestBase {
             genericUtil.click(AddCustomerName);
             genericUtil.pause(1000);
 
-            HighlightElement.highlightElement(CustomerName);
+            HighlightElement.highlightElement(CustomerName); //V 3.0
             genericUtil.click(CustomerName);
-
             genericUtil.pause(1000);
 
+            HighlightElement.highlightElement(AddUserName); //V 3.0
             genericUtil.writeTextWithPause(AddUserName,Username,2000);
 
+            HighlightElement.highlightElement(AddUserID); //V 3.0
             genericUtil.writeTextWithPause(AddUserID,UserID,2000);
 
-            genericUtil.writeTextWithPause(Password,strPassword,2000);
-            genericUtil.writeTextWithPause(ConfirmPassword,strConfirmPassword,2000);
+            HighlightElement.highlightElement(AddDepartment); //V 3.0
             genericUtil.writeTextWithPause(AddDepartment,Department,2000);
+
+            HighlightElement.highlightElement(AddDesignation); //V 3.0
             genericUtil.writeTextWithPause(AddDesignation,Designation,2000);
 
             HighlightElement.highlightElement(AddRole);
@@ -223,7 +237,14 @@ public class Cx_HelpDesk_page_Master_CustomerUserLocator extends TestBase {
             role.selectByVisibleText(Role); //"Admin"
             genericUtil.pause(1000);
 
-        try {
+            HighlightElement.highlightElement(Password); //V 3.0
+            genericUtil.writeTextWithPause(Password,strPassword,2000);
+
+            HighlightElement.highlightElement(ConfirmPassword); //V 3.0
+            genericUtil.writeTextWithPause(ConfirmPassword,strConfirmPassword,2000);
+
+
+            try {
                 objCheckBox = new CheckBox();
                 HighlightElement.highlightElement(CustomerUserStatus);
                 objCheckBox.Select_The_Checkbox(CustomerUserStatus);
@@ -238,8 +259,8 @@ public class Cx_HelpDesk_page_Master_CustomerUserLocator extends TestBase {
                 e.printStackTrace();
             }
 
-            HighlightElement.highlightElement(AddSubmit);
-            genericUtil.clickWithPause(AddSubmit,3000);
+            HighlightElement.highlightElement(AddSave);
+            genericUtil.clickWithPause(AddSave,3000); //V 3.0
 
             HighlightElement.highlightElement(search);
             genericUtil.writeTextWithPause(search,searchText,3000);
@@ -258,46 +279,48 @@ public class Cx_HelpDesk_page_Master_CustomerUserLocator extends TestBase {
      *     @param UpdatedDepartment
      *     @param UpdatedDesignation
      *     @param UpdatedRole
-     *
+     *     @param UpdatedRole
      */
-    public void editCustomerUser(String UpdatedUsername, String UpdatedUserID, String UpdatedstrPassword, String UpdatedstrConfirmPassword,
-                             String UpdatedDepartment, String UpdatedDesignation ,String UpdatedRole, String UpdatedsearchText){
+    public void editCustomerUser(String UpdatedUsername, String UpdatedUserID,String UpdatedDepartment, String UpdatedDesignation ,String UpdatedRole, String UpdatedstrPassword, String UpdatedstrConfirmPassword,
+                                 String UpdatedsearchText){ // V 3.0
 
         try {
             genericUtil = new GenericUtil();
             genericUtil.pause(1000);
-//            wait.until(ExpectedConditions.visibilityOf(sidebar_textMaster));
-//            HighlightElement.highlightElement(sidebar_textMaster);
-//            sidebar_textMaster.click();
-//            genericUtil.pause(2000);
-//
-//            HighlightElement.highlightElement(TitleCustomerUser);
-//            genericUtil.pause(1000);
-//
-//            HighlightElement.highlightElement(CustomerUserCollapse);
-//            genericUtil.clickWithPause(CustomerUserCollapse,1000);
-
-
+            wait.until(ExpectedConditions.visibilityOf(EditBtn));
+            HighlightElement.highlightElement(EditBtn);
+            EditBtn.click();
+            genericUtil.pause(2000);
 
             HighlightElement.highlightElement(EditBtn);
             genericUtil.clickWithPause(EditBtn,3000);
 
+            wait.until(ExpectedConditions.visibilityOf(EmpCustHeader));
             HighlightElement.highlightElement(EmpCustHeader);
             genericUtil.pause(1000);
-//            genericUtil.clickWithPause(EmpCustHeader,1000);
 
-
-
-
+            HighlightElement.highlightElement(EditUserName); //V 3.0
             genericUtil.writeTextWithPause(EditUserName,UpdatedUsername,2000);
 
+            HighlightElement.highlightElement(EditUserID); //V 3.0
             genericUtil.writeTextWithPause(EditUserID,UpdatedUserID,2000);
 
-            genericUtil.writeTextWithPause(EditPassword,UpdatedstrPassword,2000);
-            genericUtil.writeTextWithPause(EditConfirmPassword,UpdatedstrConfirmPassword,2000);
+            HighlightElement.highlightElement(EditDepartment); //V 3.0
             genericUtil.writeTextWithPause(EditDepartment,UpdatedDepartment,2000);
+
+            HighlightElement.highlightElement(EditDesignation); //V 3.0
             genericUtil.writeTextWithPause(EditDesignation,UpdatedDesignation,2000);
 
+            HighlightElement.highlightElement(EditRole);
+            Select role = new Select(EditRole);
+            role.selectByVisibleText(UpdatedRole); //"User"
+            genericUtil.pause(1000); //V 3.0
+
+            HighlightElement.highlightElement(EditPassword); //V 3.0
+            genericUtil.writeTextWithPause(EditPassword,UpdatedstrPassword,2000);
+
+            HighlightElement.highlightElement(EditConfirmPassword); //V 3.0
+            genericUtil.writeTextWithPause(EditConfirmPassword,UpdatedstrConfirmPassword,2000);
 
             try {
                 objCheckBox = new CheckBox();
@@ -314,15 +337,40 @@ public class Cx_HelpDesk_page_Master_CustomerUserLocator extends TestBase {
                 e.printStackTrace();
             }
 
-            HighlightElement.highlightElement(EditSubmit);
-            genericUtil.clickWithPause(EditSubmit,3000);
+            HighlightElement.highlightElement(EditSave);
+            genericUtil.clickWithPause(EditSave,3000); //V 3.0
 
             HighlightElement.highlightElement(search);
             genericUtil.writeTextWithPause(search,UpdatedsearchText,1000);
-
-
         }
         catch (Exception ex){
+            ex.getStackTrace();
+        }
+    }
+
+    /**
+     * @param searchText
+     */
+    public void deleteCustomerUser(String searchText){
+        try {
+            genericUtil = new GenericUtil();
+            HighlightElement.highlightElement(DeleteBtn);
+            genericUtil.clickWithPause(DeleteBtn, 3000);
+
+            HighlightElement.highlightElement(DeleteCustomerUserMessage);
+
+            HighlightElement.highlightElement(YesOptionDeleteCustomerUserMessage);
+            genericUtil.clickWithPause(YesOptionDeleteCustomerUserMessage, 3000);
+            HighlightElement.highlightElement(CloseBtnSuccessMsgDelete);
+            genericUtil.clickWithPause(CloseBtnSuccessMsgDelete,3000);
+
+            HighlightElement.highlightElement(CloseBtnSuccessDelete);
+            genericUtil.clickWithPause(CloseBtnSuccessDelete,3000);
+
+            HighlightElement.highlightElement(Search);
+            Search.clear();
+            genericUtil.writeTextWithPause(Search, searchText, 3000); //"Group Test"
+        }catch (Exception ex){
             ex.getStackTrace();
         }
     }

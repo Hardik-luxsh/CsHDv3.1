@@ -54,7 +54,6 @@ public class Cx_HelpDesk_page_AOT_EditTicketLocator extends TestBase {
     @FindBy(xpath = "//button[contains(text(),'Clear Filters')]")
     public WebElement STClearbtn;
 
-
     @FindBy(xpath = "//a[contains(text(),'Ticket 159')]")
     public WebElement Ticket;
 
@@ -234,7 +233,7 @@ public class Cx_HelpDesk_page_AOT_EditTicketLocator extends TestBase {
             genericUtil.clickWithPause(ETDTitle, 2000);
 
             HighlightElement.highlightElement(ETDState);
-            //           genericUtil.clickWithPause(ETDState,1000);
+            //genericUtil.clickWithPause(ETDState,1000);
 //            genericUtil.writeTextWithPause(ETstate,strState,1000);
 //            Select selectState = new Select(ETstate);
 //            selectState.selectByVisibleText(strState);
@@ -261,6 +260,7 @@ public class Cx_HelpDesk_page_AOT_EditTicketLocator extends TestBase {
 
 //            HighlightElement.highlightElement(ETDPopupNo);
 //            genericUtil.clickWithPause(ETDPopupNo,1000);
+
             HighlightElement.highlightElement(ETDPopupYes);
             genericUtil.clickWithPause(ETDPopupYes, 1000);
 

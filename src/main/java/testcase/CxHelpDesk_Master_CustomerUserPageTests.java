@@ -16,21 +16,21 @@ public class CxHelpDesk_Master_CustomerUserPageTests extends TestBase {
     Cx_HelpDesk_page_LoginLocator objLoginPage;
     Cx_HelpDesk_page_Master_CustomerUserLocator objMasterCustomerUserLocator;
 
-//    @BeforeTest
-//    public void initialBrowserDriver() {
-//        driver = TestBase.testBase();
-//
-//        objLoginPage = new Cx_HelpDesk_page_LoginLocator(driver);
-//        objLoginPage.validateLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
-//    }
+    @BeforeTest
+    public void initialBrowserDriver() {
+        driver = TestBase.testBase();
+
+        objLoginPage = new Cx_HelpDesk_page_LoginLocator(driver);
+        objLoginPage.validateLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
+    }
 
     @Test(priority = 1)
     public void createCustomerUser(){
         try {
             objMasterCustomerUserLocator = new Cx_HelpDesk_page_Master_CustomerUserLocator(driver);
-            objMasterCustomerUserLocator.createCustomerUser("TestCustomer",
-            "TestCust14", "12345678","12345678","Test Department",
-            "Test Designation","Admin","TestCust14");
+            objMasterCustomerUserLocator.createCustomerUser("TestCustomer" + Constants.date.getTime(),
+            "TestCust" + Constants.date.getTime(), "Test Department","Test Designation","Admin",
+            "12345678","12345678","TestCustomer");
         }
         catch (Exception ex){
             ex.printStackTrace();
@@ -41,16 +41,25 @@ public class CxHelpDesk_Master_CustomerUserPageTests extends TestBase {
     public void editCustomerUser(){
         try {
             objMasterCustomerUserLocator = new Cx_HelpDesk_page_Master_CustomerUserLocator(driver);
-            objMasterCustomerUserLocator.editCustomerUser("UpdatedTestCustomer",
-                    "TestCust15", "87654321","87654321","UpdatedTest Department",
-                    "UpdatedTest Designation","User","TestCust14");
+            objMasterCustomerUserLocator.editCustomerUser("UpdatedTestCustomer" + Constants.date.getTime(),
+                    "TestCust" + Constants.date.getTime(), "UpdatedTest Department","UpdatedTest Designation","User",
+                    "11112222","11112222","User");
         }
         catch (Exception ex){
             ex.printStackTrace();
         }
     }
 
-
+    @Test(priority = 3)
+    public void deleteCustomerUser(){
+        try {
+            objMasterCustomerUserLocator = new Cx_HelpDesk_page_Master_CustomerUserLocator(driver);
+            objMasterCustomerUserLocator.deleteCustomerUser("UpdatedTestCustomer" + Constants.date.getTime());
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }
 
     @AfterMethod
     public void captureScreenShot(ITestResult result){
