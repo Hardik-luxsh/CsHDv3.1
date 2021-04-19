@@ -243,7 +243,6 @@ public class Cx_HelpDesk_page_Master_CustomerUserLocator extends TestBase {
             HighlightElement.highlightElement(ConfirmPassword); //V 3.0
             genericUtil.writeTextWithPause(ConfirmPassword,strConfirmPassword,2000);
 
-
             try {
                 objCheckBox = new CheckBox();
                 HighlightElement.highlightElement(CustomerUserStatus);
