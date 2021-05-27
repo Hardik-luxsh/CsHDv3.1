@@ -11,7 +11,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
@@ -292,7 +291,7 @@ public class Cx_HelpDesk_page_CreateMissingTicketLocator extends TestBase {
 
             /*------------------File Upload Logic------------------------------------*/
             // Specify the file location with extension
-            StringSelection sel = new StringSelection(Constants.FILEUPLOADPATH);
+            StringSelection sel = new StringSelection(Constants.FILE_UPLOAD_PATH);
 
             // Copy to clipboard
             Toolkit.getDefaultToolkit().getSystemClipboard().setContents(sel,null);

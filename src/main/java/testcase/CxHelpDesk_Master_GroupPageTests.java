@@ -8,6 +8,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.Cx_HelpDesk_page_LoginLocator;
+import pages.Cx_HelpDesk_page_Master_EmployeeLocator;
 import pages.Cx_HelpDesk_page_Master_GroupLocator;
 
 public class CxHelpDesk_Master_GroupPageTests extends TestBase {
@@ -15,13 +16,13 @@ public class CxHelpDesk_Master_GroupPageTests extends TestBase {
     Cx_HelpDesk_page_LoginLocator objLoginPage;
     Cx_HelpDesk_page_Master_GroupLocator objMasterGroupLocator;
 
-    @BeforeTest
-    public void initialBrowserDriver() {
-        driver = TestBase.testBase();
-
-        objLoginPage = new Cx_HelpDesk_page_LoginLocator(driver);
-        objLoginPage.validateLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
-    }
+//    @BeforeTest
+//    public void initialBrowserDriver() {
+//        driver = TestBase.testBase();
+//
+//        objLoginPage = new Cx_HelpDesk_page_LoginLocator(driver);
+//        objLoginPage.validateLogin(Constants.MANAGERUSERNAME, Constants.VALIDPASSWORD);
+//    }
 
     @Test(priority = 1)
     public void createGroup(){
@@ -50,6 +51,17 @@ public class CxHelpDesk_Master_GroupPageTests extends TestBase {
         try {
             objMasterGroupLocator = new Cx_HelpDesk_page_Master_GroupLocator(driver);
             objMasterGroupLocator.deleteGroup("Updated Group Name","Updated Group Name");
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }
+
+    @Test(priority = 4)
+    public void importGroup(){
+        try {
+            objMasterGroupLocator = new Cx_HelpDesk_page_Master_GroupLocator(driver);
+            objMasterGroupLocator.importGroup();
         }
         catch (Exception ex){
             ex.printStackTrace();

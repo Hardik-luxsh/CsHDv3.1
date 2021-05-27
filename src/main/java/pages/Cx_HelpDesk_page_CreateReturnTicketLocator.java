@@ -47,8 +47,24 @@ public class Cx_HelpDesk_page_CreateReturnTicketLocator extends TestBase {
     @FindBy(xpath = "//a[contains(text(),'Received Call')]")
     public WebElement channel_ReceivedCall;
 
-    @FindBy(xpath = "//select[@id='selectBox']")
-    public WebElement customer; //EmpCust
+    @FindBy(xpath = "//select[@id='selectBox']") //Changes in v3.1 on 27-May-2021
+    public WebElement Site;
+
+    @FindBy(xpath = "//input[@formcontrolname=\"AccountNumber\"]") //Changes in v3.1 on 27-May-2021
+    public WebElement AccountNoAutoSuggestion;
+
+    @FindBy(xpath = "//strong[normalize-space()='Ankur Bhavsar']") //Changes in v3.1 on 27-May-2021
+    public WebElement AccountNo_S1032;
+
+//    @FindBy(xpath = "//select[@id='selectBox']") //Existing in v2.0
+    @FindBy(xpath = "//input[@formcontrolname='name']") //Changes in v3.1 on 27-May-2021
+    public WebElement customer;
+
+    @FindBy(xpath = "//input[@placeholder='Enter Address']") //Changes in v3.1 on 27-May-2021
+    public WebElement Address;
+
+    @FindBy(xpath = "//input[@placeholder='Enter Contact No.']") //Changes in v3.1 on 27-May-2021
+    public WebElement ContactNo;
 
     @FindBy(xpath = "//span[contains(text(),'Create New Ticket')]")
     public WebElement titleCreateTicket;
@@ -56,32 +72,36 @@ public class Cx_HelpDesk_page_CreateReturnTicketLocator extends TestBase {
     @FindBy(xpath = "//select[@id='createTicketTitle']")
     public WebElement ticketType; //Returns
 
-    @FindBy(xpath = "//input[@formcontrolname='Description']")
+    @FindBy(xpath = "//select[@formcontrolname='Priority']")
+    public WebElement priority;
+
+    @FindBy(xpath = "//input[@class='form-control ng-pristine ng-invalid ng-touched']") //Changes in v3.1 on 27-May-2021
     public WebElement description;
 
-    @FindBy(xpath = "//label[contains(text(),'Owner')]/..//input[@class='form-control']")
-    public WebElement labelOwner;
+//    @FindBy(xpath = "//label[contains(text(),'Owner')]/..//input[@class='form-control']")
+    @FindBy(xpath = "//input[@formcontrolname='Owner']") //Changes in v3.1 on 27-May-2021
+    public WebElement Owner;
 
     @FindBy(xpath = "//select[@formcontrolname='Status']")
     public WebElement state;
 
-    @FindBy(xpath = "//select[@formcontrolname='Priority']")
-    public WebElement priority;
-
     @FindBy(xpath = "//input[@formcontrolname='Tags']")
     public WebElement tag;
 
+//    //div[@class='form-control uneditable-input input-fixed input-small fileUPload'] //v3.1
 //    @FindBy(xpath = "//input[@type=\"file\"]")
     @FindBy(xpath = "//div[@class=\"input-group input-small\"]//div")
     public WebElement file;
 
     @FindBy(xpath = "//input[@formcontrolname=\"Comment\"]")
-    public WebElement agentComment;
+    public WebElement CustomerComment;
 
 //    @FindBy(xpath = "(//input[@class='btn btn-success'])[1]")
-    @FindBy(xpath = "//span[contains(text(),' Create New Ticket ')]/../../..//input[@value=\"Submit\"]")
-    public WebElement buttonSubmit;
+//    @FindBy(xpath = "//span[contains(text(),' Create New Ticket ')]/../../..//input[@value=\"Submit\"]")
+    @FindBy(xpath = "//form[@class='ng-invalid ng-dirty ng-touched']//input[@value='Save']") //Changes in v3.1 on 27-May-2021
+    public WebElement buttonSave;
 
+    //-------
     @FindBy(xpath = "//h4[contains(text(),'Confirm Ticket Creation!')]")
     public WebElement titleConfirmTicket;
 
@@ -111,76 +131,137 @@ public class Cx_HelpDesk_page_CreateReturnTicketLocator extends TestBase {
 
     /*-----------------Return Pop-Up window----------------*/
 
-    @FindBy(xpath = "(//div[@class=\"modal-content\"])[4]")
-    public WebElement popupReturn;
+    @FindBy(xpath = "//div[@id='returnsPopUp']//h4[@class='modal-title'][normalize-space()='Returns']") //Changes in v3.1 on 27-May-2021
+    public WebElement popupTitleReturn;
 
-    @FindBy(xpath = "//select[@id='returninvoiceno']")
-    public WebElement Invoice;
+//    @FindBy(xpath = "(//div[@class=\"modal-content\"])[4]")
+//    public WebElement popupReturn;
 
-    @FindBy(xpath = "(//label[contains(text(),'Invoice No')])[3]/..//input")
-    public WebElement InvoiceNo;
+//    @FindBy(xpath = "//select[@id='returninvoiceno']")
+    @FindBy(xpath = "//form[@class='ng-untouched ng-pristine ng-valid']//div[@class='col-md-6']//div[@class='c-btn']") //Changes in v3.1 on 27-May-2021
+    public WebElement InvoiceDropdown;
 
-    @FindBy(xpath = "(//label[contains(text(),'Invoice Date')])[2]/..//input")
-    public WebElement InvoiceDate;
+    @FindBy(xpath = "//input[@class='c-input ng-pristine ng-valid ng-star-inserted ng-touched']") //Changes in v3.1 on 27-May-2021
+    public WebElement SearchInvoice;
 
-    @FindBy(xpath ="(//label[contains(text(),'Order No')])[1]/..//input")
-    public WebElement OrderNo;
+    @FindBy(xpath = "//label[normalize-space()='980100123']") //Changes in v3.1 on 27-May-2021
+    public WebElement InvoiceNo_980100123;
 
-    @FindBy(xpath = "(//label[contains(text(),'A/C (Account Number)')])[1]/..//input")
-    public WebElement AccountNo;
+    @FindBy(xpath = "//form[@class='ng-untouched ng-pristine ng-valid']//div[@class='col-md-6 margin-top-20']//input[@value='Proceed']") //Changes in v3.1 on 27-May-2021
+    public WebElement ProceedButton;
 
-    @FindBy(xpath = "(//label[contains(text(),'Net Amount')])[2]/..//input")
-    public WebElement NetAmount;
+    @FindBy(xpath = "//form[@class='ng-untouched ng-pristine ng-valid']//div[@class='col-md-6 margin-top-20']//input[@value='Back']") //Changes in v3.1 on 27-May-2021
+    public WebElement BackButton;
 
-    @FindBy(xpath = "(//input[@value='Full Invoice'])[1]")
-    public WebElement FullInvoicebtn;
+//    @FindBy(xpath = "(//input[@value='Full Invoice'])[1]")
+    @FindBy(xpath = "//div[@class='form-group text-right']//button[@type='button'][normalize-space()='View Full Invoice']") //Changes in v3.1 on 27-May-2021
+    public WebElement ViewInvoiceButton;
 
-    @FindBy(xpath = "//input[@value=\"Return Full Invoice\"]")
-    public WebElement buttonReturnFullInvoice;
+//    @FindBy(xpath ="(//input[@value='Close'])[4]")
+    @FindBy(xpath ="//div[@class='modal-dialog modal-lg']//button[@type='button'][normalize-space()='Close']")    //Changes in v3.1 on 27-May-2021
+    public WebElement ViewInvoicePopUp_CloseButton;
 
-    @FindBy(xpath ="(//input[@value='Close'])[4]")
-    public WebElement InvoicePopClosebtn;
+//    @FindBy(xpath = "//input[@value=\"Return Full Invoice\"]")
+    @FindBy(xpath = "//button[normalize-space()='Return Full Invoice']") //Changes in v3.1 on 27-May-2021
+    public WebElement ReturnFullInvoiceButton;
 
-    @FindBy(xpath = "//span[contains(text(),'Paracetamol SF 250/5ml Sus 1Lt')]")
+//    @FindBy(xpath = "//span[contains(text(),'Paracetamol SF 250/5ml Sus 1Lt')]")
+    @FindBy(xpath = "//span[normalize-space()='Calcium Carb 250mg Disp Tabs 60s']") //Changes in v3.1 on 27-May-2021
     public WebElement ProductName;
 
-    @FindBy(xpath = "//input[@id='returnqty0']")
+//    @FindBy(xpath = "//input[@id='returnqty0']")
+    @FindBy(xpath = "//input[@id='returnqty']") //Changes in v3.1 on 27-May-2021
     public WebElement ReturnQty;
 
-    @FindBy(xpath = "//input[@id='returnBoxes0']")
+//    @FindBy(xpath = "//input[@id='returnBoxes0']")
+    @FindBy(xpath = "//input[@id='returnBoxes']") //Changes in v3.1 on 27-May-2021
     public WebElement ReturnBoxesQty;
 
-    @FindBy(xpath = "(//input[@value=\"Submit\"])[2]")
-    public WebElement ReturnSubmitButton;
+//    @FindBy(xpath = "(//label[contains(text(),'Net Amount')])[2]/..//input")
+    @FindBy(xpath = "//tbody//b[contains(text(),'Net Total :')]") //Changes in v3.1 on 27-May-2021
+    public WebElement NetAmount;
+
+    @FindBy(xpath = "//tbody//b[contains(text(),'Grand Total :')]") //Changes in v3.1 on 27-May-2021
+    public WebElement GrandAmount;
+
+    @FindBy(xpath = "//tbody//button[@type='button'][normalize-space()='Save']") //Changes in v3.1 on 27-May-2021
+    public WebElement SaveInvoiceButton;
+
+    //-----------------------------Return Reason Section------------------------------------------
+    @FindBy(xpath = "//input[@id='returnSelectProduct']") //Changes in v3.1 on 27-May-2021
+    public WebElement ReturnSelectedProduct;
 
     @FindBy(xpath = "//select[@id='returnProductReason']")
     public WebElement ReturnSelectReason;
 
-    @FindBy(xpath = "(//label[@class='mt-checkbox mt-checkbox-single mt-checkbox-outline'])[4]/span")
-    public WebElement ReturnReceivedPICheckbox;
+//    @FindBy(xpath = "(//label[@class='mt-checkbox mt-checkbox-single mt-checkbox-outline'])[4]/span")
+    @FindBy(xpath = "(//label[@class='mt-checkbox mt-checkbox-single mt-checkbox-outline'])[6]/span") //Changes in v3.1 on 27-May-2021
+    public WebElement Reason_PIPCodeErrorCheckbox;
 
-    @FindBy(xpath = "(//input[@value='Submit'])[3]")
-    public WebElement ReturnPopSubmitbtn;
+//    @FindBy(xpath = "(//input[@value='Submit'])[3]")
+    @FindBy(xpath = "//app-returnsproduct//input[@value='Save']")   //Changes in v3.1 on 27-May-2021
+    public WebElement ReturnReason_SaveButton;
 
-    @FindBy(xpath = "(//input[@value='Submit'])[3]")
-    public WebElement ReturnReasonSubmitButton;
+//    @FindBy(xpath = "(//input[@value='Submit'])[3]")
+    @FindBy(xpath = "//app-returns//input[@value='Save']")  //Changes in v3.1 on 27-May-2021
+    public WebElement ReturnPop_SaveButton;
 
-    @FindBy(xpath = "(//label[@class='mt-checkbox mt-checkbox-single mt-checkbox-outline'])[6]/span")
-    public WebElement ReturnDeclarationCheckedButton;
+    //----------------------------------------DECLARATION FORM----------------------------------------
+//    @FindBy(xpath = "(//label[@class='mt-checkbox mt-checkbox-single mt-checkbox-outline'])[6]/span")
+    @FindBy(xpath = "//div[@class='form-group m-t-30']//label[@class='mt-checkbox mt-checkbox-single mt-checkbox-outline']//span") //Changes in v3.1 on 27-May-2021
+    public WebElement DeclarationCheckbox;
 
     @FindBy(xpath = "//label[@for='radio14']/span[@class='box']")
-    public WebElement ReturnNoteDeclarationRadio1Yes;
+    public WebElement Declaration_Radio1_Yes;
 
     @FindBy(xpath = "//label[@for='radio18']/span[@class='box']")
-    public WebElement ReturnNoteDeclarationRadio3Yes;
+    public WebElement Declaration_Radio3_Yes;
 
-    @FindBy(xpath = "(//input[@value=\"Submit\"])[4]")
-    public WebElement ReturnNoteDeclarationSubmitButton;
+//    @FindBy(xpath = "(//input[@value=\"Submit\"])[4]")
+//    @FindBy(xpath = "//form[@class='form-horizontal ng-untouched ng-pristine ng-valid']//input[@value='Save']") //Changes in v3.1 on 27-May-2021
+//    public WebElement Declaration_SaveButton;
 
-    @FindBy(xpath = "(//label[@class='mt-checkbox mt-checkbox-single mt-checkbox-outline'])[2]")
-    public WebElement ReturnSelectReceivedPI;
+    @FindBy(xpath = "//input[@id='notedeclartionformdate']")    //Changes in v3.1 on 27-May-2021
+    public WebElement Declaration_DateTime;
 
-    /*-----------------End of-Return Pop-Up window---------------*/
+    @FindBy(xpath = "//input[@id='ResponsiblePersonName']")    //Changes in v3.1 on 27-May-2021
+    public WebElement Declaration_RPName;
+
+    @FindBy(xpath = "//input[@id='Position']")    //Changes in v3.1 on 27-May-2021
+    public WebElement Declaration_RP_Position;
+
+    @FindBy(xpath = "//form[@class='form-horizontal ng-untouched ng-pristine ng-valid']//input[@value='Save']")    //Changes in v3.1 on 27-May-2021
+    public WebElement Declaration_SaveButton;
+    /*----------------------------------End of-DECLARATION--------------------------------*/
+
+    /*----------------------------------Summary Section---Added in v3.1----------------------------------*/
+    @FindBy(xpath = "//span[normalize-space()='Summary']")    //Changes in v3.1 on 27-May-2021
+    public WebElement titleSummary;
+
+    @FindBy(xpath = "//button[@class='btn blue'][normalize-space()='View Full Invoice']")    //Changes in v3.1 on 27-May-2021
+    public WebElement Summary_ViewFullInvoiceButton;
+
+    @FindBy(xpath = "")    //Changes in v3.1 on 27-May-2021
+    public WebElement Summary_ViewFullInvoice_CloseButton;
+
+    @FindBy(xpath = "//button[normalize-space()='Edit']")    //Changes in v3.1 on 27-May-2021
+    public WebElement Summary_EditButton;
+
+    @FindBy(xpath = "//input[@placeholder='Display Responsible Person Name']")    //Changes in v3.1 on 27-May-2021
+    public WebElement Summary_RPName;
+
+    @FindBy(xpath = "//input[@placeholder='Display Position']")    //Changes in v3.1 on 27-May-2021
+    public WebElement Summary_RP_Position;
+
+    /*----------------------------------End of-SUMMARY--------------------------------*/
+
+//    @FindBy(xpath = "(//label[@class='mt-checkbox mt-checkbox-single mt-checkbox-outline'])[2]")
+//    public WebElement ReturnSelectReceivedPI;
+
+//    @FindBy(xpath = "(//input[@value=\"Submit\"])[2]")
+    @FindBy(xpath = "//form[@class='ng-invalid ng-touched ng-dirty']//input[@value='Save']")     //Changes in v3.1 on 27-May-2021
+    public WebElement Return_SaveButton;
+
 
     /**
      * TESTCASE: Create Ticket
@@ -204,13 +285,28 @@ public class Cx_HelpDesk_page_CreateReturnTicketLocator extends TestBase {
             HighlightElement.highlightElement(channel_Email);
             genericUtil.clickWithPause(channel_Email,1000);
 
+            HighlightElement.highlightElement(AccountNoAutoSuggestion);
+            genericUtil.writeTextWithPause(AccountNoAutoSuggestion,"S1032",1000);
+
+            HighlightElement.highlightElement(AccountNo_S1032);
+            genericUtil.clickWithPause(AccountNo_S1032,1000);
+
             HighlightElement.highlightElement(customer);
-            genericUtil.click(customer);
-            Select selectCustomer = new Select(customer);
-            selectCustomer.selectByVisibleText("TEST CUSTOMER");
+            genericUtil.clickWithPause(customer,1000);
+
+            HighlightElement.highlightElement(Site);
+            genericUtil.clickWithPause(Site,1000);
+            Select selectSiteType = new Select(Site);
+            selectSiteType.selectByVisibleText("HP Tech");
             genericUtil.pause(1000);
-            genericUtil.click(customer);
+            genericUtil.click(Site);
             genericUtil.pause(1000);
+
+            HighlightElement.highlightElement(Address);
+            genericUtil.clickWithPause(Address,1000);
+
+            HighlightElement.highlightElement(ContactNo);
+            genericUtil.clickWithPause(ContactNo,1000);
 
             HighlightElement.highlightElement(ticketType);
             genericUtil.click(ticketType);
@@ -222,34 +318,38 @@ public class Cx_HelpDesk_page_CreateReturnTicketLocator extends TestBase {
 
         /*---BEGIN-------------Return popup-----------------*/
 
-            HighlightElement.highlightElement(popupReturn);
-            Select selectInvoice = new Select(Invoice);
-            selectInvoice.selectByVisibleText("983586540"); //983586540
-            genericUtil.pause(1000);
+//            HighlightElement.highlightElement(popupReturn);
+//            Select selectInvoice = new Select(InvoiceDropdown);
+//            selectInvoice.selectByVisibleText("983586540"); //983586540
+//            genericUtil.pause(1000);
+//
+//           HighlightElement.highlightElement(InvoiceNo);
+//           genericUtil.clickWithPause(InvoiceNo,1000);
+//
+//           HighlightElement.highlightElement(InvoiceDate);
+//           genericUtil.clickWithPause(InvoiceDate,1000);
+//
+//           HighlightElement.highlightElement(OrderNo);
+//           genericUtil.clickWithPause(OrderNo,1000);
 
-           HighlightElement.highlightElement(InvoiceNo);
-           genericUtil.clickWithPause(InvoiceNo,1000);
+//           HighlightElement.highlightElement(AccountNo);
+//           genericUtil.clickWithPause(AccountNo,1000);
+           HighlightElement.highlightElement(popupTitleReturn);
 
-           HighlightElement.highlightElement(InvoiceDate);
-           genericUtil.clickWithPause(InvoiceDate,1000);
-
-           HighlightElement.highlightElement(OrderNo);
-           genericUtil.clickWithPause(OrderNo,1000);
-
-           HighlightElement.highlightElement(AccountNo);
-           genericUtil.clickWithPause(AccountNo,1000);
+           HighlightElement.highlightElement(SearchInvoice);
+           genericUtil.writeTextWithPause(SearchInvoice,"01",1000);
 
            HighlightElement.highlightElement(NetAmount);
            genericUtil.clickWithPause(NetAmount,1000);
 
-           HighlightElement.highlightElement(FullInvoicebtn);
-           genericUtil.clickWithPause(FullInvoicebtn,2000);
+           HighlightElement.highlightElement(ViewInvoiceButton);
+           genericUtil.clickWithPause(ViewInvoiceButton,2000);
 
-            HighlightElement.highlightElement(InvoicePopClosebtn);
-            genericUtil.clickWithPause(InvoicePopClosebtn,1000);
+            HighlightElement.highlightElement(ViewInvoicePopUp_CloseButton);
+            genericUtil.clickWithPause(ViewInvoicePopUp_CloseButton,1000);
 
-            HighlightElement.highlightElement(buttonReturnFullInvoice);
-            genericUtil.clickWithPause(buttonReturnFullInvoice,1000);
+            HighlightElement.highlightElement(ReturnFullInvoiceButton);
+            genericUtil.clickWithPause(ReturnFullInvoiceButton,1000);
 
             HighlightElement.highlightElement(ReturnQty);
             genericUtil.writeTextWithPause(ReturnQty,"01",1000);
@@ -260,43 +360,43 @@ public class Cx_HelpDesk_page_CreateReturnTicketLocator extends TestBase {
             HighlightElement.highlightElement(ProductName);
             genericUtil.clickWithPause(ProductName,1000);
 
-            HighlightElement.highlightElement(popupReturn);
+            HighlightElement.highlightElement(ReturnSelectReason);
             Select selectReturnReason = new Select(ReturnSelectReason);
             selectReturnReason.selectByVisibleText("Ordering Error");
             genericUtil.pause(1000);
 
-            HighlightElement.highlightElement(ReturnReceivedPICheckbox);
-            genericUtil.clickWithPause(ReturnReceivedPICheckbox,1000);
+            HighlightElement.highlightElement(Reason_PIPCodeErrorCheckbox);
+            genericUtil.clickWithPause(Reason_PIPCodeErrorCheckbox,1000);
 
-            HighlightElement.highlightElement(ReturnPopSubmitbtn);
-            genericUtil.clickWithPause(ReturnPopSubmitbtn,1000);
+            HighlightElement.highlightElement(ReturnPop_SaveButton);
+            genericUtil.clickWithPause(ReturnPop_SaveButton,1000);
 
-            HighlightElement.highlightElement(ReturnSubmitButton);
-            genericUtil.clickWithPause(ReturnSubmitButton,1000);
+            HighlightElement.highlightElement(Return_SaveButton);
+            genericUtil.clickWithPause(Return_SaveButton,1000);
 
-            HighlightElement.highlightElement(ReturnDeclarationCheckedButton);
-            genericUtil.clickWithPause(ReturnDeclarationCheckedButton,2000);
+            HighlightElement.highlightElement(DeclarationCheckbox);
+            genericUtil.clickWithPause(DeclarationCheckbox,2000);
 
-            HighlightElement.highlightElement(ReturnSelectReceivedPI);
-            genericUtil.clickWithPause(ReturnSelectReceivedPI,2000);
+//            HighlightElement.highlightElement(ReturnSelectReceivedPI);
+//            genericUtil.clickWithPause(ReturnSelectReceivedPI,2000);
 
-            HighlightElement.highlightElement(ReturnReasonSubmitButton);
-            genericUtil.clickWithPause(ReturnReasonSubmitButton,2000);
+            HighlightElement.highlightElement(ReturnReason_SaveButton);
+            genericUtil.clickWithPause(ReturnReason_SaveButton,2000);
 
-            HighlightElement.highlightElement(ReturnSubmitButton);
-            genericUtil.clickWithPause(ReturnSubmitButton,1000);
+            HighlightElement.highlightElement(Return_SaveButton);
+            genericUtil.clickWithPause(Return_SaveButton,1000);
 
-            HighlightElement.highlightElement(ReturnDeclarationCheckedButton);
-            genericUtil.clickWithPause(ReturnDeclarationCheckedButton,1000);
+            HighlightElement.highlightElement(DeclarationCheckbox);
+            genericUtil.clickWithPause(DeclarationCheckbox,1000);
 
-            HighlightElement.highlightElement(ReturnNoteDeclarationRadio1Yes);
-            genericUtil.clickWithPause(ReturnNoteDeclarationRadio1Yes,1000);
+            HighlightElement.highlightElement(Declaration_Radio1_Yes);
+            genericUtil.clickWithPause(Declaration_Radio1_Yes,1000);
 
-            HighlightElement.highlightElement(ReturnNoteDeclarationRadio3Yes);
-            genericUtil.clickWithPause(ReturnNoteDeclarationRadio3Yes,1000);
+            HighlightElement.highlightElement(Declaration_Radio3_Yes);
+            genericUtil.clickWithPause(Declaration_Radio3_Yes,1000);
 
-            HighlightElement.highlightElement(ReturnNoteDeclarationSubmitButton);
-            genericUtil.clickWithPause(ReturnNoteDeclarationSubmitButton,1000);
+            HighlightElement.highlightElement(Declaration_SaveButton);
+            genericUtil.clickWithPause(Declaration_SaveButton,1000);
 
         /*---END-------------Return popup-------------------*/
 
@@ -304,7 +404,7 @@ public class Cx_HelpDesk_page_CreateReturnTicketLocator extends TestBase {
             genericUtil.writeTextWithPause(description, "Test Description", 1000);
             genericUtil.pause(2000);
 
-            HighlightElement.highlightElement(labelOwner);
+            HighlightElement.highlightElement(Owner);
             genericUtil.pause(1000);
 
             HighlightElement.highlightElement(state);
@@ -325,7 +425,7 @@ public class Cx_HelpDesk_page_CreateReturnTicketLocator extends TestBase {
 
             /*------START------------File Upload Logic--------------------*/
             // Specify the file location with extension
-            StringSelection sel = new StringSelection(Constants.FILEUPLOADPATH);
+            StringSelection sel = new StringSelection(Constants.FILE_UPLOAD_PATH);
 
             // Copy to clipboard
             Toolkit.getDefaultToolkit().getSystemClipboard().setContents(sel,null);
@@ -356,11 +456,11 @@ public class Cx_HelpDesk_page_CreateReturnTicketLocator extends TestBase {
             /*------END------------File Upload Logic----------------------*/
             genericUtil.pause(2000);
 
-            HighlightElement.highlightElement(agentComment);
-            genericUtil.writeTextWithPause(agentComment, "Agent comment added!", 1000);
+            HighlightElement.highlightElement(CustomerComment);
+            genericUtil.writeTextWithPause(CustomerComment, "Agent comment added!", 1000);
 
-            HighlightElement.highlightElement(buttonSubmit);
-            genericUtil.clickWithPause(buttonSubmit, 2000);
+            HighlightElement.highlightElement(buttonSave);
+            genericUtil.clickWithPause(buttonSave, 2000);
 
             HighlightElement.highlightElement(titleConfirmTicket);
             genericUtil.pause(1000);

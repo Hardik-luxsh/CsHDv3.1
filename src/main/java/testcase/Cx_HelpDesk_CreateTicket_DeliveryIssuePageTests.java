@@ -20,7 +20,7 @@ public class Cx_HelpDesk_CreateTicket_DeliveryIssuePageTests extends TestBase {
         driver = TestBase.testBase();
 
         objLoginPage = new Cx_HelpDesk_page_LoginLocator(driver);
-        objLoginPage.validateLogin(Constants.AGENTUSERNAME, Constants.VALIDPASSWORD);
+        objLoginPage.validateLogin(Constants.AGENT_USERNAME, Constants.VALID_PASSWORD);
     }
 
     @Test(priority = 1)

@@ -16,13 +16,13 @@ public class CxHelpDesk_Master_CustomerUserPageTests extends TestBase {
     Cx_HelpDesk_page_LoginLocator objLoginPage;
     Cx_HelpDesk_page_Master_CustomerUserLocator objMasterCustomerUserLocator;
 
-    @BeforeTest
-    public void initialBrowserDriver() {
-        driver = TestBase.testBase();
-
-        objLoginPage = new Cx_HelpDesk_page_LoginLocator(driver);
-        objLoginPage.validateLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
-    }
+//    @BeforeTest
+//    public void initialBrowserDriver() {
+//        driver = TestBase.testBase();
+//
+//        objLoginPage = new Cx_HelpDesk_page_LoginLocator(driver);
+//        objLoginPage.validateLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
+//    }
 
     @Test(priority = 1)
     public void createCustomerUser(){
@@ -55,6 +55,17 @@ public class CxHelpDesk_Master_CustomerUserPageTests extends TestBase {
         try {
             objMasterCustomerUserLocator = new Cx_HelpDesk_page_Master_CustomerUserLocator(driver);
             objMasterCustomerUserLocator.deleteCustomerUser("UpdatedTestCustomer" + Constants.date.getTime());
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }
+
+    @Test(priority = 4)
+    public void importCustomerUser(){
+        try {
+            objMasterCustomerUserLocator = new Cx_HelpDesk_page_Master_CustomerUserLocator(driver);
+            objMasterCustomerUserLocator.importCustomerUser();
         }
         catch (Exception ex){
             ex.printStackTrace();

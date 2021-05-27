@@ -202,7 +202,7 @@ public class Cx_HelpDesk_page_CreateTicket_OtherLocator extends TestBase {
 
             /*-----BEGIN-------------File Upload Logic---------------------*/
             // Specify the file location with extension
-            StringSelection sel = new StringSelection(Constants.FILEUPLOADPATH);
+            StringSelection sel = new StringSelection(Constants.FILE_UPLOAD_PATH);
 
             // Copy to clipboard
             Toolkit.getDefaultToolkit().getSystemClipboard().setContents(sel,null);

@@ -32,7 +32,7 @@ public class TestBaseNew {
 
 //      String browser = System.getProperty("browser");
 
-        System.setProperty("webdriver.chrome.driver", Constants.PROJECTPATH + "\\drivers\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", Constants.PROJECT_PATH + "\\drivers\\chromedriver.exe");
         driver = new ChromeDriver(options);
         wait = new WebDriverWait(driver, waitTime);
 

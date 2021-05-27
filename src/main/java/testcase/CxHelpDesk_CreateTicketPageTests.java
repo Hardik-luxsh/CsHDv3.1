@@ -19,8 +19,9 @@ public class CxHelpDesk_CreateTicketPageTests extends TestBase{
         driver = TestBase.testBase();
 
         objLoginPage = new Cx_HelpDesk_page_LoginLocator(driver);
-        objLoginPage.validateLogin(Constants.AGENTUSERNAME, Constants.VALIDPASSWORD);
+        objLoginPage.validateLogin(Constants.AGENT_USERNAME, Constants.VALID_PASSWORD);
     }
+
     /*----------------------Return Type---------------------*/
     @Test(priority = 1)
     public void createReturnTicket(){

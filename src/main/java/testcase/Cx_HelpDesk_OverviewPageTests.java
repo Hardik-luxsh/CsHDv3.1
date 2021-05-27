@@ -22,7 +22,7 @@ public class Cx_HelpDesk_OverviewPageTests extends TestBase {
         driver = TestBase.testBase();
 
         objLoginPage = new Cx_HelpDesk_page_LoginLocator(driver);
-        objLoginPage.validateLogin(Constants.AGENTUSERNAME, Constants.VALIDPASSWORD);
+        objLoginPage.validateLogin(Constants.AGENT_USERNAME, Constants.VALID_PASSWORD);
 
         objCreateTicket = new Cx_HelpDesk_page_CreateReturnTicketLocator(driver);
         objCreateTicket.createReturnTicket();

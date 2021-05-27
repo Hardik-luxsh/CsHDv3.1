@@ -1,15 +1,9 @@
 package testcase;
 
-import TestUtil.Constants;
-import base.TestBase;
-import org.testng.Reporter;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
-import pages.Cx_HelpDesk_page_LoginLocator;
-import pages.Cx_HelpDesk_page_RegisterLocator;
-
-import static TestUtil.Constants.Email;
-import static TestUtil.Constants.FaxNumber;
+import base.*;
+import org.testng.*;
+import org.testng.annotations.*;
+import pages.*;
 
 public class CxHelpDesk_RegisterPageTests extends TestBase{
 

@@ -1,8 +1,6 @@
 package pages;
 
-import TestUtil.CheckBox;
-import TestUtil.GenericUtil;
-import TestUtil.HighlightElement;
+import TestUtil.*;
 import base.TestBase;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -17,6 +15,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import sun.security.util.Password;
 
 import javax.management.relation.Role;
+import java.awt.*;
+import java.awt.datatransfer.*;
+import java.awt.event.*;
 
 public class Cx_HelpDesk_page_Master_CustomerUserLocator extends TestBase {
 
@@ -94,8 +95,8 @@ public class Cx_HelpDesk_page_Master_CustomerUserLocator extends TestBase {
     @FindBy(xpath = "(//label[@class='mt-checkbox mt-checkbox-single mt-checkbox-outline']/span)[4]")
     WebElement EditStatus;
 
-//    @FindBy(xpath = "//h4[contains(text(),'Edit Customer User')]/../..//input[@value='Save']")
-    @FindBy(xpath = "//h4[contains(text(),'Edit Customer User')]/../..//div[@class='form-group text-center']/..//input[@type='button' and @value='Save']")
+//    @FindBy(xpath = "//h4[contains(text(),'Edit Customer User')]/../..//div[@class='form-group text-center']/..//input[@type='button' and @value='Save']")
+    @FindBy(xpath = "//h4[contains(text(),'Edit Customer User')]/../..//input[@value='Save']")
     WebElement EditSave; //V 3.0
 
     @FindBy(xpath = "//h4[contains(text(),'Edit Customer User')]/../..//input[@value='Clear']")
@@ -184,6 +185,29 @@ public class Cx_HelpDesk_page_Master_CustomerUserLocator extends TestBase {
     @FindBy(xpath = "(//button[@class='btn white btn-outline'])[4]")
     public WebElement CloseBtnSuccessDelete; //V 3.0
 
+    /*--------------Import Group ---------------*/
+
+    @FindBy(xpath = "(//a[contains(text(),'Import Customer User')])[1]")
+    WebElement CustomerUserImport;
+
+    @FindBy(xpath = "//h4[contains(text(),'Import Customer User')]")
+    public WebElement CustomerUserImportPopTitle;
+
+    @FindBy(xpath = "//h4[contains(text(),'Import Customer User')]/../..//ngx-dropzone[@id='importFile']")
+    public WebElement CustomerUserImportattchment;
+
+    @FindBy(xpath = "//h4[contains(text(),'Import Customer User')]/../..//input[@value='Import']")
+    public WebElement CustomerUserImportPopbtn;
+
+    @FindBy(xpath = "(//h3[contains(text(),'Data Mismatch In Sheet Used For Import Please Check!')])[4]")
+    public WebElement CustomerUserImportSuccessMsg;
+
+    @FindBy(xpath = "(//button[contains(text(),'OK')])[10]")
+    public WebElement CustomerUserImportSuccessOk;
+
+    @FindBy(xpath = "//h4[contains(text(),'Import Customer User')]/..//button[@class='close']")
+    public WebElement CustomerUserImportPopClosebtn;
+
     /** TESTCASE METHOD: CREATE CUSTOMER USER
      * @param Username
      * @param UserID
@@ -197,6 +221,8 @@ public class Cx_HelpDesk_page_Master_CustomerUserLocator extends TestBase {
                                    String searchText){ // V 3.0
         try {
             genericUtil = new GenericUtil();
+            JavascriptExecutor jsDown = (JavascriptExecutor) driver;
+            JavascriptExecutor jsUp = (JavascriptExecutor) driver;
 
             wait.until(ExpectedConditions.visibilityOf(sidebar_textMaster));
             HighlightElement.highlightElement(sidebar_textMaster);
@@ -208,6 +234,9 @@ public class Cx_HelpDesk_page_Master_CustomerUserLocator extends TestBase {
 
             HighlightElement.highlightElement(CustomerUserCollapse);
             genericUtil.clickWithPause(CustomerUserCollapse,1000);
+
+            jsDown.executeScript("window.scrollBy(0,500)");
+            genericUtil.pause(1000);
 
             HighlightElement.highlightElement(AddNewCustomerUser);
             genericUtil.clickWithPause(AddNewCustomerUser,3000);
@@ -321,20 +350,20 @@ public class Cx_HelpDesk_page_Master_CustomerUserLocator extends TestBase {
             HighlightElement.highlightElement(EditConfirmPassword); //V 3.0
             genericUtil.writeTextWithPause(EditConfirmPassword,UpdatedstrConfirmPassword,2000);
 
-            try {
-                objCheckBox = new CheckBox();
-                HighlightElement.highlightElement(EditStatus);
-                objCheckBox.Select_The_Checkbox(EditStatus);
-                genericUtil.pause(1200);
-                HighlightElement.highlightElement(EditStatus);
-                objCheckBox.DeSelect_The_Checkbox(EditStatus);
-                genericUtil.pause(1200);
-                HighlightElement.highlightElement(EditStatus);
-                objCheckBox.Select_The_Checkbox(EditStatus);
-                genericUtil.pause(1000);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+//            try {
+//                objCheckBox = new CheckBox();
+//                HighlightElement.highlightElement(EditStatus);
+//                objCheckBox.Select_The_Checkbox(EditStatus);
+//                genericUtil.pause(1200);
+//                HighlightElement.highlightElement(EditStatus);
+//                objCheckBox.DeSelect_The_Checkbox(EditStatus);
+//                genericUtil.pause(1200);
+//                HighlightElement.highlightElement(EditStatus);
+//                objCheckBox.Select_The_Checkbox(EditStatus);
+//                genericUtil.pause(1000);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
 
             HighlightElement.highlightElement(EditSave);
             genericUtil.clickWithPause(EditSave,3000); //V 3.0
@@ -370,6 +399,90 @@ public class Cx_HelpDesk_page_Master_CustomerUserLocator extends TestBase {
             Search.clear();
             genericUtil.writeTextWithPause(Search, searchText, 3000); //"Group Test"
         }catch (Exception ex){
+            ex.getStackTrace();
+        }
+    }
+
+    /**
+     * TESTCASE: importCustomerUser
+     */
+    public void importCustomerUser() {
+        try {
+            genericUtil = new GenericUtil();
+            JavascriptExecutor jsDown = (JavascriptExecutor) driver;
+            JavascriptExecutor jsUp = (JavascriptExecutor) driver;
+            genericUtil.pause(3000);
+
+            wait.until(ExpectedConditions.visibilityOf(sidebar_textMaster));
+            HighlightElement.highlightElement(sidebar_textMaster);
+            sidebar_textMaster.click();
+            genericUtil.pause(2000);
+
+            HighlightElement.highlightElement(TitleMasters);
+            genericUtil.pause(1000);
+
+            HighlightElement.highlightElement(CustomerUserCollapse);
+            genericUtil.clickWithPause(CustomerUserCollapse,1000);
+
+//            HighlightElement.highlightElement(TitleCustomerUser);
+//            genericUtil.pause(1000);
+
+            Thread.sleep(1000);
+            jsDown.executeScript("window.scrollBy(0,800)");
+            Thread.sleep(1000);
+
+            HighlightElement.highlightElement(CustomerUserImport);
+            genericUtil.clickWithPause(CustomerUserImport,2000);
+
+            HighlightElement.highlightElement(CustomerUserImportPopTitle);
+            genericUtil.clickWithPause(CustomerUserImportPopTitle,2000);
+
+            HighlightElement.highlightElement(CustomerUserImportattchment);
+            genericUtil.clickWithPause(CustomerUserImportattchment,2000);
+            wait.until(ExpectedConditions.visibilityOf(CustomerUserImportattchment));
+
+            StringSelection stringSelection = new StringSelection(Constants.IMPORT_CUSTUSER_PATH);
+            Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, stringSelection);
+
+            /*-----BEGIN-------------File Upload Logic---------------------*/
+            // Create object of Robot class
+            Robot robot = new Robot();
+
+            //Press Enter
+            robot.keyPress(KeyEvent.VK_ENTER);
+            robot.keyRelease(KeyEvent.VK_ENTER);
+
+            // Press CTRL+V
+            robot.keyPress(KeyEvent.VK_CONTROL);
+            robot.keyPress(KeyEvent.VK_V);
+
+            // Release CTRL+V
+            robot.keyRelease(KeyEvent.VK_V);
+            robot.keyRelease(KeyEvent.VK_CONTROL);
+
+            //Press Enter
+            robot.keyPress(KeyEvent.VK_ENTER);
+            robot.keyRelease(KeyEvent.VK_ENTER);
+
+            /*----END--------------File Upload Logic---------------------*/
+
+            wait.until(ExpectedConditions.visibilityOf(CustomerUserImportPopbtn));
+            HighlightElement.highlightElement(CustomerUserImportPopbtn);
+            genericUtil.clickWithPause(CustomerUserImportPopbtn,1000);
+
+            HighlightElement.highlightElement(CustomerUserImportSuccessMsg);
+            genericUtil.clickWithPause(CustomerUserImportSuccessMsg,1000);
+
+            HighlightElement.highlightElement(CustomerUserImportSuccessOk);
+            genericUtil.clickWithPause(CustomerUserImportSuccessOk,1000);
+
+            HighlightElement.highlightElement(CustomerUserImportPopTitle);
+            genericUtil.clickWithPause(CustomerUserImportPopTitle,2000);
+
+            HighlightElement.highlightElement(CustomerUserImportPopClosebtn);
+            genericUtil.clickWithPause(CustomerUserImportPopClosebtn,1000);
+
+        } catch (Exception ex) {
             ex.getStackTrace();
         }
     }

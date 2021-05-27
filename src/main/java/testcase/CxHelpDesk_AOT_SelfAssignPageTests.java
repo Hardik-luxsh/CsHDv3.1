@@ -9,7 +9,6 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.Cx_HelpDesk_page_AOT_SelfAssignLocator;
 import pages.Cx_HelpDesk_page_LoginLocator;
-import pages.Cx_HelpDesk_page_Master_EmployeeLocator;
 
 public class CxHelpDesk_AOT_SelfAssignPageTests extends TestBase {
     Cx_HelpDesk_page_LoginLocator objLoginPage;
@@ -20,7 +19,7 @@ public class CxHelpDesk_AOT_SelfAssignPageTests extends TestBase {
         driver = TestBase.testBase();
 
         objLoginPage = new Cx_HelpDesk_page_LoginLocator(driver);
-        objLoginPage.validateLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
+        objLoginPage.validateLogin(Constants.ADMIN_USERNAME, Constants.VALID_PASSWORD);
     }
 
     @Test(priority = 1)

@@ -185,7 +185,7 @@ public class Cx_HelpDesk_page_CreateTicket_DeliveryIssueLocator extends TestBase
 
             /*------START------------File Upload Logic------------------------------------*/
             // Specify the file location with extension
-            StringSelection sel1 = new StringSelection(Constants.FILEUPLOADPATH);
+            StringSelection sel1 = new StringSelection(Constants.FILE_UPLOAD_PATH);
 
             // Copy to clipboard
             Toolkit.getDefaultToolkit().getSystemClipboard().setContents(sel1,null);
@@ -248,7 +248,7 @@ public class Cx_HelpDesk_page_CreateTicket_DeliveryIssueLocator extends TestBase
 
             /*------------------File Upload Logic---------------------*/
             // Specify the file location with extension
-            StringSelection sel = new StringSelection(Constants.FILEUPLOADPATH);
+            StringSelection sel = new StringSelection(Constants.FILE_UPLOAD_PATH);
 
             // Copy to clipboard
             Toolkit.getDefaultToolkit().getSystemClipboard().setContents(sel,null);

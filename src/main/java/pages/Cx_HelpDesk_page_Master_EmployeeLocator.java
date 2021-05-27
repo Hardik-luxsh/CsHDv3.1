@@ -1,16 +1,17 @@
 package pages;
 
-import TestUtil.CheckBox;
-import TestUtil.GenericUtil;
-import TestUtil.HighlightElement;
+import TestUtil.*;
 import base.TestBase;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.awt.*;
+import java.awt.datatransfer.*;
+import java.awt.event.*;
 
 public class Cx_HelpDesk_page_Master_EmployeeLocator extends TestBase {
 
@@ -67,7 +68,7 @@ public class Cx_HelpDesk_page_Master_EmployeeLocator extends TestBase {
     @FindBy(xpath = "//h4[contains(text(),'Edit Employee User')]//..//..//select[@id='user_Type']") //Added
     public WebElement EmpEditRole;
 
-    @FindBy(xpath = "//input[@formcontrolname='groupName']")
+    @FindBy(xpath = "//label[contains(text(),'Attached To')]/..//input[@formcontrolname='groupName']")
     public WebElement EmpAttachedTo;
 
     @FindBy(xpath = "//input[@formcontrolname='groupStatus']")
@@ -76,7 +77,7 @@ public class Cx_HelpDesk_page_Master_EmployeeLocator extends TestBase {
     @FindBy(xpath ="(//label[@class='mt-checkbox mt-checkbox-single mt-checkbox-outline']/span)[1]")
     public WebElement EmpEditStatus;
 
-    @FindBy(xpath = "(//input[@value='Save'])[1]")
+    @FindBy(xpath =  "//h4[contains(text(),'Edit Employee User')]/../..//input[@value='Save']")    //"(//input[@value='Save'])[1]")
     public WebElement EmpEditSave;//V3.0
 
     @FindBy(xpath = "(//input[@value='Clear'])[1]")
@@ -87,9 +88,6 @@ public class Cx_HelpDesk_page_Master_EmployeeLocator extends TestBase {
 
     @FindBy(xpath = "//a[contains(text(),'Add New Employee User')]")
     public WebElement AddNewEmployeeUser;//V3.0
-
-    @FindBy(xpath = "//a[contains(text(),'Import Employee User')]")
-    public WebElement EmpImport;//V3.0
 
     /*--------------Add New Employee ---------------*/
     @FindBy(xpath = "//h4[contains(text(),'Add New Employee User')]")
@@ -144,6 +142,28 @@ public class Cx_HelpDesk_page_Master_EmployeeLocator extends TestBase {
     @FindBy(xpath = "(//button[@class='btn btn-lg btn-success'])[1]")
     WebElement YesOptionEmpDelete;
 
+    /*--------------Import Employee ---------------*/
+    @FindBy(xpath = "//a[contains(text(),'Import Employee User')]")
+    public WebElement EmpImport;//V3.0
+
+    @FindBy(xpath = "//h4[contains(text(),'Import Employee User')]")
+    public WebElement EmpImportPopTitle;
+
+    @FindBy(xpath = "(//ngx-dropzone[@id='importFile'])[1]")
+    public WebElement EmpImportattchment;
+
+    @FindBy(xpath = "//h4[contains(text(),'Import Employee User')]/../..//input[@value='Import']")
+    public WebElement EmpImportPopbtn;
+
+    @FindBy(xpath = "(//h3[contains(text(),'Data Mismatch In Sheet Used For Import Please Check!')])[1]")
+    public WebElement EmpImportSuccessMsg;
+
+    @FindBy(xpath = "(//button[contains(text(),'OK')])[2]")
+    public WebElement EmpImportSuccessOk;
+
+    @FindBy(xpath = "//h4[contains(text(),'Import Employee User')]/..//button[@class='close']")
+    public WebElement EmpImportPopClosebtn;
+
     public Cx_HelpDesk_page_Master_EmployeeLocator(WebDriver driver) {
         TestBase.driver = driver;
         PageFactory.initElements(driver, this);
@@ -161,6 +181,8 @@ public class Cx_HelpDesk_page_Master_EmployeeLocator extends TestBase {
     public void createEmployee(String EmpName,String EmpEmail,String EmpNo,String EmpRole,String searchText){
         try {
             genericUtil = new GenericUtil();
+            JavascriptExecutor jsDown = (JavascriptExecutor) driver;
+            JavascriptExecutor jsUp = (JavascriptExecutor) driver;
 
             wait.until(ExpectedConditions.visibilityOf(sidebar_textMaster));
             HighlightElement.highlightElement(sidebar_textMaster);
@@ -173,11 +195,14 @@ public class Cx_HelpDesk_page_Master_EmployeeLocator extends TestBase {
             HighlightElement.highlightElement(EmpCollapse);
             genericUtil.clickWithPause(EmpCollapse,1000);
 
-            HighlightElement.highlightElement(TitleEmpUser);
-            genericUtil.pause(1000);
+//            HighlightElement.highlightElement(TitleEmpUser);
+//            genericUtil.pause(1000);
 
-            HighlightElement.highlightElement(TitleEmpAddName);
-            genericUtil.pause(500);
+//            HighlightElement.highlightElement(TitleEmpAddName);
+//            genericUtil.pause(500);
+
+            jsDown.executeScript("window.scrollBy(0,500)");
+            genericUtil.pause(1000);
 
             HighlightElement.highlightElement(AddNewEmployeeUser);
             genericUtil.clickWithPause(AddNewEmployeeUser,3000);
@@ -233,7 +258,20 @@ public class Cx_HelpDesk_page_Master_EmployeeLocator extends TestBase {
     public void editEmployee(String UpdatedEmpName,String UpdatedEmpEmail,String UpdatedEmpNo,String UpdatedEmpRole,String UpdatedSearchText){
         try {
             genericUtil = new GenericUtil();
-            genericUtil.pause(3000);
+
+            wait.until(ExpectedConditions.visibilityOf(sidebar_textMaster));
+            HighlightElement.highlightElement(sidebar_textMaster);
+            sidebar_textMaster.click();
+            genericUtil.pause(2000);
+
+            HighlightElement.highlightElement(TitleMasters);
+            genericUtil.pause(1000);
+
+            HighlightElement.highlightElement(EmpSearch);
+            genericUtil.writeTextWithPause(EmpSearch,UpdatedSearchText,3000); //"EmpTest"
+
+            HighlightElement.highlightElement(EmpCollapse);
+            genericUtil.clickWithPause(EmpCollapse,1000);
 
             HighlightElement.highlightElement(EmpEditBtn);
             genericUtil.clickWithPause(EmpEditBtn,3000);
@@ -257,25 +295,25 @@ public class Cx_HelpDesk_page_Master_EmployeeLocator extends TestBase {
             genericUtil.clickWithPause(EmpEditRole,1000);
             Select roleEdit = new Select(EmpEditRole);
             roleEdit.selectByVisibleText(UpdatedEmpRole); //"Admin"
-            genericUtil.pause(1000);
+            genericUtil.pause(2000);
 
             HighlightElement.highlightElement(EmpAttachedTo);
-            genericUtil.clickWithPause(EmpAttachedTo,1000);//V3.0
+            genericUtil.clickWithPause(EmpAttachedTo,2000);//V3.0
 
             HighlightElement.highlightElement(EmpGroupStatus);
-            genericUtil.clickWithPause(EmpGroupStatus,1000);//V3.0
+            genericUtil.clickWithPause(EmpGroupStatus,2000);//V3.0
 
             try {
                 objCheckBox = new CheckBox();
                 HighlightElement.highlightElement(EmpEditStatus);
                 objCheckBox.Select_The_Checkbox(EmpEditStatus);
-                genericUtil.pause(800);
+                genericUtil.pause(1000);
                 HighlightElement.highlightElement(EmpEditStatus);
                 objCheckBox.DeSelect_The_Checkbox(EmpEditStatus);
-                genericUtil.pause(800);
+                genericUtil.pause(1000);
                 HighlightElement.highlightElement(EmpEditStatus);
                 objCheckBox.Select_The_Checkbox(EmpEditStatus);
-                genericUtil.pause(800);
+                genericUtil.pause(1000);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -333,6 +371,89 @@ public class Cx_HelpDesk_page_Master_EmployeeLocator extends TestBase {
             genericUtil.writeTextWithPause(EmpSearch,SearchText,3000); //"UpdatedEmpTest"
         }
         catch (Exception ex){
+            ex.getStackTrace();
+        }
+    }
+
+    /**
+     * TESTCASE: importEmployee
+     */
+    public void importEmployee() {
+        try {
+            genericUtil = new GenericUtil();
+
+            wait.until(ExpectedConditions.visibilityOf(sidebar_textMaster));
+            HighlightElement.highlightElement(sidebar_textMaster);
+            sidebar_textMaster.click();
+            genericUtil.pause(2000);
+
+//            HighlightElement.highlightElement(TitleMasters);
+//            genericUtil.pause(1000);
+
+            HighlightElement.highlightElement(EmpCollapse);
+            genericUtil.clickWithPause(EmpCollapse,1000);
+
+//            HighlightElement.highlightElement(TitleEmpUser);
+//            genericUtil.pause(1000);
+
+            HighlightElement.highlightElement(EmpImport);
+            genericUtil.clickWithPause(EmpImport,2000);
+
+            HighlightElement.highlightElement(EmpImportPopTitle);
+            genericUtil.clickWithPause(EmpImportPopTitle,2000);
+
+            HighlightElement.highlightElement(EmpImportattchment);
+            genericUtil.clickWithPause(EmpImportattchment,2000);
+            wait.until(ExpectedConditions.visibilityOf(EmpImportattchment));
+
+            StringSelection stringSelection = new StringSelection(Constants.IMPORT_EMP_PATH);
+            Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, stringSelection);
+            /*-----BEGIN-------------File Upload Logic---------------------*/
+            // Create object of Robot class
+            Robot robot = new Robot();
+//            genericUtil.pause(2000);
+
+            //Press Enter
+            robot.keyPress(KeyEvent.VK_ENTER);
+            robot.keyRelease(KeyEvent.VK_ENTER);
+//            genericUtil.pause(1000);
+
+            // Press CTRL+V
+            robot.keyPress(KeyEvent.VK_CONTROL);
+            robot.keyPress(KeyEvent.VK_V);
+//            genericUtil.pause(1000);
+
+            // Release CTRL+V
+            robot.keyRelease(KeyEvent.VK_V);
+            robot.keyRelease(KeyEvent.VK_CONTROL);
+//            robot.keyRelease(KeyEvent.VK_V);
+//            genericUtil.pause(2000);
+
+
+            //Press Enter
+            robot.keyPress(KeyEvent.VK_ENTER);
+            robot.keyRelease(KeyEvent.VK_ENTER);
+
+
+            /*----END--------------File Upload Logic---------------------*/
+
+            wait.until(ExpectedConditions.visibilityOf(EmpImportPopbtn));
+            HighlightElement.highlightElement(EmpImportPopbtn);
+            genericUtil.clickWithPause(EmpImportPopbtn,1000);
+
+            HighlightElement.highlightElement(EmpImportSuccessMsg);
+            genericUtil.clickWithPause(EmpImportSuccessMsg,1000);
+
+            HighlightElement.highlightElement(EmpImportSuccessOk);
+            genericUtil.clickWithPause(EmpImportSuccessOk,1000);
+
+            HighlightElement.highlightElement(EmpImportPopTitle);
+            genericUtil.clickWithPause(EmpImportPopTitle,2000);
+
+            HighlightElement.highlightElement(EmpImportPopClosebtn);
+            genericUtil.clickWithPause(EmpImportPopClosebtn,1000);
+
+        } catch (Exception ex) {
             ex.getStackTrace();
         }
     }

@@ -1,6 +1,7 @@
 package pages;
 
 import TestUtil.CheckBox;
+import TestUtil.Constants;
 import TestUtil.GenericUtil;
 import TestUtil.HighlightElement;
 import base.TestBase;
@@ -12,6 +13,10 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.awt.*;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 
 public class Cx_HelpDesk_page_Master_GroupLocator extends TestBase{
 
@@ -94,9 +99,6 @@ public class Cx_HelpDesk_page_Master_GroupLocator extends TestBase{
     @FindBy(xpath = "//a[contains(text(),'Add New Group')]")
     public WebElement GroupAdd;//v3.0
 
-    @FindBy(xpath = "//a[contains(text(),'Import Groups')]")
-    public WebElement GroupImport;//v3.0
-
     @FindBy(xpath = "//h3[contains(text(),'Are you sure! You want to Delete this Group?')]")
     public WebElement DeleteGroupMessage;
 
@@ -145,6 +147,27 @@ public class Cx_HelpDesk_page_Master_GroupLocator extends TestBase{
     @FindBy(xpath = "(//button[@class='btn white btn-outline'])[2]")
     WebElement CloseBtnSuccessGroupDelete;
 
+    /*--------------Import Group ---------------*/
+    @FindBy(xpath = "//a[contains(text(),'Import Groups')]")
+    public WebElement GroupImport;//v3.0
+
+    @FindBy(xpath = "//h4[contains(text(),'Import Groups')]")
+    public WebElement GroupImportPopTitle;
+
+    @FindBy(xpath = "(//ngx-dropzone[@id='importFile'])[2]")
+    public WebElement GroupImportattchment;
+
+    @FindBy(xpath = "//h4[contains(text(),'Import Groups')]/../..//input[@value='Import']")
+    public WebElement GroupImportPopbtn;
+
+    @FindBy(xpath = "(//h3[contains(text(),'Data Mismatch In Sheet Used For Import Please Check!')])[2]")
+    public WebElement GroupImportSuccessMsg;
+
+    @FindBy(xpath = "(//button[contains(text(),'OK')])[4]")
+    public WebElement GroupImportSuccessOk;
+
+    @FindBy(xpath = "//h4[contains(text(),'Import Groups')]/..//button[@class='close']")
+    public WebElement GroupImportPopClosebtn;
 
     public Cx_HelpDesk_page_Master_GroupLocator(WebDriver driver) {
         TestBase.driver = driver;
@@ -255,7 +278,6 @@ public class Cx_HelpDesk_page_Master_GroupLocator extends TestBase{
         try {
             genericUtil = new GenericUtil();
 
-
             HighlightElement.highlightElement(GroupEditBtn);
             genericUtil.clickWithPause(GroupEditBtn,3000);
 
@@ -274,7 +296,6 @@ public class Cx_HelpDesk_page_Master_GroupLocator extends TestBase{
             HighlightElement.highlightElement(GroupSearch);
             GroupSearch.clear();
             genericUtil.writeTextWithPause(GroupSearch,searchText,3000); //"Group Test"
-
 
             HighlightElement.highlightElement(GroupDeleteBtn);
             genericUtil.clickWithPause(GroupDeleteBtn, 3000);
@@ -296,6 +317,82 @@ public class Cx_HelpDesk_page_Master_GroupLocator extends TestBase{
             GroupSearch.clear();
             genericUtil.writeTextWithPause(GroupSearch, searchText, 3000); //"Group Test"
         }catch (Exception ex){
+            ex.getStackTrace();
+        }
+    }
+
+    /**
+     * TESTCASE: importGroup
+     */
+    public void importGroup() {
+        try {
+            genericUtil = new GenericUtil();
+
+            wait.until(ExpectedConditions.visibilityOf(sidebar_textMaster));
+            HighlightElement.highlightElement(sidebar_textMaster);
+            sidebar_textMaster.click();
+            genericUtil.pause(2000);
+
+            HighlightElement.highlightElement(TitleMasters);
+            genericUtil.pause(1000);
+
+            HighlightElement.highlightElement(GroupCollapse);
+            genericUtil.clickWithPause(GroupCollapse,1000);
+
+            HighlightElement.highlightElement(TitleGroup);
+            genericUtil.pause(1000);
+
+            HighlightElement.highlightElement(GroupImport);
+            genericUtil.clickWithPause(GroupImport,2000);
+
+            HighlightElement.highlightElement(GroupImportPopTitle);
+            genericUtil.clickWithPause(GroupImportPopTitle,2000);
+
+            HighlightElement.highlightElement(GroupImportattchment);
+            genericUtil.clickWithPause(GroupImportattchment,2000);
+            wait.until(ExpectedConditions.visibilityOf(GroupImportattchment));
+
+            StringSelection stringSelection = new StringSelection(Constants.IMPORT_GROUP_PATH);
+            Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, stringSelection);
+            /*-----BEGIN-------------File Upload Logic---------------------*/
+            // Create object of Robot class
+            Robot robot = new Robot();
+
+            //Press Enter
+            robot.keyPress(KeyEvent.VK_ENTER);
+            robot.keyRelease(KeyEvent.VK_ENTER);
+
+            // Press CTRL+V
+            robot.keyPress(KeyEvent.VK_CONTROL);
+            robot.keyPress(KeyEvent.VK_V);
+
+            // Release CTRL+V
+            robot.keyRelease(KeyEvent.VK_V);
+            robot.keyRelease(KeyEvent.VK_CONTROL);
+
+            //Press Enter
+            robot.keyPress(KeyEvent.VK_ENTER);
+            robot.keyRelease(KeyEvent.VK_ENTER);
+
+            /*----END--------------File Upload Logic---------------------*/
+
+            wait.until(ExpectedConditions.visibilityOf(GroupImportPopbtn));
+            HighlightElement.highlightElement(GroupImportPopbtn);
+            genericUtil.clickWithPause(GroupImportPopbtn,1000);
+
+            HighlightElement.highlightElement(GroupImportSuccessMsg);
+            genericUtil.clickWithPause(GroupImportSuccessMsg,1000);
+
+            HighlightElement.highlightElement(GroupImportSuccessOk);
+            genericUtil.clickWithPause(GroupImportSuccessOk,1000);
+
+            HighlightElement.highlightElement(GroupImportPopTitle);
+            genericUtil.clickWithPause(GroupImportPopTitle,2000);
+
+            HighlightElement.highlightElement(GroupImportPopClosebtn);
+            genericUtil.clickWithPause(GroupImportPopClosebtn,1000);
+
+        } catch (Exception ex) {
             ex.getStackTrace();
         }
     }
