@@ -1,9 +1,9 @@
 package testcase;
 
-import TestUtil.Constants;
+import TestUtil.*;
 import base.TestBase;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.*;
+import org.testng.annotations.*;
 import pages.*;
 
 public class CxHelpDesk_CreateTicketPageTests extends TestBase{
@@ -12,6 +12,7 @@ public class CxHelpDesk_CreateTicketPageTests extends TestBase{
     public static Cx_HelpDesk_page_CreateReturnTicketLocator objCreateReturnTicketPage;
     public static Cx_HelpDesk_page_CreateMissingTicketLocator objCreateMissingPage;
     public static Cx_HelpDesk_page_CreateTicket_DeliveryIssueLocator objCreateDeliveryPage;
+    public static Cx_HelpDesk_page_CreateTicket_Complaints_Locator objCreateComplaintsPage; //Changes: Added in ver3.1
     public static Cx_HelpDesk_page_CreateTicket_OtherLocator objCreateOtherPage;
 
     @BeforeTest
@@ -68,5 +69,23 @@ public class CxHelpDesk_CreateTicketPageTests extends TestBase{
         catch (Exception ex){
             ex.printStackTrace();
         }
+    }
+
+    /*----------------------COMPLAINTS Type---------------------*/
+    @Test(priority = 5)
+    public void createComplaintsTicket(){
+        try {
+            objCreateComplaintsPage = new Cx_HelpDesk_page_CreateTicket_Complaints_Locator(driver);
+            objCreateComplaintsPage.createTicketWithComplaintsType();
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }
+
+    @AfterMethod
+    public void captureScreenShot(ITestResult result){
+        CaptureScreenshot.captureScreenshotForFailedTests(driver,result);
+        CaptureScreenshot.captureScreenshotPassedTests(driver,result);
     }
 }

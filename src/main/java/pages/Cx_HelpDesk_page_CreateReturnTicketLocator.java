@@ -75,7 +75,7 @@ public class Cx_HelpDesk_page_CreateReturnTicketLocator extends TestBase {
     @FindBy(xpath = "//select[@formcontrolname='Priority']")
     public WebElement priority;
 
-    @FindBy(xpath = "//input[@class='form-control ng-pristine ng-invalid ng-touched']") //Changes in v3.1 on 27-May-2021
+    @FindBy(xpath = "//input[@formcontrolname='Description']") //Changes in v3.1 on 27-May-2021
     public WebElement description;
 
 //    @FindBy(xpath = "//label[contains(text(),'Owner')]/..//input[@class='form-control']")
@@ -101,7 +101,7 @@ public class Cx_HelpDesk_page_CreateReturnTicketLocator extends TestBase {
     @FindBy(xpath = "//form[@class='ng-invalid ng-dirty ng-touched']//input[@value='Save']") //Changes in v3.1 on 27-May-2021
     public WebElement buttonSave;
 
-    //-------
+    //-------------------------------------------------------------------------------
     @FindBy(xpath = "//h4[contains(text(),'Confirm Ticket Creation!')]")
     public WebElement titleConfirmTicket;
 
@@ -144,8 +144,11 @@ public class Cx_HelpDesk_page_CreateReturnTicketLocator extends TestBase {
     @FindBy(xpath = "//input[@class='c-input ng-pristine ng-valid ng-star-inserted ng-touched']") //Changes in v3.1 on 27-May-2021
     public WebElement SearchInvoice;
 
-    @FindBy(xpath = "//label[normalize-space()='980100123']") //Changes in v3.1 on 27-May-2021
+    @FindBy(xpath = "//div[@id='returnsPopUp']//li[1]") //Changes in v3.1 on 27-May-2021
     public WebElement InvoiceNo_980100123;
+
+//    @FindBy(xpath = "//label[normalize-space()='980100123']") //Changes in v3.1 on 27-May-2021
+//    public WebElement InvoiceNo_980100123;
 
     @FindBy(xpath = "//form[@class='ng-untouched ng-pristine ng-valid']//div[@class='col-md-6 margin-top-20']//input[@value='Proceed']") //Changes in v3.1 on 27-May-2021
     public WebElement ProceedButton;
@@ -207,7 +210,8 @@ public class Cx_HelpDesk_page_CreateReturnTicketLocator extends TestBase {
     public WebElement ReturnPop_SaveButton;
 
     //----------------------------------------DECLARATION FORM----------------------------------------
-//    @FindBy(xpath = "(//label[@class='mt-checkbox mt-checkbox-single mt-checkbox-outline'])[6]/span")
+
+    //    @FindBy(xpath = "(//label[@class='mt-checkbox mt-checkbox-single mt-checkbox-outline'])[6]/span")
     @FindBy(xpath = "//div[@class='form-group m-t-30']//label[@class='mt-checkbox mt-checkbox-single mt-checkbox-outline']//span") //Changes in v3.1 on 27-May-2021
     public WebElement DeclarationCheckbox;
 
@@ -259,9 +263,8 @@ public class Cx_HelpDesk_page_CreateReturnTicketLocator extends TestBase {
 //    public WebElement ReturnSelectReceivedPI;
 
 //    @FindBy(xpath = "(//input[@value=\"Submit\"])[2]")
-    @FindBy(xpath = "//form[@class='ng-invalid ng-touched ng-dirty']//input[@value='Save']")     //Changes in v3.1 on 27-May-2021
+    @FindBy(xpath = "//span[contains(text(),' Create New Ticket ')]/../../..//input[@value='Save']")     //Changes in v3.1 on 27-May-2021
     public WebElement Return_SaveButton;
-
 
     /**
      * TESTCASE: Create Ticket
@@ -336,14 +339,35 @@ public class Cx_HelpDesk_page_CreateReturnTicketLocator extends TestBase {
 //           genericUtil.clickWithPause(AccountNo,1000);
            HighlightElement.highlightElement(popupTitleReturn);
 
-           HighlightElement.highlightElement(SearchInvoice);
-           genericUtil.writeTextWithPause(SearchInvoice,"01",1000);
+           HighlightElement.highlightElement(InvoiceDropdown);
+           genericUtil.clickWithPause(InvoiceDropdown,1000);
 
-           HighlightElement.highlightElement(NetAmount);
-           genericUtil.clickWithPause(NetAmount,1000);
+//           HighlightElement.highlightElement(SearchInvoice);
+//           genericUtil.clickWithPause(SearchInvoice,1000);
 
-           HighlightElement.highlightElement(ViewInvoiceButton);
-           genericUtil.clickWithPause(ViewInvoiceButton,2000);
+           HighlightElement.highlightElement(InvoiceNo_980100123);
+           genericUtil.clickWithPause(InvoiceNo_980100123,1000);
+
+            HighlightElement.highlightElement(ProceedButton);
+            genericUtil.clickWithPause(ProceedButton,1000);
+
+//           HighlightElement.highlightElement(InvoiceNo_980100123);
+//           genericUtil.clickWithPause(InvoiceNo_980100123,1000);
+
+           HighlightElement.highlightElement(ReturnQty);
+           genericUtil.writeTextWithPause(ReturnQty,"01",1000);
+
+           HighlightElement.highlightElement(ReturnBoxesQty);
+           genericUtil.writeTextWithPause(ReturnBoxesQty,"01",1000);
+
+           HighlightElement.highlightElement(ProductName);
+           genericUtil.clickWithPause(ProductName,1000);
+
+            HighlightElement.highlightElement(NetAmount);
+            genericUtil.clickWithPause(NetAmount,1000);
+
+            HighlightElement.highlightElement(ViewInvoiceButton);
+            genericUtil.clickWithPause(ViewInvoiceButton,2000);
 
             HighlightElement.highlightElement(ViewInvoicePopUp_CloseButton);
             genericUtil.clickWithPause(ViewInvoicePopUp_CloseButton,1000);
@@ -351,71 +375,58 @@ public class Cx_HelpDesk_page_CreateReturnTicketLocator extends TestBase {
             HighlightElement.highlightElement(ReturnFullInvoiceButton);
             genericUtil.clickWithPause(ReturnFullInvoiceButton,1000);
 
-            HighlightElement.highlightElement(ReturnQty);
-            genericUtil.writeTextWithPause(ReturnQty,"01",1000);
+           HighlightElement.highlightElement(ReturnSelectReason);
+           Select selectReturnReason = new Select(ReturnSelectReason);
+           selectReturnReason.selectByVisibleText("Other");
+           genericUtil.pause(1000);
+           genericUtil.clickWithPause(ReturnSelectReason,1000);
 
-            HighlightElement.highlightElement(ReturnBoxesQty);
-            genericUtil.writeTextWithPause(ReturnBoxesQty,"01",1000);
-
-            HighlightElement.highlightElement(ProductName);
-            genericUtil.clickWithPause(ProductName,1000);
-
-            HighlightElement.highlightElement(ReturnSelectReason);
-            Select selectReturnReason = new Select(ReturnSelectReason);
-            selectReturnReason.selectByVisibleText("Ordering Error");
-            genericUtil.pause(1000);
-
-            HighlightElement.highlightElement(Reason_PIPCodeErrorCheckbox);
-            genericUtil.clickWithPause(Reason_PIPCodeErrorCheckbox,1000);
-
-            HighlightElement.highlightElement(ReturnPop_SaveButton);
-            genericUtil.clickWithPause(ReturnPop_SaveButton,1000);
-
-            HighlightElement.highlightElement(Return_SaveButton);
-            genericUtil.clickWithPause(Return_SaveButton,1000);
-
-            HighlightElement.highlightElement(DeclarationCheckbox);
-            genericUtil.clickWithPause(DeclarationCheckbox,2000);
-
-//            HighlightElement.highlightElement(ReturnSelectReceivedPI);
-//            genericUtil.clickWithPause(ReturnSelectReceivedPI,2000);
+           HighlightElement.highlightElement(Reason_PIPCodeErrorCheckbox);
+           genericUtil.clickWithPause(Reason_PIPCodeErrorCheckbox,1000);
 
             HighlightElement.highlightElement(ReturnReason_SaveButton);
             genericUtil.clickWithPause(ReturnReason_SaveButton,2000);
 
-            HighlightElement.highlightElement(Return_SaveButton);
-            genericUtil.clickWithPause(Return_SaveButton,1000);
+           HighlightElement.highlightElement(SaveInvoiceButton);
+           genericUtil.clickWithPause(SaveInvoiceButton,1000);
 
-            HighlightElement.highlightElement(DeclarationCheckbox);
-            genericUtil.clickWithPause(DeclarationCheckbox,1000);
+            HighlightElement.highlightElement(ReturnPop_SaveButton);
+            genericUtil.clickWithPause(ReturnPop_SaveButton,1000);
 
-            HighlightElement.highlightElement(Declaration_Radio1_Yes);
-            genericUtil.clickWithPause(Declaration_Radio1_Yes,1000);
+//           HighlightElement.highlightElement(DeclarationCheckbox);
+//           genericUtil.clickWithPause(DeclarationCheckbox,2000);
+//
+           HighlightElement.highlightElement(DeclarationCheckbox);
+           genericUtil.clickWithPause(DeclarationCheckbox,1000);
 
-            HighlightElement.highlightElement(Declaration_Radio3_Yes);
-            genericUtil.clickWithPause(Declaration_Radio3_Yes,1000);
+           HighlightElement.highlightElement(Declaration_Radio1_Yes);
+           genericUtil.clickWithPause(Declaration_Radio1_Yes,1000);
 
-            HighlightElement.highlightElement(Declaration_SaveButton);
-            genericUtil.clickWithPause(Declaration_SaveButton,1000);
+           HighlightElement.highlightElement(Declaration_Radio3_Yes);
+           genericUtil.clickWithPause(Declaration_Radio3_Yes,1000);
+
+           HighlightElement.highlightElement(Declaration_SaveButton);
+           genericUtil.clickWithPause(Declaration_SaveButton,1000);
 
         /*---END-------------Return popup-------------------*/
-
-            HighlightElement.highlightElement(description);
-            genericUtil.writeTextWithPause(description, "Test Description", 1000);
-            genericUtil.pause(2000);
-
-            HighlightElement.highlightElement(Owner);
-            genericUtil.pause(1000);
-
-            HighlightElement.highlightElement(state);
-            genericUtil.pause(1000);
 
             HighlightElement.highlightElement(priority);
             genericUtil.click(priority);
             genericUtil.pause(1000);
             Select selectPriority = new Select(priority);
             selectPriority.selectByVisibleText("Low");
-            genericUtil.pause(2000);
+            genericUtil.clickWithPause(priority,1000);
+
+            HighlightElement.highlightElement(description);
+            genericUtil.click(description);
+            genericUtil.writeTextWithPause(description, "Test Description", 1000);
+            genericUtil.pause(1000);
+
+            HighlightElement.highlightElement(Owner);
+            genericUtil.pause(1000);
+
+            HighlightElement.highlightElement(state);
+            genericUtil.pause(1000);
 
             HighlightElement.highlightElement(tag);
             genericUtil.writeTextWithPause(tag, "#New#Created#Open#", 2000);
@@ -425,42 +436,44 @@ public class Cx_HelpDesk_page_CreateReturnTicketLocator extends TestBase {
 
             /*------START------------File Upload Logic--------------------*/
             // Specify the file location with extension
-            StringSelection sel = new StringSelection(Constants.FILE_UPLOAD_PATH);
+            StringSelection sel1 = new StringSelection(Constants.FILE_UPLOAD_PATH);
 
             // Copy to clipboard
-            Toolkit.getDefaultToolkit().getSystemClipboard().setContents(sel,null);
-            System.out.println("selection" +sel);
+            Toolkit.getDefaultToolkit().getSystemClipboard().setContents(sel1,null);
+            System.out.println("selection" +sel1);
             // Create object of Robot class
-            Robot robot = new Robot();
+            Robot robot1 = new Robot();
             genericUtil.pause(1000);
 
             // Press Enter
-            robot.keyPress(KeyEvent.VK_ENTER);
+            robot1.keyPress(KeyEvent.VK_ENTER);
 
             // Release Enter
-            robot.keyRelease(KeyEvent.VK_ENTER);
+            robot1.keyRelease(KeyEvent.VK_ENTER);
 
             // Press CTRL+V
-            robot.keyPress(KeyEvent.VK_CONTROL);
-            robot.keyPress(KeyEvent.VK_V);
+            robot1.keyPress(KeyEvent.VK_CONTROL);
+            robot1.keyPress(KeyEvent.VK_V);
 
             // Release CTRL+V
-            robot.keyRelease(KeyEvent.VK_CONTROL);
-            robot.keyRelease(KeyEvent.VK_V);
+            robot1.keyRelease(KeyEvent.VK_CONTROL);
+            robot1.keyRelease(KeyEvent.VK_V);
             genericUtil.pause(1000);
 
             //Press Enter
-            robot.keyPress(KeyEvent.VK_ENTER);
-            robot.keyRelease(KeyEvent.VK_ENTER);
-
+            robot1.keyPress(KeyEvent.VK_ENTER);
+            robot1.keyRelease(KeyEvent.VK_ENTER);
             /*------END------------File Upload Logic----------------------*/
             genericUtil.pause(2000);
 
             HighlightElement.highlightElement(CustomerComment);
             genericUtil.writeTextWithPause(CustomerComment, "Agent comment added!", 1000);
 
-            HighlightElement.highlightElement(buttonSave);
-            genericUtil.clickWithPause(buttonSave, 2000);
+            HighlightElement.highlightElement(Return_SaveButton);
+            genericUtil.clickWithPause(Return_SaveButton,1000);
+
+//            HighlightElement.highlightElement(buttonSave);
+//            genericUtil.clickWithPause(buttonSave, 2000);
 
             HighlightElement.highlightElement(titleConfirmTicket);
             genericUtil.pause(1000);
