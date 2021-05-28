@@ -12,8 +12,31 @@ public class Constants {
 
 //	public static final String ContactPersonName= "Test Name";
 
+	public static final String CustomerName ="Tushar Patel";
+	public static final String CustomerAddress="kunj vila society laxmipura ,Baroda";
+	public static final String County="India";
+	public static final String CustomerAccountNumber="Test_reg-2021";
+	public static final String City="Vadodara";
+	public static final String PostCode="388350";
+	public static final String ContactPersonName="Test Name";
+	public static final String ContactPersonNumber="8989898989";
+	public static final String FaxNumber="363636";
+	public static final String Email="Tusharpatel@luxshtech.com";
+
+
 	public static final String USERNAME = "E123456";
 	public static final String PASSWORD = "112245998";
+
+	public static final String ADMINUSERNAME = "psptester@gmail.com"; //""Emp39"; //"Emp10";  //Emp188
+	public static final String AGENTUSERNAME =  "Emp41"; //"Emp13"; //Emp190
+	public static final String MANAGERUSERNAME =  "test.manager@spam4.me"; //"Emp40"; //"Emp11"; //Emp189
+	public static final String DEPARTMENTALUSERNAME =  "Emp42"; //"Emp18";
+	public static final String VALIDPASSWORD =  "123456"; //"11112222";
+
+	public static final String INVALIDUSERNAME = "!@$123~&";
+	public static final String INVALIDPASSWORD = "!@$123~&";
+
+	public static final String EMPTYDATA = "";
 
 	public static final String ADMIN_USERNAME = "test.manager@spam4.me"; //added in ver 3.1
 	public static final String AGENT_USERNAME =  "hp_agent@spam4.me"; //added in ver 3.1
