@@ -21,7 +21,7 @@ public class CxHelpDesk_Master_GroupPageTests extends TestBase {
 //        driver = TestBase.testBase();
 //
 //        objLoginPage = new Cx_HelpDesk_page_LoginLocator(driver);
-//        objLoginPage.validateLogin(Constants.MANAGERUSERNAME, Constants.VALIDPASSWORD);
+//        objLoginPage.validateLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
 //    }
 
     @Test(priority = 1)

@@ -21,7 +21,7 @@ public class Cx_HelpDesk_page_Master_SiteLocator extends TestBase {
     public WebElement TitleMasters;
 
     @FindBy(xpath = "//span[text()=' Sites ']")
-    public WebElement TitleSiteUser;
+    public WebElement TitleSiteUser; //V3.1
 
     @FindBy(xpath = "//li[@id='master']")
     public WebElement sidebar_textMaster;
@@ -44,13 +44,13 @@ public class Cx_HelpDesk_page_Master_SiteLocator extends TestBase {
     /*--------------Edit Site Employee ---------------*/
 
     @FindBy(xpath = "//h4[contains(text(),'Edit Site')]")
-    public WebElement SiteEditHeader;
+    public WebElement SiteEditHeader; //V3.1
 
-    @FindBy(xpath = "//span[text()=' Sites ']/../../..//div//table/tbody/tr[1]//a//i[@title='Edit Employee']")
-    public WebElement SiteEditBtn;
+    @FindBy(xpath = "//span[text()=' Sites ']/../../..//div//table/tbody/tr[1]//i[@title=\"Edit Employee\"]")  //span[contains(text()=' Sites ']/../../..//div//table/tbody/tr[1]//a//i[@title='Edit Employee')]
+    public WebElement SiteEditBtn; //V3.1
 
-    @FindBy(xpath = "//span[text()=' Sites ']/../../..//div//table/tbody/tr[1]//a//i[@title='Delete Employee']")
-    public WebElement SiteDeleteBtn;
+    @FindBy(xpath = "(//i[@title='Delete Employee'])[11]")
+    public WebElement SiteDeleteBtn; //V3.1
 
     @FindBy(xpath = "//h3[contains(text(),'Do You Wish To Edit Site')]")
     public WebElement EditPopupAlertMsg;
@@ -89,21 +89,21 @@ public class Cx_HelpDesk_page_Master_SiteLocator extends TestBase {
     public WebElement EditSiteContactNo;
 
     @FindBy(xpath = "//h4[contains(text(),'Edit Site')]//..//..//input[@value='Save']")
-    public WebElement EditSaveButton;
+    public WebElement EditSaveButton; //V3.1
 
     @FindBy(xpath = "//h3[contains(text(),'Modified successfully!!!')]")
-    public WebElement EditSuccessMessage;
+    public WebElement EditSuccessMessage; //V3.1
 
     @FindBy(xpath = "//h3[contains(text(),'Modified successfully!!!')]//..//..//button[contains(text(),'Ok')]")
     public WebElement EditSuccessMessageOkButton;
 
     @FindBy(xpath = "//a[text()='Add New Site']")
-    public WebElement AddNewSite;
+    public WebElement AddNewSite; //V3.1
 
     /*--------------Add New Site ---------------*/
 
     @FindBy(xpath = "//h4[contains(text(),'Add New Site')]")
-    WebElement titleAddSite;
+    WebElement titleAddSite; //V3.1
 
     @FindBy(xpath = "//input[@id='siteNo']")
     WebElement SiteId;
@@ -160,7 +160,7 @@ public class Cx_HelpDesk_page_Master_SiteLocator extends TestBase {
     public WebElement DeleteSuccessMessage;
 
     @FindBy(xpath = "//h3[contains(text(),'deleted successfully!!!')]//..//..//button[contains(text(),'Ok')]")
-    public WebElement DeleteSuccessMessageOkButton;
+    public WebElement DeleteSuccessMessageOkButton; //V3.1
 
     public Cx_HelpDesk_page_Master_SiteLocator(WebDriver driver) {
         TestBase.driver = driver;
@@ -189,7 +189,7 @@ public class Cx_HelpDesk_page_Master_SiteLocator extends TestBase {
             genericUtil.pause(2000);
 
             HighlightElement.highlightElement(TitleMasters);
-            genericUtil.pause(1000);
+            genericUtil.pause(1000); //V3.1
 
             HighlightElement.highlightElement(TitleSiteUser);
             genericUtil.clickWithPause(TitleSiteUser,1000);
@@ -237,7 +237,7 @@ public class Cx_HelpDesk_page_Master_SiteLocator extends TestBase {
             genericUtil.clickWithPause(SiteAddSubmit,3000);
 
             HighlightElement.highlightElement(SiteSearch);
-            genericUtil.writeTextWithPause(SiteSearch,"bns_vd" + Constants.date.getTime(),1000);
+            genericUtil.writeTextWithPause(SiteSearch,"bns_vd",1000);
 
         }catch(Exception ex){
             ex.printStackTrace();
@@ -245,9 +245,7 @@ public class Cx_HelpDesk_page_Master_SiteLocator extends TestBase {
     }
 
     /**
-     * TESTCASE METHOD: Edit or Modify Site Details
      *
-     * @param strSiteCode
      * @param strSiteName
      * @param strSiteAddress
      * @param strSiteCounty
@@ -255,13 +253,31 @@ public class Cx_HelpDesk_page_Master_SiteLocator extends TestBase {
      * @param strSiteCountry
      * @param strSitePostcode
      * @param strSiteContactNumber
+     * @param strEditSiteSearch
      */
-    public void editSite(String strSiteCode,String strSiteName,String strSiteAddress,String strSiteCounty,String strSiteCity,String strSiteCountry,String strSitePostcode,String strSiteContactNumber,String strSiteSearch){
+    public void editSite(String strSiteName, String strSiteAddress, String strSiteCounty, String strSiteCity, String strSiteCountry, String strSitePostcode, String strSiteContactNumber, String strEditSiteSearch){
         try {
             genericUtil = new GenericUtil();
 
+//            wait.until(ExpectedConditions.visibilityOf(sidebar_textMaster));
+//            HighlightElement.highlightElement(sidebar_textMaster);
+//            sidebar_textMaster.click();
+//            genericUtil.pause(2000);
+
+//            HighlightElement.highlightElement(TitleMasters);
+//            genericUtil.pause(1000);
+
+//            HighlightElement.highlightElement(TitleSiteUser);
+//            genericUtil.clickWithPause(TitleSiteUser,1000);
+//
+//            HighlightElement.highlightElement(SiteCollapse);
+//            genericUtil.clickWithPause(SiteCollapse,1000);
+
             HighlightElement.highlightElement(SiteFirstRowData);
             genericUtil.clickWithPause(SiteFirstRowData,1000);
+
+            HighlightElement.highlightElement(TitleSiteUser);
+            genericUtil.clickWithPause(TitleSiteUser,1000);
 
             HighlightElement.highlightElement(SiteEditBtn);
             genericUtil.clickWithPause(SiteEditBtn,1000);
@@ -276,11 +292,11 @@ public class Cx_HelpDesk_page_Master_SiteLocator extends TestBase {
             HighlightElement.highlightElement(SiteEditHeader);
             genericUtil.clickWithPause(SiteEditHeader,3000);
 
-            HighlightElement.highlightElement(EditSiteId);
-            genericUtil.clickWithPause(EditSiteId,1000);
+//            HighlightElement.highlightElement(EditSiteId);
+//            genericUtil.clickWithPause(EditSiteId,1000); //V3.1
 
             HighlightElement.highlightElement(EditSiteCode);
-            genericUtil.writeTextWithPause(EditSiteCode,strSiteCode,1000); //"Updated laxmico" + Constants.date.getTime()
+            genericUtil.writeTextWithPause(EditSiteCode,"Updated laxmico",1000); //V3.1
 
             HighlightElement.highlightElement(EditSiteName);
             genericUtil.writeTextWithPause(EditSiteName,strSiteName,1000); //"BNS LAXMICO Luxshtech" + Constants.date.getTime()
@@ -304,7 +320,7 @@ public class Cx_HelpDesk_page_Master_SiteLocator extends TestBase {
             genericUtil.writeTextWithPause(EditSiteContactNo,strSiteContactNumber,1000); //"8998121230"
 
             HighlightElement.highlightElement(EditSaveButton);
-            genericUtil.clickWithPause(EditSaveButton,3000);
+            genericUtil.clickWithPause(EditSaveButton,3000); //V3.1
 
             wait.until(ExpectedConditions.visibilityOf(EditSuccessMessage));
             HighlightElement.highlightElement(EditSuccessMessage);
@@ -313,8 +329,6 @@ public class Cx_HelpDesk_page_Master_SiteLocator extends TestBase {
             HighlightElement.highlightElement(EditSuccessMessageOkButton);
             genericUtil.clickWithPause(EditSuccessMessageOkButton,2000);
 
-            HighlightElement.highlightElement(SiteSearch);
-            genericUtil.writeTextWithPause(SiteSearch,strSiteSearch,1000); //"Updated BNS LAXMICO" + Constants.date.getTime()
 
         }catch(Exception ex){
             ex.printStackTrace();
@@ -324,20 +338,23 @@ public class Cx_HelpDesk_page_Master_SiteLocator extends TestBase {
     /**
      * TESTCASE METHOD: Delete Site
      *
-     * @param strSiteCode
+     * @param strDeSiteCode
      */
-    public void deleteSite(String strSiteCode){
+    public void deleteSite(String strDeSiteCode){
         try {
             genericUtil = new GenericUtil();
 
-            HighlightElement.highlightElement(SiteSearch);
-            genericUtil.writeTextWithPause(SiteSearch,strSiteCode,1000);
+            HighlightElement.highlightElement(TitleSiteUser);
+            genericUtil.click(TitleSiteUser);
 
-            HighlightElement.highlightElement(SiteFirstRowData);
-            genericUtil.clickWithPause(SiteFirstRowData,1000);
+            HighlightElement.highlightElement(SiteSearch);
+            genericUtil.writeTextWithPause(SiteSearch,strDeSiteCode,1000); //V3.1
+
+//            HighlightElement.highlightElement(SiteFirstRowData);
+//            genericUtil.clickWithPause(SiteFirstRowData,1000);
 
             HighlightElement.highlightElement(SiteDeleteBtn);
-            genericUtil.clickWithPause(SiteDeleteBtn,2000);
+            genericUtil.clickWithPause(SiteDeleteBtn,2000); //V3.1
 
             HighlightElement.highlightElement(SiteDeleteAlertMsg);
             genericUtil.clickWithPause(SiteDeleteAlertMsg,1000);
@@ -353,7 +370,7 @@ public class Cx_HelpDesk_page_Master_SiteLocator extends TestBase {
             genericUtil.clickWithPause(DeleteSuccessMessageOkButton,2000);
 
             HighlightElement.highlightElement(SiteSearch);
-            genericUtil.writeTextWithPause(SiteSearch,strSiteCode,1000); //"Updated BNS LAXMICO" + Constants.date.getTime()
+            genericUtil.writeTextWithPause(SiteSearch,strDeSiteCode,1000); //"Updated BNS LAXMICO" + Constants.date.getTime() //V3.1
 
         }catch(Exception ex){
             ex.printStackTrace();

@@ -28,8 +28,8 @@ public class Cx_HelpDesk_page_Master_GroupLocator extends TestBase{
     @FindBy(xpath = "//h1[@class='page-title']")
     public WebElement TitleMasters;
 
-    @FindBy(xpath = "(//span[@class='caption-subject font-dark bold uppercase'])[2]")
-    public WebElement TitleGroup;
+    @FindBy(xpath = "//span[contains(text(),'Groups ')]")
+    public WebElement TitleGroup; //V3.1
 
     @FindBy(xpath = "//li[@id='master']") //i[@class='fa fa-database']
     public WebElement sidebar_textMaster;
@@ -97,13 +97,19 @@ public class Cx_HelpDesk_page_Master_GroupLocator extends TestBase{
     public WebElement GroupEditCancel;//v3.0
 
     @FindBy(xpath = "//a[contains(text(),'Add New Group')]")
-    public WebElement GroupAdd;//v3.0
+    public WebElement GroupAdd;//v3.1
 
     @FindBy(xpath = "//h3[contains(text(),'Are you sure! You want to Delete this Group?')]")
     public WebElement DeleteGroupMessage;
 
     @FindBy(xpath = "(//button[@class='btn btn-lg btn-success'])[4]")
     public WebElement YesOptionDeleteGroupMessage;//V3.0
+
+    @FindBy(xpath = "//h4[contains(text(),'Add New Group')]")
+    public  WebElement GroupAddTitle; //V3.1
+
+    @FindBy(xpath = "//h4[contains(text(),'Edit Group')]")
+    public WebElement GroupEditTitle; //V3.1
 
     @FindBy(xpath = "//input[@id='Name']")
     public WebElement GroupAddName;
@@ -142,17 +148,17 @@ public class Cx_HelpDesk_page_Master_GroupLocator extends TestBase{
     public WebElement GroupPaginationNo ;
 
     @FindBy(xpath = "//h4[contains(text(),'You have successfully deleted the selected Group')]")
-    WebElement SuccessMsgGroupDelete;
+    WebElement SuccessMsgGroupDelete; //V3.1
 
     @FindBy(xpath = "(//button[@class='btn white btn-outline'])[2]")
     WebElement CloseBtnSuccessGroupDelete;
 
     /*--------------Import Group ---------------*/
     @FindBy(xpath = "//a[contains(text(),'Import Groups')]")
-    public WebElement GroupImport;//v3.0
+    public WebElement GroupImport;//v3.1
 
     @FindBy(xpath = "//h4[contains(text(),'Import Groups')]")
-    public WebElement GroupImportPopTitle;
+    public WebElement GroupImportPopTitle; //V3.1
 
     @FindBy(xpath = "(//ngx-dropzone[@id='importFile'])[2]")
     public WebElement GroupImportattchment;
@@ -175,6 +181,11 @@ public class Cx_HelpDesk_page_Master_GroupLocator extends TestBase{
         wait = new WebDriverWait(driver, 20);
     }
 
+    /**
+     *
+     * @param GroupName
+     * @param searchText
+     */
     public void createGroup(String GroupName,String searchText){
         try {
             genericUtil = new GenericUtil();
@@ -191,10 +202,13 @@ public class Cx_HelpDesk_page_Master_GroupLocator extends TestBase{
             genericUtil.clickWithPause(GroupCollapse,1000);
 
             HighlightElement.highlightElement(TitleGroup);
-            genericUtil.pause(1000);
+            genericUtil.pause(1000); //V3.1
 
             HighlightElement.highlightElement(GroupAdd);
             genericUtil.clickWithPause(GroupAdd,3000);//v3.0
+
+            HighlightElement.highlightElement(GroupAddTitle);
+            genericUtil.pause(1000);
 
             HighlightElement.highlightElement(GroupAddName);
             genericUtil.writeTextWithPause(GroupAddName,GroupName,2000); //"Group Test"
@@ -240,12 +254,20 @@ public class Cx_HelpDesk_page_Master_GroupLocator extends TestBase{
         }
     }
 
+    /**
+     *
+     * @param UpdatedGroupName
+     * @param searchText
+     */
     public void editGroup(String UpdatedGroupName,String searchText){
         try {
             genericUtil = new GenericUtil();
 
             HighlightElement.highlightElement(GroupEditBtn);
             genericUtil.clickWithPause(GroupEditBtn,3000);
+
+            HighlightElement.highlightElement(GroupEditTitle);
+            genericUtil.clickWithPause(GroupEditTitle,1000);
 
             HighlightElement.highlightElement(GroupAddName);
             genericUtil.writeTextWithPause(GroupAddName,UpdatedGroupName,2000); //"Group Test"
@@ -274,6 +296,11 @@ public class Cx_HelpDesk_page_Master_GroupLocator extends TestBase{
         }
     }
 
+    /**
+     *
+     * @param UpdatedGroupName
+     * @param searchText
+     */
     public void deleteGroup(String UpdatedGroupName,String searchText){
         try {
             genericUtil = new GenericUtil();
@@ -308,6 +335,7 @@ public class Cx_HelpDesk_page_Master_GroupLocator extends TestBase{
             Thread.sleep(2000);
             HighlightElement.highlightElement(SuccessMsgGroupDelete);
             Thread.sleep(2000);
+
             HighlightElement.highlightElement(CloseBtnSuccessGroupDelete);
             genericUtil.clickWithPause(CloseBtnSuccessGroupDelete,3000);
 
@@ -328,19 +356,19 @@ public class Cx_HelpDesk_page_Master_GroupLocator extends TestBase{
         try {
             genericUtil = new GenericUtil();
 
-            wait.until(ExpectedConditions.visibilityOf(sidebar_textMaster));
-            HighlightElement.highlightElement(sidebar_textMaster);
-            sidebar_textMaster.click();
-            genericUtil.pause(2000);
+//            wait.until(ExpectedConditions.visibilityOf(sidebar_textMaster));
+//            HighlightElement.highlightElement(sidebar_textMaster);
+//            sidebar_textMaster.click();
+//            genericUtil.pause(2000);
 
-            HighlightElement.highlightElement(TitleMasters);
-            genericUtil.pause(1000);
-
-            HighlightElement.highlightElement(GroupCollapse);
-            genericUtil.clickWithPause(GroupCollapse,1000);
+//            HighlightElement.highlightElement(TitleMasters);
+//            genericUtil.pause(1000);
+//
+//            HighlightElement.highlightElement(GroupCollapse);
+//            genericUtil.clickWithPause(GroupCollapse,1000);
 
             HighlightElement.highlightElement(TitleGroup);
-            genericUtil.pause(1000);
+            genericUtil.pause(1000); //V3.1
 
             HighlightElement.highlightElement(GroupImport);
             genericUtil.clickWithPause(GroupImport,2000);

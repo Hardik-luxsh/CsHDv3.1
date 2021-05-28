@@ -20,14 +20,14 @@ public class Cx_HelpDesk_page_AOT_EditTicketPageTests extends TestBase {
         driver = TestBase.testBase();
 
         objLoginPage = new Cx_HelpDesk_page_LoginLocator(driver);
-        objLoginPage.validateLogin(Constants.ADMIN_USERNAME, Constants.VALID_PASSWORD);
+        objLoginPage.validateLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
     }
 
     @Test(priority = 1)
     public void AssignTicket(){
         try {
             objEditTicket = new Cx_HelpDesk_page_AOT_EditTicketLocator(driver);
-            objEditTicket.EditTicket("159","Open","Low","QA");
+            objEditTicket.EditTicket("700","Open","Low","QA");
         }
         catch (Exception ex){
             ex.printStackTrace();

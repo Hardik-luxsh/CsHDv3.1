@@ -24,7 +24,7 @@ public class CxHelpDesk_Master_EmployeePageTests extends TestBase {
 //    @BeforeTest
 //    public void initialBrowserDriver() {
 //        driver = TestBase.testBase();
-
+//
 //        objLoginPage = new Cx_HelpDesk_page_LoginLocator(driver);
 //        objLoginPage.validateLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
 //    }
@@ -33,7 +33,7 @@ public class CxHelpDesk_Master_EmployeePageTests extends TestBase {
     public void createEmployee(){
         try {
             objMasterEmployeeLocator = new Cx_HelpDesk_page_Master_EmployeeLocator(driver);
-            objMasterEmployeeLocator.createEmployee("Employee Name Test " + "Test Name" ,"EmpTest" + Constants.date.getTime() + "@test.com", "EmpTest"  + Constants.date.getTime(), "Agent", "EmpTest"  + Constants.date.getTime());
+            objMasterEmployeeLocator.createEmployee("Employee Name Test "  + Constants.ContactPersonName ,"EmpTest" + Constants.date.getTime() + "@test.com", "EmpTest"  + Constants.date.getTime(), "Agent", "EmpTest"  + Constants.date.getTime());
         }
         catch (Exception ex){
             ex.printStackTrace();

@@ -21,7 +21,7 @@ public class CxHelpDesk_Master_CustomerPageTests extends TestBase {
 //        driver = TestBase.testBase();
 //
 //        objLoginPage = new Cx_HelpDesk_page_LoginLocator(driver);
-//        objLoginPage.validateLogin(Constants.MANAGERUSERNAME, Constants.VALIDPASSWORD);
+//        objLoginPage.validateLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
 //    }
 
     @Test(priority = 1)
@@ -30,7 +30,7 @@ public class CxHelpDesk_Master_CustomerPageTests extends TestBase {
             objMasterCustomerLocator = new Cx_HelpDesk_page_Master_CustomerLocator(driver);
             objMasterCustomerLocator.addCustomer("TestCustomerName","TestAddress","TestCounty",
                     "1234-_abc","VADODARA","395002","TestContactPersonName",
-                    "9638527410", "963852","psp.patel@luxshtech.com","LuxshTechnology");//V3.0
+                    "9638527410", "963852","psp.patel@luxshtech.com","LuxshTech");//V3.1
         }
         catch (Exception ex){
             ex.printStackTrace();
@@ -43,7 +43,7 @@ public class CxHelpDesk_Master_CustomerPageTests extends TestBase {
             objMasterCustomerLocator = new Cx_HelpDesk_page_Master_CustomerLocator(driver);
             objMasterCustomerLocator.editCustomer("UpdatedTestCustomerName","UpdatedTestAddress","UpdatedTestCounty",
                     "3421-_cba","BANGLURU","395002","UpdatedTestContactPersonName",
-                    "9852367410", "963654","hpp.praati@luxshtech.com","Luxsh UK System");//V3.0
+                    "9852367410", "963654","hpp.praati@luxshtech.com","LuxshtexhSolutioPL");//V3.1
         }
         catch (Exception ex){
             ex.printStackTrace();

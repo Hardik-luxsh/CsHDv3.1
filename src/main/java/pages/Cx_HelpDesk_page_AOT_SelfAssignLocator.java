@@ -98,7 +98,7 @@ public class Cx_HelpDesk_page_AOT_SelfAssignLocator extends TestBase {
     @FindBy(xpath = "//img[@src='../assets/layouts/layout2/img/check.svg']")
     WebElement OkSatAssign;
 
-    @FindBy(xpath = "//button[@class='close']/following::button[3]")
+    @FindBy(xpath = "//p[contains(text(),' Tickets Assigned Successfully!! ')]/../../..//input[@value='Close']")
     WebElement closedPopupAssign;
 
     public Cx_HelpDesk_page_AOT_SelfAssignLocator(WebDriver driver) {
@@ -169,13 +169,13 @@ public class Cx_HelpDesk_page_AOT_SelfAssignLocator extends TestBase {
             genericUtil.clickWithPause(Assignbtn,2000);
 
             HighlightElement.highlightElement(SuccessMsgSatAssign);
-            genericUtil.clickWithPause(SuccessMsgSatAssign,2000);
+            genericUtil.clickWithPause(SuccessMsgSatAssign,2000); //V3.0
 
-            HighlightElement.highlightElement(OkSatAssign);
-            genericUtil.clickWithPause(OkSatAssign,2000);
+//            HighlightElement.highlightElement(OkSatAssign);
+//            genericUtil.clickWithPause(OkSatAssign,2000);
 
             HighlightElement.highlightElement(closedPopupAssign);
-            genericUtil.clickWithPause(closedPopupAssign,2000);
+            genericUtil.clickWithPause(closedPopupAssign,2000); //V3.0
 
 //            HighlightElement.highlightElement(TitleSelfAssign);
 //            genericUtil.clickWithPause(TitleSelfAssign,2000);

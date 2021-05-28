@@ -11,7 +11,7 @@ public class CxHelpDesk_Master_SitePageTests extends TestBase {
 
     Cx_HelpDesk_page_LoginLocator objLoginPage;
     Cx_HelpDesk_page_Master_SiteLocator objMasterSiteLocator;
-
+//
 //    @BeforeTest
 //    public void initialBrowserDriver() {
 //        driver = TestBase.testBase();
@@ -24,9 +24,9 @@ public class CxHelpDesk_Master_SitePageTests extends TestBase {
     public void createSite(){
         try {
             objMasterSiteLocator = new Cx_HelpDesk_page_Master_SiteLocator(driver);
-            objMasterSiteLocator.createSite("bns_vd" + Constants.date.getTime(),"BNSLAXMICO" + Constants.formatter.getTimeZone().getDisplayName(),
+            objMasterSiteLocator.createSite("bns_vd" ,"BNSLAXMICO" + Constants.formatter.getTimeZone().getDisplayName(),
                     "CHHANI JAKATNAJKA","VDA","VADODARA","INDIA","987456","9874561230",
-                    "bns_vd" + Constants.date.getTime());
+                    "bns_vd" );
         }
         catch (Exception ex){
             ex.printStackTrace();
@@ -37,9 +37,9 @@ public class CxHelpDesk_Master_SitePageTests extends TestBase {
     public void editSite(){
         try {
             objMasterSiteLocator = new Cx_HelpDesk_page_Master_SiteLocator(driver);
-            objMasterSiteLocator.editSite("Updated bns_vd" + Constants.date.getTime(),"BNSLAXMICOLuxshtech" + Constants.formatter.getTimeZone().getDisplayName(),
+            objMasterSiteLocator.editSite("BNSLAXMICOLuxshtech" + Constants.formatter.getTimeZone().getDisplayName(),
                     "Updated CHHANI JAKATNAJKA","UpdatedVDA","UpdatedVADODARA","UpdatedINDIA","987456","8998121230",
-                    "Updated bns_vd" + Constants.date.getTime());
+                    "bns_vd");//V3.1
         }
         catch (Exception ex){
             ex.printStackTrace();
@@ -50,7 +50,7 @@ public class CxHelpDesk_Master_SitePageTests extends TestBase {
     public void deleteSite(){
         try {
             objMasterSiteLocator = new Cx_HelpDesk_page_Master_SiteLocator(driver);
-            objMasterSiteLocator.deleteSite("Updated bns_vd" + Constants.date.getTime());
+            objMasterSiteLocator.deleteSite("Updated laxmico"); //V3.1
         }
         catch (Exception ex){
             ex.printStackTrace();

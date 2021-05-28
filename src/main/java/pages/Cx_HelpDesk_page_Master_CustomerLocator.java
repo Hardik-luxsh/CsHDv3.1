@@ -32,11 +32,11 @@ public class Cx_HelpDesk_page_Master_CustomerLocator extends TestBase {
     @FindBy(xpath = "//li[@id='master']") //i[@class='fa fa-database']
     public WebElement sidebar_textMaster;
 
-    @FindBy(xpath = "//span[text()=' Customer Master ']")
-    WebElement TitleCustomerMaster;
+    @FindBy(xpath = "//span[contains(text(),' Customers ')]")
+    WebElement TitleCustomerMaster; //V3.1
 
     @FindBy(xpath = "//h4[contains(text(),'Edit Customer')]")
-    WebElement EditTitleCustomerMaster;
+    WebElement EditTitleCustomerMaster; //V3.1
 
     @FindBy(xpath = "(//a[@class='collapse btn btn-circle btn-icon-only btn-default'])[4]")
     WebElement CustomerCollapse; //V 3.0
@@ -91,7 +91,7 @@ public class Cx_HelpDesk_page_Master_CustomerLocator extends TestBase {
     WebElement EditCustomerEmail;
 
     @FindBy(xpath = "(//select[@id='siteId'])[1]")
-    public WebElement EditSiteId; //V 3.0
+    public WebElement EditSiteId; //V 3.1
 
     @FindBy(xpath = "//h4[contains(text(),'Edit Customer')]/../..//input[@value='Save']")
     WebElement EditSubmit; //V 3.0
@@ -110,7 +110,7 @@ public class Cx_HelpDesk_page_Master_CustomerLocator extends TestBase {
 
     /*--------------Add New Customer ---------------*/
     @FindBy(xpath = "(//h4[contains(text(),'Add New Customer')])[1]")
-    WebElement AddCustomerTitle;
+    WebElement AddCustomerTitle; //V3.1
 
     @FindBy(xpath = "(//h4[contains(text(),'Add New Customer')])[1]/../..//input[@id='name']")
     WebElement AddCustomerName; //V 3.0
@@ -149,7 +149,7 @@ public class Cx_HelpDesk_page_Master_CustomerLocator extends TestBase {
     public WebElement AddCustomerStatus;
 
     @FindBy(xpath = "(//h4[contains(text(),'Add New Customer')])[1]/../..//input[@value='Save']")
-    WebElement AddSubmit;
+    WebElement AddSubmit; //V3.0
 
     @FindBy(xpath = "(//h4[contains(text(),'Add New Customer')])[1]/../..//input[@value='Clear']")
     WebElement AddClear; //V 3.0
@@ -167,21 +167,21 @@ public class Cx_HelpDesk_page_Master_CustomerLocator extends TestBase {
     WebElement EmpCustomerPaginationNo ;
 
     @FindBy(xpath = "//h3[contains(text(),'Are you sure! You want to Delete this Customer?')]")
-    public WebElement DeleteCustomerMessage;
+    public WebElement DeleteCustomerMessage; //V3.0
 
     @FindBy(xpath = "//h3[contains(text(),'Are you sure! You want to Delete this Customer?')]/../..//button[@class='btn btn-lg btn-success']")
     public WebElement YesOptionDeleteCustomerMessage;
 
     @FindBy(xpath = "//h4[contains(text(),'You have successfully deleted the selected Customer')]")
-    public WebElement DeleteSuccessMsg;
+    public WebElement DeleteSuccessMsg; //V3.1
 
     @FindBy(xpath = "(//button[@class='btn white btn-outline'])[3]")
     public WebElement CloseBtnPopUp;
 
     /*--------------Import Group ---------------*/
 
-    @FindBy(xpath = "(//a[@class='btn btn-success language_btn'])[6]")
-    WebElement CustomerImport;
+    @FindBy(xpath = "//a[contains(text(),'Import Customer')]")
+    WebElement CustomerImport; //V 3.1
 
     @FindBy(xpath = "//h4[contains(text(),'Import Customers')]")
     public WebElement CustomerImportPopTitle;
@@ -230,9 +230,9 @@ public class Cx_HelpDesk_page_Master_CustomerLocator extends TestBase {
 
 //            HighlightElement.highlightElement(TitleMasters);
 //            genericUtil.pause(1000);
-//
-//            HighlightElement.highlightElement(TitleCustomerMaster);
-//            genericUtil.pause(1000);
+
+            HighlightElement.highlightElement(TitleCustomerMaster);
+            genericUtil.clickWithPause(TitleCustomerMaster,1000); //V3.1
 
             HighlightElement.highlightElement(CustomerCollapse);
             CustomerCollapse.click();
@@ -325,7 +325,7 @@ public class Cx_HelpDesk_page_Master_CustomerLocator extends TestBase {
                              String UpdatedPostCode,String UpdatedContactPersonName, String UpdatedContactPersonNumber,String UpdatedFaxNumber,String UpdatedEmail,String UpdateSiteId){ //V 3.0
         try {
             genericUtil = new GenericUtil();
-//
+
 //            HighlightElement.highlightElement(TitleMasters);
 //            genericUtil.pause(1000);
 //
@@ -336,7 +336,7 @@ public class Cx_HelpDesk_page_Master_CustomerLocator extends TestBase {
             genericUtil.clickWithPause(EditBtn, 1000);
 
             HighlightElement.highlightElement(EditTitleCustomerMaster);
-            genericUtil.pause(1000);
+            genericUtil.pause(1000);//V3.1
 
             HighlightElement.highlightElement(EditCustomerName);
             genericUtil.writeTextWithPause(EditCustomerName, UpdatedCustomerName, 1000);
@@ -412,7 +412,7 @@ public class Cx_HelpDesk_page_Master_CustomerLocator extends TestBase {
 
             wait.until(ExpectedConditions.visibilityOf(DeleteSuccessMsg));
             HighlightElement.highlightElement(DeleteSuccessMsg);
-            genericUtil.clickWithPause(DeleteSuccessMsg,2000);
+            genericUtil.clickWithPause(DeleteSuccessMsg,2000); //V3.1
 
             HighlightElement.highlightElement(CloseBtnPopUp);
             genericUtil.clickWithPause(CloseBtnPopUp,3000);
@@ -420,6 +420,7 @@ public class Cx_HelpDesk_page_Master_CustomerLocator extends TestBase {
             HighlightElement.highlightElement(Search);
             Search.clear();
             genericUtil.writeTextWithPause(Search, searchText, 3000); //"Group Test"
+
         }catch (Exception ex){
             ex.getStackTrace();
         }
@@ -434,19 +435,19 @@ public class Cx_HelpDesk_page_Master_CustomerLocator extends TestBase {
             JavascriptExecutor jsDown = (JavascriptExecutor) driver;
             JavascriptExecutor jsUp = (JavascriptExecutor) driver;
 
-            wait.until(ExpectedConditions.visibilityOf(sidebar_textMaster));
-            HighlightElement.highlightElement(sidebar_textMaster);
-            sidebar_textMaster.click();
-            genericUtil.pause(2000);
-
-            HighlightElement.highlightElement(TitleMasters);
-            genericUtil.pause(1000);
-
-            HighlightElement.highlightElement(CustomerCollapse);
-            genericUtil.clickWithPause(CustomerCollapse,1000);
-
-//            HighlightElement.highlightElement(TitleCustomerMaster);
+//            wait.until(ExpectedConditions.visibilityOf(sidebar_textMaster));
+//            HighlightElement.highlightElement(sidebar_textMaster);
+//            sidebar_textMaster.click();
+//            genericUtil.pause(2000);
+//
+//            HighlightElement.highlightElement(TitleMasters);
 //            genericUtil.pause(1000);
+//
+//            HighlightElement.highlightElement(CustomerCollapse);
+//            genericUtil.clickWithPause(CustomerCollapse,1000);
+
+            HighlightElement.highlightElement(TitleCustomerMaster);
+            genericUtil.clickWithPause(TitleCustomerMaster,1000); //V3.1
 
             jsDown.executeScript("window.scrollBy(0,500)");
             genericUtil.pause(1000);

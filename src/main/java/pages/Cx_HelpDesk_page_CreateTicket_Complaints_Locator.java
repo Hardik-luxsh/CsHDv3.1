@@ -247,7 +247,7 @@ public class Cx_HelpDesk_page_CreateTicket_Complaints_Locator extends TestBase{
             //Press Enter
             robot.keyPress(KeyEvent.VK_ENTER);
             robot.keyRelease(KeyEvent.VK_ENTER);
-            /*------End Of------------File Upload Logic--------------------*/
+            /*------END Of------------File Upload Logic--------------------*/
 
             HighlightElement.highlightElement(Complaints_SaveButton);
             genericUtil.clickWithPause(Complaints_SaveButton, 2000);

@@ -96,7 +96,8 @@ public class Cx_HelpDesk_page_Master_CustomerUserLocator extends TestBase {
     WebElement EditStatus;
 
 //    @FindBy(xpath = "//h4[contains(text(),'Edit Customer User')]/../..//div[@class='form-group text-center']/..//input[@type='button' and @value='Save']")
-    @FindBy(xpath = "//h4[contains(text(),'Edit Customer User')]/../..//input[@value='Save']")
+//    @FindBy(xpath =  "//h4[contains(text(),'Edit Customer User')]/../..//input[@value='Save']") //
+    @FindBy(xpath = "(//input[@value='Save'])[5]")
     WebElement EditSave; //V 3.0
 
     @FindBy(xpath = "//h4[contains(text(),'Edit Customer User')]/../..//input[@value='Clear']")
@@ -112,6 +113,9 @@ public class Cx_HelpDesk_page_Master_CustomerUserLocator extends TestBase {
     WebElement ImportCustomer; //V 3.0
 
     /*--------------Add New CustomerUser ---------------*/
+    @FindBy(xpath = "//h4[contains(text(),'Add New Customer User')]")
+    WebElement AddCSSaveTitle;
+
     @FindBy(xpath = "(//div[@class='selected-list'])[2]")
     WebElement AddCustomerName;
 
@@ -241,6 +245,9 @@ public class Cx_HelpDesk_page_Master_CustomerUserLocator extends TestBase {
             HighlightElement.highlightElement(AddNewCustomerUser);
             genericUtil.clickWithPause(AddNewCustomerUser,3000);
 
+            HighlightElement.highlightElement(AddCSSaveTitle);
+            genericUtil.pause(1000);//V3.1
+
             HighlightElement.highlightElement(AddCustomerName);
             genericUtil.click(AddCustomerName);
             genericUtil.pause(1000);
@@ -325,7 +332,7 @@ public class Cx_HelpDesk_page_Master_CustomerUserLocator extends TestBase {
 
             wait.until(ExpectedConditions.visibilityOf(EmpCustHeader));
             HighlightElement.highlightElement(EmpCustHeader);
-            genericUtil.pause(1000);
+            genericUtil.pause(1000);//V3.1
 
             HighlightElement.highlightElement(EditUserName); //V 3.0
             genericUtil.writeTextWithPause(EditUserName,UpdatedUsername,2000);
@@ -344,11 +351,11 @@ public class Cx_HelpDesk_page_Master_CustomerUserLocator extends TestBase {
             role.selectByVisibleText(UpdatedRole); //"User"
             genericUtil.pause(1000); //V 3.0
 
-            HighlightElement.highlightElement(EditPassword); //V 3.0
-            genericUtil.writeTextWithPause(EditPassword,UpdatedstrPassword,2000);
-
-            HighlightElement.highlightElement(EditConfirmPassword); //V 3.0
-            genericUtil.writeTextWithPause(EditConfirmPassword,UpdatedstrConfirmPassword,2000);
+//            HighlightElement.highlightElement(EditPassword); //V 3.0
+//            genericUtil.writeTextWithPause(EditPassword,UpdatedstrPassword,2000);
+//
+//            HighlightElement.highlightElement(EditConfirmPassword); //V 3.0
+//            genericUtil.writeTextWithPause(EditConfirmPassword,UpdatedstrConfirmPassword,2000);
 
 //            try {
 //                objCheckBox = new CheckBox();
@@ -366,10 +373,8 @@ public class Cx_HelpDesk_page_Master_CustomerUserLocator extends TestBase {
 //            }
 
             HighlightElement.highlightElement(EditSave);
-            genericUtil.clickWithPause(EditSave,3000); //V 3.0
+            genericUtil.clickWithPause(EditSave,2000); //V 3.1
 
-            HighlightElement.highlightElement(search);
-            genericUtil.writeTextWithPause(search,UpdatedsearchText,1000);
         }
         catch (Exception ex){
             ex.getStackTrace();
@@ -382,8 +387,15 @@ public class Cx_HelpDesk_page_Master_CustomerUserLocator extends TestBase {
     public void deleteCustomerUser(String searchText){
         try {
             genericUtil = new GenericUtil();
+
+            HighlightElement.highlightElement(TitleCustomerUser);
+            genericUtil.pause(1000);//V3.1
+
+            HighlightElement.highlightElement(Search);
+            genericUtil.writeTextWithPause(Search, searchText, 2000);
+
             HighlightElement.highlightElement(DeleteBtn);
-            genericUtil.clickWithPause(DeleteBtn, 3000);
+            genericUtil.clickWithPause(DeleteBtn, 3000); //V3.1
 
             HighlightElement.highlightElement(DeleteCustomerUserMessage);
 
@@ -412,20 +424,20 @@ public class Cx_HelpDesk_page_Master_CustomerUserLocator extends TestBase {
             JavascriptExecutor jsDown = (JavascriptExecutor) driver;
             JavascriptExecutor jsUp = (JavascriptExecutor) driver;
             genericUtil.pause(3000);
-
-            wait.until(ExpectedConditions.visibilityOf(sidebar_textMaster));
-            HighlightElement.highlightElement(sidebar_textMaster);
-            sidebar_textMaster.click();
-            genericUtil.pause(2000);
-
-            HighlightElement.highlightElement(TitleMasters);
-            genericUtil.pause(1000);
-
-            HighlightElement.highlightElement(CustomerUserCollapse);
-            genericUtil.clickWithPause(CustomerUserCollapse,1000);
-
-//            HighlightElement.highlightElement(TitleCustomerUser);
+//
+//            wait.until(ExpectedConditions.visibilityOf(sidebar_textMaster));
+//            HighlightElement.highlightElement(sidebar_textMaster);
+//            sidebar_textMaster.click();
+//            genericUtil.pause(2000);
+//
+//            HighlightElement.highlightElement(TitleMasters);
 //            genericUtil.pause(1000);
+//
+//            HighlightElement.highlightElement(CustomerUserCollapse);
+//            genericUtil.clickWithPause(CustomerUserCollapse,1000);
+
+            HighlightElement.highlightElement(TitleCustomerUser);
+            genericUtil.pause(1000); //V3.1
 
             Thread.sleep(1000);
             jsDown.executeScript("window.scrollBy(0,800)");

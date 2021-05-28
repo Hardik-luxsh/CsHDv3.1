@@ -23,7 +23,7 @@ public class CxHelpDesk_LoginPageTests extends TestBase {
 	public void validateLogin(){
 		try {
 			objLoginPage = new Cx_HelpDesk_page_LoginLocator(driver);
-			objLoginPage.validateLogin(Constants.MANAGER_USERNAME, Constants.VALID_PASSWORD);
+			objLoginPage.validateLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
 
 			Reporter.log("POSITIVE TESTCASE-1 :Login Page: verify Admin User type", true);
 			Thread.sleep(3000);
@@ -38,7 +38,7 @@ public class CxHelpDesk_LoginPageTests extends TestBase {
 	public void verifyAdminLogin(){
 		try {
 			objLoginPage = new Cx_HelpDesk_page_LoginLocator(driver);
-			objLoginPage.verifyAdminLogin(Constants.ADMIN_USERNAME, Constants.VALID_PASSWORD);
+			objLoginPage.verifyAdminLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
 
 			Reporter.log("POSITIVE TESTCASE-1 :Login Page: verify Admin User type", true);
 			Thread.sleep(3000);
@@ -53,7 +53,7 @@ public class CxHelpDesk_LoginPageTests extends TestBase {
 	public void verifyAgentLogin() {
 		try {
 			objLoginPage = new Cx_HelpDesk_page_LoginLocator(driver);
-			objLoginPage.verifyEmployeeUser(Constants.AGENT_USERNAME, Constants.VALID_PASSWORD);
+			objLoginPage.verifyEmployeeUser(Constants.AGENTUSERNAME, Constants.VALIDPASSWORD);
 
 			Reporter.log("POSITIVE TESTCASE-2	:Login Page: verify Employee User type", true);
 			Thread.sleep(3000);
@@ -68,7 +68,7 @@ public class CxHelpDesk_LoginPageTests extends TestBase {
 	public void verifyUserLogin() {
 		try {
 			objLoginPage = new Cx_HelpDesk_page_LoginLocator(driver);
-			objLoginPage.verifyNormalUser(Constants.MANAGER_USERNAME, Constants.VALID_PASSWORD);
+			objLoginPage.verifyNormalUser(Constants.MANAGERUSERNAME, Constants.VALIDPASSWORD);
 
 			Reporter.log("POSITIVE TESTCASE-3	:Login Page: verify Normal User type", true);
 			Thread.sleep(3000);
@@ -82,7 +82,7 @@ public class CxHelpDesk_LoginPageTests extends TestBase {
 	public void verifyEmptyUsernameEmptyPassword() {
 		try {
 			objLoginPage = new Cx_HelpDesk_page_LoginLocator(driver);
-			objLoginPage.verifyEmptyUsernameEmptyPassword(Constants.EMPTY_DATA, Constants.EMPTY_DATA);
+			objLoginPage.verifyEmptyUsernameEmptyPassword(Constants.EMPTYDATA, Constants.EMPTYDATA);
 
 			Reporter.log("NEGATIVE TESTCASE-1	:Login Page: Empty Username & Password!", true);
 			Thread.sleep(2000);
@@ -97,7 +97,7 @@ public class CxHelpDesk_LoginPageTests extends TestBase {
 		try {
 			objLoginPage = new Cx_HelpDesk_page_LoginLocator(driver);
 			//objLoginPage.invalidLogin("", "12345678");
-			objLoginPage.validateEmptyUsernameValidPassword(Constants.EMPTY_DATA, Constants.VALID_PASSWORD);
+			objLoginPage.validateEmptyUsernameValidPassword(Constants.EMPTYDATA, Constants.VALIDPASSWORD);
 
 			Reporter.log("NEGATIVE TESTCASE-2	:Login Page: Empty Username & valid Password", true);
 			Thread.sleep(2000);
@@ -112,7 +112,7 @@ public class CxHelpDesk_LoginPageTests extends TestBase {
 		try {
 			objLoginPage = new Cx_HelpDesk_page_LoginLocator(driver);
 			//objLoginPage.invalidLogin("Emp188", "");
-			objLoginPage.verifyValidUsernameEmptyPassword(Constants.ADMIN_USERNAME, Constants.EMPTY_DATA);
+			objLoginPage.verifyValidUsernameEmptyPassword(Constants.ADMINUSERNAME, Constants.EMPTYDATA);
 
 			Reporter.log("NEGATIVE TESTCASE-3	:Login Page: Valid Username & Empty Password", true);
 			Thread.sleep(2000);
@@ -128,7 +128,7 @@ public class CxHelpDesk_LoginPageTests extends TestBase {
 		try {
 			objLoginPage = new Cx_HelpDesk_page_LoginLocator(driver);
 			//objLoginPage.invalidLogin("!@$~&", "12345678");
-			objLoginPage.verifyInvalidUsernameValidPassword(Constants.INVALID_USERNAME, Constants.PASSWORD);
+			objLoginPage.verifyInvalidUsernameValidPassword(Constants.INVALIDUSERNAME, Constants.PASSWORD);
 
 			Reporter.log("NEGATIVE TESTCASE-4	:Login Page: Invalid Username & valid Password", true);
 			Thread.sleep(2000);
@@ -144,7 +144,7 @@ public class CxHelpDesk_LoginPageTests extends TestBase {
 		try {
 			objLoginPage = new Cx_HelpDesk_page_LoginLocator(driver);
 			//objLoginPage.invalidLogin("testAdmin", "!@$~&");
-			objLoginPage.verifyValidUsernameInvalidPassword(Constants.USERNAME, Constants.INVALID_PASSWORD);
+			objLoginPage.verifyValidUsernameInvalidPassword(Constants.USERNAME, Constants.INVALIDPASSWORD);
 
 			Reporter.log("NEGATIVE TESTCASE-5	:Login Page: Valid Username & invalid Password", true);
 			Thread.sleep(2000);
@@ -160,7 +160,7 @@ public class CxHelpDesk_LoginPageTests extends TestBase {
 		try {
 			objLoginPage = new Cx_HelpDesk_page_LoginLocator(driver);
 			//objLoginPage.invalidLogin("!@$~&", "!@$~&");
-			objLoginPage.verifyInvalidUsernameInvalidPassword(Constants.INVALID_USERNAME, Constants.INVALID_PASSWORD);
+			objLoginPage.verifyInvalidUsernameInvalidPassword(Constants.INVALIDUSERNAME, Constants.INVALIDPASSWORD);
 
 			Reporter.log("NEGATIVE TESTCASE-6	:Login Page: Invalid Username & invalid Password", true);
 			Thread.sleep(2000);

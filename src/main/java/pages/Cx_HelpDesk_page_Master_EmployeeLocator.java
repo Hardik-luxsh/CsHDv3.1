@@ -19,11 +19,11 @@ public class Cx_HelpDesk_page_Master_EmployeeLocator extends TestBase {
     public static GenericUtil genericUtil;
     public static CheckBox objCheckBox;
 
-    @FindBy(xpath = "//h1[@class='page-title']")
+    @FindBy(xpath = "//h1[contains(text(),'Master')]")
     public WebElement TitleMasters;
 
-    @FindBy(xpath = "//span[text()=' Employee User Master']")
-    public WebElement TitleEmpUser;
+    @FindBy(xpath = "//span[contains(text(),' Employee ')]")
+    public WebElement TitleEmpUser; //V3.1
 
     @FindBy(xpath = "//li[@id='master']") //i[@class='fa fa-database']
     public WebElement sidebar_textMaster;
@@ -45,7 +45,7 @@ public class Cx_HelpDesk_page_Master_EmployeeLocator extends TestBase {
 
     /*--------------Edit Employee ---------------*/
     @FindBy(xpath = "//h4[contains(text(),'Edit Employee User')]")
-    public WebElement EmpEditHeader;
+    public WebElement EmpEditHeader; //V3.1
 
     @FindBy(xpath = "(//i[@title='Edit Employee'])[1]")
     public WebElement EmpEditBtn;
@@ -91,7 +91,7 @@ public class Cx_HelpDesk_page_Master_EmployeeLocator extends TestBase {
 
     /*--------------Add New Employee ---------------*/
     @FindBy(xpath = "//h4[contains(text(),'Add New Employee User')]")
-    WebElement TitleEmpAddName;
+    WebElement TitleEmpAddName;  //V3.1
 
     @FindBy(xpath = "(//input[@class='form-control ng-untouched ng-pristine ng-invalid'])[1]")
     WebElement EmpAddName;
@@ -133,8 +133,8 @@ public class Cx_HelpDesk_page_Master_EmployeeLocator extends TestBase {
     @FindBy(xpath = "//h3[contains(text(),'Are you sure! You want to Delete this Employee Use')]")
     WebElement TitleEmpDelete;
 
-    @FindBy(xpath = "(//h4[@class='modal-title'])[6]")
-    WebElement SuccessMsgEmpDelete;
+    @FindBy(xpath = "//h4[contains(text(),'You have successfully deleted the selected Employee User')]")
+    WebElement SuccessMsgEmpDelete; //V3.1
 
     @FindBy(xpath = "(//button[@class='btn white btn-outline'])[1]")
     WebElement CloseBtnSuccessMsgEmpDelete;
@@ -144,7 +144,7 @@ public class Cx_HelpDesk_page_Master_EmployeeLocator extends TestBase {
 
     /*--------------Import Employee ---------------*/
     @FindBy(xpath = "//a[contains(text(),'Import Employee User')]")
-    public WebElement EmpImport;//V3.0
+    public WebElement EmpImport;//V3.1
 
     @FindBy(xpath = "//h4[contains(text(),'Import Employee User')]")
     public WebElement EmpImportPopTitle;
@@ -181,12 +181,14 @@ public class Cx_HelpDesk_page_Master_EmployeeLocator extends TestBase {
     public void createEmployee(String EmpName,String EmpEmail,String EmpNo,String EmpRole,String searchText){
         try {
             genericUtil = new GenericUtil();
+
             JavascriptExecutor jsDown = (JavascriptExecutor) driver;
             JavascriptExecutor jsUp = (JavascriptExecutor) driver;
 
             wait.until(ExpectedConditions.visibilityOf(sidebar_textMaster));
             HighlightElement.highlightElement(sidebar_textMaster);
             sidebar_textMaster.click();
+
             genericUtil.pause(2000);
 
             HighlightElement.highlightElement(TitleMasters);
@@ -202,10 +204,13 @@ public class Cx_HelpDesk_page_Master_EmployeeLocator extends TestBase {
 //            genericUtil.pause(500);
 
             jsDown.executeScript("window.scrollBy(0,500)");
-            genericUtil.pause(1000);
+            genericUtil.pause(2000);
 
             HighlightElement.highlightElement(AddNewEmployeeUser);
             genericUtil.clickWithPause(AddNewEmployeeUser,3000);
+
+            HighlightElement.highlightElement(TitleEmpAddName);
+            genericUtil.pause(1000);
 
             HighlightElement.highlightElement(EmpAddName);
             genericUtil.writeTextWithPause(EmpAddName,EmpName,2000); //"Employee Test"
@@ -258,26 +263,27 @@ public class Cx_HelpDesk_page_Master_EmployeeLocator extends TestBase {
     public void editEmployee(String UpdatedEmpName,String UpdatedEmpEmail,String UpdatedEmpNo,String UpdatedEmpRole,String UpdatedSearchText){
         try {
             genericUtil = new GenericUtil();
+//
+//            wait.until(ExpectedConditions.visibilityOf(sidebar_textMaster));
+//            HighlightElement.highlightElement(sidebar_textMaster);
+//            sidebar_textMaster.click();
+//            genericUtil.pause(2000);
 
-            wait.until(ExpectedConditions.visibilityOf(sidebar_textMaster));
-            HighlightElement.highlightElement(sidebar_textMaster);
-            sidebar_textMaster.click();
-            genericUtil.pause(2000);
 
-            HighlightElement.highlightElement(TitleMasters);
-            genericUtil.pause(1000);
-
-            HighlightElement.highlightElement(EmpSearch);
-            genericUtil.writeTextWithPause(EmpSearch,UpdatedSearchText,3000); //"EmpTest"
-
-            HighlightElement.highlightElement(EmpCollapse);
-            genericUtil.clickWithPause(EmpCollapse,1000);
+//            HighlightElement.highlightElement(EmpSearch);
+//            genericUtil.writeTextWithPause(EmpSearch,UpdatedSearchText,3000); //"EmpTest"
+//
+//          HighlightElement.highlightElement(TitleEmpUser);
+//            genericUtil.clickWithPause(TitleEmpUser,1000);
+//
+//            HighlightElement.highlightElement(EmpCollapse);
+//            genericUtil.clickWithPause(EmpCollapse,1000);
 
             HighlightElement.highlightElement(EmpEditBtn);
             genericUtil.clickWithPause(EmpEditBtn,3000);
 
             HighlightElement.highlightElement(EmpEditHeader);
-            genericUtil.clickWithPause(EmpEditHeader,1000);
+            genericUtil.clickWithPause(EmpEditHeader,1000);//V3.1
 
             HighlightElement.highlightElement(EMPUserId);
             genericUtil.clickWithPause(EMPUserId,1000);//V3.0
@@ -338,13 +344,17 @@ public class Cx_HelpDesk_page_Master_EmployeeLocator extends TestBase {
             genericUtil = new GenericUtil();
             genericUtil.pause(3000);
 
-            HighlightElement.highlightElement(EmpEditNo);
-            genericUtil.writeTextWithPause(EmpEditNo,SearchText,3000); //"UpdatedEmpTest"
+            HighlightElement.highlightElement(TitleEmpUser);
+            genericUtil.clickWithPause(TitleEmpUser,1000);
+
+//            HighlightElement.highlightElement(EmpEditNo);
+//            genericUtil.writeTextWithPause(EmpEditNo,SearchText,3000); //"UpdatedEmpTest"
 
             HighlightElement.highlightElement(EmpDeleteBtn);
             genericUtil.clickWithPause(EmpDeleteBtn,3000);
 
             HighlightElement.highlightElement(TitleEmpDelete);
+            genericUtil.clickWithPause(TitleEmpDelete,1000); //V3.1
 
             HighlightElement.highlightElement(YesOptionEmpDelete);
             genericUtil.clickWithPause(YesOptionEmpDelete,3000);
@@ -382,16 +392,16 @@ public class Cx_HelpDesk_page_Master_EmployeeLocator extends TestBase {
         try {
             genericUtil = new GenericUtil();
 
-            wait.until(ExpectedConditions.visibilityOf(sidebar_textMaster));
-            HighlightElement.highlightElement(sidebar_textMaster);
-            sidebar_textMaster.click();
-            genericUtil.pause(2000);
+//            wait.until(ExpectedConditions.visibilityOf(sidebar_textMaster));
+//            HighlightElement.highlightElement(sidebar_textMaster);
+//            sidebar_textMaster.click();
+//            genericUtil.pause(2000);
 
-//            HighlightElement.highlightElement(TitleMasters);
-//            genericUtil.pause(1000);
+            HighlightElement.highlightElement(TitleEmpUser);
+            genericUtil.clickWithPause(TitleEmpUser,1000); //V3.1
 
-            HighlightElement.highlightElement(EmpCollapse);
-            genericUtil.clickWithPause(EmpCollapse,1000);
+//            HighlightElement.highlightElement(EmpCollapse);
+//            genericUtil.clickWithPause(EmpCollapse,1000);
 
 //            HighlightElement.highlightElement(TitleEmpUser);
 //            genericUtil.pause(1000);

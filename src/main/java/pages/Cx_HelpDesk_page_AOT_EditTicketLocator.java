@@ -15,8 +15,8 @@ public class Cx_HelpDesk_page_AOT_EditTicketLocator extends TestBase {
     public static WebDriverWait wait;
     public static GenericUtil genericUtil;
 
-    @FindBy(xpath = "//span[contains(text(),'Edit Ticket') and @class='title']")
-    public WebElement TitleEditTicket;
+    @FindBy(xpath = "//a[@href='#/edit_ticket']")
+    public WebElement TitleEditTicket; //V3.1
 
     @FindBy(xpath = "//li[@id='actiononticket']")
     public WebElement sidebar_textActiononTicket;
@@ -27,8 +27,8 @@ public class Cx_HelpDesk_page_AOT_EditTicketLocator extends TestBase {
     @FindBy(xpath = "(//a[@class='btn btn-circle btn-icon-only btn-default fullscreen'])[1]")
     public WebElement SatFullScreen;
 
-    @FindBy(xpath = "//span[contains(text(),'Search Ticket')]")
-    public WebElement SatTitle;
+    @FindBy(xpath = "//span[contains(text(),' Ticket Search')]")
+    public WebElement SatTitle; //V 3.1
 
     @FindBy(xpath = "//select[@formcontrolname='SelectTicketType']")
     public WebElement STTicketType;
@@ -54,7 +54,7 @@ public class Cx_HelpDesk_page_AOT_EditTicketLocator extends TestBase {
     @FindBy(xpath = "//button[contains(text(),'Clear Filters')]")
     public WebElement STClearbtn;
 
-    @FindBy(xpath = "//a[contains(text(),'Ticket 159')]")
+    @FindBy(xpath = "//a[contains(text(),'Ticket 700')]")
     public WebElement Ticket;
 
     @FindBy(xpath = "(//span[contains(text(),' Ticket Details ')])[1]")
@@ -166,6 +166,10 @@ public class Cx_HelpDesk_page_AOT_EditTicketLocator extends TestBase {
             HighlightElement.highlightElement(SatTitle);
             genericUtil.clickWithPause(SatTitle, 1000);
 
+
+            HighlightElement.highlightElement(STTicketNo);
+            genericUtil.writeTextWithPause(STTicketNo, SearchText, 1000); //V3.1
+
             HighlightElement.highlightElement(STTicketType);
             genericUtil.pause(1000);
 
@@ -175,8 +179,6 @@ public class Cx_HelpDesk_page_AOT_EditTicketLocator extends TestBase {
             HighlightElement.highlightElement(STSort);
             genericUtil.pause(1000);
 
-            HighlightElement.highlightElement(STTicketNo);
-            genericUtil.writeTextWithPause(STTicketNo, SearchText, 1000);
 
 //            HighlightElement.highlightElement(STStartDate);
 //            Thread.sleep(1000);
@@ -193,6 +195,15 @@ public class Cx_HelpDesk_page_AOT_EditTicketLocator extends TestBase {
             HighlightElement.highlightElement(TDTicketDetailsTitle);
             genericUtil.clickWithPause(TDTicketDetailsTitle, 1000);
 
+//           HighlightElement.highlightElement(TDaccountNo);
+//           Thread.sleep(1000);
+
+            HighlightElement.highlightElement(TDCustomer);
+            Thread.sleep(1000);
+
+//            HighlightElement.highlightElement(TDSite);
+//            Thread.sleep(1000);
+
             HighlightElement.highlightElement(TDTicketNumber);
             Thread.sleep(1000);
 
@@ -202,19 +213,28 @@ public class Cx_HelpDesk_page_AOT_EditTicketLocator extends TestBase {
             HighlightElement.highlightElement(TDTicketTitle);
             Thread.sleep(1000);
 
-            HighlightElement.highlightElement(TDCustomer);
-            Thread.sleep(1000);
-
-            HighlightElement.highlightElement(TDDescription);
-            Thread.sleep(1000);
-
-            HighlightElement.highlightElement(TDOwner);
-            Thread.sleep(1000);
-
             HighlightElement.highlightElement(TDPriority);
             Thread.sleep(1000);
 
             HighlightElement.highlightElement(TDTags);
+            Thread.sleep(1000);
+
+//            HighlightElement.highlightElement(TDAgentComment);
+//            Thread.sleep(1000);
+//
+//            HighlightElement.highlightElement(TDCustomerComment);
+//            Thread.sleep(1000);
+
+            HighlightElement.highlightElement(TDOwner);
+            Thread.sleep(1000);
+
+//            HighlightElement.highlightElement(TDReassignedTo);
+//            Thread.sleep(1000);
+//
+//            HighlightElement.highlightElement(TDSelfassignedBy);
+//            Thread.sleep(1000);
+
+            HighlightElement.highlightElement(TDDescription);
             Thread.sleep(1000);
 
             //File attachment
