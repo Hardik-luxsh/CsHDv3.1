@@ -40,7 +40,7 @@ public class CxHelpDesk_CreateTicketPageTests extends TestBase{
     public void createMissingTicket(){
         try {
             objCreateMissingPage = new Cx_HelpDesk_page_CreateMissingTicketLocator(driver);
-            objCreateMissingPage.createMissingTicket("Missing products");
+            objCreateMissingPage.createMissingTicket();
         }
         catch (Exception ex){
             ex.printStackTrace();

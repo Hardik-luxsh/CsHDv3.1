@@ -11,20 +11,20 @@ public class CxHelpDesk_Master_SitePageTests extends TestBase {
 
     Cx_HelpDesk_page_LoginLocator objLoginPage;
     Cx_HelpDesk_page_Master_SiteLocator objMasterSiteLocator;
-//
+
 //    @BeforeTest
 //    public void initialBrowserDriver() {
 //        driver = TestBase.testBase();
 //
 //        objLoginPage = new Cx_HelpDesk_page_LoginLocator(driver);
-//        objLoginPage.validateLogin(Constants.ADMINUSERNAME, Constants.VALIDPASSWORD);
+//        objLoginPage.validateLogin(Constants.ADMIN_USERNAME, Constants.VALID_PASSWORD);
 //    }
 
     @Test(priority = 1)
     public void createSite(){
         try {
             objMasterSiteLocator = new Cx_HelpDesk_page_Master_SiteLocator(driver);
-            objMasterSiteLocator.createSite("bns_vd" ,"BNSLAXMICO" + Constants.formatter.getTimeZone().getDisplayName(),
+            objMasterSiteLocator.createSite("bns_vd" ,"BNSLAXMICO" +  " " + Constants.tempData,
                     "CHHANI JAKATNAJKA","VDA","VADODARA","INDIA","987456","9874561230",
                     "bns_vd" );
         }

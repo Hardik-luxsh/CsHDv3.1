@@ -141,6 +141,9 @@ public class Cx_HelpDesk_page_Master_SiteLocator extends TestBase {
     @FindBy(xpath = "(//input[@value='Cancel'])[3]")
     WebElement SiteAddCancel;
 
+    @FindBy(xpath = "//th[normalize-space()='Actions']")
+    WebElement SiteTableActionsColumn;
+
     @FindBy(xpath = "(//span[@class='ng-star-inserted'])[7]")
     WebElement SitePaginationPrevious;
 
@@ -329,7 +332,6 @@ public class Cx_HelpDesk_page_Master_SiteLocator extends TestBase {
             HighlightElement.highlightElement(EditSuccessMessageOkButton);
             genericUtil.clickWithPause(EditSuccessMessageOkButton,2000);
 
-
         }catch(Exception ex){
             ex.printStackTrace();
         }
@@ -353,8 +355,14 @@ public class Cx_HelpDesk_page_Master_SiteLocator extends TestBase {
 //            HighlightElement.highlightElement(SiteFirstRowData);
 //            genericUtil.clickWithPause(SiteFirstRowData,1000);
 
-            HighlightElement.highlightElement(SiteDeleteBtn);
-            genericUtil.clickWithPause(SiteDeleteBtn,2000); //V3.1
+            try {
+                HighlightElement.highlightElement(SiteDeleteBtn);
+                genericUtil.clickWithPause(SiteDeleteBtn,2000); //V3.1
+            }
+            catch (StaleElementReferenceException e){
+                HighlightElement.highlightElement(SiteDeleteBtn);
+                genericUtil.clickWithPause(SiteDeleteBtn,2000);
+            }
 
             HighlightElement.highlightElement(SiteDeleteAlertMsg);
             genericUtil.clickWithPause(SiteDeleteAlertMsg,1000);

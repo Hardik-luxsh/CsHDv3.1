@@ -67,4 +67,5 @@ public class Constants {
 
 	public static SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yy");
 	public static String strDate = formatter.format(date);
+	public static String tempData = "TempData";
 }

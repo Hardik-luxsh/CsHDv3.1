@@ -439,11 +439,9 @@ public class Cx_HelpDesk_page_Master_EmployeeLocator extends TestBase {
 //            robot.keyRelease(KeyEvent.VK_V);
 //            genericUtil.pause(2000);
 
-
             //Press Enter
             robot.keyPress(KeyEvent.VK_ENTER);
             robot.keyRelease(KeyEvent.VK_ENTER);
-
 
             /*----END--------------File Upload Logic---------------------*/
 
