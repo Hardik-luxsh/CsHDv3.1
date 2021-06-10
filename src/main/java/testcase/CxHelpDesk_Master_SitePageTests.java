@@ -1,9 +1,9 @@
 package testcase;
 
-import TestUtil.Constants;
+import TestUtil.*;
 import base.TestBase;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.*;
+import org.testng.annotations.*;
 import pages.Cx_HelpDesk_page_LoginLocator;
 import pages.Cx_HelpDesk_page_Master_SiteLocator;
 
@@ -55,5 +55,11 @@ public class CxHelpDesk_Master_SitePageTests extends TestBase {
         catch (Exception ex){
             ex.printStackTrace();
         }
+    }
+
+    @AfterMethod
+    public void captureScreenShot(ITestResult result){
+        CaptureScreenshot.captureScreenshotForFailedTests(driver,result);
+        CaptureScreenshot.captureScreenshotPassedTests(driver,result);
     }
 }

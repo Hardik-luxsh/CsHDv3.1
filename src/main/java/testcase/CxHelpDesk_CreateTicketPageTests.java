@@ -9,8 +9,8 @@ import pages.*;
 public class CxHelpDesk_CreateTicketPageTests extends TestBase{
 
     public static Cx_HelpDesk_page_LoginLocator objLoginPage;
-    public static Cx_HelpDesk_page_CreateReturnTicketLocator objCreateReturnTicketPage;
-    public static Cx_HelpDesk_page_CreateMissingTicketLocator objCreateMissingPage;
+    public static Cx_HelpDesk_page_CreateTicket_ReturnTypeLocator objCreateReturnTicketPage;
+    public static Cx_HelpDesk_page_CreateTicket_MissingTypeLocator objCreateMissingPage;
     public static Cx_HelpDesk_page_CreateTicket_DeliveryIssueLocator objCreateDeliveryPage;
     public static Cx_HelpDesk_page_CreateTicket_Complaints_Locator objCreateComplaintsPage; //Changes: Added in ver3.1
     public static Cx_HelpDesk_page_CreateTicket_OtherLocator objCreateOtherPage;
@@ -27,7 +27,7 @@ public class CxHelpDesk_CreateTicketPageTests extends TestBase{
     @Test(priority = 1)
     public void createReturnTicket(){
         try {
-            objCreateReturnTicketPage = new Cx_HelpDesk_page_CreateReturnTicketLocator(driver);
+            objCreateReturnTicketPage = new Cx_HelpDesk_page_CreateTicket_ReturnTypeLocator(driver);
             objCreateReturnTicketPage.createReturnTicket();
         }
         catch (Exception ex){
@@ -39,7 +39,7 @@ public class CxHelpDesk_CreateTicketPageTests extends TestBase{
     @Test(priority = 2)
     public void createMissingTicket(){
         try {
-            objCreateMissingPage = new Cx_HelpDesk_page_CreateMissingTicketLocator(driver);
+            objCreateMissingPage = new Cx_HelpDesk_page_CreateTicket_MissingTypeLocator(driver);
             objCreateMissingPage.createMissingTicket();
         }
         catch (Exception ex){

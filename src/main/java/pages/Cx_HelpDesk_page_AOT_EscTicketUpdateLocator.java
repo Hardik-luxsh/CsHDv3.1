@@ -53,7 +53,6 @@ public class Cx_HelpDesk_page_AOT_EscTicketUpdateLocator extends TestBase {
     @FindBy(xpath = "(//label[contains(text(),'Query Attachment')])[2]/..//div[@class='ng-star-inserted']")
     public WebElement ESCPopQueryAttach;
 
-
     @FindBy(xpath = "//a[contains(text(),'983586533')]")
     public WebElement ESCPopInvoiceNo;
 
@@ -100,7 +99,6 @@ public class Cx_HelpDesk_page_AOT_EscTicketUpdateLocator extends TestBase {
     }
 
     /**
-
      * @param strSearch
      */
     public void ESCTicketUpdate(String strSearch) {
@@ -189,14 +187,9 @@ public class Cx_HelpDesk_page_AOT_EscTicketUpdateLocator extends TestBase {
             HighlightElement.highlightElement(ESCClosebtn);
             genericUtil.clickWithPause(ESCClosebtn,1000);
 
-
-
-
         }
         catch (Exception ex){
             ex.getStackTrace();
         }
     }
-
-
 }

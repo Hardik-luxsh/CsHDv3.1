@@ -26,98 +26,71 @@ public class Cx_HelpDesk_page_Customer_RequestCallBackLocator extends TestBase {
     @FindBy(xpath = "//span[contains(text(),'Customer') and @class='title']") //Changes in v2.0 on 04-Feb-2021
     public WebElement sidebar_textCustomer;
 
-    @FindBy(xpath = "//li[@id='requestcallback']")
+    @FindBy(xpath = "//a[@routerlink='/callbackrequest']//span[@class='title']") //Changes in v3.1 on 10-June-2021
     public WebElement sidebar_textRequestCallBack;
 
-    /**********************  Request Call Back **************************/
+    /****************************  Request Call Back ***************** Added in version 3.1 on 10-June-2021 *********/
 
-    @FindBy(xpath = "//h1[contains(text(),'Request Call Back')]")
+    @FindBy(xpath = "//span[contains(text(),'Call Back Requests')]")
     public WebElement titleRCB;
 
-    @FindBy(xpath = "//span[contains(text(),' About You ')]")
-    public WebElement titleAboutYou;
+    @FindBy(xpath = "//label[contains(text(),'From Date ')]/..//input[@type='date']")
+//    @FindBy(xpath = "//input[@formcontrolname=\"Start\" and @style='color: black; width: 100%;']")
+    public WebElement FromDate; //V3.1
 
-    @FindBy(xpath = "//span[contains(text(),' About Your Query ')]")
-    public WebElement titleAboutYourQuery;
+    @FindBy(xpath = "//label[contains(text(),'To Date')]/..//input[@type='date']")
+    public WebElement ToDate; //V3.1
 
-    @FindBy(xpath = "//span[contains(text(),'Submit Message')]")
-    public WebElement titleSubmitMessage;
+    @FindBy(xpath = "//label[contains(text(),'Account No.')]/..//input[@type='text']")
+    public WebElement AccountNo;
 
-    /**********************  About you: Request Call Back **************************/
+    @FindBy(xpath = "//strong[normalize-space()='S1032']") //Changes in v3.1 on 27-May-2021
+    public WebElement AccountNo_S1032;
 
-    @FindBy(xpath = "//input[@formcontrolname='account_No']")
-    public WebElement accountNo;
+    @FindBy(xpath = "//label[contains(text(),'Customer Name')]/..//input[@type='text']")
+    public WebElement CustomerName;
 
-    @FindBy(xpath = "//input[@formcontrolname='contact_Name']")
-    public WebElement contactName;
+    @FindBy(xpath = "//input[@id='Pending_call']")
+    public WebElement checkboxPendingCall;
 
-    @FindBy(xpath = "//input[@formcontrolname='contact_No']")
-    public WebElement contactNo;
+    @FindBy(xpath = "//input[@id='Responded_call']")
+    public WebElement checkboxRespondedCall;
 
-    /**********************  About Your Query: Request Call Back **************************/
-    @FindBy(xpath = "//span[contains(text(),'--- Select ---')]")
-    public WebElement invoiceNumberDropDown;
+    @FindBy(xpath = "//input[@value='Search']")
+    public WebElement SearchBtn;
 
-    @FindBy(xpath = "//input[@placeholder=\"Search\"]")
-    public WebElement invoiceSearch;
+    @FindBy(xpath = "//input[@value='Search']/..//input[@value='Clear']")
+    public WebElement SearchClearButton;
 
-    @FindBy(xpath = "//span[contains(text(),'Select all filtered results')]")
-    public WebElement selectAllFilteredResultsButton;
+    /**********************  Table: Request Call Back **************** Added in version 3.1 on 10-June-2021 **********/
+    @FindBy(xpath = "//th[@aria-label=': activate to sort column descending']//input[@type='checkbox']")
+    public WebElement SelectAll;
 
-    @FindBy(xpath = "//input[@value=\"See Invoice\"]")
-    public WebElement seeInvoiceButton;
+    @FindBy(xpath = "//th[@aria-label=': activate to sort column ascending']//input[@type='checkbox']")
+    public WebElement DeselectAll;
 
-    @FindBy(xpath = "//div[@id=\"full_invoice\"]//..//input[@value='Close']")
-    public WebElement seeInvoicePopupCloseButton;
+    @FindBy(xpath = "//tbody/tr[1]")
+    public WebElement FirstRowTable;
 
-    @FindBy(xpath = "//div[@id=\"full_invoice\"]//h4[contains(text(),'Invoice')]")
-    public WebElement seeInvoicePopupTitle;
+    @FindBy(xpath = "//tbody/tr[1]/td[1]/input[1]")
+    public WebElement CheckboxFirstRowTable;
 
-    @FindBy(xpath = "//select[@id='Ticket_Type_Id']")
-    public WebElement selectQuery;
-
-    @FindBy(xpath = "//input[@id='no_invoice']//..//span")
-    public WebElement checkIDoNotHaveInvoice;
-
-    @FindBy(xpath = "(//input[@class='group-checkable'])[3]/..//span")
-    public WebElement checkOther;
-
-    /**********************  Submit Message: Request Call Back **************************/
-
-    @FindBy(xpath = "//input[@id=\"Description\"]")
-    public WebElement description;
-
-    @FindBy(xpath = "//textarea[@id='Notes']")
-    public WebElement notes;
-
-    @FindBy(xpath = "//input[@value=\"Submit\"]")
-    public WebElement submitButton;
+    @FindBy(xpath = "//input[@type='search']")
+    public WebElement SearchBar; //Returns
 
     @FindBy(xpath = "//input[@value=\"Cancel\"]")
     public WebElement cancelButton;
 
-    @FindBy(xpath = "//h4[contains(text(),'Request Callback Confirmation!')]")
-    public WebElement titleConfirmMessage;
+    @FindBy(xpath = "//input[@value='Save']")
+    public WebElement SaveButton;
 
-    @FindBy(xpath = "//h3[contains(text(),'Are You Sure To Generate Call Back Request?')]")
-    public WebElement ConfirmMessage;
+    @FindBy(xpath = "//input[@value='Save']/..//input[@value='Clear']")
+    public WebElement ClearButton;
 
-    @FindBy(xpath = "//input[@value='Yes']")
-    public WebElement confirmYesButton;
+    @FindBy(xpath = "//input[@value='Save']/..//input[@value='Cancel']")
+    public WebElement CancelButton;
 
-    @FindBy(xpath = "//input[@value='No']")
-    public WebElement confirmNoButton;
-
-    @FindBy(xpath = "//h4[contains(text(),'Success!')]")
-    public WebElement titleSuccess;
-
-    @FindBy(xpath = "//p[contains(text(),' Request for Callback Generated Successfully! ')]")
-    public WebElement SuccessMessage;
-
-    @FindBy(xpath = "//input[@value='OK']")
-    public WebElement SuccessOkButton;
-
-    public void requestCallBack(){
+    public void requestCallBack(String strFromDate,String strToDate){
         genericUtil = new GenericUtil();
         try {
             wait.until(ExpectedConditions.visibilityOf(sidebar_textCustomer));
@@ -128,84 +101,63 @@ public class Cx_HelpDesk_page_Customer_RequestCallBackLocator extends TestBase {
             HighlightElement.highlightElement(sidebar_textRequestCallBack);
             sidebar_textRequestCallBack.click();
             genericUtil.pause(2000);
-            Assert.assertEquals(driver.getCurrentUrl(), Constants.BASEURL + "requestcallback");
+            Assert.assertEquals(driver.getCurrentUrl(), Constants.BASEURL + "callbackrequest");
 
             HighlightElement.highlightElement(titleRCB);
             genericUtil.clickWithPause(titleRCB,1000);
 
-            HighlightElement.highlightElement(titleAboutYou);
-            genericUtil.clickWithPause(titleAboutYou,1000);
+            HighlightElement.highlightElement(FromDate);
+            genericUtil.writeTextWithPause(FromDate,strFromDate,1000); //V3.1
 
-            HighlightElement.highlightElement(accountNo);
-            genericUtil.clickWithPause(accountNo,1000);
+            HighlightElement.highlightElement(ToDate);
+            genericUtil.writeTextWithPause(ToDate,strToDate,1000); //V3.1
 
-            HighlightElement.highlightElement(contactName);
-            genericUtil.clickWithPause(contactName,1000);
+            HighlightElement.highlightElement(AccountNo);
+            genericUtil.writeTextWithPause(AccountNo,"S1032",1000);
 
-            HighlightElement.highlightElement(contactNo);
-            genericUtil.clickWithPause(contactNo,1000);
+            HighlightElement.highlightElement(AccountNo_S1032);
+            genericUtil.clickWithPause(AccountNo_S1032,1000);
 
-            /**********************  About Your Query: Request Call Back **************************/
-            HighlightElement.highlightElement(titleAboutYourQuery);
-            genericUtil.clickWithPause(titleAboutYourQuery,1000);
+            HighlightElement.highlightElement(CustomerName);
+            genericUtil.clickWithPause(CustomerName,1000);
 
-            HighlightElement.highlightElement(invoiceNumberDropDown);
-            genericUtil.clickWithPause(invoiceNumberDropDown,1000);
+            /**********************  Pending: Request Call Back Section **************************/
+            HighlightElement.highlightElement(checkboxPendingCall);
+            genericUtil.clickWithPause(checkboxPendingCall,1000);
 
-            HighlightElement.highlightElement(invoiceSearch);
-            genericUtil.writeTextWithPause(invoiceSearch,"983586538",1000);
+            HighlightElement.highlightElement(SearchBtn);
+            genericUtil.clickWithPause(SearchBtn,3000);
 
-            HighlightElement.highlightElement(selectAllFilteredResultsButton);
-            genericUtil.clickWithPause(selectAllFilteredResultsButton,1000);
+            HighlightElement.highlightElement(SearchBar);
+            genericUtil.writeTextWithPause(SearchBar,"Returns",3000);
 
-            HighlightElement.highlightElement(selectQuery);
-            genericUtil.selectElementWithPause(selectQuery,"Returns",1000);
+            HighlightElement.highlightElement(SelectAll);
+            genericUtil.clickWithPause(SelectAll,1000);
 
-            HighlightElement.highlightElement(checkOther);
-            genericUtil.clickWithPause(checkOther,1000);
+            HighlightElement.highlightElement(DeselectAll);
+            genericUtil.clickWithPause(DeselectAll,1000);
 
-            HighlightElement.highlightElement(seeInvoiceButton);
-            genericUtil.clickWithPause(seeInvoiceButton,1000);
-            wait.until(ExpectedConditions.visibilityOf(seeInvoicePopupTitle));
+            HighlightElement.highlightElement(FirstRowTable);
+            genericUtil.clickWithPause(FirstRowTable,1000);
 
-            HighlightElement.highlightElement(seeInvoicePopupTitle);
-            genericUtil.clickWithPause(seeInvoicePopupTitle,2000);
+            HighlightElement.highlightElement(CheckboxFirstRowTable);
+            genericUtil.clickWithPause(CheckboxFirstRowTable,1000);
 
-            HighlightElement.highlightElement(seeInvoicePopupCloseButton);
-            genericUtil.clickWithPause(seeInvoicePopupCloseButton,2000);
+            HighlightElement.highlightElement(SaveButton);
+            genericUtil.clickWithPause(SaveButton,2000);
 
-            /**********************  Submit Message: Request Call Back **************************/
+            HighlightElement.highlightElement(SearchBar);
+            genericUtil.writeTextWithPause(SearchBar,"Returns",3000);
 
-            HighlightElement.highlightElement(titleSubmitMessage);
-            genericUtil.clickWithPause(titleSubmitMessage,1000);
+            /**********************  Responded: Request Call Back Section **************************/
+            HighlightElement.highlightElement(checkboxRespondedCall);
+            genericUtil.clickWithPause(checkboxRespondedCall,1000);
 
-            HighlightElement.highlightElement(description);
-            genericUtil.writeTextWithPause(description,"Test Description",1000);
+            HighlightElement.highlightElement(SearchBtn);
+            genericUtil.clickWithPause(SearchBtn,3000);
 
-            HighlightElement.highlightElement(notes);
-            genericUtil.writeTextWithPause(notes,"Test Notes",1000);
-
-            HighlightElement.highlightElement(submitButton);
-            genericUtil.clickWithPause(submitButton,2000);
-
-            HighlightElement.highlightElement(titleConfirmMessage);
-            genericUtil.clickWithPause(titleConfirmMessage,1000);
-
-            HighlightElement.highlightElement(ConfirmMessage);
-            genericUtil.clickWithPause(ConfirmMessage,1000);
-
-            HighlightElement.highlightElement(confirmYesButton);
-            genericUtil.clickWithPause(confirmYesButton,1000);
-
-            HighlightElement.highlightElement(titleSuccess);
-            genericUtil.clickWithPause(titleSuccess,1000);
-
-            HighlightElement.highlightElement(SuccessMessage);
-            genericUtil.clickWithPause(SuccessMessage,1000);
-
-            HighlightElement.highlightElement(SuccessOkButton);
-            genericUtil.clickWithPause(SuccessOkButton,1000);
-
+            HighlightElement.highlightElement(SearchBar);
+            genericUtil.writeTextWithPause(SearchBar,"Returns",3000);
         }catch (Exception ex){
             ex.printStackTrace();
         }

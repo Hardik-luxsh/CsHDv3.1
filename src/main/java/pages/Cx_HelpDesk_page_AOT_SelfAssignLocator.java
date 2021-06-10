@@ -40,12 +40,12 @@ public class Cx_HelpDesk_page_AOT_SelfAssignLocator extends TestBase {
     @FindBy(xpath = "//input[@formcontrolname='User_Id']")
     public WebElement UserId;
 
-//    @FindBy(xpath = "//input[@class='ng-pristine ng-valid ng-touched']")
+    @FindBy(xpath = "//label[contains(text(),'From Date ')]/..//input[@type='date']")
 //    @FindBy(xpath = "//input[@formcontrolname=\"Start\" and @style='color: black; width: 100%;']")
-//    public WebElement FromDate;
-//
-//    @FindBy(xpath = "//input[@class='ng-pristine ng-valid ng-touched']")
-//    public WebElement ToDate;
+    public WebElement FromDate; //V3.1
+
+    @FindBy(xpath = "//label[contains(text(),'To Date')]/..//input[@type='date']")
+    public WebElement ToDate; //V3.1
 
     @FindBy(xpath = "(//input[@class='btn btn-success'])[3]")
     public WebElement SearchBtn;
@@ -108,10 +108,12 @@ public class Cx_HelpDesk_page_AOT_SelfAssignLocator extends TestBase {
     }
 
     /**
-     * TESTCASE METHOD: Assign Ticket
+     *
      * @param AOTSearchText
+     * @param strFromDate
+     * @param strToDate
      */
-    public void AssignTicket(String AOTSearchText) {
+    public void AssignTicket(String AOTSearchText,String strFromDate,String strToDate) { //V3.1
         try {
             genericUtil = new GenericUtil();
             genericUtil.pause(3000);
@@ -141,11 +143,11 @@ public class Cx_HelpDesk_page_AOT_SelfAssignLocator extends TestBase {
             HighlightElement.highlightElement(UserId);
             genericUtil.clickWithPause(UserId,2000);
 
-//            HighlightElement.highlightElement(FromDate);
-//            genericUtil.clickWithPause(FromDate,1000);
-//
-//            HighlightElement.highlightElement(ToDate);
-//            genericUtil.pause(1000);
+            HighlightElement.highlightElement(FromDate);
+            genericUtil.writeTextWithPause(FromDate,strFromDate,1000); //V3.1
+
+            HighlightElement.highlightElement(ToDate);
+            genericUtil.writeTextWithPause(ToDate,strToDate,1000); //V3.1
 
             HighlightElement.highlightElement(SearchBtn);
             genericUtil.clickWithPause(SearchBtn,3000);
@@ -153,8 +155,8 @@ public class Cx_HelpDesk_page_AOT_SelfAssignLocator extends TestBase {
             HighlightElement.highlightElement(TicketListHeading);
             genericUtil.clickWithPause(TicketListHeading,2000);
 
-//            HighlightElement.highlightElement(TLSearch);
-//            genericUtil.writeTextWithPause(TLSearch,AOTSearchText,2000);
+            HighlightElement.highlightElement(TLSearch);
+            genericUtil.writeTextWithPause(TLSearch,AOTSearchText,2000);
 
             HighlightElement.highlightElement(TLCheckbox);
             genericUtil.clickWithPause(TLCheckbox,1000);

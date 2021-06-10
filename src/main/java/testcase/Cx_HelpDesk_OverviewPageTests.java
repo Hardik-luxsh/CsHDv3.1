@@ -7,7 +7,7 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import pages.Cx_HelpDesk_page_CreateReturnTicketLocator;
+import pages.Cx_HelpDesk_page_CreateTicket_ReturnTypeLocator;
 import pages.Cx_HelpDesk_page_LoginLocator;
 import pages.Cx_HelpDesk_page_OverviewLocator;
 
@@ -15,7 +15,7 @@ public class Cx_HelpDesk_OverviewPageTests extends TestBase {
 
     public static Cx_HelpDesk_page_LoginLocator objLoginPage;
     public static Cx_HelpDesk_page_OverviewLocator objOverviewPage;
-    public static Cx_HelpDesk_page_CreateReturnTicketLocator objCreateTicket;
+    public static Cx_HelpDesk_page_CreateTicket_ReturnTypeLocator objCreateTicket;
 
     @BeforeTest
     public void initialBrowserDriver() {
@@ -24,12 +24,12 @@ public class Cx_HelpDesk_OverviewPageTests extends TestBase {
         objLoginPage = new Cx_HelpDesk_page_LoginLocator(driver);
         objLoginPage.validateLogin(Constants.AGENT_USERNAME, Constants.VALID_PASSWORD);
 
-        objCreateTicket = new Cx_HelpDesk_page_CreateReturnTicketLocator(driver);
-        objCreateTicket.createReturnTicket();
+//        objCreateTicket = new Cx_HelpDesk_page_CreateReturnTicketLocator(driver);
+//        objCreateTicket.createReturnTicket();
     }
 
     @Test(priority = 1)
-    public void verifyTicketDetails(){
+    public void overviewTicket(){
         try {
             objOverviewPage = new Cx_HelpDesk_page_OverviewLocator(driver);
             objOverviewPage.overviewTicket();

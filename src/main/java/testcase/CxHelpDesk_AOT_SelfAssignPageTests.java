@@ -11,6 +11,7 @@ import pages.Cx_HelpDesk_page_AOT_SelfAssignLocator;
 import pages.Cx_HelpDesk_page_LoginLocator;
 
 public class CxHelpDesk_AOT_SelfAssignPageTests extends TestBase {
+
     Cx_HelpDesk_page_LoginLocator objLoginPage;
     Cx_HelpDesk_page_AOT_SelfAssignLocator objSelfAssign;
 
@@ -26,7 +27,7 @@ public class CxHelpDesk_AOT_SelfAssignPageTests extends TestBase {
     public void SelfAssign(){
         try {
             objSelfAssign = new Cx_HelpDesk_page_AOT_SelfAssignLocator(driver);
-            objSelfAssign.AssignTicket("153");
+            objSelfAssign.AssignTicket("718","10-04-2021","08-06-2021"); //V3.1
         }
         catch (Exception ex){
             ex.printStackTrace();

@@ -6,13 +6,13 @@ import org.testng.*;
 import org.testng.annotations.*;
 import pages.*;
 
-public class CxHelpDesk_ConfigSettingsPageTests extends TestBase {
+public class Cx_HelpDesk_Customer_RequestCallBackPageTests extends TestBase {
 
     public static Cx_HelpDesk_page_LoginLocator objLoginPage;
-    public static Cx_HelpDesk_page_ConfigSettingLocator objConfigPage;
+    public static Cx_HelpDesk_page_Customer_RequestCallBackLocator objRCB;
 
     @BeforeTest
-    public void initialBrowserDriver() {
+    public void initBrowser() {
         driver = TestBase.testBase();
 
         objLoginPage = new Cx_HelpDesk_page_LoginLocator(driver);
@@ -20,10 +20,10 @@ public class CxHelpDesk_ConfigSettingsPageTests extends TestBase {
     }
 
     @Test(priority = 1)
-    public void verifyConfigSetting(){
+    public void requestCallBack(){
         try {
-            objConfigPage = new Cx_HelpDesk_page_ConfigSettingLocator(driver);
-            objConfigPage.verifyConfigSettings();
+            objRCB = new Cx_HelpDesk_page_Customer_RequestCallBackLocator(driver);
+            objRCB.requestCallBack("10-04-2020","08-06-2021");
         }
         catch (Exception ex){
             ex.printStackTrace();

@@ -23,15 +23,16 @@ public class Cx_HelpDesk_page_AOT_ViewAssignPageTests extends TestBase{
     }
 
     @Test(priority = 1)
-    public void AssignTicket(){
+    public void ViewAssignTicket(){
         try {
             objViewAssign = new Cx_HelpDesk_page_AOT_ViewAssignLocator(driver);
-            objViewAssign.AssignTicket("156");
+            objViewAssign.ViewAssignTicket("718","Ankit Patel","10-04-2021","08-06-2021");//V3.1
         }
         catch (Exception ex){
             ex.printStackTrace();
         }
     }
+
 
     @AfterMethod
     public void captureScreenShot(ITestResult result){

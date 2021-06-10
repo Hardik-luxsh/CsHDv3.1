@@ -6,10 +6,10 @@ import org.testng.*;
 import org.testng.annotations.*;
 import pages.*;
 
-public class CxHelpDesk_ConfigSettingsPageTests extends TestBase {
+public class Cx_HelpDesk_Customer_SearchMyInvoicePageTests extends TestBase {
 
     public static Cx_HelpDesk_page_LoginLocator objLoginPage;
-    public static Cx_HelpDesk_page_ConfigSettingLocator objConfigPage;
+    public static Cx_HelpDesk_page_Customer_SearchMyInvoiceLocator objSMI;
 
     @BeforeTest
     public void initialBrowserDriver() {
@@ -20,10 +20,10 @@ public class CxHelpDesk_ConfigSettingsPageTests extends TestBase {
     }
 
     @Test(priority = 1)
-    public void verifyConfigSetting(){
+    public void searchMyInvoice(){
         try {
-            objConfigPage = new Cx_HelpDesk_page_ConfigSettingLocator(driver);
-            objConfigPage.verifyConfigSettings();
+            objSMI = new Cx_HelpDesk_page_Customer_SearchMyInvoiceLocator(driver);
+            objSMI.searchMyInvoice("01-10-2019","10-06-2021");
         }
         catch (Exception ex){
             ex.printStackTrace();
@@ -35,4 +35,5 @@ public class CxHelpDesk_ConfigSettingsPageTests extends TestBase {
         CaptureScreenshot.captureScreenshotForFailedTests(driver,result);
         CaptureScreenshot.captureScreenshotPassedTests(driver,result);
     }
+
 }

@@ -1,5 +1,6 @@
 package testcase;
 
+import TestUtil.*;
 import base.*;
 import org.testng.*;
 import org.testng.annotations.*;
@@ -28,5 +29,11 @@ public class CxHelpDesk_RegisterPageTests extends TestBase{
         catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @AfterMethod
+    public void captureScreenShot(ITestResult result){
+        CaptureScreenshot.captureScreenshotForFailedTests(driver,result);
+        CaptureScreenshot.captureScreenshotPassedTests(driver,result);
     }
 }

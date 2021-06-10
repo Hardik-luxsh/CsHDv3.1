@@ -28,8 +28,8 @@ public class Cx_HelpDesk_page_OverviewLocator extends TestBase {
     @FindBy(xpath = "//h1[contains(text(),'Ticket Overviews ')]")
     public WebElement titleOverview;
 
-    @FindBy(xpath = "(//a[@class='collapse btn btn-circle btn-icon-only btn-default'])[1]")
-    public WebElement SatCollapse;
+    @FindBy(xpath = "//div[@class='portlet-title ui-sortable-handle']//a[@class='expand btn btn-circle btn-icon-only btn-default']") //Added on 10-Jun-2021
+    public WebElement TicketSearchCollapse;
 
     @FindBy(xpath = "(//a[@class='btn btn-circle btn-icon-only btn-default fullscreen'])[1]")
     public WebElement SatFullScreen;
@@ -64,7 +64,8 @@ public class Cx_HelpDesk_page_OverviewLocator extends TestBase {
     @FindBy(xpath = "//h4[contains(text(),'Ticket List')]")
     public WebElement titleTicketList;
 
-    @FindBy(xpath = "//h4[contains(text(),'Ticket List')]/..//li[1]")
+//    @FindBy(xpath = "//h4[contains(text(),'Ticket List')]/..//li[1]")
+    @FindBy(xpath = "//a[normalize-space()='Ticket 736']") //Changes in version 3.1 on 10-June-2021
     public WebElement firstTicketFromTicketList;
 
     @FindBy(xpath = "//span[contains(text(),'Ticket Details')]")
@@ -73,16 +74,46 @@ public class Cx_HelpDesk_page_OverviewLocator extends TestBase {
     @FindBy(xpath = "//label[contains(text(),'Account Number')]/..//input[@type=\"text\"]")
     public WebElement TDAccountNumber;
 
-    @FindBy(xpath = "//label[contains(text(),'Ticket Number ')]/..//input[@type='text']")
-    public WebElement TDTicketNumberAndDate;
+    @FindBy(xpath = "//div[@class='col-lg-9 col-xs-12 col-sm-12 column sortable ticketDetails TicketList ng-star-inserted']//div[@class='row']//div[2]//div[1]//input[1]") //Added in version 3.1 on 10-June-2021
+    public WebElement TDCustomer;
+
+    @FindBy(xpath = "//label[contains(text(),'Site')]/..//input[@type=\"text\"]")     //Added in version 3.1 on 10-June-2021
+    public WebElement TDSite;
+
+    @FindBy(xpath = "//label[contains(text(),'Ticket Number')]/..//input[@type='text']")     //Added in version 3.1 on 10-June-2021
+    public WebElement TDTicketNumber;
+
+    @FindBy(xpath = "//label[contains(text(),'Ticket Date')]/..//input[@type='text']")     //Added in version 3.1 on 10-June-2021
+    public WebElement TDTicketDate;
+
+    @FindBy(xpath = "//label[contains(text(),'Ticket Title')]/..//input[@type='text']") //Added in version 3.1 on 10-June-2021
+    public WebElement TDTicketTitle;
+
+    @FindBy(xpath = "//label[contains(text(),'Priority')]/..//input[@type='text']") //Added in version 3.1 on 10-June-2021
+    public WebElement TDPriority;
+
+    @FindBy(xpath = "//label[contains(text(),'Tags')]/..//input[@type='text']") //Added in version 3.1 on 10-June-2021
+    public WebElement TDTag;
+
+    @FindBy(xpath = "//label[contains(text(),'Description')]/..//input[@type='text']") //Changes in version 3.1 on 10-June-2021
+    public WebElement TDDescription;
+
+    @FindBy(xpath = "//label[contains(text(),'Owner')]/..//input[@type='text']") //Added in version 3.1 on 10-June-2021
+    public WebElement TDOwner;
+
+    @FindBy(xpath = "//label[contains(text(),'Re-assigned To')]/..//input[@type='text']") //Added in version 3.1 on 10-June-2021
+    public WebElement TDReassignedTo;
+
+    @FindBy(xpath = "//label[contains(text(),'Self-assigned By')]/..//input[@type='text']") //Added in version 3.1 on 10-June-2021
+    public WebElement TDSelfAssignedBy;
+
+    @FindBy(xpath = "//label[contains(text(),'Closing Statement')]/..//textarea[@class='form-control']") //Added in version 3.1 on 10-June-2021
+    public WebElement TDClosingStatement;
 
     @FindBy(xpath = "//label[contains(text(),'State')]/..//input[@type='text']")
     public WebElement TDState;
 
-    @FindBy(xpath = "//label[contains(text(),'Query Message')]/..//textarea[@class='form-control']")
-    public WebElement TDQueryMessage;
-
-    @FindBy(xpath = "//label[contains(text(),'Message History')]/..//ul[@class=\"ng-star-inserted\"]")
+    @FindBy(xpath = "//label[contains(text(),'Message History')]/..//ul[@class=\"form-control ng-star-inserted\"]") //Changes in version 3.1 on 10-June-2021
     public WebElement TDMessageHistory;
 
     @FindBy(xpath = "//label[contains(text(),'Agent Comment')]/..//input[@type='text']")
@@ -94,11 +125,31 @@ public class Cx_HelpDesk_page_OverviewLocator extends TestBase {
     @FindBy(xpath = "//a[@href=\"javascript:\"]")
     public WebElement TDFileAttachment;
 
+    /*------BEGIN of----------------------------Summary Section---Added in v3.1---------------------------------------*/
+    @FindBy(xpath = "//span[normalize-space()='Summary']")    //Changes in v3.1 on 27-May-2021
+    public WebElement titleSummary;
+
+    @FindBy(xpath = "//button[@class='btn blue'][normalize-space()='View Full Invoice']")    //Changes in v3.1 on 27-May-2021
+    public WebElement Summary_ViewFullInvoiceButton;
+
+    @FindBy(xpath = "//div[@id='View_Full_Invoice_TicketOverview']//button[@type='button'][normalize-space()='Close']")    //Changes in v3.1 on 27-May-2021
+    public WebElement Summary_ViewFullInvoice_CloseButton;
+
+    @FindBy(xpath = "//button[normalize-space()='Edit']")    //Changes in v3.1 on 27-May-2021
+    public WebElement Summary_EditButton;
+
+    @FindBy(xpath = "//input[@placeholder='Display Responsible Person Name']")    //Changes in v3.1 on 27-May-2021
+    public WebElement Summary_RPName;
+
+    @FindBy(xpath = "//input[@placeholder='Display Position']")    //Changes in v3.1 on 27-May-2021
+    public WebElement Summary_RP_Position;
+
+    /*--------------------------------------------------End of-SUMMARY------------------------------------------------*/
+
     /**
      * TESTCASE METHOD: OVERVIEW TICKET
      */
     public void overviewTicket() {
-
         genericUtil = new GenericUtil();
         JavascriptExecutor jsDown = (JavascriptExecutor) driver;
         JavascriptExecutor jsUp = (JavascriptExecutor) driver;
@@ -114,9 +165,9 @@ public class Cx_HelpDesk_page_OverviewLocator extends TestBase {
             HighlightElement.highlightElement(buttonSearch);
             genericUtil.clickWithPause(buttonSearch, 2000);
 
-            Thread.sleep(1000);
-            jsDown.executeScript("window.scrollBy(0,1000)");
-            Thread.sleep(1000);
+            genericUtil.pause(1000);
+            jsDown.executeScript("window.scrollBy(0,2000)");
+            genericUtil.pause(1000);
 
             HighlightElement.highlightElement(titleTicketList);
             genericUtil.pause(1000);
@@ -125,31 +176,72 @@ public class Cx_HelpDesk_page_OverviewLocator extends TestBase {
             genericUtil.clickWithPause(firstTicketFromTicketList, 1000);
 
             jsUp.executeScript("window.scrollBy(0,-1000)");
-            Thread.sleep(1000);
+            genericUtil.pause(1000);
 
             HighlightElement.highlightElement(titleTicketDetails);
             genericUtil.pause(1000);
 
+            HighlightElement.highlightElement(TicketSearchCollapse);
+            genericUtil.clickWithPause(TicketSearchCollapse,1000);
+
             HighlightElement.highlightElement(TDAccountNumber);
             genericUtil.clickWithPause(TDAccountNumber, 1000);
 
-            HighlightElement.highlightElement(TDTicketNumberAndDate);
-            genericUtil.clickWithPause(TDTicketNumberAndDate, 1000);
+            HighlightElement.highlightElement(TDCustomer); //Added in version 3.1 on 10-June-2021
+            genericUtil.clickWithPause(TDCustomer, 1000);
 
-            HighlightElement.highlightElement(TDState);
-            genericUtil.clickWithPause(TDState, 1000);
+            HighlightElement.highlightElement(TDSite); //Added in version 3.1 on 10-June-2021
+            genericUtil.clickWithPause(TDSite, 1000);
 
-            HighlightElement.highlightElement(TDQueryMessage);
-            genericUtil.clickWithPause(TDQueryMessage, 1000);
+            HighlightElement.highlightElement(TDTicketNumber); //Added in version 3.1 on 10-June-2021
+            genericUtil.clickWithPause(TDTicketNumber, 1000);
 
-            HighlightElement.highlightElement(TDMessageHistory);
-            genericUtil.clickWithPause(TDMessageHistory, 1000);
+            HighlightElement.highlightElement(TDTicketDate); //Added in version 3.1 on 10-June-2021
+            genericUtil.clickWithPause(TDTicketDate, 1000);
+
+            HighlightElement.highlightElement(TDTicketTitle); //Added in version 3.1 on 10-June-2021
+            genericUtil.clickWithPause(TDTicketTitle, 1000);
+
+            HighlightElement.highlightElement(TDPriority); //Added in version 3.1 on 10-June-2021
+            genericUtil.clickWithPause(TDPriority, 1000);
+
+            HighlightElement.highlightElement(TDTag); //Added in version 3.1 on 10-June-2021
+            genericUtil.clickWithPause(TDTag, 1000);
 
             HighlightElement.highlightElement(TDAgentComment);
             genericUtil.clickWithPause(TDAgentComment, 1000);
 
             HighlightElement.highlightElement(TDCustomerComment);
             genericUtil.clickWithPause(TDCustomerComment, 1000);
+
+            HighlightElement.highlightElement(TDDescription);
+            genericUtil.clickWithPause(TDDescription, 1000);
+
+            HighlightElement.highlightElement(TDOwner); //Added in version 3.1 on 10-June-2021
+            genericUtil.clickWithPause(TDOwner, 1000);
+
+            HighlightElement.highlightElement(TDReassignedTo); //Added in version 3.1 on 10-June-2021
+            genericUtil.clickWithPause(TDReassignedTo, 1000);
+
+            HighlightElement.highlightElement(TDSelfAssignedBy); //Added in version 3.1 on 10-June-2021
+            genericUtil.clickWithPause(TDSelfAssignedBy, 1000);
+
+            HighlightElement.highlightElement(TDClosingStatement); //Added in version 3.1 on 10-June-2021
+            genericUtil.clickWithPause(TDClosingStatement, 1000);
+
+            HighlightElement.highlightElement(TDMessageHistory);
+            genericUtil.clickWithPause(TDMessageHistory, 1000);
+
+            /*------BEGIN-----------------------------------SUMMARY SECTION--------------------------------------*/
+            HighlightElement.highlightElement(titleSummary);
+            genericUtil.clickWithPause(titleSummary,1000);
+
+            HighlightElement.highlightElement(Summary_ViewFullInvoiceButton);
+            genericUtil.clickWithPause(Summary_ViewFullInvoiceButton,1000);
+
+            HighlightElement.highlightElement(Summary_ViewFullInvoice_CloseButton);
+            genericUtil.clickWithPause(Summary_ViewFullInvoice_CloseButton,1000);
+            /*------END Of--------------------------------SUMMARY SECTION-----------------------------------*/
 
             //File attachment
             if (TDFileAttachment.isDisplayed()) {
@@ -158,6 +250,7 @@ public class Cx_HelpDesk_page_OverviewLocator extends TestBase {
             } else {
                 System.out.println("No attachment found!!");
             }
+
         } catch (Exception ex) {
             ex.printStackTrace();
         }

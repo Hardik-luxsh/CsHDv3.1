@@ -24,10 +24,10 @@ public class Cx_HelpDesk_page_AOT_EditTicketPageTests extends TestBase {
     }
 
     @Test(priority = 1)
-    public void AssignTicket(){
+    public void EditTicket(){
         try {
             objEditTicket = new Cx_HelpDesk_page_AOT_EditTicketLocator(driver);
-            objEditTicket.EditTicket("700","Open","Low","QA");
+            objEditTicket.EditTicket("697","Open","Low","HoD Operations","HodDept","Ticket Esc","10=04=2021","08-06-2021");
         }
         catch (Exception ex){
             ex.printStackTrace();
