@@ -133,18 +133,78 @@ public class Cx_HelpDesk_page_DashboardLocator extends TestBase {
     @FindBy(xpath = "//small[contains(text(),'My Tickets')]")
     public WebElement sectionTextMyTickets;
 
+    @FindBy(xpath = "//h4[normalize-space()='Tickets Assigned To Me']")
+    public WebElement headerTitleTicketAssignedToMe;
+
+    @FindBy(xpath = "//div[@id='TicketsAssigned']//input[@placeholder='Display Agent Name']")
+    public WebElement MT_Agent;
+
+    @FindBy(xpath = "//div[@class='col-md-6']//input[@placeholder='Display Ticket Count']")
+    public WebElement MT_TicketCount;
+
+    @FindBy(xpath = "//table[@id=\"sample_62\"]")
+    public WebElement MT_Table;
+
+    @FindBy(xpath = "//div[@id='TicketsAssigned']//input[@type='search']")
+    public WebElement MT_Search;
+
+    @FindBy(xpath = "//div[@id='TicketsAssigned']//input[@value='Close']")
+    public WebElement MT_Close;
     /*--------------------------------------------------------------------------------------------------------------------------------*/
 
     /************************************************** Ticket Performance Tile or Section ********************************************/
     @FindBy(xpath = "//small[contains(text(),'Tickets Performance')]")
     public WebElement sectionTextTicketsPerformance;
 
+    @FindBy(xpath = "//h4[normalize-space()='Ticket Performance']")
+    public WebElement headerTitleTicketPerformance;
+
+    @FindBy(xpath = "//span[contains(text(),'Agent Name: ')]")
+    public WebElement TP_Agent;
+
+    @FindBy(xpath = "//div[@id='TicketPerformance']//button[@type='button']")
+    public WebElement TP_Close;
     /*--------------------------------------------------------------------------------------------------------------------------------*/
 
     /************************************************** Ticket Reopening Rate Tile or Section ******************************************/
     @FindBy(xpath = "//small[contains(text(),'Ticket Reopening Rate')]")
     public WebElement sectionTextTicketReopeningRate;
 
+    @FindBy(xpath = "//h4[normalize-space()='Ticket Reopening Rate']")
+    public WebElement headerTitleTicketReopeningRate;
+
+    @FindBy(xpath = "//tr[@class='ng-star-inserted']//th[@class='text-center'][normalize-space()='Ticket Type']")
+    public WebElement TRP_TicketType;
+
+    @FindBy(xpath = "//th[@class='text-center'][normalize-space()='Ticket Priority']")
+    public WebElement TRP_TicketPriority;
+
+    @FindBy(xpath = "//th[normalize-space()='Low']")
+    public WebElement TRP_TicketPriority_Low;
+
+    @FindBy(xpath = "//th[normalize-space()='Medium']")
+    public WebElement TRP_TicketPriority_Medium;
+
+    @FindBy(xpath = "//th[normalize-space()='High']")
+    public WebElement TRP_TicketPriority_High;
+
+    @FindBy(xpath = "//td[normalize-space()='Complaints']")
+    public WebElement TRP_TicketType_Complaints;
+
+    @FindBy(xpath = "//td[normalize-space()='Returns']")
+    public WebElement TRP_TicketType_Returns;
+
+    @FindBy(xpath = "//td[normalize-space()='Missings']")
+    public WebElement TRP_TicketType_Missings;
+
+    @FindBy(xpath = "//td[normalize-space()='Other']")
+    public WebElement TRP_TicketType_Other;
+
+    @FindBy(xpath = "//td[normalize-space()='Delivery Issue']")
+    public WebElement TRP_TicketType_DeliveryIssue;
+
+    @FindBy(xpath = "//div[@id='TicketReopening']//button[@type='button']")
+    public WebElement TRP_Close;
     /*--------------------------------------------------------------------------------------------------------------------------------*/
 
     /**
@@ -412,4 +472,174 @@ public class Cx_HelpDesk_page_DashboardLocator extends TestBase {
             ex.printStackTrace();
         }
     }
+
+    /**
+     * TESTCASE METHOD: My Tickets Tile
+     */
+    public void ticketAssignedToMe(){
+        genericUtil = new GenericUtil();
+        try {
+            wait.until(ExpectedConditions.visibilityOf(sidebar_textDashboard));
+            HighlightElement.highlightElement(sidebar_textDashboard);
+            genericUtil.clickWithPause(sidebar_textDashboard, 2000);
+            Assert.assertEquals(driver.getCurrentUrl(),Constants.BASEURL + "dashboard");
+
+            HighlightElement.highlightElement(titleCsHD);
+            genericUtil.clickWithPause(titleCsHD, 1000);
+
+            HighlightElement.highlightElement(titleDashboard);
+            genericUtil.clickWithPause(titleDashboard, 1000);
+
+            HighlightElement.highlightElement(sectionTextMyTickets);
+            genericUtil.clickWithPause(sectionTextMyTickets, 1000);
+
+            try {
+                HighlightElement.highlightElement(loading);
+                if(loading.isDisplayed()) {
+                    wait.until(ExpectedConditions.visibilityOf(loading));
+                }
+            }
+            catch (NoSuchElementException ex){
+                ex.getStackTrace();
+            }
+
+            HighlightElement.highlightElement(headerTitleTicketAssignedToMe);
+            genericUtil.clickWithPause(headerTitleTicketAssignedToMe, 1000);
+
+            HighlightElement.highlightElement(MT_Agent);
+            genericUtil.clickWithPause(MT_Agent,1000);
+
+            HighlightElement.highlightElement(MT_Table);
+            genericUtil.clickWithPause(MT_Table,1000);
+
+            HighlightElement.highlightElement(MT_Search);
+            genericUtil.writeTextWithPause(MT_Search,"HP Agent",1000);
+
+            HighlightElement.highlightElement(MT_TicketCount);
+            genericUtil.clickWithPause(MT_TicketCount,1000);
+
+            HighlightElement.highlightElement(MT_Close);
+            genericUtil.clickWithPause(MT_Close,1000);
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }
+
+    /**
+     * TESTCASE METHOD: Tickets Performance Tile
+     */
+    public void ticketPerformance(){
+        genericUtil = new GenericUtil();
+        try {
+            wait.until(ExpectedConditions.visibilityOf(sidebar_textDashboard));
+            HighlightElement.highlightElement(sidebar_textDashboard);
+            genericUtil.clickWithPause(sidebar_textDashboard, 2000);
+            Assert.assertEquals(driver.getCurrentUrl(),Constants.BASEURL + "dashboard");
+
+            HighlightElement.highlightElement(titleCsHD);
+            genericUtil.clickWithPause(titleCsHD, 1000);
+
+            HighlightElement.highlightElement(titleDashboard);
+            genericUtil.clickWithPause(titleDashboard, 1000);
+
+            HighlightElement.highlightElement(sectionTextTicketsPerformance);
+            genericUtil.clickWithPause(sectionTextTicketsPerformance, 1000);
+
+            try {
+                HighlightElement.highlightElement(loading);
+                if(loading.isDisplayed()) {
+                    wait.until(ExpectedConditions.visibilityOf(loading));
+                }
+            }
+            catch (NoSuchElementException ex){
+                ex.getStackTrace();
+            }
+
+            HighlightElement.highlightElement(headerTitleTicketPerformance);
+            genericUtil.clickWithPause(headerTitleTicketPerformance, 1000);
+
+            HighlightElement.highlightElement(TP_Agent);
+            genericUtil.clickWithPause(TP_Agent,1000);
+
+            HighlightElement.highlightElement(TP_Close);
+            genericUtil.clickWithPause(TP_Close,1000);
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }
+
+
+    /**
+     * TESTCASE METHOD: Ticket Reopening Rate Tile
+     */
+    public void ticketReopeningRate(){
+        genericUtil = new GenericUtil();
+        try {
+            wait.until(ExpectedConditions.visibilityOf(sidebar_textDashboard));
+            HighlightElement.highlightElement(sidebar_textDashboard);
+            genericUtil.clickWithPause(sidebar_textDashboard, 2000);
+            Assert.assertEquals(driver.getCurrentUrl(),Constants.BASEURL + "dashboard");
+
+            HighlightElement.highlightElement(titleCsHD);
+            genericUtil.clickWithPause(titleCsHD, 1000);
+
+            HighlightElement.highlightElement(titleDashboard);
+            genericUtil.clickWithPause(titleDashboard, 1000);
+
+            HighlightElement.highlightElement(sectionTextTicketReopeningRate);
+            genericUtil.clickWithPause(sectionTextTicketReopeningRate, 1000);
+
+            try {
+                HighlightElement.highlightElement(loading);
+                if(loading.isDisplayed()) {
+                    wait.until(ExpectedConditions.visibilityOf(loading));
+                }
+            }
+            catch (NoSuchElementException ex){
+                ex.getStackTrace();
+            }
+
+            HighlightElement.highlightElement(headerTitleTicketReopeningRate);
+            genericUtil.clickWithPause(headerTitleTicketReopeningRate, 1000);
+
+            HighlightElement.highlightElement(TRP_TicketType);
+            genericUtil.clickWithPause(TRP_TicketType,1000);
+
+            HighlightElement.highlightElement(TRP_TicketPriority);
+            genericUtil.clickWithPause(TRP_TicketPriority,1000);
+
+            HighlightElement.highlightElement(TRP_TicketPriority_Low);
+            genericUtil.clickWithPause(TRP_TicketPriority_Low, 1000);
+
+            HighlightElement.highlightElement(TRP_TicketPriority_Medium);
+            genericUtil.clickWithPause(TRP_TicketPriority_Medium, 1000);
+
+            HighlightElement.highlightElement(TRP_TicketPriority_High);
+            genericUtil.clickWithPause(TRP_TicketPriority_High, 1000);
+
+            HighlightElement.highlightElement(TRP_TicketType_Complaints);
+            genericUtil.clickWithPause(TRP_TicketType_Complaints, 1000);
+
+            HighlightElement.highlightElement(TRP_TicketType_DeliveryIssue);
+            genericUtil.clickWithPause(TRP_TicketType_DeliveryIssue, 1000);
+
+            HighlightElement.highlightElement(TRP_TicketType_Missings);
+            genericUtil.clickWithPause(TRP_TicketType_Missings, 1000);
+
+            HighlightElement.highlightElement(TRP_TicketType_Other);
+            genericUtil.clickWithPause(TRP_TicketType_Other, 1000);
+
+            HighlightElement.highlightElement(TRP_TicketType_Returns);
+            genericUtil.clickWithPause(TRP_TicketType_Returns, 1000);
+
+            HighlightElement.highlightElement(TRP_Close);
+            genericUtil.clickWithPause(TRP_Close,1000);
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }
+
 }

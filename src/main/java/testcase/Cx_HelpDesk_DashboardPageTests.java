@@ -52,6 +52,39 @@ public class Cx_HelpDesk_DashboardPageTests extends TestBase {
         }
     }
 
+    @Test(priority = 4)
+    public void ticketAssignedToMe(){
+        try {
+            objDashboard = new Cx_HelpDesk_page_DashboardLocator(driver);
+            objDashboard.ticketAssignedToMe();
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }
+
+    @Test(priority = 5)
+    public void ticketPerformance(){
+        try {
+            objDashboard = new Cx_HelpDesk_page_DashboardLocator(driver);
+            objDashboard.ticketPerformance();
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }
+
+    @Test(priority = 6)
+    public void ticketReopeningRate(){
+        try {
+            objDashboard = new Cx_HelpDesk_page_DashboardLocator(driver);
+            objDashboard.ticketReopeningRate();
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }
+
     @AfterMethod
     public void captureScreenShot(ITestResult result){
         CaptureScreenshot.captureScreenshotForFailedTests(driver,result);
